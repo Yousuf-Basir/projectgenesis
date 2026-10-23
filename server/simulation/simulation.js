@@ -6,6 +6,7 @@ import { DEFAULT_BRAIN_EXECUTOR } from "./brain-executor.js";
 import { DEFAULT_MUTATION_ENGINE } from "./mutation-engine.js";
 import { Organism } from "./organism.js";
 import { shrinkAtRiskComponents } from "./adaptive-shrinking.js";
+import { updateEnergyConservation } from "./energy-conservation.js";
 import { World } from "./world.js";
 import { average, clamp, createSeededRandom, normalizeSeed } from "./utils.js";
 import { createDefaultSurvivalCueGrid, createGuidedInput, setGuidedGrid, setGuidedPattern, serializeGuidedInput } from "./guided-input.js";
@@ -270,6 +271,7 @@ export class Simulation {
     const coupledIds = this.getCoupledIds();
     this.updateComponentLifecycle();
     this.updateGateDiscovery();
+    updateEnergyConservation(this);
     const collectiveStrideEligibleIds = this.getCollectiveStrideEligibleIds();
     const migrationTransportEligibleIds = this.getMigrationTransportEligibleIds();
     this.organisms.forEach((organism) => { organism.collectiveTransportActive = migrationTransportEligibleIds.has(organism.id); });
@@ -285,6 +287,7 @@ export class Simulation {
 
       occupiedBefore.delete(`${organism.x},${organism.y}`);
       const result = organism.act({
+        energyConservation: organism.energyConserving ? this.config.bond.energyConservation : null,
         world: this.world,
         occupiedKeys: occupiedBefore,
         config: this.config.organism,
@@ -1657,6 +1660,8 @@ export class Simulation {
   }
 
   reset() {
+    this.conservationHistory = new Map();
+    this.conservationMemberTicks = 0;
     this.shrinkHistory = new Map();
     this.shrinkStats = { reclaimed: 0, energyRecovered: 0, energyLost: 0 };
     this.random = createSeededRandom(this.seed);
@@ -4742,6 +4747,7 @@ export class Simulation {
       hazards: { ...this.config.hazards },
       signal: { ...this.config.signal },
       bonding: {
+        energyConservation: { ...this.config.bond.energyConservation, memberTicks: this.conservationMemberTicks },
         adaptiveShrinking: { ...this.config.bond.adaptiveShrinking, ...this.shrinkStats },
         usefulWorkReward: { ...this.config.bond.usefulWorkReward },
         ...this.config.bond,

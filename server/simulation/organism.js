@@ -114,7 +114,7 @@ export class Organism {
     return Number.isFinite(value) ? clamp(value, 0, 1.8) : null;
   }
 
-  act({ world, occupiedKeys, config, ecologyConfig, signalConfig, environmentMemoryConfig, guidedInput = null, guidedInputConfig = {}, brainExecutor, coupled, collectiveStrideMultiplier = 1, deferOrdinaryHarvest = false, harvestRestraint = null, neighborStates = [], structuralFocus = null, collectiveWorkCue = 0, collectiveWorkFields = [], courierTarget = null, memoryDirectionScores = null }) {
+  act({ world, occupiedKeys, config, ecologyConfig, signalConfig, environmentMemoryConfig, guidedInput = null, guidedInputConfig = {}, brainExecutor, coupled, collectiveStrideMultiplier = 1, deferOrdinaryHarvest = false, harvestRestraint = null, neighborStates = [], structuralFocus = null, collectiveWorkCue = 0, collectiveWorkFields = [], courierTarget = null, memoryDirectionScores = null, energyConservation = null }) {
     let consumedEnergy = 0;
     let consumedResource = null;
     const energyFlow = { income: { food: 0, gateWork: 0 }, expenses: { movement: 0, maintenance: 0, perception: 0, bonds: 0, bondReserveMaintenance: 0, gateWork: 0, memory: 0, signals: 0, idle: 0 }, losses: { capacityOverflow: 0, deathStoredEnergy: 0 } };
@@ -223,7 +223,7 @@ export class Organism {
     }
 
     const supportedDevelopment = guidedInputConfig.supportedDevelopment ?? {};
-    const movementAllowed = !(supportedDevelopment.enabled && supportedDevelopment.suppressMovement);
+    const movementAllowed = !energyConservation && !(supportedDevelopment.enabled && supportedDevelopment.suppressMovement);
     const shouldMove = movementAllowed && !coupled && this.brainExecution.effectors.move >= 0.05;
     const direction = shouldMove
       ? (this.genomeProfile.traits.canSenseNeighborhood
@@ -248,7 +248,7 @@ export class Organism {
     const perceptionCost = (strengths[17] ?? 0) * config.perceptionMaintenance;
     const couplingCost = coupled ? config.couplingMaintenance : 0;
 
-    const movementCost = config.moveCost * collectiveStrideMultiplier;
+    const movementCost = config.moveCost * collectiveStrideMultiplier * (energyConservation?.operatingCostMultiplier ?? 1);
     this.energy -= movementCost + maintenanceCost + perceptionCost + couplingCost;
     energyFlow.expenses.movement += movementCost;
     energyFlow.expenses.maintenance += maintenanceCost;
@@ -268,7 +268,7 @@ export class Organism {
     }
 
     const signalOutput = this.brainExecution.effectors.signal;
-    if (signalOutput > signalConfig.activationThreshold) {
+    if (!energyConservation && signalOutput > signalConfig.activationThreshold) {
       const intensity = clamp(
         (signalOutput - signalConfig.activationThreshold) / (8 - signalConfig.activationThreshold) * signalConfig.maxIntensity,
         0,

@@ -394,6 +394,15 @@ export const BASE_CONFIG = {
       cooldownTicks: 80,
       recoveryEfficiency: 0.65
     },
+    energyConservation: {
+      enabled: false,
+      entryEnergyMultiplier: 2,
+      exitEnergyMultiplier: 3,
+      decliningTicks: 8,
+      periodTicks: 10,
+      probeTicks: 2,
+      operatingCostMultiplier: 0.35
+    },
     collectiveMemory: {
       enabled: false,
       maximumHops: 6,

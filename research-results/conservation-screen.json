@@ -1,0 +1,72 @@
+[
+  {
+    "enabled": false,
+    "selectionScore": 3.315,
+    "tick": 1000,
+    "population": 27,
+    "births": 87,
+    "deaths": 60,
+    "bonds": 61,
+    "facets": 98,
+    "food": 692,
+    "gateSightings": 18167,
+    "gateRelays": 760,
+    "gateConsensuses": 140,
+    "gateCompletions": 35,
+    "bondsFormed": 321,
+    "bondsBroken": 260,
+    "populationRetention": 1.125,
+    "score": 665.25,
+    "expenses": {
+      "movement": 24821.600000004233,
+      "maintenance": 2472.0799999989117,
+      "perception": 3708.1199999975947,
+      "bonds": 2079.0999999992046,
+      "bondReserveMaintenance": 1413.0114187814254,
+      "gateWork": 0,
+      "memory": 0,
+      "signals": 26.50000000000023,
+      "idle": 13.05000000000002
+    },
+    "deathsByCause": {
+      "energy exhaustion": 46,
+      "maximum age": 14
+    },
+    "conservationMemberTicks": 0
+  },
+  {
+    "enabled": true,
+    "selectionScore": 2.2667,
+    "tick": 1000,
+    "population": 26,
+    "births": 109,
+    "deaths": 83,
+    "bonds": 15,
+    "facets": 4,
+    "food": 694,
+    "gateSightings": 24142,
+    "gateRelays": 2132,
+    "gateConsensuses": 211,
+    "gateCompletions": 54,
+    "bondsFormed": 508,
+    "bondsBroken": 493,
+    "populationRetention": 1.083,
+    "score": 623.083,
+    "expenses": {
+      "movement": 28056.5000000109,
+      "maintenance": 3049.7599999983863,
+      "perception": 4574.639999996807,
+      "bonds": 2859.6999999984946,
+      "bondReserveMaintenance": 2134.5784124800625,
+      "gateWork": 0,
+      "memory": 0,
+      "signals": 41.970196078432096,
+      "idle": 18.000000000000007
+    },
+    "deathsByCause": {
+      "energy exhaustion": 67,
+      "maximum age": 16
+    },
+    "conservationMemberTicks": 104
+  }
+]
