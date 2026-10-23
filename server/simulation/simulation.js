@@ -5,6 +5,7 @@ import { DEFAULT_BRAIN_GENERATOR } from "./brain-generator.js";
 import { DEFAULT_BRAIN_EXECUTOR } from "./brain-executor.js";
 import { DEFAULT_MUTATION_ENGINE } from "./mutation-engine.js";
 import { Organism } from "./organism.js";
+import { shrinkAtRiskComponents } from "./adaptive-shrinking.js";
 import { World } from "./world.js";
 import { average, clamp, createSeededRandom, normalizeSeed } from "./utils.js";
 import { createDefaultSurvivalCueGrid, createGuidedInput, setGuidedGrid, setGuidedPattern, serializeGuidedInput } from "./guided-input.js";
@@ -390,6 +391,7 @@ export class Simulation {
     this.handleReproduction();
     this.handleAutonomousFacetBudding();
     this.handleTopologyProactiveReproduction();
+    shrinkAtRiskComponents(this);
     this.updateBonds();
     // Scout detection is observational in this stage; no movement or bond
     // state is changed until the tethered-scout intervention is separately tested.
@@ -1655,6 +1657,8 @@ export class Simulation {
   }
 
   reset() {
+    this.shrinkHistory = new Map();
+    this.shrinkStats = { reclaimed: 0, energyRecovered: 0, energyLost: 0 };
     this.random = createSeededRandom(this.seed);
     this.world = new World(this.config.world, this.random);
     if (this.config.hazards.fireEnabled) {
@@ -4738,6 +4742,7 @@ export class Simulation {
       hazards: { ...this.config.hazards },
       signal: { ...this.config.signal },
       bonding: {
+        adaptiveShrinking: { ...this.config.bond.adaptiveShrinking, ...this.shrinkStats },
         usefulWorkReward: { ...this.config.bond.usefulWorkReward },
         ...this.config.bond,
         resourceFundedSurvival: {

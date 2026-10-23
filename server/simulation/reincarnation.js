@@ -3,7 +3,7 @@
 import { Organism } from "./organism.js";
 
 export class ReincarnationController {
-  constructor({ cycleTicks = 1000, seed = 160103, enabled = true, maximumHistory = 24, evolutionEnabled = true, workRewardsEnabled = true } = {}) {
+  constructor({ cycleTicks = 1000, seed = 160103, enabled = true, maximumHistory = 24, evolutionEnabled = true, workRewardsEnabled = true, adaptiveShrinkingEnabled = false } = {}) {
     this.cycleTicks = cycleTicks;
     this.seed = seed;
     this.enabled = enabled;
@@ -20,6 +20,7 @@ export class ReincarnationController {
     this.lastCarry = null;
     this.evolutionEnabled = evolutionEnabled;
     this.workRewardsEnabled = workRewardsEnabled;
+    this.adaptiveShrinkingEnabled = adaptiveShrinkingEnabled;
     this.searchState = seed >>> 0;
     this.inheritance = { descendants: 0, mutations: 0 };
   }
@@ -178,6 +179,7 @@ export class ReincarnationController {
   applyRecipe(simulation, recipe, carried = null) {
     simulation.config.bond.resourceFundedSurvival.enabled = Boolean(recipe.resourceFunded);
     simulation.config.bond.usefulWorkReward.enabled = this.workRewardsEnabled;
+    simulation.config.bond.adaptiveShrinking.enabled = this.adaptiveShrinkingEnabled;
     simulation.config.bond.dormantBonds.enabled = Boolean(recipe.dormantBonds);
     simulation.config.collectiveWork.gateDiscovery.enabled = Boolean(recipe.gateDiscovery);
     simulation.config.collectiveWork.navigation.enabled = Boolean(recipe.navigation);
@@ -282,6 +284,7 @@ export class ReincarnationController {
       currentRecipe: this.recipe,
       evolutionEnabled: this.evolutionEnabled,
       workRewardsEnabled: this.workRewardsEnabled,
+      adaptiveShrinkingEnabled: this.adaptiveShrinkingEnabled,
       inheritance: this.inheritance,
       ticksRemaining: Math.max(0, this.cycleTicks - tick),
       nextReason: this.nextReason,

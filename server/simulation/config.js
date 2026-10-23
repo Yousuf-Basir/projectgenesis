@@ -386,6 +386,14 @@ export const BASE_CONFIG = {
       commitmentPerEnergy: 0.04,
       maximumGainPerBondPerTick: 0.08
     },
+    adaptiveShrinking: {
+      enabled: false,
+      minimumRemainingMembers: 3,
+      minimumSamples: 8,
+      forecastTicks: 30,
+      cooldownTicks: 80,
+      recoveryEfficiency: 0.65
+    },
     collectiveMemory: {
       enabled: false,
       maximumHops: 6,
