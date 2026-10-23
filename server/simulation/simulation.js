@@ -321,6 +321,9 @@ export class Simulation {
           this.emitCollectivePulse(organism, "guided-return", Math.min(1, organism.guidedInputSignal), { x: organism.x, y: organism.y });
         }
         const priorityMemberIds = this.getGateFieldEnergyPriority(organism, result.consumedFoodOrigin);
+        if (priorityMemberIds) {
+          this.rewardUsefulBondWork(organism, priorityMemberIds, result.consumedEnergy, "gate-harvest");
+        }
         const surplusFirst = this.config.bond.surplusFirstEnergy?.enabled !== false;
         const bondAllocation = surplusFirst
           ? { total: 0, external: 0 }
@@ -3410,6 +3413,32 @@ export class Simulation {
       / (1 + ((organism.genomeProfile.powers[7] ?? 1) - 1) * 0.25);
   }
 
+  rewardUsefulBondWork(source, participantIds, energy, event) {
+    const policy = this.config.bond.usefulWorkReward;
+    if (!policy?.enabled || !source?.alive || energy <= 0) return 0;
+    // Only the actual source-to-recipient edges earn credit. Gate harvest
+    // rewards the harvester's connections inside the responsible facet.
+    const edges = [...this.bonds.values()].filter((bond) => {
+      const other = bond.firstId === source.id ? bond.secondId : bond.secondId === source.id ? bond.firstId : null;
+      const partner = this.organisms.find((member) => member.id === other && member.alive);
+      return participantIds.has(other) && partner && this.areAdjacent(source, partner) && !bond.dormant;
+    });
+    if (!edges.length) return 0;
+    let total = 0;
+    for (const bond of edges) {
+      const spent = bond.workRewardTick === this.simulationTicks ? bond.workRewardGain ?? 0 : 0;
+      const gain = Math.max(0, Math.min(policy.maximumGainPerBondPerTick - spent,
+        energy * policy.commitmentPerEnergy / edges.length, 1 - (bond.componentCommitment ?? 0)));
+      if (gain <= 0) continue;
+      bond.componentCommitment = (bond.componentCommitment ?? 0) + gain;
+      bond.workRewardTick = this.simulationTicks;
+      bond.workRewardGain = spent + gain;
+      bond.lastWorkRewardEvent = event;
+      total += gain;
+    }
+    return total;
+  }
+
   shareFacetEnergy(eater, mealEnergy, priorityMemberIds = null) {
     const byId = new Map(this.organisms.filter((organism) => organism.alive).map((organism) => [organism.id, organism]));
     const eligibleFacets = this.getFacets()
@@ -3431,7 +3460,8 @@ export class Simulation {
     if (!recipients.size) return { total: 0, external: 0 };
 
     const averageStrength = average([...recipients.values()].map((recipient) => recipient.strength));
-    const floor = this.config.bond.surplusFirstEnergy?.enabled === false ? 0 : this.getReproductionEnergyFloor(eater);
+    const floor = this.config.bond.resourceFundedSurvival?.enabled || this.config.bond.usefulWorkReward?.enabled
+      || this.config.bond.surplusFirstEnergy?.enabled !== false ? this.getReproductionEnergyFloor(eater) : 0;
     const pool = Math.min(Math.max(0, eater.energy - floor), mealEnergy * this.config.facet.sharingFraction * averageStrength);
     if (pool <= 0) return { total: 0, external: 0 };
 
@@ -3459,6 +3489,7 @@ export class Simulation {
       const transferred = recipient.transferred;
       if (transferred <= 0) continue;
       recipient.organism.energy += transferred;
+      this.rewardUsefulBondWork(eater, new Set([recipient.organism.id]), transferred, "energy-sharing");
       this.energyTransfers.push({ fromId: eater.id, toId: recipient.organism.id, amount: Number(transferred.toFixed(2)), ttl: 6 });
       this.facetTransfers += 1;
       this.facetEnergyShared += transferred;
@@ -3492,7 +3523,8 @@ export class Simulation {
     const attachedBonds = [...this.bonds.values()].filter((bond) => bond.firstId === eater.id || bond.secondId === eater.id);
     if (!attachedBonds.length) return { total: 0, external: 0 };
 
-    const floor = this.config.bond.surplusFirstEnergy?.enabled === false ? 0 : this.getReproductionEnergyFloor(eater);
+    const floor = this.config.bond.resourceFundedSurvival?.enabled || this.config.bond.usefulWorkReward?.enabled
+      || this.config.bond.surplusFirstEnergy?.enabled !== false ? this.getReproductionEnergyFloor(eater) : 0;
     const availableEnergy = Math.min(Math.max(0, eater.energy - floor), mealEnergy * this.config.bond.mealEnergyFraction);
     let orderedBonds = priorityMemberIds
       ? [...attachedBonds.filter((bond) => priorityMemberIds.has(bond.firstId === eater.id ? bond.secondId : bond.firstId)), ...attachedBonds.filter((bond) => !priorityMemberIds.has(bond.firstId === eater.id ? bond.secondId : bond.firstId))]
@@ -4706,6 +4738,7 @@ export class Simulation {
       hazards: { ...this.config.hazards },
       signal: { ...this.config.signal },
       bonding: {
+        usefulWorkReward: { ...this.config.bond.usefulWorkReward },
         ...this.config.bond,
         resourceFundedSurvival: {
           ...this.config.bond.resourceFundedSurvival

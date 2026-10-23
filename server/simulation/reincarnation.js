@@ -3,7 +3,7 @@
 import { Organism } from "./organism.js";
 
 export class ReincarnationController {
-  constructor({ cycleTicks = 1000, seed = 160103, enabled = true, maximumHistory = 24, evolutionEnabled = true } = {}) {
+  constructor({ cycleTicks = 1000, seed = 160103, enabled = true, maximumHistory = 24, evolutionEnabled = true, workRewardsEnabled = true } = {}) {
     this.cycleTicks = cycleTicks;
     this.seed = seed;
     this.enabled = enabled;
@@ -19,6 +19,7 @@ export class ReincarnationController {
     this.carriedFacetCount = 0;
     this.lastCarry = null;
     this.evolutionEnabled = evolutionEnabled;
+    this.workRewardsEnabled = workRewardsEnabled;
     this.searchState = seed >>> 0;
     this.inheritance = { descendants: 0, mutations: 0 };
   }
@@ -176,6 +177,7 @@ export class ReincarnationController {
 
   applyRecipe(simulation, recipe, carried = null) {
     simulation.config.bond.resourceFundedSurvival.enabled = Boolean(recipe.resourceFunded);
+    simulation.config.bond.usefulWorkReward.enabled = this.workRewardsEnabled;
     simulation.config.bond.dormantBonds.enabled = Boolean(recipe.dormantBonds);
     simulation.config.collectiveWork.gateDiscovery.enabled = Boolean(recipe.gateDiscovery);
     simulation.config.collectiveWork.navigation.enabled = Boolean(recipe.navigation);
@@ -279,6 +281,7 @@ export class ReincarnationController {
       cycle: this.cycle,
       currentRecipe: this.recipe,
       evolutionEnabled: this.evolutionEnabled,
+      workRewardsEnabled: this.workRewardsEnabled,
       inheritance: this.inheritance,
       ticksRemaining: Math.max(0, this.cycleTicks - tick),
       nextReason: this.nextReason,

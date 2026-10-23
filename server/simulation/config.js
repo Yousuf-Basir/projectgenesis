@@ -381,6 +381,11 @@ export const BASE_CONFIG = {
       commitmentThreshold: 0.12,
       commitmentReserveFloor: 0.5
     },
+    usefulWorkReward: {
+      enabled: false,
+      commitmentPerEnergy: 0.04,
+      maximumGainPerBondPerTick: 0.08
+    },
     collectiveMemory: {
       enabled: false,
       maximumHops: 6,

@@ -1,0 +1,11 @@
+# Useful work rewards — 2026-10-23
+
+Audit: gate completion already emits a topology pulse, and component reserve funding already adds decaying component commitment. Facet meal sharing did not credit the participating connections, and physical harvest from solved gates had no direct commitment reward.
+
+The reincarnation controller now enables `bond.usefulWorkReward`. Actual facet energy transfers credit the direct donor/recipient bond; harvested gate-field energy credits only adjacent harvester bonds inside the responsible facet. The existing food and gate pulses continue to propagate traces. This narrow reward adds commitment to the existing maintenance eligibility path; it does not increase energy, bond reserves, or strength directly. It requires an awake, adjacent connection. Gain is 0.04 per delivered energy, divided across participating edges, capped at 0.08 per edge per tick across both event types. Existing commitment decay, member safety, reserve, adjacency and lifecycle requirements remain in effect.
+
+Both meal sharing and direct bond feeding respect the reproduction energy floor in resource-funded or reward-enabled mode. Previously, disabling legacy surplus-first mode allowed those operations to spend below that floor. Ordinary baseline mode retains its earlier behavior.
+
+Comparison switch: construct `ReincarnationController({ workRewardsEnabled: false })`. API exposes `reincarnation.workRewardsEnabled` and `bonding.usefulWorkReward`. Each rewarded bond includes `lastWorkRewardEvent`, `workRewardTick` and `workRewardGain`.
+
+Validation: `node test/useful-work-reward.mjs` checks conservation, donor protection, edge specificity, per-tick caps and disabling rewards. `node test/reincarnation-evolution.mjs` additionally runs seed 160103 for 1,000 ticks. Result with this combined change: population 27, bonds 61, facets 98, deaths 60, gate completions 35, bonds formed/broken 321/260. Prior reference before this change: population 24, bonds 37, facets 31, deaths 89, completions 56, formed/broken 500/463. This is a single-seed check, and the reward and floor correction are confounded. More structure with fewer gate completions is not proof of better intelligence or a longer individual bond lifetime.
