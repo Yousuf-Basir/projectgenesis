@@ -404,6 +404,8 @@ export class Simulation {
     this.moveCompounds();
     this.moveElasticTetherScouts();
     this.updateCourierExchange();
+    // Settle existing commitments before spending surplus on a new generation.
+    this.fundExistingBondReserves();
     this.handleReproduction();
     this.handleAutonomousFacetBudding();
     this.handleTopologyProactiveReproduction();
@@ -857,6 +859,7 @@ export class Simulation {
       if (!organism.canReproduce(this.config.organism) && !renewalEligible) {
         continue;
       }
+      if (!this.canAffordReproduction(organism)) continue;
       const structuralParent = this.isActivelyBonded(organism.id) && organism.genomeProfile.traits.canCouple;
       const sourceFacet = structuralParent ? this.getStrongestFacetForMember(organism.id) : null;
       const nurseryCredit = sourceFacet ? (this.facetNurseryCredits.get(sourceFacet.key) ?? 0) : 0;
@@ -892,7 +895,7 @@ export class Simulation {
         if(renewalEligible && localPosition && child.genomeProfile.traits.canCouple) {
           const partners=[organism,...this.organisms.filter(other=>other.alive&&other.id!==organism.id
             && this.areAdjacent(child,other)&&this.bonds.has(this.bondKey(organism.id,other.id)))].slice(0,2);
-          const investment=Math.min(4,Math.max(0,organism.energy-this.config.bond.supportThreshold));
+          const investment=Math.min(4,Math.max(0,organism.energy-(this.usesAlignedBudgets()?this.getBondFundingFloor(organism):this.config.bond.supportThreshold)));
           if(investment>0) {
             organism.energy-=investment;
             this.recordEnergyAllocation(organism,'structuralSeed',investment);
@@ -936,7 +939,7 @@ export class Simulation {
         this.recordEnergyAllocation(organism, "structuralSeed", investment);
         this.recordTelemetry("facet-birth", `Facet ${sourceFacet.key} budded #${child.id} and invested ${investment.toFixed(1)} structural capital into two bond seeds.`);
       } else if (localPosition && child.genomeProfile.traits.canCouple) {
-        const seedEnergy = Math.min(organism.energy, this.config.bond.buddingReserveInvestment);
+        const seedEnergy = Math.min(Math.max(0,organism.energy-(this.usesAlignedBudgets()?this.getBondFundingFloor(organism):0)), this.config.bond.buddingReserveInvestment);
         if (seedEnergy > 0) {
           organism.energy -= seedEnergy;
           this.recordEnergyAllocation(organism, "structuralSeed", seedEnergy);
@@ -1007,6 +1010,7 @@ export class Simulation {
         this.topologyProactiveBirthDenied.site += 1;
         continue;
       }
+      if (!this.canAffordReproduction(parent)) continue;
       const child = parent.reproduce(this.nextOrganismId, birthSite.position, this.config.organism, {
         genomeEngine: this.genomeEngine, brainGenerator: this.brainGenerator, mutationEngine: this.mutationEngine
       });
@@ -1131,6 +1135,7 @@ export class Simulation {
       const birthSite = this.findFacetBirthSite(parent, facet, occupied);
       if (!birthSite) continue;
 
+      if (!this.canAffordReproduction(parent)) continue;
       const child = parent.reproduce(this.nextOrganismId, birthSite.position, this.config.organism, {
         genomeEngine: this.genomeEngine,
         brainGenerator: this.brainGenerator,
@@ -1257,10 +1262,10 @@ export class Simulation {
       income: { food: 0, gateWork: 0 },
       expenses: { movement: 0, maintenance: 0, perception: 0, bonds: 0, bondReserveMaintenance: 0, gateWork: 0, memory: 0, signals: 0, idle: 0 },
       losses: { capacityOverflow: 0, deathStoredEnergy: 0, relayTransfer: 0 },
-      allocations: { reproduction: 0, structuralSeed: 0, structuralOverflow: 0 },
+      allocations: { reproduction: 0, structuralSeed: 0, structuralOverflow: 0, bondFunding: 0 },
       deaths: {},
       intervals: [],
-      checkpoint: { income: { food: 0, gateWork: 0 }, expenses: { movement: 0, maintenance: 0, perception: 0, bonds: 0, bondReserveMaintenance: 0, gateWork: 0, memory: 0, signals: 0, idle: 0 }, losses: { capacityOverflow: 0, deathStoredEnergy: 0, relayTransfer: 0 }, allocations: { reproduction: 0, structuralSeed: 0, structuralOverflow: 0 }, deaths: {} }
+      checkpoint: { income: { food: 0, gateWork: 0 }, expenses: { movement: 0, maintenance: 0, perception: 0, bonds: 0, bondReserveMaintenance: 0, gateWork: 0, memory: 0, signals: 0, idle: 0 }, losses: { capacityOverflow: 0, deathStoredEnergy: 0, relayTransfer: 0 }, allocations: { reproduction: 0, structuralSeed: 0, structuralOverflow: 0, bondFunding: 0 }, deaths: {} }
     };
   }
 
@@ -3460,6 +3465,63 @@ export class Simulation {
       / (1 + ((organism.genomeProfile.powers[7] ?? 1) - 1) * 0.25);
   }
 
+  usesAlignedBudgets() {
+    const policy=this.config.bond.adaptiveMorphology;
+    return Boolean(policy?.enabled && policy.alignedBudgetsEnabled);
+  }
+
+  getBondFundingFloor(organism) {
+    // Protect one offspring's endowment, not the whole two-member birth trigger.
+    // The same floor applies to creating, maintaining and seeding connections.
+    const reproduction=this.getReproductionEnergyFloor(organism);
+    return this.usesAlignedBudgets()
+      ? Math.max(this.config.bond.supportThreshold,reproduction*this.config.organism.reproductionCostFactor)
+      : reproduction;
+  }
+
+  canAffordReproduction(parent) {
+    if (!this.usesAlignedBudgets()) return true;
+    const edges=[...this.bonds.values()].filter(edge=>edge.firstId===parent.id||edge.secondId===parent.id);
+    const halfUpkeep=edges.reduce((sum,edge)=>sum+Math.max(0,this.bondMaintenanceBuffer(edge)-(edge.reserve??0))/2,0);
+    const seedBudget=edges.length ? 4+this.config.bond.buddingReserveInvestment : 0;
+    const retained=parent.energy*this.config.organism.reproductionCostFactor;
+    const childEnergy=retained; // Organism.reproduce currently gives both the same split.
+    const floor=this.getBondFundingFloor(parent);
+    return retained>=floor+halfUpkeep+seedBudget && childEnergy>=floor;
+  }
+
+  bondMaintenanceBuffer(edge) {
+    const dormant=this.config.bond.dormantBonds;
+    const multiplier=dormant?.enabled && edge.dormant ? Number(dormant.maintenanceMultiplier??1) : 1;
+    // One payment now and one next tick; don't lock a full birth-sized reserve
+    // away from member renewal just to meet the current upkeep bill.
+    return Math.min(this.config.bond.reserveCapacity,2*this.config.bond.maintenancePerTick*multiplier);
+  }
+
+  fundExistingBondReserves() {
+    if (!this.usesAlignedBudgets()) return;
+    const members=new Map(this.organisms.filter(member=>member.alive).map(member=>[member.id,member]));
+    // Pay a minimal rolling upkeep buffer, not a new three-unit creation cost.
+    // This is an internal transfer, not income, and never crosses the survival floor.
+    for (const edge of this.bonds.values()) {
+      const a=members.get(edge.firstId),b=members.get(edge.secondId);
+      if (!a||!b||edge.dormant||!this.areAdjacent(a,b)) continue;
+      const reserve=edge.reserve??this.config.bond.initialReserve;
+      const deficit=Math.max(0,this.bondMaintenanceBuffer(edge)-reserve);
+      if (!deficit) continue;
+      const availableA=Math.max(0,a.energy-this.getBondFundingFloor(a));
+      const availableB=Math.max(0,b.energy-this.getBondFundingFloor(b));
+      const total=Math.min(deficit,availableA+availableB);
+      if (!total) continue;
+      const fromA=Math.min(availableA,total/2)+Math.max(0,total/2-availableB);
+      const fromB=total-fromA;
+      a.energy-=fromA;b.energy-=fromB;edge.reserve=reserve+total;
+      this.recordEnergyAllocation(a,'bondFunding',fromA);
+      this.recordEnergyAllocation(b,'bondFunding',fromB);
+      this.bondEnergyFed+=total;this.bondsFed+=1;
+    }
+  }
+
   rewardUsefulBondWork(source, participantIds, energy, event) {
     const policy = this.config.bond.usefulWorkReward;
     if (!policy?.enabled || !source?.alive || energy <= 0) return 0;
@@ -4355,8 +4417,9 @@ export class Simulation {
           const degree=id=>[...this.bonds.values()].filter(edge=>edge.firstId===id||edge.secondId===id).length;
           if(degree(first.id)>=this.config.bond.adaptiveMorphology.maximumDegree
             || degree(second.id)>=this.config.bond.adaptiveMorphology.maximumDegree) continue;
-          const floor=this.config.bond.supportThreshold;
-          const firstAvailable=Math.max(0,first.energy-floor),secondAvailable=Math.max(0,second.energy-floor);
+          const firstFloor=this.usesAlignedBudgets()?this.getBondFundingFloor(first):this.config.bond.supportThreshold;
+          const secondFloor=this.usesAlignedBudgets()?this.getBondFundingFloor(second):this.config.bond.supportThreshold;
+          const firstAvailable=Math.max(0,first.energy-firstFloor),secondAvailable=Math.max(0,second.energy-secondFloor);
           const cost=this.config.bond.initialReserve;
           if(firstAvailable+secondAvailable<cost) continue;
           const fromFirst=Math.min(firstAvailable,cost/2);

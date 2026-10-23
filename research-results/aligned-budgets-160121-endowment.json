@@ -1,0 +1,182 @@
+{
+  "seed": 160121,
+  "aligned": true,
+  "label": "endowment",
+  "rows": [
+    {
+      "cycle": 0,
+      "tick": 200,
+      "selectionScore": 3.25,
+      "population": 42,
+      "births": 42,
+      "deaths": {},
+      "bonds": 41,
+      "facets": 18,
+      "food": 631,
+      "gateSightings": 3275,
+      "gateRelays": 55,
+      "gateConsensuses": 21,
+      "gateCompletions": 3,
+      "bondsFormed": 41,
+      "bondsBroken": 0,
+      "populationRetention": 1.75,
+      "score": 187.5,
+      "breaks": {},
+      "bondFunding": 0,
+      "emergencyShared": 0,
+      "renewalBirths": 0,
+      "inheritedEdgesRemaining": 0
+    },
+    {
+      "cycle": 0,
+      "tick": 500,
+      "selectionScore": 3.7958,
+      "population": 59,
+      "births": 67,
+      "deaths": {
+        "energy exhaustion": 8
+      },
+      "bonds": 80,
+      "facets": 41,
+      "food": 678,
+      "gateSightings": 10235,
+      "gateRelays": 474,
+      "gateConsensuses": 68,
+      "gateCompletions": 20,
+      "bondsFormed": 105,
+      "bondsBroken": 25,
+      "populationRetention": 2.458,
+      "score": 439.583,
+      "breaks": {
+        "bond energy reserve depleted": 15,
+        "member died: energy exhaustion": 10
+      },
+      "bondFunding": 23.056595028759006,
+      "emergencyShared": 6.5354117805475616,
+      "renewalBirths": 5,
+      "inheritedEdgesRemaining": 0
+    },
+    {
+      "cycle": 0,
+      "tick": 1000,
+      "selectionScore": 3.6227,
+      "population": 45,
+      "births": 103,
+      "deaths": {
+        "energy exhaustion": 30,
+        "maximum age": 28
+      },
+      "bonds": 53,
+      "facets": 23,
+      "food": 682,
+      "gateSightings": 22418,
+      "gateRelays": 4247,
+      "gateConsensuses": 147,
+      "gateCompletions": 59,
+      "bondsFormed": 224,
+      "bondsBroken": 171,
+      "populationRetention": 1.875,
+      "score": 619.25,
+      "breaks": {
+        "bond energy reserve depleted": 71,
+        "member died: energy exhaustion": 29,
+        "member died: maximum age": 71
+      },
+      "bondFunding": 116.10994350842469,
+      "emergencyShared": 23.943324347399155,
+      "renewalBirths": 21,
+      "inheritedEdgesRemaining": 0
+    },
+    {
+      "cycle": 1,
+      "tick": 200,
+      "selectionScore": 2.7141,
+      "population": 62,
+      "births": 69,
+      "deaths": {
+        "maximum age": 7
+      },
+      "bonds": 81,
+      "facets": 30,
+      "food": 587,
+      "gateSightings": 8221,
+      "gateRelays": 1970,
+      "gateConsensuses": 36,
+      "gateCompletions": 10,
+      "bondsFormed": 53,
+      "bondsBroken": 25,
+      "populationRetention": 2.583,
+      "score": 329.083,
+      "breaks": {
+        "member died: maximum age": 23,
+        "bond energy reserve depleted": 2
+      },
+      "bondFunding": 28.62148812312625,
+      "emergencyShared": 0,
+      "renewalBirths": 2,
+      "inheritedEdgesRemaining": 32
+    },
+    {
+      "cycle": 1,
+      "tick": 500,
+      "selectionScore": 2.4585,
+      "population": 54,
+      "births": 82,
+      "deaths": {
+        "maximum age": 12,
+        "energy exhaustion": 16
+      },
+      "bonds": 80,
+      "facets": 30,
+      "food": 681,
+      "gateSightings": 20226,
+      "gateRelays": 3315,
+      "gateConsensuses": 108,
+      "gateCompletions": 20,
+      "bondsFormed": 133,
+      "bondsBroken": 106,
+      "populationRetention": 2.25,
+      "score": 485.5,
+      "breaks": {
+        "member died: maximum age": 39,
+        "bond energy reserve depleted": 56,
+        "member died: energy exhaustion": 11
+      },
+      "bondFunding": 229.48131710660147,
+      "emergencyShared": 62.694006707712575,
+      "renewalBirths": 10,
+      "inheritedEdgesRemaining": 2
+    },
+    {
+      "cycle": 1,
+      "tick": 1000,
+      "selectionScore": 2.6249,
+      "population": 88,
+      "births": 164,
+      "deaths": {
+        "maximum age": 40,
+        "energy exhaustion": 36
+      },
+      "bonds": 69,
+      "facets": 38,
+      "food": 445,
+      "gateSightings": 31119,
+      "gateRelays": 4468,
+      "gateConsensuses": 175,
+      "gateCompletions": 32,
+      "bondsFormed": 221,
+      "bondsBroken": 205,
+      "populationRetention": 3.667,
+      "score": 696.667,
+      "breaks": {
+        "member died: maximum age": 72,
+        "bond energy reserve depleted": 106,
+        "member died: energy exhaustion": 27
+      },
+      "bondFunding": 325.1681344489807,
+      "emergencyShared": 172.59873883645918,
+      "renewalBirths": 15,
+      "inheritedEdgesRemaining": 0
+    }
+  ]
+}

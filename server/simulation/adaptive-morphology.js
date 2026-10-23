@@ -8,7 +8,8 @@ export const MORPHOLOGY_PROFILES = {
 MORPHOLOGY_PROFILES['adaptive-foraging']={
   ...MORPHOLOGY_PROFILES['renewing-colonies'],name:'adaptive-foraging',
   resourcePatchesEnabled:true,smoothFieldSensing:true,reshapeMinimumGain:.003,
-  stockSensingWeight:0,scarcitySensingEnabled:false,fieldHarvestRoutingEnabled:false
+  stockSensingWeight:0,scarcitySensingEnabled:false,fieldHarvestRoutingEnabled:false,
+  alignedBudgetsEnabled:true
 };
 
 function forageGrid(size=16) {
@@ -85,10 +86,16 @@ export function prepareAdaptiveMorphology(simulation) {
     const a=byId.get(edge.firstId),b=byId.get(edge.secondId);
     if (!a||!b||!simulation.areAdjacent(a,b)||edge.dormant) continue;
     const donor=a.energy>b.energy?a:b, receiver=donor===a?b:a;
-    const donorFloor=Math.max(simulation.getReproductionEnergyFloor(donor),simulation.config.bond.supportThreshold);
-    const amount=Math.min(policy.edgeFlow,Math.max(0,(donor.energy-receiver.energy)/2),Math.max(0,donor.energy-donorFloor));
+    const emergencyTarget=Math.min(simulation.config.bond.supportThreshold,
+      2*Math.max(0,receiver.lastOperatingExpense??0));
+    const emergency=simulation.usesAlignedBudgets() && receiver.energy<emergencyTarget;
+    const donorFloor=emergency ? simulation.getBondFundingFloor(donor)
+      : Math.max(simulation.getReproductionEnergyFloor(donor),simulation.config.bond.supportThreshold);
+    const request=emergency ? (emergencyTarget-receiver.energy)/policy.flowEfficiency : policy.edgeFlow;
+    const amount=Math.min(request,Math.max(0,(donor.energy-receiver.energy)/2),Math.max(0,donor.energy-donorFloor));
     donor.energy-=amount; receiver.energy+=amount*policy.flowEfficiency;
     simulation.morphologyStats.shared+=amount*policy.flowEfficiency;
+    if(emergency)simulation.morphologyStats.emergencyShared=(simulation.morphologyStats.emergencyShared??0)+amount*policy.flowEfficiency;
     simulation.morphologyStats.transferLoss+=amount*(1-policy.flowEfficiency);
     simulation.energyEconomics.losses.morphologyFlow=(simulation.energyEconomics.losses.morphologyFlow??0)+amount*(1-policy.flowEfficiency);
     if(!simulation.headlessObservationMode && amount>.02 && flowMarkers<12) {

@@ -19,6 +19,7 @@ if(adaptiveEnabled) {
     fieldDemoEnabled:process.env.GENESIS_FIELD_DEMO===undefined?profileName==='renewing-colonies':process.env.GENESIS_FIELD_DEMO==='1'
   });
   if(process.env.GENESIS_RESOURCE_PATCHES!==undefined)simulation.config.bond.adaptiveMorphology.resourcePatchesEnabled=process.env.GENESIS_RESOURCE_PATCHES==='1';
+  if(process.env.GENESIS_ALIGNED_BUDGETS!==undefined)simulation.config.bond.adaptiveMorphology.alignedBudgetsEnabled=process.env.GENESIS_ALIGNED_BUDGETS==='1';
 }
 const reincarnation = new ReincarnationController({ cycleTicks: 1000,
   seed: Number(process.env.GENESIS_SEED??(adaptiveEnabled?160104:DEFAULT_CONFIG.universe.initialSeed)), enabled: true,

@@ -7,6 +7,7 @@ const results=[];
 for(const [seed,expectedPopulation,expectedBonds] of [[160104,166,201],[160121,51,66]]) {
  const simulation=new Simulation();simulation.stop();simulation.headlessObservationMode=true;
  Object.assign(simulation.config.bond.adaptiveMorphology,MORPHOLOGY_PROFILES['adaptive-foraging']);
+ simulation.config.bond.adaptiveMorphology.alignedBudgetsEnabled=false;
  const controller=new ReincarnationController({seed,adaptiveMorphologyEnabled:true});controller.applyRecipe(simulation,controller.chooseRecipe());
  let endpoint;
  for(let tick=0;tick<1200;tick++) {

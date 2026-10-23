@@ -77,7 +77,7 @@ export class Organism {
       income: { food: 0, gateWork: 0 },
       expenses: { movement: 0, maintenance: 0, perception: 0, bonds: 0, bondReserveMaintenance: 0, gateWork: 0, memory: 0, signals: 0, idle: 0 },
       losses: { capacityOverflow: 0, deathStoredEnergy: 0 },
-      allocations: { reproduction: 0, structuralSeed: 0, structuralOverflow: 0 }
+      allocations: { reproduction: 0, structuralSeed: 0, structuralOverflow: 0, bondFunding: 0 }
     };
   }
 

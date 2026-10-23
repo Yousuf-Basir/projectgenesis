@@ -2,7 +2,15 @@
 
 Primes, also called Project Genesis, is a long-term Artificial Life research project built around a server-driven simulation engine. Its central hypothesis is that prime factorization can serve as a canonical language for generation: a prime represents one irreducible generator, while a composite represents their composition.
 
-## Current live state — adaptive resource foraging (23 October 2026)
+## Current live state — aligned energy budgets (24 October 2026)
+
+The adaptive-foraging profile now preserves carried member/bond/component balances, protects one offspring's energy endowment, and pays bounded emergency member support and connection upkeep before reproduction. Formation and maintenance use the same protected budget. A small rolling upkeep buffer avoids locking creation-sized reserves away from renewal. Discretionary sharing still protects the full reproduction trigger; no extra food or support subsidy is added. Compare with `GENESIS_ALIGNED_BUDGETS=0` before startup.
+
+See [aligned energy budgets, comparisons and startup instructions](ALIGNED_ENERGY_BUDGETS_2026-10-24.md). The [exact late-cycle diagnosis](LATE_CYCLE_PERSISTENCE_DIAGNOSIS_2026-10-23.md) supersedes earlier suggestions that long-term bond survival had been solved. Results remain seed-dependent.
+
+Two matched 2,000-tick runs ended with **245 versus 68 bonds** in aggregate and lower second-world starvation deaths. Initial growth was smaller, and one seed's final bond count was essentially unchanged. This is a late-stage improvement on these cases, not proof of indefinite survival or intelligence.
+
+## Previous live state — adaptive resource foraging (23 October 2026)
 
 The default on `codex/adaptive-morphology-world` is now **adaptive-foraging**, seed **160104**, speed 1. Start with `npm start` and refresh http://localhost:3000/.
 

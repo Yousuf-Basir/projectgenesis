@@ -150,7 +150,9 @@ export class ReincarnationController {
       idMap.set(oldId, newId);
       member.id = newId;
       member.alive = true;
-      member.energy = Math.max(1, Math.min(member.energy, simulation.config.organism.startingEnergy * 1.25));
+      if (!simulation.usesAlignedBudgets()) {
+        member.energy = Math.max(1, Math.min(member.energy, simulation.config.organism.startingEnergy * 1.25));
+      }
       member.random = simulation.random;
       member.collectiveStrideActive = false;
       member.collectiveTransportActive = false;
@@ -167,7 +169,7 @@ export class ReincarnationController {
         ...bond,
         firstId,
         secondId,
-        reserve: Math.max(0, (bond.reserve ?? 0) * 0.9),
+        reserve: Math.max(0, (bond.reserve ?? 0) * (simulation.usesAlignedBudgets() ? 1 : 0.9)),
         dormant: Boolean(bond.dormant)
       };
       simulation.bonds.set(simulation.bondKey(firstId, secondId), carriedBond);
@@ -175,7 +177,7 @@ export class ReincarnationController {
     for (const [key, value] of carried.reserves ?? []) {
       const remappedIds = key.split(":").map(Number).map((id) => idMap.get(id)).filter((id) => id !== undefined);
       if (remappedIds.length) {
-        simulation.componentReserves.set(simulation.componentReserveKey(remappedIds), Math.max(0, value * 0.9));
+        simulation.componentReserves.set(simulation.componentReserveKey(remappedIds), Math.max(0, value * (simulation.usesAlignedBudgets() ? 1 : 0.9)));
       }
     }
     simulation.births += carried.members.length;
@@ -188,7 +190,7 @@ export class ReincarnationController {
       members: this.carriedComponentSize,
       bonds: this.carriedBondCount,
       facets: this.carriedFacetCount,
-      reserveTransitionLoss: 0.1
+      reserveTransitionLoss: simulation.usesAlignedBudgets() ? 0 : 0.1
     };
   }
 

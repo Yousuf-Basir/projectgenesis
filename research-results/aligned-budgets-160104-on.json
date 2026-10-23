@@ -1,0 +1,177 @@
+{
+  "seed": 160104,
+  "aligned": true,
+  "rows": [
+    {
+      "cycle": 0,
+      "tick": 200,
+      "selectionScore": 3.3425,
+      "population": 41,
+      "births": 41,
+      "deaths": {},
+      "bonds": 45,
+      "facets": 23,
+      "food": 625,
+      "gateSightings": 3094,
+      "gateRelays": 129,
+      "gateConsensuses": 14,
+      "gateCompletions": 3,
+      "bondsFormed": 45,
+      "bondsBroken": 0,
+      "populationRetention": 1.708,
+      "score": 186.083,
+      "breaks": {},
+      "bondFunding": 6.685130707604625,
+      "renewalBirths": 0,
+      "inheritedEdgesRemaining": 0
+    },
+    {
+      "cycle": 0,
+      "tick": 500,
+      "selectionScore": 3.6268,
+      "population": 53,
+      "births": 62,
+      "deaths": {
+        "energy exhaustion": 9
+      },
+      "bonds": 63,
+      "facets": 30,
+      "food": 694,
+      "gateSightings": 12001,
+      "gateRelays": 1201,
+      "gateConsensuses": 51,
+      "gateCompletions": 15,
+      "bondsFormed": 81,
+      "bondsBroken": 18,
+      "populationRetention": 2.208,
+      "score": 342.833,
+      "breaks": {
+        "bond energy reserve depleted": 16,
+        "member died: energy exhaustion": 2
+      },
+      "bondFunding": 135.53403136056707,
+      "renewalBirths": 4,
+      "inheritedEdgesRemaining": 0
+    },
+    {
+      "cycle": 0,
+      "tick": 1000,
+      "selectionScore": 2.4662,
+      "population": 24,
+      "births": 81,
+      "deaths": {
+        "energy exhaustion": 27,
+        "maximum age": 30
+      },
+      "bonds": 19,
+      "facets": 8,
+      "food": 737,
+      "gateSightings": 24412,
+      "gateRelays": 3909,
+      "gateConsensuses": 128,
+      "gateCompletions": 45,
+      "bondsFormed": 143,
+      "bondsBroken": 124,
+      "populationRetention": 1,
+      "score": 445.75,
+      "breaks": {
+        "bond energy reserve depleted": 37,
+        "member died: energy exhaustion": 24,
+        "member died: maximum age": 63
+      },
+      "bondFunding": 412.56574334566324,
+      "renewalBirths": 13,
+      "inheritedEdgesRemaining": 0
+    },
+    {
+      "cycle": 1,
+      "tick": 200,
+      "selectionScore": 3.2167,
+      "population": 60,
+      "births": 65,
+      "deaths": {
+        "maximum age": 3,
+        "energy exhaustion": 2
+      },
+      "bonds": 54,
+      "facets": 27,
+      "food": 486,
+      "gateSightings": 5332,
+      "gateRelays": 330,
+      "gateConsensuses": 31,
+      "gateCompletions": 6,
+      "bondsFormed": 45,
+      "bondsBroken": 7,
+      "populationRetention": 2.5,
+      "score": 271.75,
+      "breaks": {
+        "member died: maximum age": 4,
+        "bond energy reserve depleted": 2,
+        "member died: energy exhaustion": 1
+      },
+      "bondFunding": 12.044696598768034,
+      "renewalBirths": 1,
+      "inheritedEdgesRemaining": 9
+    },
+    {
+      "cycle": 1,
+      "tick": 500,
+      "selectionScore": 3.6238,
+      "population": 176,
+      "births": 191,
+      "deaths": {
+        "maximum age": 6,
+        "energy exhaustion": 9
+      },
+      "bonds": 240,
+      "facets": 98,
+      "food": 473,
+      "gateSightings": 23845,
+      "gateRelays": 7255,
+      "gateConsensuses": 148,
+      "gateCompletions": 29,
+      "bondsFormed": 266,
+      "bondsBroken": 42,
+      "populationRetention": 7.333,
+      "score": 1064.583,
+      "breaks": {
+        "member died: maximum age": 16,
+        "bond energy reserve depleted": 17,
+        "member died: energy exhaustion": 9
+      },
+      "bondFunding": 468.878931104737,
+      "renewalBirths": 6,
+      "inheritedEdgesRemaining": 1
+    },
+    {
+      "cycle": 1,
+      "tick": 1000,
+      "selectionScore": 3.1641,
+      "population": 187,
+      "births": 416,
+      "deaths": {
+        "maximum age": 42,
+        "energy exhaustion": 187
+      },
+      "bonds": 239,
+      "facets": 85,
+      "food": 494,
+      "gateSightings": 73938,
+      "gateRelays": 24587,
+      "gateConsensuses": 493,
+      "gateCompletions": 70,
+      "bondsFormed": 713,
+      "bondsBroken": 490,
+      "populationRetention": 7.792,
+      "score": 1812.667,
+      "breaks": {
+        "member died: maximum age": 56,
+        "bond energy reserve depleted": 136,
+        "member died: energy exhaustion": 298
+      },
+      "bondFunding": 4903.405219311356,
+      "renewalBirths": 13,
+      "inheritedEdgesRemaining": 0
+    }
+  ]
+}

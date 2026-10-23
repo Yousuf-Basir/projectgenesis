@@ -1,0 +1,3424 @@
+{
+  "initialSeed": 160104,
+  "profile": "adaptive-foraging",
+  "cycles": [
+    {
+      "cycle": 0,
+      "selectionScore": 3.1265,
+      "tick": 1000,
+      "population": 166,
+      "births": 222,
+      "deaths": {
+        "energy exhaustion": 24,
+        "maximum age": 32
+      },
+      "bonds": 201,
+      "facets": 81,
+      "food": 477,
+      "gateSightings": 29031,
+      "gateRelays": 3278,
+      "gateConsensuses": 204,
+      "gateCompletions": 30,
+      "bondsFormed": 439,
+      "bondsBroken": 238,
+      "populationRetention": 6.917,
+      "score": 1082.167,
+      "breakReasons": {
+        "bond energy reserve depleted": 142,
+        "member died: energy exhaustion": 26,
+        "member died: maximum age": 70
+      },
+      "income": {
+        "food": 85201,
+        "gateWork": 2820,
+        "environmentField": 3878.3292353677107
+      },
+      "expenses": {
+        "movement": 21672.392000006734,
+        "maintenance": 5520.219999999296,
+        "perception": 6405.719999995142,
+        "bonds": 3874.999999997571,
+        "bondReserveMaintenance": 2010.1360658372378,
+        "gateWork": 0,
+        "memory": 0,
+        "signals": 24.923529411765163,
+        "idle": 220.9500000000055,
+        "environmentDanger": 0
+      },
+      "allocations": {
+        "reproduction": 16182.945301777052,
+        "structuralSeed": 1574.4000000000021,
+        "structuralOverflow": 0
+      },
+      "morphology": {
+        "moves": 2543,
+        "shared": 1489.1641897066786,
+        "transferLoss": 30.391105912383168,
+        "fieldIncome": 3878.3292353677107,
+        "fieldGenerated": 3985.1600048652,
+        "dangerCost": 0,
+        "renewalBirths": 26
+      },
+      "meanEnergy": 82.3501248340939,
+      "reproducingEnergyFloor": 105,
+      "coupledMembers": 141,
+      "intervals": [
+        {
+          "tick": 100,
+          "population": 32,
+          "income": 12173.741,
+          "movement": 2444.564,
+          "bonds": 29.5,
+          "deaths": {}
+        },
+        {
+          "tick": 200,
+          "population": 38,
+          "income": 9067.014,
+          "movement": 1849.978,
+          "bonds": 234.6,
+          "deaths": {}
+        },
+        {
+          "tick": 300,
+          "population": 45,
+          "income": 5648.317,
+          "movement": 1445.498,
+          "bonds": 343.2,
+          "deaths": {
+            "energy exhaustion": 1
+          }
+        },
+        {
+          "tick": 400,
+          "population": 47,
+          "income": 5327.067,
+          "movement": 1504.602,
+          "bonds": 403.4,
+          "deaths": {
+            "energy exhaustion": 3
+          }
+        },
+        {
+          "tick": 500,
+          "population": 55,
+          "income": 6099.69,
+          "movement": 1685.234,
+          "bonds": 448.8,
+          "deaths": {
+            "energy exhaustion": 3
+          }
+        },
+        {
+          "tick": 600,
+          "population": 58,
+          "income": 7494.502,
+          "movement": 2005.28,
+          "bonds": 445.6,
+          "deaths": {
+            "energy exhaustion": 3
+          }
+        },
+        {
+          "tick": 700,
+          "population": 63,
+          "income": 9634.478,
+          "movement": 2270.524,
+          "bonds": 442.6,
+          "deaths": {
+            "energy exhaustion": 4
+          }
+        },
+        {
+          "tick": 800,
+          "population": 51,
+          "income": 7087.525,
+          "movement": 1829.278,
+          "bonds": 456,
+          "deaths": {
+            "energy exhaustion": 2,
+            "maximum age": 21
+          }
+        },
+        {
+          "tick": 900,
+          "population": 57,
+          "income": 7515.208,
+          "movement": 1754.536,
+          "bonds": 368.2,
+          "deaths": {
+            "energy exhaustion": 2,
+            "maximum age": 10
+          }
+        },
+        {
+          "tick": 1000,
+          "population": 166,
+          "income": 21851.787,
+          "movement": 4882.898,
+          "bonds": 703.1,
+          "deaths": {
+            "energy exhaustion": 6,
+            "maximum age": 1
+          }
+        }
+      ],
+      "recipe": {
+        "name": "resource-foraging",
+        "resourceFunded": true,
+        "foodGrowthRate": 0.45,
+        "foodAttempts": 8,
+        "gateDiscovery": true,
+        "navigation": true,
+        "dormantBonds": true,
+        "movementCostMultiplier": 0.9
+      }
+    },
+    {
+      "cycle": 1,
+      "selectionScore": 1.4616,
+      "tick": 1000,
+      "population": 202,
+      "births": 743,
+      "deaths": {
+        "energy exhaustion": 483,
+        "maximum age": 58
+      },
+      "bonds": 0,
+      "facets": 0,
+      "food": 143,
+      "gateSightings": 112784,
+      "gateRelays": 10856,
+      "gateConsensuses": 325,
+      "gateCompletions": 37,
+      "bondsFormed": 461,
+      "bondsBroken": 661,
+      "populationRetention": 8.417,
+      "score": 911.917,
+      "breakReasons": {
+        "member died: energy exhaustion": 269,
+        "bond energy reserve depleted": 351,
+        "member died: maximum age": 41
+      },
+      "income": {
+        "food": 231837,
+        "gateWork": 3674,
+        "environmentField": 3989.952516697878
+      },
+      "expenses": {
+        "movement": 152887.02399999573,
+        "maintenance": 48097.02000004626,
+        "perception": 24379.559999980283,
+        "bonds": 5898.3000000039265,
+        "bondReserveMaintenance": 2742.468797602345,
+        "gateWork": 0,
+        "memory": 0,
+        "signals": 86.15816993464003,
+        "idle": 1676.7000000002863,
+        "environmentDanger": 0
+      },
+      "allocations": {
+        "reproduction": 41045.484074806234,
+        "structuralSeed": 1505.000000000001,
+        "structuralOverflow": 0
+      },
+      "morphology": {
+        "moves": 2287,
+        "shared": 1188.8897552762462,
+        "transferLoss": 24.263056230130005,
+        "fieldIncome": 3989.952516697878,
+        "fieldGenerated": 4000.000000000017,
+        "dangerCost": 0,
+        "renewalBirths": 10
+      },
+      "meanEnergy": 69.38722328109097,
+      "reproducingEnergyFloor": 84,
+      "coupledMembers": 0,
+      "intervals": [
+        {
+          "tick": 100,
+          "population": 157,
+          "income": 11482.988,
+          "movement": 3772.904,
+          "bonds": 1403.5,
+          "deaths": {
+            "energy exhaustion": 7,
+            "maximum age": 4
+          }
+        },
+        {
+          "tick": 200,
+          "population": 126,
+          "income": 12045.823,
+          "movement": 4041.14,
+          "bonds": 1083.7,
+          "deaths": {
+            "energy exhaustion": 62,
+            "maximum age": 3
+          }
+        },
+        {
+          "tick": 300,
+          "population": 197,
+          "income": 19833.765,
+          "movement": 6611.648,
+          "bonds": 1099.9,
+          "deaths": {
+            "energy exhaustion": 25,
+            "maximum age": 2
+          }
+        },
+        {
+          "tick": 400,
+          "population": 243,
+          "income": 26366.39,
+          "movement": 12721.772,
+          "bonds": 1120.6,
+          "deaths": {
+            "energy exhaustion": 33,
+            "maximum age": 4
+          }
+        },
+        {
+          "tick": 500,
+          "population": 233,
+          "income": 27517.792,
+          "movement": 18785.872,
+          "bonds": 627.4,
+          "deaths": {
+            "energy exhaustion": 58,
+            "maximum age": 4
+          }
+        },
+        {
+          "tick": 600,
+          "population": 234,
+          "income": 28554.43,
+          "movement": 20760.744,
+          "bonds": 313.2,
+          "deaths": {
+            "energy exhaustion": 56,
+            "maximum age": 1
+          }
+        },
+        {
+          "tick": 700,
+          "population": 225,
+          "income": 28188.385,
+          "movement": 22750.836,
+          "bonds": 98.2,
+          "deaths": {
+            "energy exhaustion": 57,
+            "maximum age": 4
+          }
+        },
+        {
+          "tick": 800,
+          "population": 212,
+          "income": 28697.551,
+          "movement": 21409.12,
+          "bonds": 35.9,
+          "deaths": {
+            "energy exhaustion": 60,
+            "maximum age": 20
+          }
+        },
+        {
+          "tick": 900,
+          "population": 214,
+          "income": 28014.66,
+          "movement": 21332.356,
+          "bonds": 83.8,
+          "deaths": {
+            "energy exhaustion": 62,
+            "maximum age": 1
+          }
+        },
+        {
+          "tick": 1000,
+          "population": 202,
+          "income": 28799.169,
+          "movement": 20700.632,
+          "bonds": 32.1,
+          "deaths": {
+            "energy exhaustion": 63,
+            "maximum age": 15
+          }
+        }
+      ],
+      "recipe": {
+        "name": "gate-consensus",
+        "resourceFunded": true,
+        "foodGrowthRate": 0.32,
+        "foodAttempts": 6,
+        "gateDiscovery": true,
+        "navigation": true,
+        "dormantBonds": true,
+        "movementCostMultiplier": 0.8
+      }
+    },
+    {
+      "cycle": 2,
+      "selectionScore": 2.2704,
+      "tick": 1000,
+      "population": 29,
+      "births": 70,
+      "deaths": {
+        "energy exhaustion": 23,
+        "maximum age": 18
+      },
+      "bonds": 31,
+      "facets": 16,
+      "food": 669,
+      "gateSightings": 15980,
+      "gateRelays": 7448,
+      "gateConsensuses": 123,
+      "gateCompletions": 9,
+      "bondsFormed": 155,
+      "bondsBroken": 124,
+      "populationRetention": 1.208,
+      "score": 366.833,
+      "breakReasons": {
+        "bond energy reserve depleted": 69,
+        "member died: energy exhaustion": 32,
+        "member died: maximum age": 23
+      },
+      "income": {
+        "food": 69235,
+        "gateWork": 753,
+        "environmentField": 3204.0433325451745
+      },
+      "expenses": {
+        "movement": 16209.120000005323,
+        "maintenance": 2613.0399999987835,
+        "perception": 3919.5599999974024,
+        "bonds": 2153.399999999137,
+        "bondReserveMaintenance": 1171.9032048292843,
+        "gateWork": 0,
+        "memory": 0,
+        "signals": 7.238039215686264,
+        "idle": 59.99999999999961,
+        "environmentDanger": 0
+      },
+      "allocations": {
+        "reproduction": 3874.464714173536,
+        "structuralSeed": 590,
+        "structuralOverflow": 0
+      },
+      "morphology": {
+        "moves": 1204,
+        "shared": 878.8849229079409,
+        "transferLoss": 17.936426998124592,
+        "fieldIncome": 3204.0433325451745,
+        "fieldGenerated": 3880.2325904288255,
+        "dangerCost": 0,
+        "renewalBirths": 16
+      },
+      "meanEnergy": 118.63089804087642,
+      "reproducingEnergyFloor": 105,
+      "coupledMembers": 20,
+      "intervals": [
+        {
+          "tick": 100,
+          "population": 29,
+          "income": 10801.673,
+          "movement": 2317.48,
+          "bonds": 18.6,
+          "deaths": {}
+        },
+        {
+          "tick": 200,
+          "population": 35,
+          "income": 9271.167,
+          "movement": 1763.88,
+          "bonds": 191.6,
+          "deaths": {}
+        },
+        {
+          "tick": 300,
+          "population": 35,
+          "income": 5390.486,
+          "movement": 1437,
+          "bonds": 270,
+          "deaths": {
+            "energy exhaustion": 1
+          }
+        },
+        {
+          "tick": 400,
+          "population": 34,
+          "income": 5613.994,
+          "movement": 1398.42,
+          "bonds": 261.9,
+          "deaths": {
+            "energy exhaustion": 3
+          }
+        },
+        {
+          "tick": 500,
+          "population": 37,
+          "income": 6267.344,
+          "movement": 1414.36,
+          "bonds": 275.2,
+          "deaths": {
+            "energy exhaustion": 5
+          }
+        },
+        {
+          "tick": 600,
+          "population": 40,
+          "income": 7274.241,
+          "movement": 1617.72,
+          "bonds": 280.4,
+          "deaths": {
+            "energy exhaustion": 0
+          }
+        },
+        {
+          "tick": 700,
+          "population": 43,
+          "income": 8453.535,
+          "movement": 1925.48,
+          "bonds": 268.6,
+          "deaths": {
+            "energy exhaustion": 6
+          }
+        },
+        {
+          "tick": 800,
+          "population": 28,
+          "income": 7367.832,
+          "movement": 1660.82,
+          "bonds": 254.9,
+          "deaths": {
+            "energy exhaustion": 3,
+            "maximum age": 15
+          }
+        },
+        {
+          "tick": 900,
+          "population": 25,
+          "income": 6423.549,
+          "movement": 1302.12,
+          "bonds": 138.4,
+          "deaths": {
+            "energy exhaustion": 5,
+            "maximum age": 3
+          }
+        },
+        {
+          "tick": 1000,
+          "population": 29,
+          "income": 6328.222,
+          "movement": 1371.84,
+          "bonds": 193.8,
+          "deaths": {
+            "energy exhaustion": 0,
+            "maximum age": 0
+          }
+        }
+      ],
+      "recipe": {
+        "name": "distributed-memory",
+        "resourceFunded": true,
+        "foodGrowthRate": 0.42,
+        "foodAttempts": 8,
+        "gateDiscovery": true,
+        "navigation": false,
+        "dormantBonds": true,
+        "movementCostMultiplier": 1
+      }
+    },
+    {
+      "cycle": 3,
+      "selectionScore": 2.322,
+      "tick": 1000,
+      "population": 40,
+      "births": 104,
+      "deaths": {
+        "maximum age": 37,
+        "energy exhaustion": 27
+      },
+      "bonds": 36,
+      "facets": 11,
+      "food": 584,
+      "gateSightings": 30576,
+      "gateRelays": 2265,
+      "gateConsensuses": 170,
+      "gateCompletions": 50,
+      "bondsFormed": 261,
+      "bondsBroken": 256,
+      "populationRetention": 1.667,
+      "score": 588.667,
+      "breakReasons": {
+        "member died: maximum age": 65,
+        "bond energy reserve depleted": 164,
+        "member died: energy exhaustion": 27
+      },
+      "income": {
+        "food": 56674,
+        "gateWork": 4053,
+        "environmentField": 3252.738388874516
+      },
+      "expenses": {
+        "movement": 17183.648000004632,
+        "maintenance": 3620.3199999978674,
+        "perception": 5430.479999996029,
+        "bonds": 3306.999999998088,
+        "bondReserveMaintenance": 1668.2223583738134,
+        "gateWork": 0,
+        "memory": 0,
+        "signals": 27.632941176470933,
+        "idle": 322.49999999999676,
+        "environmentDanger": 0
+      },
+      "allocations": {
+        "reproduction": 4802.299458588298,
+        "structuralSeed": 959.2000000000005,
+        "structuralOverflow": 0
+      },
+      "morphology": {
+        "moves": 1720,
+        "shared": 856.6928924367141,
+        "transferLoss": 17.483528417079178,
+        "fieldIncome": 3252.738388874516,
+        "fieldGenerated": 3987.4849151399026,
+        "dangerCost": 0,
+        "renewalBirths": 22
+      },
+      "meanEnergy": 90.11343574281584,
+      "reproducingEnergyFloor": 105,
+      "coupledMembers": 28,
+      "intervals": [
+        {
+          "tick": 100,
+          "population": 42,
+          "income": 7996.185,
+          "movement": 2132.26,
+          "bonds": 272.9,
+          "deaths": {
+            "maximum age": 1,
+            "energy exhaustion": 1
+          }
+        },
+        {
+          "tick": 200,
+          "population": 39,
+          "income": 6043.5,
+          "movement": 1637.624,
+          "bonds": 294,
+          "deaths": {
+            "maximum age": 3,
+            "energy exhaustion": 3
+          }
+        },
+        {
+          "tick": 300,
+          "population": 46,
+          "income": 6511.926,
+          "movement": 1612.368,
+          "bonds": 311.2,
+          "deaths": {
+            "maximum age": 2,
+            "energy exhaustion": 1
+          }
+        },
+        {
+          "tick": 400,
+          "population": 46,
+          "income": 6285.734,
+          "movement": 1577.196,
+          "bonds": 370.9,
+          "deaths": {
+            "maximum age": 2,
+            "energy exhaustion": 3
+          }
+        },
+        {
+          "tick": 500,
+          "population": 49,
+          "income": 8422.423999999999,
+          "movement": 2085.648,
+          "bonds": 299.3,
+          "deaths": {
+            "maximum age": 4,
+            "energy exhaustion": 4
+          }
+        },
+        {
+          "tick": 600,
+          "population": 58,
+          "income": 5331.998,
+          "movement": 1309.428,
+          "bonds": 446.9,
+          "deaths": {
+            "maximum age": 0,
+            "energy exhaustion": 0
+          }
+        },
+        {
+          "tick": 700,
+          "population": 55,
+          "income": 3020.747,
+          "movement": 1515.802,
+          "bonds": 517,
+          "deaths": {
+            "maximum age": 4,
+            "energy exhaustion": 6
+          }
+        },
+        {
+          "tick": 800,
+          "population": 36,
+          "income": 5709.754,
+          "movement": 1924.798,
+          "bonds": 292.5,
+          "deaths": {
+            "maximum age": 17,
+            "energy exhaustion": 7
+          }
+        },
+        {
+          "tick": 900,
+          "population": 39,
+          "income": 8641.673,
+          "movement": 1744.638,
+          "bonds": 223.8,
+          "deaths": {
+            "maximum age": 0,
+            "energy exhaustion": 1
+          }
+        },
+        {
+          "tick": 1000,
+          "population": 40,
+          "income": 6015.7970000000005,
+          "movement": 1643.886,
+          "bonds": 278.5,
+          "deaths": {
+            "maximum age": 4,
+            "energy exhaustion": 1
+          }
+        }
+      ],
+      "recipe": {
+        "name": "scarcity-recovery",
+        "resourceFunded": true,
+        "foodGrowthRate": 0.24,
+        "foodAttempts": 5,
+        "gateDiscovery": true,
+        "navigation": true,
+        "dormantBonds": true,
+        "movementCostMultiplier": 0.7
+      }
+    },
+    {
+      "cycle": 4,
+      "selectionScore": 2.3934,
+      "tick": 1000,
+      "population": 53,
+      "births": 142,
+      "deaths": {
+        "maximum age": 50,
+        "energy exhaustion": 39
+      },
+      "bonds": 69,
+      "facets": 25,
+      "food": 709,
+      "gateSightings": 29669,
+      "gateRelays": 3481,
+      "gateConsensuses": 198,
+      "gateCompletions": 38,
+      "bondsFormed": 372,
+      "bondsBroken": 339,
+      "populationRetention": 2.208,
+      "score": 681.833,
+      "breakReasons": {
+        "bond energy reserve depleted": 233,
+        "member died: maximum age": 75,
+        "member died: energy exhaustion": 31
+      },
+      "income": {
+        "food": 93358,
+        "gateWork": 4375,
+        "environmentField": 3305.6928507127723
+      },
+      "expenses": {
+        "movement": 22810.882000007823,
+        "maintenance": 4858.879999996741,
+        "perception": 7350.719999994282,
+        "bonds": 4619.2999999992735,
+        "bondReserveMaintenance": 2258.9624892647385,
+        "gateWork": 0,
+        "memory": 45.375600000000006,
+        "signals": 34.31189542483713,
+        "idle": 148.35000000000275,
+        "environmentDanger": 0
+      },
+      "allocations": {
+        "reproduction": 6895.324694542322,
+        "structuralSeed": 1411.0000000000014,
+        "structuralOverflow": 0
+      },
+      "morphology": {
+        "moves": 1879,
+        "shared": 1263.7718044073251,
+        "transferLoss": 25.791261314437534,
+        "fieldIncome": 3305.6928507127723,
+        "fieldGenerated": 3998.811178077172,
+        "dangerCost": 0,
+        "renewalBirths": 31
+      },
+      "meanEnergy": 81.86143855281648,
+      "reproducingEnergyFloor": 105,
+      "coupledMembers": 49,
+      "intervals": [
+        {
+          "tick": 100,
+          "population": 64,
+          "income": 13247.042,
+          "movement": 2702.616,
+          "bonds": 329.7,
+          "deaths": {
+            "maximum age": 1
+          }
+        },
+        {
+          "tick": 200,
+          "population": 68,
+          "income": 9760.856,
+          "movement": 2256.021,
+          "bonds": 539.4,
+          "deaths": {
+            "maximum age": 3,
+            "energy exhaustion": 2
+          }
+        },
+        {
+          "tick": 300,
+          "population": 64,
+          "income": 10916.588,
+          "movement": 2358.244,
+          "bonds": 489.2,
+          "deaths": {
+            "maximum age": 6,
+            "energy exhaustion": 5
+          }
+        },
+        {
+          "tick": 400,
+          "population": 66,
+          "income": 11089.684,
+          "movement": 2170.216,
+          "bonds": 465,
+          "deaths": {
+            "maximum age": 3,
+            "energy exhaustion": 5
+          }
+        },
+        {
+          "tick": 500,
+          "population": 65,
+          "income": 9531.912,
+          "movement": 2207.133,
+          "bonds": 530.8,
+          "deaths": {
+            "maximum age": 0,
+            "energy exhaustion": 6
+          }
+        },
+        {
+          "tick": 600,
+          "population": 67,
+          "income": 12865.689,
+          "movement": 2922.981,
+          "bonds": 462.2,
+          "deaths": {
+            "maximum age": 3,
+            "energy exhaustion": 7
+          }
+        },
+        {
+          "tick": 700,
+          "population": 68,
+          "income": 11015.584,
+          "movement": 2622.428,
+          "bonds": 472,
+          "deaths": {
+            "maximum age": 3,
+            "energy exhaustion": 6
+          }
+        },
+        {
+          "tick": 800,
+          "population": 54,
+          "income": 11126.253,
+          "movement": 2659.312,
+          "bonds": 451.7,
+          "deaths": {
+            "maximum age": 18,
+            "energy exhaustion": 2
+          }
+        },
+        {
+          "tick": 900,
+          "population": 48,
+          "income": 5086.209,
+          "movement": 1534.531,
+          "bonds": 439,
+          "deaths": {
+            "maximum age": 8,
+            "energy exhaustion": 2
+          }
+        },
+        {
+          "tick": 1000,
+          "population": 53,
+          "income": 6398.876,
+          "movement": 1377.4,
+          "bonds": 440.3,
+          "deaths": {
+            "maximum age": 5,
+            "energy exhaustion": 4
+          }
+        }
+      ],
+      "recipe": {
+        "name": "evolved-4",
+        "resourceFunded": true,
+        "foodGrowthRate": 0.45,
+        "foodAttempts": 8,
+        "gateDiscovery": true,
+        "navigation": true,
+        "dormantBonds": true,
+        "movementCostMultiplier": 0.98,
+        "parentRecipe": "resource-foraging",
+        "mutation": {
+          "parameter": "movementCostMultiplier",
+          "before": 0.9,
+          "after": 0.98
+        }
+      }
+    },
+    {
+      "cycle": 5,
+      "selectionScore": 2.4391,
+      "tick": 1000,
+      "population": 284,
+      "births": 552,
+      "deaths": {
+        "maximum age": 94,
+        "energy exhaustion": 174
+      },
+      "bonds": 99,
+      "facets": 29,
+      "food": 217,
+      "gateSightings": 98324,
+      "gateRelays": 25892,
+      "gateConsensuses": 739,
+      "gateCompletions": 72,
+      "bondsFormed": 1186,
+      "bondsBroken": 1155,
+      "populationRetention": 11.833,
+      "score": 2186.333,
+      "breakReasons": {
+        "bond energy reserve depleted": 759,
+        "member died: maximum age": 227,
+        "member died: energy exhaustion": 169
+      },
+      "income": {
+        "food": 247194,
+        "gateWork": 7585,
+        "environmentField": 3987.6369671209786
+      },
+      "expenses": {
+        "movement": 83643.56200000236,
+        "maintenance": 40304.56000001629,
+        "perception": 24617.639999978262,
+        "bonds": 14138.500000033904,
+        "bondReserveMaintenance": 6911.34238562697,
+        "gateWork": 0,
+        "memory": 0,
+        "signals": 127.29568627451857,
+        "idle": 623.6999999999512,
+        "environmentDanger": 0
+      },
+      "allocations": {
+        "reproduction": 64435.65765718474,
+        "structuralSeed": 4024.999999999997,
+        "structuralOverflow": 0
+      },
+      "morphology": {
+        "moves": 4026,
+        "shared": 5197.014079877701,
+        "transferLoss": 106.06151183421396,
+        "fieldIncome": 3987.6369671209786,
+        "fieldGenerated": 3999.99999999995,
+        "dangerCost": 0,
+        "renewalBirths": 46
+      },
+      "meanEnergy": 184.20376213442847,
+      "reproducingEnergyFloor": 105,
+      "coupledMembers": 76,
+      "intervals": [
+        {
+          "tick": 100,
+          "population": 78,
+          "income": 15837.529,
+          "movement": 3335.92,
+          "bonds": 478.1,
+          "deaths": {
+            "maximum age": 4,
+            "energy exhaustion": 2
+          }
+        },
+        {
+          "tick": 200,
+          "population": 109,
+          "income": 16403.266,
+          "movement": 3438.064,
+          "bonds": 770.3,
+          "deaths": {
+            "maximum age": 8,
+            "energy exhaustion": 0
+          }
+        },
+        {
+          "tick": 300,
+          "population": 144,
+          "income": 14992.828,
+          "movement": 3232.698,
+          "bonds": 1055.4,
+          "deaths": {
+            "maximum age": 5,
+            "energy exhaustion": 6
+          }
+        },
+        {
+          "tick": 400,
+          "population": 193,
+          "income": 17792.533,
+          "movement": 4035.962,
+          "bonds": 1467.7,
+          "deaths": {
+            "maximum age": 5,
+            "energy exhaustion": 9
+          }
+        },
+        {
+          "tick": 500,
+          "population": 242,
+          "income": 16825.178,
+          "movement": 4887.294,
+          "bonds": 1964.8,
+          "deaths": {
+            "maximum age": 3,
+            "energy exhaustion": 10
+          }
+        },
+        {
+          "tick": 600,
+          "population": 273,
+          "income": 22010.079,
+          "movement": 6150.904,
+          "bonds": 2225.3,
+          "deaths": {
+            "maximum age": 1,
+            "energy exhaustion": 17
+          }
+        },
+        {
+          "tick": 700,
+          "population": 277,
+          "income": 32127.08,
+          "movement": 10631.472,
+          "bonds": 1976.4,
+          "deaths": {
+            "maximum age": 4,
+            "energy exhaustion": 42
+          }
+        },
+        {
+          "tick": 800,
+          "population": 278,
+          "income": 36169.36,
+          "movement": 12110.808,
+          "bonds": 1806.4,
+          "deaths": {
+            "maximum age": 27,
+            "energy exhaustion": 29
+          }
+        },
+        {
+          "tick": 900,
+          "population": 278,
+          "income": 41205.935,
+          "movement": 15874.488,
+          "bonds": 1434.9,
+          "deaths": {
+            "maximum age": 19,
+            "energy exhaustion": 29
+          }
+        },
+        {
+          "tick": 1000,
+          "population": 284,
+          "income": 45402.849,
+          "movement": 19945.952,
+          "bonds": 959.2,
+          "deaths": {
+            "maximum age": 18,
+            "energy exhaustion": 30
+          }
+        }
+      ],
+      "recipe": {
+        "name": "evolved-5",
+        "resourceFunded": true,
+        "foodGrowthRate": 0.49,
+        "foodAttempts": 8,
+        "gateDiscovery": true,
+        "navigation": true,
+        "dormantBonds": true,
+        "movementCostMultiplier": 0.9,
+        "parentRecipe": "resource-foraging",
+        "mutation": {
+          "parameter": "foodGrowthRate",
+          "before": 0.45,
+          "after": 0.49
+        }
+      }
+    },
+    {
+      "cycle": 6,
+      "selectionScore": 2.4911,
+      "tick": 1000,
+      "population": 220,
+      "births": 723,
+      "deaths": {
+        "maximum age": 79,
+        "energy exhaustion": 424
+      },
+      "bonds": 231,
+      "facets": 67,
+      "food": 408,
+      "gateSightings": 136823,
+      "gateRelays": 18234,
+      "gateConsensuses": 1431,
+      "gateCompletions": 15,
+      "bondsFormed": 1952,
+      "bondsBroken": 1818,
+      "populationRetention": 9.167,
+      "score": 3457.917,
+      "breakReasons": {
+        "bond energy reserve depleted": 1188,
+        "member died: energy exhaustion": 492,
+        "member died: maximum age": 138
+      },
+      "income": {
+        "food": 126030,
+        "gateWork": 1741,
+        "environmentField": 3925.2787318965493
+      },
+      "expenses": {
+        "movement": 48478.4320000222,
+        "maintenance": 33305.58000005473,
+        "perception": 22413.95999999697,
+        "bonds": 15832.400000040067,
+        "bondReserveMaintenance": 6670.8510291643115,
+        "gateWork": 0,
+        "memory": 0,
+        "signals": 51.158431372552435,
+        "idle": 1488.9000000001724,
+        "environmentDanger": 0
+      },
+      "allocations": {
+        "reproduction": 49094.35182408206,
+        "structuralSeed": 6319.599999999973,
+        "structuralOverflow": 0
+      },
+      "morphology": {
+        "moves": 5100,
+        "shared": 1665.534985949742,
+        "transferLoss": 33.99050991734668,
+        "fieldIncome": 3925.2787318965493,
+        "fieldGenerated": 3999.9999999999463,
+        "dangerCost": 0,
+        "renewalBirths": 37
+      },
+      "meanEnergy": 51.162232976947145,
+      "reproducingEnergyFloor": 105,
+      "coupledMembers": 180,
+      "intervals": [
+        {
+          "tick": 100,
+          "population": 108,
+          "income": 13766.018,
+          "movement": 3870.768,
+          "bonds": 762.3,
+          "deaths": {
+            "maximum age": 14,
+            "energy exhaustion": 10
+          }
+        },
+        {
+          "tick": 200,
+          "population": 135,
+          "income": 10181.878,
+          "movement": 3519.944,
+          "bonds": 959.8,
+          "deaths": {
+            "maximum age": 11,
+            "energy exhaustion": 17
+          }
+        },
+        {
+          "tick": 300,
+          "population": 198,
+          "income": 13303.272,
+          "movement": 4789.328,
+          "bonds": 1471.5,
+          "deaths": {
+            "maximum age": 5,
+            "energy exhaustion": 25
+          }
+        },
+        {
+          "tick": 400,
+          "population": 192,
+          "income": 11944.119,
+          "movement": 4406.528,
+          "bonds": 1794.9,
+          "deaths": {
+            "maximum age": 3,
+            "energy exhaustion": 43
+          }
+        },
+        {
+          "tick": 500,
+          "population": 201,
+          "income": 12883.571,
+          "movement": 5153.504,
+          "bonds": 1695.3,
+          "deaths": {
+            "maximum age": 2,
+            "energy exhaustion": 49
+          }
+        },
+        {
+          "tick": 600,
+          "population": 221,
+          "income": 15282.665,
+          "movement": 5267.652,
+          "bonds": 1773.1,
+          "deaths": {
+            "maximum age": 3,
+            "energy exhaustion": 50
+          }
+        },
+        {
+          "tick": 700,
+          "population": 225,
+          "income": 11372.004,
+          "movement": 5208.668,
+          "bonds": 1949.9,
+          "deaths": {
+            "maximum age": 0,
+            "energy exhaustion": 53
+          }
+        },
+        {
+          "tick": 800,
+          "population": 213,
+          "income": 16971.264,
+          "movement": 5896.5,
+          "bonds": 1686.3,
+          "deaths": {
+            "maximum age": 19,
+            "energy exhaustion": 79
+          }
+        },
+        {
+          "tick": 900,
+          "population": 221,
+          "income": 11403.441,
+          "movement": 4886.812,
+          "bonds": 1951.6,
+          "deaths": {
+            "maximum age": 8,
+            "energy exhaustion": 40
+          }
+        },
+        {
+          "tick": 1000,
+          "population": 220,
+          "income": 14588.047,
+          "movement": 5478.728,
+          "bonds": 1787.7,
+          "deaths": {
+            "maximum age": 14,
+            "energy exhaustion": 58
+          }
+        }
+      ],
+      "recipe": {
+        "name": "evolved-6",
+        "resourceFunded": true,
+        "foodGrowthRate": 0.28,
+        "foodAttempts": 6,
+        "gateDiscovery": true,
+        "navigation": true,
+        "dormantBonds": true,
+        "movementCostMultiplier": 0.8,
+        "parentRecipe": "gate-consensus",
+        "mutation": {
+          "parameter": "foodGrowthRate",
+          "before": 0.32,
+          "after": 0.28
+        }
+      }
+    },
+    {
+      "cycle": 7,
+      "selectionScore": 1.6954,
+      "tick": 1000,
+      "population": 287,
+      "births": 947,
+      "deaths": {
+        "energy exhaustion": 580,
+        "maximum age": 80
+      },
+      "bonds": 150,
+      "facets": 41,
+      "food": 229,
+      "gateSightings": 156588,
+      "gateRelays": 35345,
+      "gateConsensuses": 1659,
+      "gateCompletions": 16,
+      "bondsFormed": 2427,
+      "bondsBroken": 2507,
+      "populationRetention": 11.958,
+      "score": 3839.583,
+      "breakReasons": {
+        "bond energy reserve depleted": 1519,
+        "member died: energy exhaustion": 834,
+        "member died: maximum age": 154
+      },
+      "income": {
+        "food": 210435,
+        "gateWork": 1840,
+        "environmentField": 3989.1120079198454
+      },
+      "expenses": {
+        "movement": 65552.71520002813,
+        "maintenance": 55803.46000010424,
+        "perception": 29115.71999994008,
+        "bonds": 20250.599999985807,
+        "bondReserveMaintenance": 9014.890518718968,
+        "gateWork": 0,
+        "memory": 0,
+        "signals": 58.41816993464393,
+        "idle": 1252.200000000029,
+        "environmentDanger": 0
+      },
+      "allocations": {
+        "reproduction": 70309.13074029703,
+        "structuralSeed": 7888.199999999967,
+        "structuralOverflow": 0
+      },
+      "morphology": {
+        "moves": 4778,
+        "shared": 2994.104172388245,
+        "transferLoss": 61.10416678348355,
+        "fieldIncome": 3989.1120079198454,
+        "fieldGenerated": 3999.9999999999645,
+        "dangerCost": 0,
+        "renewalBirths": 28
+      },
+      "meanEnergy": 149.70110321663722,
+      "reproducingEnergyFloor": 105,
+      "coupledMembers": 112,
+      "intervals": [
+        {
+          "tick": 100,
+          "population": 219,
+          "income": 19233.494,
+          "movement": 4753.786,
+          "bonds": 1792.6,
+          "deaths": {
+            "energy exhaustion": 47,
+            "maximum age": 3
+          }
+        },
+        {
+          "tick": 200,
+          "population": 250,
+          "income": 18477.62,
+          "movement": 4575.976,
+          "bonds": 2187.4,
+          "deaths": {
+            "energy exhaustion": 52,
+            "maximum age": 3
+          }
+        },
+        {
+          "tick": 300,
+          "population": 246,
+          "income": 13225.6,
+          "movement": 4243.396,
+          "bonds": 2364.5,
+          "deaths": {
+            "energy exhaustion": 56,
+            "maximum age": 3
+          }
+        },
+        {
+          "tick": 400,
+          "population": 235,
+          "income": 15836.005,
+          "movement": 4791.868,
+          "bonds": 2127.4,
+          "deaths": {
+            "energy exhaustion": 72,
+            "maximum age": 5
+          }
+        },
+        {
+          "tick": 500,
+          "population": 246,
+          "income": 17701.774,
+          "movement": 5452.512,
+          "bonds": 2053.3,
+          "deaths": {
+            "energy exhaustion": 64,
+            "maximum age": 6
+          }
+        },
+        {
+          "tick": 600,
+          "population": 251,
+          "income": 17925.106,
+          "movement": 5984.224,
+          "bonds": 2164.8,
+          "deaths": {
+            "energy exhaustion": 63,
+            "maximum age": 9
+          }
+        },
+        {
+          "tick": 700,
+          "population": 245,
+          "income": 14326.801,
+          "movement": 4730.777,
+          "bonds": 2246.5,
+          "deaths": {
+            "energy exhaustion": 68,
+            "maximum age": 7
+          }
+        },
+        {
+          "tick": 800,
+          "population": 251,
+          "income": 19334.654,
+          "movement": 5308.924,
+          "bonds": 2105.4,
+          "deaths": {
+            "energy exhaustion": 62,
+            "maximum age": 25
+          }
+        },
+        {
+          "tick": 900,
+          "population": 274,
+          "income": 37000.582,
+          "movement": 10099.72,
+          "bonds": 1824,
+          "deaths": {
+            "energy exhaustion": 53,
+            "maximum age": 11
+          }
+        },
+        {
+          "tick": 1000,
+          "population": 287,
+          "income": 43202.476,
+          "movement": 15611.532,
+          "bonds": 1384.7,
+          "deaths": {
+            "energy exhaustion": 43,
+            "maximum age": 8
+          }
+        }
+      ],
+      "recipe": {
+        "name": "evolved-7",
+        "resourceFunded": true,
+        "foodGrowthRate": 0.49,
+        "foodAttempts": 8,
+        "gateDiscovery": true,
+        "navigation": true,
+        "dormantBonds": true,
+        "movementCostMultiplier": 0.82,
+        "parentRecipe": "evolved-5",
+        "mutation": {
+          "parameter": "movementCostMultiplier",
+          "before": 0.9,
+          "after": 0.82
+        }
+      }
+    },
+    {
+      "cycle": 8,
+      "selectionScore": 2.0625,
+      "tick": 1000,
+      "population": 213,
+      "births": 910,
+      "deaths": {
+        "energy exhaustion": 629,
+        "maximum age": 68
+      },
+      "bonds": 222,
+      "facets": 71,
+      "food": 492,
+      "gateSightings": 132669,
+      "gateRelays": 21990,
+      "gateConsensuses": 1482,
+      "gateCompletions": 4,
+      "bondsFormed": 2294,
+      "bondsBroken": 2220,
+      "populationRetention": 8.875,
+      "score": 3467.5,
+      "breakReasons": {
+        "bond energy reserve depleted": 1099,
+        "member died: energy exhaustion": 999,
+        "member died: maximum age": 122
+      },
+      "income": {
+        "food": 147087,
+        "gateWork": 598,
+        "environmentField": 3864.0609913159615
+      },
+      "expenses": {
+        "movement": 55937.0720000273,
+        "maintenance": 57188.820000095875,
+        "perception": 25249.079999972902,
+        "bonds": 17771.10000002189,
+        "bondReserveMaintenance": 7854.476525033135,
+        "gateWork": 0,
+        "memory": 0,
+        "signals": 51.318562091506145,
+        "idle": 2377.500000000711,
+        "environmentDanger": 0
+      },
+      "allocations": {
+        "reproduction": 63828.60071397059,
+        "structuralSeed": 7473.59999999996,
+        "structuralOverflow": 0
+      },
+      "morphology": {
+        "moves": 5022,
+        "shared": 1714.3876286440527,
+        "transferLoss": 34.98750262539551,
+        "fieldIncome": 3864.0609913159615,
+        "fieldGenerated": 3999.999999999985,
+        "dangerCost": 0,
+        "renewalBirths": 26
+      },
+      "meanEnergy": 44.245137428176456,
+      "reproducingEnergyFloor": 105,
+      "coupledMembers": 173,
+      "intervals": [
+        {
+          "tick": 100,
+          "population": 188,
+          "income": 17971.702,
+          "movement": 4250.712,
+          "bonds": 1278.5,
+          "deaths": {
+            "energy exhaustion": 25,
+            "maximum age": 8
+          }
+        },
+        {
+          "tick": 200,
+          "population": 200,
+          "income": 14837.436,
+          "movement": 4755.292,
+          "bonds": 1715.7,
+          "deaths": {
+            "energy exhaustion": 58,
+            "maximum age": 7
+          }
+        },
+        {
+          "tick": 300,
+          "population": 211,
+          "income": 14608.913,
+          "movement": 4691.8,
+          "bonds": 1806.2,
+          "deaths": {
+            "energy exhaustion": 60,
+            "maximum age": 3
+          }
+        },
+        {
+          "tick": 400,
+          "population": 226,
+          "income": 15358.244,
+          "movement": 5295.58,
+          "bonds": 1960.5,
+          "deaths": {
+            "energy exhaustion": 66,
+            "maximum age": 8
+          }
+        },
+        {
+          "tick": 500,
+          "population": 237,
+          "income": 17927.435,
+          "movement": 6610.92,
+          "bonds": 1818.9,
+          "deaths": {
+            "energy exhaustion": 73,
+            "maximum age": 6
+          }
+        },
+        {
+          "tick": 600,
+          "population": 229,
+          "income": 13777.428,
+          "movement": 5744.604,
+          "bonds": 2010.1,
+          "deaths": {
+            "energy exhaustion": 69,
+            "maximum age": 2
+          }
+        },
+        {
+          "tick": 700,
+          "population": 228,
+          "income": 16424.322,
+          "movement": 6165.832,
+          "bonds": 1871.3,
+          "deaths": {
+            "energy exhaustion": 72,
+            "maximum age": 2
+          }
+        },
+        {
+          "tick": 800,
+          "population": 212,
+          "income": 14583.78,
+          "movement": 6056.216,
+          "bonds": 1883.1,
+          "deaths": {
+            "energy exhaustion": 75,
+            "maximum age": 22
+          }
+        },
+        {
+          "tick": 900,
+          "population": 208,
+          "income": 13851.413,
+          "movement": 6317.868,
+          "bonds": 1685.6,
+          "deaths": {
+            "energy exhaustion": 69,
+            "maximum age": 6
+          }
+        },
+        {
+          "tick": 1000,
+          "population": 213,
+          "income": 12208.388,
+          "movement": 6048.248,
+          "bonds": 1741.2,
+          "deaths": {
+            "energy exhaustion": 62,
+            "maximum age": 4
+          }
+        }
+      ],
+      "recipe": {
+        "name": "evolved-8",
+        "resourceFunded": true,
+        "foodGrowthRate": 0.28,
+        "foodAttempts": 5,
+        "gateDiscovery": true,
+        "navigation": true,
+        "dormantBonds": true,
+        "movementCostMultiplier": 0.8,
+        "parentRecipe": "evolved-6",
+        "mutation": {
+          "parameter": "foodAttempts",
+          "before": 6,
+          "after": 5
+        }
+      }
+    },
+    {
+      "cycle": 9,
+      "selectionScore": 1.3106,
+      "tick": 1000,
+      "population": 242,
+      "births": 820,
+      "deaths": {
+        "energy exhaustion": 464,
+        "maximum age": 114
+      },
+      "bonds": 0,
+      "facets": 0,
+      "food": 138,
+      "gateSightings": 165718,
+      "gateRelays": 4852,
+      "gateConsensuses": 510,
+      "gateCompletions": 4,
+      "bondsFormed": 552,
+      "bondsBroken": 772,
+      "populationRetention": 10.083,
+      "score": 1230.333,
+      "breakReasons": {
+        "bond energy reserve depleted": 494,
+        "member died: energy exhaustion": 234,
+        "member died: maximum age": 44
+      },
+      "income": {
+        "food": 285911,
+        "gateWork": 650,
+        "environmentField": 3992.6040928674256
+      },
+      "expenses": {
+        "movement": 200064.06079998755,
+        "maintenance": 44742.10000007049,
+        "perception": 29651.279999935534,
+        "bonds": 5479.700000002404,
+        "bondReserveMaintenance": 2161.1186665149617,
+        "gateWork": 0,
+        "memory": 0,
+        "signals": 27.196209150327743,
+        "idle": 1814.85000000037,
+        "environmentDanger": 0
+      },
+      "allocations": {
+        "reproduction": 53147.2944991148,
+        "structuralSeed": 1707.6000000000004,
+        "structuralOverflow": 0
+      },
+      "morphology": {
+        "moves": 2001,
+        "shared": 678.0098043710078,
+        "transferLoss": 13.836934783083562,
+        "fieldIncome": 3992.6040928674256,
+        "fieldGenerated": 3999.999999999894,
+        "dangerCost": 0,
+        "renewalBirths": 3
+      },
+      "meanEnergy": 88.09128395425452,
+      "reproducingEnergyFloor": 105,
+      "coupledMembers": 0,
+      "intervals": [
+        {
+          "tick": 100,
+          "population": 206,
+          "income": 17752.638,
+          "movement": 4896.444,
+          "bonds": 1593.7,
+          "deaths": {
+            "energy exhaustion": 45,
+            "maximum age": 3
+          }
+        },
+        {
+          "tick": 200,
+          "population": 259,
+          "income": 26536.194,
+          "movement": 11025.164,
+          "bonds": 1397.2,
+          "deaths": {
+            "energy exhaustion": 50,
+            "maximum age": 5
+          }
+        },
+        {
+          "tick": 300,
+          "population": 269,
+          "income": 28315.505,
+          "movement": 16782.396,
+          "bonds": 1019.7,
+          "deaths": {
+            "energy exhaustion": 39,
+            "maximum age": 4
+          }
+        },
+        {
+          "tick": 400,
+          "population": 268,
+          "income": 29426.5,
+          "movement": 20499.424,
+          "bonds": 714.3,
+          "deaths": {
+            "energy exhaustion": 43,
+            "maximum age": 2
+          }
+        },
+        {
+          "tick": 500,
+          "population": 257,
+          "income": 30862.832,
+          "movement": 22654.533,
+          "bonds": 429.7,
+          "deaths": {
+            "energy exhaustion": 53,
+            "maximum age": 5
+          }
+        },
+        {
+          "tick": 600,
+          "population": 265,
+          "income": 30716.497,
+          "movement": 24685.588,
+          "bonds": 173.2,
+          "deaths": {
+            "energy exhaustion": 42,
+            "maximum age": 4
+          }
+        },
+        {
+          "tick": 700,
+          "population": 264,
+          "income": 30611.79,
+          "movement": 25529.376,
+          "bonds": 91.7,
+          "deaths": {
+            "energy exhaustion": 48,
+            "maximum age": 5
+          }
+        },
+        {
+          "tick": 800,
+          "population": 259,
+          "income": 31444.02,
+          "movement": 25360.556,
+          "bonds": 45.6,
+          "deaths": {
+            "energy exhaustion": 52,
+            "maximum age": 22
+          }
+        },
+        {
+          "tick": 900,
+          "population": 239,
+          "income": 33347.108,
+          "movement": 24960.58,
+          "bonds": 14.6,
+          "deaths": {
+            "energy exhaustion": 50,
+            "maximum age": 40
+          }
+        },
+        {
+          "tick": 1000,
+          "population": 242,
+          "income": 31540.52,
+          "movement": 23670,
+          "bonds": 0,
+          "deaths": {
+            "energy exhaustion": 42,
+            "maximum age": 24
+          }
+        }
+      ],
+      "recipe": {
+        "name": "evolved-9",
+        "resourceFunded": true,
+        "foodGrowthRate": 0.32,
+        "foodAttempts": 6,
+        "gateDiscovery": true,
+        "navigation": true,
+        "dormantBonds": true,
+        "movementCostMultiplier": 0.72,
+        "parentRecipe": "gate-consensus",
+        "mutation": {
+          "parameter": "movementCostMultiplier",
+          "before": 0.8,
+          "after": 0.72
+        }
+      }
+    }
+  ],
+  "targetCheckpoints": [
+    {
+      "cycle": 9,
+      "selectionScore": 2.3492,
+      "tick": 100,
+      "population": 206,
+      "births": 254,
+      "deaths": {
+        "energy exhaustion": 45,
+        "maximum age": 3
+      },
+      "bonds": 193,
+      "facets": 51,
+      "food": 363,
+      "gateSightings": 14204,
+      "gateRelays": 3368,
+      "gateConsensuses": 169,
+      "gateCompletions": 0,
+      "bondsFormed": 183,
+      "bondsBroken": 210,
+      "populationRetention": 8.583,
+      "score": 912.833,
+      "breakReasons": {
+        "bond energy reserve depleted": 118,
+        "member died: energy exhaustion": 84,
+        "member died: maximum age": 8
+      },
+      "income": {
+        "food": 17416,
+        "gateWork": 0,
+        "environmentField": 336.6381345735696
+      },
+      "expenses": {
+        "movement": 4896.444000000398,
+        "maintenance": 3889.8199999989915,
+        "perception": 2245.319999998925,
+        "bonds": 1593.699999999646,
+        "bondReserveMaintenance": 668.3456511499032,
+        "gateWork": 0,
+        "memory": 0,
+        "signals": 4.4070588235294155,
+        "idle": 68.84999999999975,
+        "environmentDanger": 0
+      },
+      "allocations": {
+        "reproduction": 4892.349045875793,
+        "structuralSeed": 573.8,
+        "structuralOverflow": 0
+      },
+      "morphology": {
+        "moves": 630,
+        "shared": 176.69838231755378,
+        "transferLoss": 3.6060894350518327,
+        "fieldIncome": 336.6381345735696,
+        "fieldGenerated": 400.0000000000003,
+        "dangerCost": 0,
+        "renewalBirths": 1
+      },
+      "meanEnergy": 62.52016191731473,
+      "reproducingEnergyFloor": 105,
+      "coupledMembers": 159,
+      "intervals": [
+        {
+          "tick": 100,
+          "population": 206,
+          "income": 17752.638,
+          "movement": 4896.444,
+          "bonds": 1593.7,
+          "deaths": {
+            "energy exhaustion": 45,
+            "maximum age": 3
+          }
+        }
+      ],
+      "recipe": {
+        "name": "evolved-9",
+        "resourceFunded": true,
+        "foodGrowthRate": 0.32,
+        "foodAttempts": 6,
+        "gateDiscovery": true,
+        "navigation": true,
+        "dormantBonds": true,
+        "movementCostMultiplier": 0.72,
+        "parentRecipe": "gate-consensus",
+        "mutation": {
+          "parameter": "movementCostMultiplier",
+          "before": 0.8,
+          "after": 0.72
+        }
+      }
+    },
+    {
+      "cycle": 9,
+      "selectionScore": 2.0423,
+      "tick": 200,
+      "population": 259,
+      "births": 362,
+      "deaths": {
+        "energy exhaustion": 95,
+        "maximum age": 8
+      },
+      "bonds": 155,
+      "facets": 44,
+      "food": 173,
+      "gateSightings": 32693,
+      "gateRelays": 4184,
+      "gateConsensuses": 300,
+      "gateCompletions": 0,
+      "bondsFormed": 318,
+      "bondsBroken": 383,
+      "populationRetention": 10.792,
+      "score": 1184.167,
+      "breakReasons": {
+        "bond energy reserve depleted": 221,
+        "member died: energy exhaustion": 139,
+        "member died: maximum age": 23
+      },
+      "income": {
+        "food": 43502,
+        "gateWork": 0,
+        "environmentField": 786.8323749388065
+      },
+      "expenses": {
+        "movement": 15921.608000002336,
+        "maintenance": 8114.480000003875,
+        "perception": 5023.679999996399,
+        "bonds": 2990.8999999983753,
+        "bondReserveMaintenance": 1241.71199611969,
+        "gateWork": 0,
+        "memory": 0,
+        "signals": 10.996470588235159,
+        "idle": 196.9500000000046,
+        "environmentDanger": 0
+      },
+      "allocations": {
+        "reproduction": 13723.063939289515,
+        "structuralSeed": 999.2000000000003,
+        "structuralOverflow": 0
+      },
+      "morphology": {
+        "moves": 1176,
+        "shared": 433.9227482880256,
+        "transferLoss": 8.855566291591172,
+        "fieldIncome": 786.8323749388065,
+        "fieldGenerated": 800.0000000000019,
+        "dangerCost": 0,
+        "renewalBirths": 3
+      },
+      "meanEnergy": 78.86350252806282,
+      "reproducingEnergyFloor": 105,
+      "coupledMembers": 120,
+      "intervals": [
+        {
+          "tick": 100,
+          "population": 206,
+          "income": 17752.638,
+          "movement": 4896.444,
+          "bonds": 1593.7,
+          "deaths": {
+            "energy exhaustion": 45,
+            "maximum age": 3
+          }
+        },
+        {
+          "tick": 200,
+          "population": 259,
+          "income": 26536.194,
+          "movement": 11025.164,
+          "bonds": 1397.2,
+          "deaths": {
+            "energy exhaustion": 50,
+            "maximum age": 5
+          }
+        }
+      ],
+      "recipe": {
+        "name": "evolved-9",
+        "resourceFunded": true,
+        "foodGrowthRate": 0.32,
+        "foodAttempts": 6,
+        "gateDiscovery": true,
+        "navigation": true,
+        "dormantBonds": true,
+        "movementCostMultiplier": 0.72,
+        "parentRecipe": "gate-consensus",
+        "mutation": {
+          "parameter": "movementCostMultiplier",
+          "before": 0.8,
+          "after": 0.72
+        }
+      }
+    },
+    {
+      "cycle": 9,
+      "selectionScore": 1.8644,
+      "tick": 300,
+      "population": 269,
+      "births": 415,
+      "deaths": {
+        "energy exhaustion": 134,
+        "maximum age": 12
+      },
+      "bonds": 126,
+      "facets": 34,
+      "food": 152,
+      "gateSightings": 52260,
+      "gateRelays": 4452,
+      "gateConsensuses": 377,
+      "gateCompletions": 1,
+      "bondsFormed": 426,
+      "bondsBroken": 520,
+      "populationRetention": 11.208,
+      "score": 1295.583,
+      "breakReasons": {
+        "bond energy reserve depleted": 310,
+        "member died: energy exhaustion": 177,
+        "member died: maximum age": 33
+      },
+      "income": {
+        "food": 71398,
+        "gateWork": 20,
+        "environmentField": 1186.337368134275
+      },
+      "expenses": {
+        "movement": 32704.004000003748,
+        "maintenance": 12710.860000010875,
+        "perception": 8104.439999993597,
+        "bonds": 4010.599999997448,
+        "bondReserveMaintenance": 1660.5083883021994,
+        "gateWork": 0,
+        "memory": 0,
+        "signals": 16.250065359476867,
+        "idle": 406.94999999998396,
+        "environmentDanger": 0
+      },
+      "allocations": {
+        "reproduction": 18278.386565358076,
+        "structuralSeed": 1329.6000000000004,
+        "structuralOverflow": 0
+      },
+      "morphology": {
+        "moves": 1509,
+        "shared": 534.3627136246755,
+        "transferLoss": 10.905361502543885,
+        "fieldIncome": 1186.337368134275,
+        "fieldGenerated": 1199.9999999999945,
+        "dangerCost": 0,
+        "renewalBirths": 3
+      },
+      "meanEnergy": 90.59692834028344,
+      "reproducingEnergyFloor": 105,
+      "coupledMembers": 94,
+      "intervals": [
+        {
+          "tick": 100,
+          "population": 206,
+          "income": 17752.638,
+          "movement": 4896.444,
+          "bonds": 1593.7,
+          "deaths": {
+            "energy exhaustion": 45,
+            "maximum age": 3
+          }
+        },
+        {
+          "tick": 200,
+          "population": 259,
+          "income": 26536.194,
+          "movement": 11025.164,
+          "bonds": 1397.2,
+          "deaths": {
+            "energy exhaustion": 50,
+            "maximum age": 5
+          }
+        },
+        {
+          "tick": 300,
+          "population": 269,
+          "income": 28315.505,
+          "movement": 16782.396,
+          "bonds": 1019.7,
+          "deaths": {
+            "energy exhaustion": 39,
+            "maximum age": 4
+          }
+        }
+      ],
+      "recipe": {
+        "name": "evolved-9",
+        "resourceFunded": true,
+        "foodGrowthRate": 0.32,
+        "foodAttempts": 6,
+        "gateDiscovery": true,
+        "navigation": true,
+        "dormantBonds": true,
+        "movementCostMultiplier": 0.72,
+        "parentRecipe": "gate-consensus",
+        "mutation": {
+          "parameter": "movementCostMultiplier",
+          "before": 0.8,
+          "after": 0.72
+        }
+      }
+    },
+    {
+      "cycle": 9,
+      "selectionScore": 1.7001,
+      "tick": 400,
+      "population": 268,
+      "births": 459,
+      "deaths": {
+        "energy exhaustion": 177,
+        "maximum age": 14
+      },
+      "bonds": 80,
+      "facets": 28,
+      "food": 136,
+      "gateSightings": 71672,
+      "gateRelays": 4604,
+      "gateConsensuses": 448,
+      "gateCompletions": 1,
+      "bondsFormed": 504,
+      "bondsBroken": 644,
+      "populationRetention": 11.167,
+      "score": 1366.917,
+      "breakReasons": {
+        "bond energy reserve depleted": 401,
+        "member died: energy exhaustion": 208,
+        "member died: maximum age": 35
+      },
+      "income": {
+        "food": 100283,
+        "gateWork": 155,
+        "environmentField": 1592.8371778310493
+      },
+      "expenses": {
+        "movement": 53203.4280000048,
+        "maintenance": 17390.38000001874,
+        "perception": 11298.480000014237,
+        "bonds": 4724.899999999658,
+        "bondReserveMaintenance": 1928.007524582739,
+        "gateWork": 0,
+        "memory": 0,
+        "signals": 20.678562091503505,
+        "idle": 618.8999999999519,
+        "environmentDanger": 0
+      },
+      "allocations": {
+        "reproduction": 22249.251769781935,
+        "structuralSeed": 1563.6000000000004,
+        "structuralOverflow": 0
+      },
+      "morphology": {
+        "moves": 1752,
+        "shared": 610.5087136246416,
+        "transferLoss": 12.459361502544404,
+        "fieldIncome": 1592.8371778310493,
+        "fieldGenerated": 1599.9999999999789,
+        "dangerCost": 0,
+        "renewalBirths": 3
+      },
+      "meanEnergy": 97.05396364117264,
+      "reproducingEnergyFloor": 105,
+      "coupledMembers": 60,
+      "intervals": [
+        {
+          "tick": 100,
+          "population": 206,
+          "income": 17752.638,
+          "movement": 4896.444,
+          "bonds": 1593.7,
+          "deaths": {
+            "energy exhaustion": 45,
+            "maximum age": 3
+          }
+        },
+        {
+          "tick": 200,
+          "population": 259,
+          "income": 26536.194,
+          "movement": 11025.164,
+          "bonds": 1397.2,
+          "deaths": {
+            "energy exhaustion": 50,
+            "maximum age": 5
+          }
+        },
+        {
+          "tick": 300,
+          "population": 269,
+          "income": 28315.505,
+          "movement": 16782.396,
+          "bonds": 1019.7,
+          "deaths": {
+            "energy exhaustion": 39,
+            "maximum age": 4
+          }
+        },
+        {
+          "tick": 400,
+          "population": 268,
+          "income": 29426.5,
+          "movement": 20499.424,
+          "bonds": 714.3,
+          "deaths": {
+            "energy exhaustion": 43,
+            "maximum age": 2
+          }
+        }
+      ],
+      "recipe": {
+        "name": "evolved-9",
+        "resourceFunded": true,
+        "foodGrowthRate": 0.32,
+        "foodAttempts": 6,
+        "gateDiscovery": true,
+        "navigation": true,
+        "dormantBonds": true,
+        "movementCostMultiplier": 0.72,
+        "parentRecipe": "gate-consensus",
+        "mutation": {
+          "parameter": "movementCostMultiplier",
+          "before": 0.8,
+          "after": 0.72
+        }
+      }
+    },
+    {
+      "cycle": 9,
+      "selectionScore": 1.4937,
+      "tick": 500,
+      "population": 257,
+      "births": 506,
+      "deaths": {
+        "energy exhaustion": 230,
+        "maximum age": 19
+      },
+      "bonds": 26,
+      "facets": 14,
+      "food": 123,
+      "gateSightings": 89696,
+      "gateRelays": 4626,
+      "gateConsensuses": 486,
+      "gateCompletions": 4,
+      "bondsFormed": 527,
+      "bondsBroken": 721,
+      "populationRetention": 10.708,
+      "score": 1339.833,
+      "breakReasons": {
+        "bond energy reserve depleted": 450,
+        "member died: energy exhaustion": 231,
+        "member died: maximum age": 40
+      },
+      "income": {
+        "food": 130310,
+        "gateWork": 591,
+        "environmentField": 1992.6686723548323
+      },
+      "expenses": {
+        "movement": 75857.96080000278,
+        "maintenance": 22018.4200000286,
+        "perception": 14444.880000035222,
+        "bonds": 5154.600000001221,
+        "bondReserveMaintenance": 2065.1817034936257,
+        "gateWork": 0,
+        "memory": 0,
+        "signals": 24.160522875817527,
+        "idle": 836.099999999919,
+        "environmentDanger": 0
+      },
+      "allocations": {
+        "reproduction": 26283.556195784135,
+        "structuralSeed": 1632.6000000000004,
+        "structuralOverflow": 0
+      },
+      "morphology": {
+        "moves": 1903,
+        "shared": 652.2825198138346,
+        "transferLoss": 13.311888159467372,
+        "fieldIncome": 1992.6686723548323,
+        "fieldGenerated": 1999.9999999999686,
+        "dangerCost": 0,
+        "renewalBirths": 3
+      },
+      "meanEnergy": 106.50532008139511,
+      "reproducingEnergyFloor": 105,
+      "coupledMembers": 22,
+      "intervals": [
+        {
+          "tick": 100,
+          "population": 206,
+          "income": 17752.638,
+          "movement": 4896.444,
+          "bonds": 1593.7,
+          "deaths": {
+            "energy exhaustion": 45,
+            "maximum age": 3
+          }
+        },
+        {
+          "tick": 200,
+          "population": 259,
+          "income": 26536.194,
+          "movement": 11025.164,
+          "bonds": 1397.2,
+          "deaths": {
+            "energy exhaustion": 50,
+            "maximum age": 5
+          }
+        },
+        {
+          "tick": 300,
+          "population": 269,
+          "income": 28315.505,
+          "movement": 16782.396,
+          "bonds": 1019.7,
+          "deaths": {
+            "energy exhaustion": 39,
+            "maximum age": 4
+          }
+        },
+        {
+          "tick": 400,
+          "population": 268,
+          "income": 29426.5,
+          "movement": 20499.424,
+          "bonds": 714.3,
+          "deaths": {
+            "energy exhaustion": 43,
+            "maximum age": 2
+          }
+        },
+        {
+          "tick": 500,
+          "population": 257,
+          "income": 30862.832,
+          "movement": 22654.533,
+          "bonds": 429.7,
+          "deaths": {
+            "energy exhaustion": 53,
+            "maximum age": 5
+          }
+        }
+      ],
+      "recipe": {
+        "name": "evolved-9",
+        "resourceFunded": true,
+        "foodGrowthRate": 0.32,
+        "foodAttempts": 6,
+        "gateDiscovery": true,
+        "navigation": true,
+        "dormantBonds": true,
+        "movementCostMultiplier": 0.72,
+        "parentRecipe": "gate-consensus",
+        "mutation": {
+          "parameter": "movementCostMultiplier",
+          "before": 0.8,
+          "after": 0.72
+        }
+      }
+    },
+    {
+      "cycle": 9,
+      "selectionScore": 1.4692,
+      "tick": 600,
+      "population": 265,
+      "births": 560,
+      "deaths": {
+        "energy exhaustion": 272,
+        "maximum age": 23
+      },
+      "bonds": 16,
+      "facets": 2,
+      "food": 136,
+      "gateSightings": 103185,
+      "gateRelays": 4837,
+      "gateConsensuses": 494,
+      "gateCompletions": 4,
+      "bondsFormed": 544,
+      "bondsBroken": 748,
+      "populationRetention": 11.042,
+      "score": 1321.667,
+      "breakReasons": {
+        "bond energy reserve depleted": 477,
+        "member died: energy exhaustion": 231,
+        "member died: maximum age": 40
+      },
+      "income": {
+        "food": 160569,
+        "gateWork": 650,
+        "environmentField": 2391.1663770406703
+      },
+      "expenses": {
+        "movement": 100543.54879999542,
+        "maintenance": 26618.460000038245,
+        "perception": 17567.28000003811,
+        "bonds": 5327.800000001851,
+        "bondReserveMaintenance": 2119.0740201107465,
+        "gateWork": 0,
+        "memory": 0,
+        "signals": 25.49137254902031,
+        "idle": 1050.2999999999065,
+        "environmentDanger": 0
+      },
+      "allocations": {
+        "reproduction": 31379.854136456346,
+        "structuralSeed": 1683.6000000000004,
+        "structuralOverflow": 0
+      },
+      "morphology": {
+        "moves": 1960,
+        "shared": 660.6210059894663,
+        "transferLoss": 13.482061346725295,
+        "fieldIncome": 2391.1663770406703,
+        "fieldGenerated": 2399.999999999947,
+        "dangerCost": 0,
+        "renewalBirths": 3
+      },
+      "meanEnergy": 101.42901608974955,
+      "reproducingEnergyFloor": 105,
+      "coupledMembers": 15,
+      "intervals": [
+        {
+          "tick": 100,
+          "population": 206,
+          "income": 17752.638,
+          "movement": 4896.444,
+          "bonds": 1593.7,
+          "deaths": {
+            "energy exhaustion": 45,
+            "maximum age": 3
+          }
+        },
+        {
+          "tick": 200,
+          "population": 259,
+          "income": 26536.194,
+          "movement": 11025.164,
+          "bonds": 1397.2,
+          "deaths": {
+            "energy exhaustion": 50,
+            "maximum age": 5
+          }
+        },
+        {
+          "tick": 300,
+          "population": 269,
+          "income": 28315.505,
+          "movement": 16782.396,
+          "bonds": 1019.7,
+          "deaths": {
+            "energy exhaustion": 39,
+            "maximum age": 4
+          }
+        },
+        {
+          "tick": 400,
+          "population": 268,
+          "income": 29426.5,
+          "movement": 20499.424,
+          "bonds": 714.3,
+          "deaths": {
+            "energy exhaustion": 43,
+            "maximum age": 2
+          }
+        },
+        {
+          "tick": 500,
+          "population": 257,
+          "income": 30862.832,
+          "movement": 22654.533,
+          "bonds": 429.7,
+          "deaths": {
+            "energy exhaustion": 53,
+            "maximum age": 5
+          }
+        },
+        {
+          "tick": 600,
+          "population": 265,
+          "income": 30716.497,
+          "movement": 24685.588,
+          "bonds": 173.2,
+          "deaths": {
+            "energy exhaustion": 42,
+            "maximum age": 4
+          }
+        }
+      ],
+      "recipe": {
+        "name": "evolved-9",
+        "resourceFunded": true,
+        "foodGrowthRate": 0.32,
+        "foodAttempts": 6,
+        "gateDiscovery": true,
+        "navigation": true,
+        "dormantBonds": true,
+        "movementCostMultiplier": 0.72,
+        "parentRecipe": "gate-consensus",
+        "mutation": {
+          "parameter": "movementCostMultiplier",
+          "before": 0.8,
+          "after": 0.72
+        }
+      }
+    },
+    {
+      "cycle": 9,
+      "selectionScore": 1.4435,
+      "tick": 700,
+      "population": 264,
+      "births": 612,
+      "deaths": {
+        "energy exhaustion": 320,
+        "maximum age": 28
+      },
+      "bonds": 7,
+      "facets": 1,
+      "food": 146,
+      "gateSightings": 118665,
+      "gateRelays": 4852,
+      "gateConsensuses": 504,
+      "gateCompletions": 4,
+      "bondsFormed": 549,
+      "bondsBroken": 762,
+      "populationRetention": 11,
+      "score": 1316,
+      "breakReasons": {
+        "bond energy reserve depleted": 490,
+        "member died: energy exhaustion": 232,
+        "member died: maximum age": 40
+      },
+      "income": {
+        "food": 190779,
+        "gateWork": 650,
+        "environmentField": 2792.9557477633566
+      },
+      "expenses": {
+        "movement": 126072.9247999938,
+        "maintenance": 31284.78000004758,
+        "perception": 20715.00000001139,
+        "bonds": 5419.500000002185,
+        "bondReserveMaintenance": 2142.8947471488636,
+        "gateWork": 0,
+        "memory": 0,
+        "signals": 26.56000000000085,
+        "idle": 1334.1000000000786,
+        "environmentDanger": 0
+      },
+      "allocations": {
+        "reproduction": 35790.304534228424,
+        "structuralSeed": 1698.6000000000004,
+        "structuralOverflow": 0
+      },
+      "morphology": {
+        "moves": 1983,
+        "shared": 668.4610059894628,
+        "transferLoss": 13.642061346725349,
+        "fieldIncome": 2792.9557477633566,
+        "fieldGenerated": 2799.9999999999623,
+        "dangerCost": 0,
+        "renewalBirths": 3
+      },
+      "meanEnergy": 96.85216028375152,
+      "reproducingEnergyFloor": 105,
+      "coupledMembers": 6,
+      "intervals": [
+        {
+          "tick": 100,
+          "population": 206,
+          "income": 17752.638,
+          "movement": 4896.444,
+          "bonds": 1593.7,
+          "deaths": {
+            "energy exhaustion": 45,
+            "maximum age": 3
+          }
+        },
+        {
+          "tick": 200,
+          "population": 259,
+          "income": 26536.194,
+          "movement": 11025.164,
+          "bonds": 1397.2,
+          "deaths": {
+            "energy exhaustion": 50,
+            "maximum age": 5
+          }
+        },
+        {
+          "tick": 300,
+          "population": 269,
+          "income": 28315.505,
+          "movement": 16782.396,
+          "bonds": 1019.7,
+          "deaths": {
+            "energy exhaustion": 39,
+            "maximum age": 4
+          }
+        },
+        {
+          "tick": 400,
+          "population": 268,
+          "income": 29426.5,
+          "movement": 20499.424,
+          "bonds": 714.3,
+          "deaths": {
+            "energy exhaustion": 43,
+            "maximum age": 2
+          }
+        },
+        {
+          "tick": 500,
+          "population": 257,
+          "income": 30862.832,
+          "movement": 22654.533,
+          "bonds": 429.7,
+          "deaths": {
+            "energy exhaustion": 53,
+            "maximum age": 5
+          }
+        },
+        {
+          "tick": 600,
+          "population": 265,
+          "income": 30716.497,
+          "movement": 24685.588,
+          "bonds": 173.2,
+          "deaths": {
+            "energy exhaustion": 42,
+            "maximum age": 4
+          }
+        },
+        {
+          "tick": 700,
+          "population": 264,
+          "income": 30611.79,
+          "movement": 25529.376,
+          "bonds": 91.7,
+          "deaths": {
+            "energy exhaustion": 48,
+            "maximum age": 5
+          }
+        }
+      ],
+      "recipe": {
+        "name": "evolved-9",
+        "resourceFunded": true,
+        "foodGrowthRate": 0.32,
+        "foodAttempts": 6,
+        "gateDiscovery": true,
+        "navigation": true,
+        "dormantBonds": true,
+        "movementCostMultiplier": 0.72,
+        "parentRecipe": "gate-consensus",
+        "mutation": {
+          "parameter": "movementCostMultiplier",
+          "before": 0.8,
+          "after": 0.72
+        }
+      }
+    },
+    {
+      "cycle": 9,
+      "selectionScore": 1.4134,
+      "tick": 800,
+      "population": 259,
+      "births": 681,
+      "deaths": {
+        "energy exhaustion": 372,
+        "maximum age": 50
+      },
+      "bonds": 5,
+      "facets": 1,
+      "food": 118,
+      "gateSightings": 135234,
+      "gateRelays": 4852,
+      "gateConsensuses": 507,
+      "gateCompletions": 4,
+      "bondsFormed": 552,
+      "bondsBroken": 767,
+      "populationRetention": 10.792,
+      "score": 1294.417,
+      "breakReasons": {
+        "bond energy reserve depleted": 493,
+        "member died: energy exhaustion": 234,
+        "member died: maximum age": 40
+      },
+      "income": {
+        "food": 221823,
+        "gateWork": 650,
+        "environmentField": 3192.975624941238
+      },
+      "expenses": {
+        "movement": 151433.48079998876,
+        "maintenance": 35900.28000005601,
+        "perception": 23801.159999985193,
+        "bonds": 5465.1000000023505,
+        "bondReserveMaintenance": 2157.318666514965,
+        "gateWork": 0,
+        "memory": 0,
+        "signals": 27.07712418300747,
+        "idle": 1555.5000000002128,
+        "environmentDanger": 0
+      },
+      "allocations": {
+        "reproduction": 42030.4140138263,
+        "structuralSeed": 1707.6000000000004,
+        "structuralOverflow": 0
+      },
+      "morphology": {
+        "moves": 1999,
+        "shared": 673.10980437101,
+        "transferLoss": 13.736934783083528,
+        "fieldIncome": 3192.975624941238,
+        "fieldGenerated": 3199.999999999939,
+        "dangerCost": 0,
+        "renewalBirths": 3
+      },
+      "meanEnergy": 93.00585819432548,
+      "reproducingEnergyFloor": 105,
+      "coupledMembers": 5,
+      "intervals": [
+        {
+          "tick": 100,
+          "population": 206,
+          "income": 17752.638,
+          "movement": 4896.444,
+          "bonds": 1593.7,
+          "deaths": {
+            "energy exhaustion": 45,
+            "maximum age": 3
+          }
+        },
+        {
+          "tick": 200,
+          "population": 259,
+          "income": 26536.194,
+          "movement": 11025.164,
+          "bonds": 1397.2,
+          "deaths": {
+            "energy exhaustion": 50,
+            "maximum age": 5
+          }
+        },
+        {
+          "tick": 300,
+          "population": 269,
+          "income": 28315.505,
+          "movement": 16782.396,
+          "bonds": 1019.7,
+          "deaths": {
+            "energy exhaustion": 39,
+            "maximum age": 4
+          }
+        },
+        {
+          "tick": 400,
+          "population": 268,
+          "income": 29426.5,
+          "movement": 20499.424,
+          "bonds": 714.3,
+          "deaths": {
+            "energy exhaustion": 43,
+            "maximum age": 2
+          }
+        },
+        {
+          "tick": 500,
+          "population": 257,
+          "income": 30862.832,
+          "movement": 22654.533,
+          "bonds": 429.7,
+          "deaths": {
+            "energy exhaustion": 53,
+            "maximum age": 5
+          }
+        },
+        {
+          "tick": 600,
+          "population": 265,
+          "income": 30716.497,
+          "movement": 24685.588,
+          "bonds": 173.2,
+          "deaths": {
+            "energy exhaustion": 42,
+            "maximum age": 4
+          }
+        },
+        {
+          "tick": 700,
+          "population": 264,
+          "income": 30611.79,
+          "movement": 25529.376,
+          "bonds": 91.7,
+          "deaths": {
+            "energy exhaustion": 48,
+            "maximum age": 5
+          }
+        },
+        {
+          "tick": 800,
+          "population": 259,
+          "income": 31444.02,
+          "movement": 25360.556,
+          "bonds": 45.6,
+          "deaths": {
+            "energy exhaustion": 52,
+            "maximum age": 22
+          }
+        }
+      ],
+      "recipe": {
+        "name": "evolved-9",
+        "resourceFunded": true,
+        "foodGrowthRate": 0.32,
+        "foodAttempts": 6,
+        "gateDiscovery": true,
+        "navigation": true,
+        "dormantBonds": true,
+        "movementCostMultiplier": 0.72,
+        "parentRecipe": "gate-consensus",
+        "mutation": {
+          "parameter": "movementCostMultiplier",
+          "before": 0.8,
+          "after": 0.72
+        }
+      }
+    },
+    {
+      "cycle": 9,
+      "selectionScore": 1.2948,
+      "tick": 900,
+      "population": 239,
+      "births": 751,
+      "deaths": {
+        "energy exhaustion": 422,
+        "maximum age": 90
+      },
+      "bonds": 0,
+      "facets": 0,
+      "food": 127,
+      "gateSightings": 151009,
+      "gateRelays": 4852,
+      "gateConsensuses": 510,
+      "gateCompletions": 4,
+      "bondsFormed": 552,
+      "bondsBroken": 772,
+      "populationRetention": 9.958,
+      "score": 1242.583,
+      "breakReasons": {
+        "bond energy reserve depleted": 494,
+        "member died: energy exhaustion": 234,
+        "member died: maximum age": 44
+      },
+      "income": {
+        "food": 254771,
+        "gateWork": 650,
+        "environmentField": 3592.0836297762194
+      },
+      "expenses": {
+        "movement": 176394.06079998755,
+        "maintenance": 40445.50000006354,
+        "perception": 26810.879999959645,
+        "bonds": 5479.700000002404,
+        "bondReserveMaintenance": 2161.1186665149617,
+        "gateWork": 0,
+        "memory": 0,
+        "signals": 27.186274509804864,
+        "idle": 1703.5500000003026,
+        "environmentDanger": 0
+      },
+      "allocations": {
+        "reproduction": 47711.65906511946,
+        "structuralSeed": 1707.6000000000004,
+        "structuralOverflow": 0
+      },
+      "morphology": {
+        "moves": 2001,
+        "shared": 678.0098043710078,
+        "transferLoss": 13.836934783083562,
+        "fieldIncome": 3592.0836297762194,
+        "fieldGenerated": 3599.9999999999295,
+        "dangerCost": 0,
+        "renewalBirths": 3
+      },
+      "meanEnergy": 93.84474867986046,
+      "reproducingEnergyFloor": 105,
+      "coupledMembers": 0,
+      "intervals": [
+        {
+          "tick": 100,
+          "population": 206,
+          "income": 17752.638,
+          "movement": 4896.444,
+          "bonds": 1593.7,
+          "deaths": {
+            "energy exhaustion": 45,
+            "maximum age": 3
+          }
+        },
+        {
+          "tick": 200,
+          "population": 259,
+          "income": 26536.194,
+          "movement": 11025.164,
+          "bonds": 1397.2,
+          "deaths": {
+            "energy exhaustion": 50,
+            "maximum age": 5
+          }
+        },
+        {
+          "tick": 300,
+          "population": 269,
+          "income": 28315.505,
+          "movement": 16782.396,
+          "bonds": 1019.7,
+          "deaths": {
+            "energy exhaustion": 39,
+            "maximum age": 4
+          }
+        },
+        {
+          "tick": 400,
+          "population": 268,
+          "income": 29426.5,
+          "movement": 20499.424,
+          "bonds": 714.3,
+          "deaths": {
+            "energy exhaustion": 43,
+            "maximum age": 2
+          }
+        },
+        {
+          "tick": 500,
+          "population": 257,
+          "income": 30862.832,
+          "movement": 22654.533,
+          "bonds": 429.7,
+          "deaths": {
+            "energy exhaustion": 53,
+            "maximum age": 5
+          }
+        },
+        {
+          "tick": 600,
+          "population": 265,
+          "income": 30716.497,
+          "movement": 24685.588,
+          "bonds": 173.2,
+          "deaths": {
+            "energy exhaustion": 42,
+            "maximum age": 4
+          }
+        },
+        {
+          "tick": 700,
+          "population": 264,
+          "income": 30611.79,
+          "movement": 25529.376,
+          "bonds": 91.7,
+          "deaths": {
+            "energy exhaustion": 48,
+            "maximum age": 5
+          }
+        },
+        {
+          "tick": 800,
+          "population": 259,
+          "income": 31444.02,
+          "movement": 25360.556,
+          "bonds": 45.6,
+          "deaths": {
+            "energy exhaustion": 52,
+            "maximum age": 22
+          }
+        },
+        {
+          "tick": 900,
+          "population": 239,
+          "income": 33347.108,
+          "movement": 24960.58,
+          "bonds": 14.6,
+          "deaths": {
+            "energy exhaustion": 50,
+            "maximum age": 40
+          }
+        }
+      ],
+      "recipe": {
+        "name": "evolved-9",
+        "resourceFunded": true,
+        "foodGrowthRate": 0.32,
+        "foodAttempts": 6,
+        "gateDiscovery": true,
+        "navigation": true,
+        "dormantBonds": true,
+        "movementCostMultiplier": 0.72,
+        "parentRecipe": "gate-consensus",
+        "mutation": {
+          "parameter": "movementCostMultiplier",
+          "before": 0.8,
+          "after": 0.72
+        }
+      }
+    },
+    {
+      "cycle": 9,
+      "selectionScore": 1.2579,
+      "tick": 940,
+      "population": 232,
+      "births": 777,
+      "deaths": {
+        "energy exhaustion": 437,
+        "maximum age": 108
+      },
+      "bonds": 0,
+      "facets": 0,
+      "food": 135,
+      "gateSightings": 156797,
+      "gateRelays": 4852,
+      "gateConsensuses": 510,
+      "gateCompletions": 4,
+      "bondsFormed": 552,
+      "bondsBroken": 772,
+      "populationRetention": 9.667,
+      "score": 1224.417,
+      "breakReasons": {
+        "bond energy reserve depleted": 494,
+        "member died: energy exhaustion": 234,
+        "member died: maximum age": 44
+      },
+      "income": {
+        "food": 267171,
+        "gateWork": 650,
+        "environmentField": 3752.486528724821
+      },
+      "expenses": {
+        "movement": 185776.06079998755,
+        "maintenance": 42148.660000066295,
+        "perception": 27936.719999950088,
+        "bonds": 5479.700000002404,
+        "bondReserveMaintenance": 2161.1186665149617,
+        "gateWork": 0,
+        "memory": 0,
+        "signals": 27.186274509804864,
+        "idle": 1735.8000000003221,
+        "environmentDanger": 0
+      },
+      "allocations": {
+        "reproduction": 49870.91934868187,
+        "structuralSeed": 1707.6000000000004,
+        "structuralOverflow": 0
+      },
+      "morphology": {
+        "moves": 2001,
+        "shared": 678.0098043710078,
+        "transferLoss": 13.836934783083562,
+        "fieldIncome": 3752.486528724821,
+        "fieldGenerated": 3759.9999999999236,
+        "dangerCost": 0,
+        "renewalBirths": 3
+      },
+      "meanEnergy": 89.87945134152471,
+      "reproducingEnergyFloor": 105,
+      "coupledMembers": 0,
+      "intervals": [
+        {
+          "tick": 100,
+          "population": 206,
+          "income": 17752.638,
+          "movement": 4896.444,
+          "bonds": 1593.7,
+          "deaths": {
+            "energy exhaustion": 45,
+            "maximum age": 3
+          }
+        },
+        {
+          "tick": 200,
+          "population": 259,
+          "income": 26536.194,
+          "movement": 11025.164,
+          "bonds": 1397.2,
+          "deaths": {
+            "energy exhaustion": 50,
+            "maximum age": 5
+          }
+        },
+        {
+          "tick": 300,
+          "population": 269,
+          "income": 28315.505,
+          "movement": 16782.396,
+          "bonds": 1019.7,
+          "deaths": {
+            "energy exhaustion": 39,
+            "maximum age": 4
+          }
+        },
+        {
+          "tick": 400,
+          "population": 268,
+          "income": 29426.5,
+          "movement": 20499.424,
+          "bonds": 714.3,
+          "deaths": {
+            "energy exhaustion": 43,
+            "maximum age": 2
+          }
+        },
+        {
+          "tick": 500,
+          "population": 257,
+          "income": 30862.832,
+          "movement": 22654.533,
+          "bonds": 429.7,
+          "deaths": {
+            "energy exhaustion": 53,
+            "maximum age": 5
+          }
+        },
+        {
+          "tick": 600,
+          "population": 265,
+          "income": 30716.497,
+          "movement": 24685.588,
+          "bonds": 173.2,
+          "deaths": {
+            "energy exhaustion": 42,
+            "maximum age": 4
+          }
+        },
+        {
+          "tick": 700,
+          "population": 264,
+          "income": 30611.79,
+          "movement": 25529.376,
+          "bonds": 91.7,
+          "deaths": {
+            "energy exhaustion": 48,
+            "maximum age": 5
+          }
+        },
+        {
+          "tick": 800,
+          "population": 259,
+          "income": 31444.02,
+          "movement": 25360.556,
+          "bonds": 45.6,
+          "deaths": {
+            "energy exhaustion": 52,
+            "maximum age": 22
+          }
+        },
+        {
+          "tick": 900,
+          "population": 239,
+          "income": 33347.108,
+          "movement": 24960.58,
+          "bonds": 14.6,
+          "deaths": {
+            "energy exhaustion": 50,
+            "maximum age": 40
+          }
+        }
+      ],
+      "recipe": {
+        "name": "evolved-9",
+        "resourceFunded": true,
+        "foodGrowthRate": 0.32,
+        "foodAttempts": 6,
+        "gateDiscovery": true,
+        "navigation": true,
+        "dormantBonds": true,
+        "movementCostMultiplier": 0.72,
+        "parentRecipe": "gate-consensus",
+        "mutation": {
+          "parameter": "movementCostMultiplier",
+          "before": 0.8,
+          "after": 0.72
+        }
+      }
+    },
+    {
+      "cycle": 9,
+      "selectionScore": 1.3106,
+      "tick": 1000,
+      "population": 242,
+      "births": 820,
+      "deaths": {
+        "energy exhaustion": 464,
+        "maximum age": 114
+      },
+      "bonds": 0,
+      "facets": 0,
+      "food": 138,
+      "gateSightings": 165718,
+      "gateRelays": 4852,
+      "gateConsensuses": 510,
+      "gateCompletions": 4,
+      "bondsFormed": 552,
+      "bondsBroken": 772,
+      "populationRetention": 10.083,
+      "score": 1230.333,
+      "breakReasons": {
+        "bond energy reserve depleted": 494,
+        "member died: energy exhaustion": 234,
+        "member died: maximum age": 44
+      },
+      "income": {
+        "food": 285911,
+        "gateWork": 650,
+        "environmentField": 3992.6040928674256
+      },
+      "expenses": {
+        "movement": 200064.06079998755,
+        "maintenance": 44742.10000007049,
+        "perception": 29651.279999935534,
+        "bonds": 5479.700000002404,
+        "bondReserveMaintenance": 2161.1186665149617,
+        "gateWork": 0,
+        "memory": 0,
+        "signals": 27.196209150327743,
+        "idle": 1814.85000000037,
+        "environmentDanger": 0
+      },
+      "allocations": {
+        "reproduction": 53147.2944991148,
+        "structuralSeed": 1707.6000000000004,
+        "structuralOverflow": 0
+      },
+      "morphology": {
+        "moves": 2001,
+        "shared": 678.0098043710078,
+        "transferLoss": 13.836934783083562,
+        "fieldIncome": 3992.6040928674256,
+        "fieldGenerated": 3999.999999999894,
+        "dangerCost": 0,
+        "renewalBirths": 3
+      },
+      "meanEnergy": 88.09128395425452,
+      "reproducingEnergyFloor": 105,
+      "coupledMembers": 0,
+      "intervals": [
+        {
+          "tick": 100,
+          "population": 206,
+          "income": 17752.638,
+          "movement": 4896.444,
+          "bonds": 1593.7,
+          "deaths": {
+            "energy exhaustion": 45,
+            "maximum age": 3
+          }
+        },
+        {
+          "tick": 200,
+          "population": 259,
+          "income": 26536.194,
+          "movement": 11025.164,
+          "bonds": 1397.2,
+          "deaths": {
+            "energy exhaustion": 50,
+            "maximum age": 5
+          }
+        },
+        {
+          "tick": 300,
+          "population": 269,
+          "income": 28315.505,
+          "movement": 16782.396,
+          "bonds": 1019.7,
+          "deaths": {
+            "energy exhaustion": 39,
+            "maximum age": 4
+          }
+        },
+        {
+          "tick": 400,
+          "population": 268,
+          "income": 29426.5,
+          "movement": 20499.424,
+          "bonds": 714.3,
+          "deaths": {
+            "energy exhaustion": 43,
+            "maximum age": 2
+          }
+        },
+        {
+          "tick": 500,
+          "population": 257,
+          "income": 30862.832,
+          "movement": 22654.533,
+          "bonds": 429.7,
+          "deaths": {
+            "energy exhaustion": 53,
+            "maximum age": 5
+          }
+        },
+        {
+          "tick": 600,
+          "population": 265,
+          "income": 30716.497,
+          "movement": 24685.588,
+          "bonds": 173.2,
+          "deaths": {
+            "energy exhaustion": 42,
+            "maximum age": 4
+          }
+        },
+        {
+          "tick": 700,
+          "population": 264,
+          "income": 30611.79,
+          "movement": 25529.376,
+          "bonds": 91.7,
+          "deaths": {
+            "energy exhaustion": 48,
+            "maximum age": 5
+          }
+        },
+        {
+          "tick": 800,
+          "population": 259,
+          "income": 31444.02,
+          "movement": 25360.556,
+          "bonds": 45.6,
+          "deaths": {
+            "energy exhaustion": 52,
+            "maximum age": 22
+          }
+        },
+        {
+          "tick": 900,
+          "population": 239,
+          "income": 33347.108,
+          "movement": 24960.58,
+          "bonds": 14.6,
+          "deaths": {
+            "energy exhaustion": 50,
+            "maximum age": 40
+          }
+        },
+        {
+          "tick": 1000,
+          "population": 242,
+          "income": 31540.52,
+          "movement": 23670,
+          "bonds": 0,
+          "deaths": {
+            "energy exhaustion": 42,
+            "maximum age": 24
+          }
+        }
+      ],
+      "recipe": {
+        "name": "evolved-9",
+        "resourceFunded": true,
+        "foodGrowthRate": 0.32,
+        "foodAttempts": 6,
+        "gateDiscovery": true,
+        "navigation": true,
+        "dormantBonds": true,
+        "movementCostMultiplier": 0.72,
+        "parentRecipe": "gate-consensus",
+        "mutation": {
+          "parameter": "movementCostMultiplier",
+          "before": 0.8,
+          "after": 0.72
+        }
+      }
+    }
+  ]
+}

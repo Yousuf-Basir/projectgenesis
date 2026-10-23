@@ -1,0 +1,58 @@
+{
+  "seed": 160104,
+  "aligned": true,
+  "label": "upkeep",
+  "rows": [
+    {
+      "cycle": 0,
+      "tick": 200,
+      "selectionScore": 3.4643,
+      "population": 42,
+      "births": 42,
+      "deaths": {},
+      "bonds": 49,
+      "facets": 27,
+      "food": 610,
+      "gateSightings": 3121,
+      "gateRelays": 129,
+      "gateConsensuses": 15,
+      "gateCompletions": 3,
+      "bondsFormed": 49,
+      "bondsBroken": 0,
+      "populationRetention": 1.75,
+      "score": 201.5,
+      "breaks": {},
+      "bondFunding": 19.74609987262832,
+      "renewalBirths": 0,
+      "inheritedEdgesRemaining": 0
+    },
+    {
+      "cycle": 0,
+      "tick": 500,
+      "selectionScore": 3.603,
+      "population": 224,
+      "births": 232,
+      "deaths": {
+        "energy exhaustion": 8
+      },
+      "bonds": 322,
+      "facets": 143,
+      "food": 597,
+      "gateSightings": 16217,
+      "gateRelays": 2903,
+      "gateConsensuses": 119,
+      "gateCompletions": 10,
+      "bondsFormed": 350,
+      "bondsBroken": 28,
+      "populationRetention": 9.333,
+      "score": 1191.333,
+      "breaks": {
+        "bond energy reserve depleted": 13,
+        "member died: energy exhaustion": 15
+      },
+      "bondFunding": 875.366829226728,
+      "renewalBirths": 8,
+      "inheritedEdgesRemaining": 0
+    }
+  ]
+}

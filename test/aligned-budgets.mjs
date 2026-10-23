@@ -1,0 +1,48 @@
+import assert from 'node:assert/strict';
+import {Simulation} from '../server/simulation/simulation.js';
+import {ReincarnationController} from '../server/simulation/reincarnation.js';
+import {prepareAdaptiveMorphology} from '../server/simulation/adaptive-morphology.js';
+const sim=new Simulation();sim.stop();
+Object.assign(sim.config.bond.adaptiveMorphology,{enabled:true,alignedBudgetsEnabled:true});
+sim.organisms=sim.organisms.slice(0,2);sim.bonds.clear();
+const [a,b]=sim.organisms;a.x=10;a.y=10;b.x=11;b.y=10;
+const floor=sim.getBondFundingFloor(a);
+const edge={firstId:a.id,secondId:b.id,reserve:0,strength:1};
+sim.bonds.set(sim.bondKey(a.id,b.id),edge);
+const total=()=>a.energy+b.energy+edge.reserve;
+for(const balances of [[60,60],[floor,floor],[floor+.1,floor+10],[floor+10,floor+.1]]) {
+ [a.energy,b.energy]=balances;edge.reserve=0;const before=total();
+ sim.fundExistingBondReserves();
+ assert.ok(Math.abs(total()-before)<1e-9,'upkeep funding must conserve owned energy');
+ assert.ok(a.energy>=floor-1e-9 && b.energy>=floor-1e-9);
+ assert.ok(edge.reserve<=sim.bondMaintenanceBuffer(edge));
+}
+assert.ok(Number.isFinite(sim.energyEconomics.allocations.bondFunding));
+a.energy=55;b.energy=60;edge.reserve=0;
+assert.equal(sim.canAffordReproduction(a),false,'birth must leave a funded parent and child');
+a.energy=105;assert.equal(sim.canAffordReproduction(a),false,'bonded birth must budget its seed as well as the endowment');
+a.energy=140;assert.equal(sim.canAffordReproduction(a),true,'birth with paid obligations remains affordable');
+edge.reserve=0;a.energy=60;b.energy=60;edge.dormant=true;sim.fundExistingBondReserves();assert.equal(edge.reserve,0);
+edge.dormant=false;b.x=40;sim.fundExistingBondReserves();assert.equal(edge.reserve,0);b.x=11;
+sim.config.bond.adaptiveMorphology.alignedBudgetsEnabled=false;
+sim.fundExistingBondReserves();assert.equal(edge.reserve,0,'off switch restores old funding');
+assert.equal(sim.getBondFundingFloor(a),sim.getReproductionEnergyFloor(a));
+sim.config.bond.adaptiveMorphology.alignedBudgetsEnabled=true;
+a.energy=60;b.energy=0;b.lastOperatingExpense=2;edge.reserve=0;
+const beforeRescue=total(),lossBefore=sim.energyEconomics.losses.morphologyFlow??0;
+prepareAdaptiveMorphology(sim);
+assert.ok(b.energy>=4-1e-9,'a connected member can receive its next two operating payments');
+assert.ok(a.energy>=floor);
+assert.ok(Math.abs(beforeRescue-total()-((sim.energyEconomics.losses.morphologyFlow??0)-lossBefore))<1e-9,
+ 'emergency support is a paid transfer with declared loss, not new income');
+const controller=new ReincarnationController({adaptiveMorphologyEnabled:true});
+a.energy=170;b.energy=120;edge.reserve=7;
+const carried={members:[a,b],bonds:[{...edge}],reserves:[[sim.componentReserveKey([a.id,b.id]),12]],facetCount:0};
+const ages=[a.age,b.age];sim.setSeed(999);controller.restoreComponent(sim,carried);
+assert.deepEqual([a.energy,b.energy],[170,120],'cycle boundary must not clip earned balances');
+assert.deepEqual([a.age,b.age],ages,'no age rejuvenation');
+assert.equal([...sim.bonds.values()][0].reserve,7);
+assert.equal([...sim.componentReserves.values()][0],12);
+assert.equal(controller.lastCarry.reserveTransitionLoss,0);
+console.log('Aligned floors, affordable births, paid upkeep, disabled mode and carry conservation passed.');
+process.exit(0);

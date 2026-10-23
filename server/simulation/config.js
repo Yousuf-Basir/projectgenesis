@@ -419,6 +419,7 @@ export const BASE_CONFIG = {
     },
     adaptiveMorphology: {
       enabled: false,
+      alignedBudgetsEnabled: false,
       learningEnabled: true,
       reshapingEnabled: true,
       collectiveMovementInterval: 5,
