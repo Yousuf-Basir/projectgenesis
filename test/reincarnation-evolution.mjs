@@ -1,0 +1,28 @@
+import assert from 'node:assert/strict';
+import { Simulation } from '../server/simulation/simulation.js';
+import { ReincarnationController } from '../server/simulation/reincarnation.js';
+
+const simulation = new Simulation();
+simulation.stop();
+simulation.headlessObservationMode = true;
+const controller = new ReincarnationController();
+controller.applyRecipe(simulation, controller.chooseRecipe());
+for (let tick = 0; tick < 1000; tick++) simulation.step();
+const carried = controller.captureComponent(simulation);
+assert.ok(carried?.members.length >= 4, 'reference seed must produce eligible survivors');
+const positions = carried.members.map(member => [member.x, member.y]);
+const end = controller.score(simulation);
+controller.observe(simulation);
+assert.equal(controller.inheritance.descendants, 12);
+assert.ok(controller.inheritance.mutations > 0);
+assert.equal(simulation.organisms.length, 24 + carried.members.length);
+assert.deepEqual(simulation.organisms.slice(24).map(member => [member.x, member.y]), positions);
+assert.equal(new Set(simulation.organisms.map(member => member.id)).size, simulation.organisms.length);
+assert.equal(simulation.bonds.size, carried.bonds.length);
+assert.ok([...simulation.bonds.values()].every(bond => simulation.organisms.some(member => member.id === bond.firstId) && simulation.organisms.some(member => member.id === bond.secondId)));
+controller.generation = 4;
+const mutations = Array.from({length: 8}, () => controller.chooseRecipe());
+assert.ok(mutations.every(recipe => recipe.mutation && recipe.mutation.before !== recipe.mutation.after));
+assert.ok(new Set(mutations.map(recipe => JSON.stringify(recipe.mutation))).size > 1);
+console.log(JSON.stringify({ end, inheritance: controller.inheritance, carriedMembers: carried.members.length, recipeMutations: mutations.map(recipe => recipe.mutation) }, null, 2));
+simulation.stop();

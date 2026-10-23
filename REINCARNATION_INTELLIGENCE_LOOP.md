@@ -16,6 +16,8 @@ Organism code, pretrained data, and external labels are never injected. The orga
 
 ## Cycle policy
 
+Updated 2026-10-23: selection now creates bounded recipe mutations after the initial curriculum, and surviving members can seed mutated descendants among newcomers. See [REINCARNATION_EVOLUTION.md](REINCARNATION_EVOLUTION.md) for the current selection objective, inheritance rules, limitations, and validation. The original policy below describes the earlier implementation.
+
 The controller explores each recipe once. Afterwards it selects the next recipe adjacent to the best-scoring result, using a transparent search rather than a hidden model. Each result records population, births, deaths, bonds, facets, gate sightings, relays, consensus, gate completions, and bond turnover.
 
 The score rewards:

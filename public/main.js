@@ -403,7 +403,12 @@ function syncControls(snapshot) {
       const navigation = currentRecipe.navigation ? "navigation on" : "navigation off";
       const discovery = currentRecipe.gateDiscovery ? "gate sensing on" : "gate sensing off";
       worldConfigHint.textContent = `World ${snapshot.settings.worldNumber} · seed ${snapshot.settings.universeSeed} · ${recipe} · ${discovery} · ${navigation} · ${carryText}`;
-      worldConfigHint.title = "Compact live recipe hint; full configuration and cycle history are available from /api/state.";
+      const inherited = reincarnation.inheritance;
+      if (inherited?.descendants) worldConfigHint.textContent += ` · descendants ${inherited.descendants} (${inherited.mutations} mutations)`;
+      const mutation = currentRecipe.mutation;
+      worldConfigHint.title = mutation
+        ? `Selected from ${currentRecipe.parentRecipe}: ${mutation.parameter} ${mutation.before} → ${mutation.after}. Full history: /api/state.`
+        : "Compact live recipe hint; full configuration and cycle history are available from /api/state.";
     }
   }
   const guided = snapshot.guidedStructuralIntelligence ?? {};

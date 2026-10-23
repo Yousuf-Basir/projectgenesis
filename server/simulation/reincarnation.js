@@ -1,7 +1,9 @@
 // Bounded, inspectable world cycling for the exploratory intelligence branch.
 // A cycle changes environmental parameters, never organism code or learned data.
+import { Organism } from "./organism.js";
+
 export class ReincarnationController {
-  constructor({ cycleTicks = 1000, seed = 160103, enabled = true, maximumHistory = 24 } = {}) {
+  constructor({ cycleTicks = 1000, seed = 160103, enabled = true, maximumHistory = 24, evolutionEnabled = true } = {}) {
     this.cycleTicks = cycleTicks;
     this.seed = seed;
     this.enabled = enabled;
@@ -16,6 +18,14 @@ export class ReincarnationController {
     this.carriedBondCount = 0;
     this.carriedFacetCount = 0;
     this.lastCarry = null;
+    this.evolutionEnabled = evolutionEnabled;
+    this.searchState = seed >>> 0;
+    this.inheritance = { descendants: 0, mutations: 0 };
+  }
+
+  random() {
+    this.searchState = (Math.imul(this.searchState, 1664525) + 1013904223) >>> 0;
+    return this.searchState / 4294967296;
   }
 
   recipes() {
@@ -68,8 +78,17 @@ export class ReincarnationController {
     // Explore every recipe once, then revisit the best-scoring recipe with a
     // new seed. This is a transparent bandit-like search, not pre-trained data.
     if (this.generation < recipes.length) return recipes[this.generation];
-    const best = [...this.history].sort((a, b) => b.score - a.score)[0];
-    return recipes[(best.recipeIndex + 1) % recipes.length];
+    if (!this.evolutionEnabled) return recipes[this.generation % recipes.length];
+    const ranked = [...this.history].sort((a, b) => b.selectionScore - a.selectionScore);
+    const parent = this.random() < 0.25
+      ? recipes[Math.floor(this.random() * recipes.length)]
+      : ranked[Math.floor(this.random() * Math.min(3, ranked.length))].recipe;
+    const bounds = { foodGrowthRate: [0.2, 0.5, 0.04], foodAttempts: [4, 10, 1], movementCostMultiplier: [0.6, 1.1, 0.08] };
+    const key = Object.keys(bounds)[Math.floor(this.random() * 3)];
+    const [minimum, maximum, step] = bounds[key];
+    let value = Math.max(minimum, Math.min(maximum, parent[key] + (this.random() < 0.5 ? -step : step)));
+    if (value === parent[key]) value = parent[key] === minimum ? minimum + step : maximum - step;
+    return { ...parent, name: `evolved-${this.generation}`, parentRecipe: parent.name, mutation: { parameter: key, before: parent[key], after: Number(value.toFixed(3)) }, [key]: Number(value.toFixed(3)) };
   }
 
   captureComponent(simulation) {
@@ -88,7 +107,7 @@ export class ReincarnationController {
       bonds: internalBonds.map((bond) => ({ ...bond })),
       facetCount: internalFacets.length,
       reserves: [...simulation.componentReserves.entries()]
-        .filter(([key]) => [...ids].every((id) => key.split(":").includes(String(id))))
+        .filter(([key]) => key.split(":").every((id) => ids.has(Number(id))))
         .map(([key, value]) => [key, value])
     };
   }
@@ -114,7 +133,7 @@ export class ReincarnationController {
       member.id = newId;
       member.alive = true;
       member.energy = Math.max(1, Math.min(member.energy, simulation.config.organism.startingEnergy * 1.25));
-      member.age = Math.min(member.age, Math.floor(simulation.config.organism.maxAge * 0.5) || member.age);
+      member.random = simulation.random;
       member.collectiveStrideActive = false;
       member.collectiveTransportActive = false;
       simulation.organisms.push(member);
@@ -168,7 +187,30 @@ export class ReincarnationController {
     simulation.config.guidedStructuralIntelligence.supportedDevelopment.unconditionalSupportEnabled = false;
     this.recipe = { ...recipe };
     simulation.setSeed(this.seed + this.generation * 9973 + this.cycle * 101);
+    this.inheritance = { descendants: 0, mutations: 0 };
+    if (this.evolutionEnabled && carried?.members.length) {
+      // Replace half of the declared fresh population with descendants. Their
+      // energy comes from the same reset budget as ordinary newcomers.
+      const parents = [...carried.members].sort((a, b) =>
+        (b.age / Math.max(1, simulation.config.organism.maxAge) + b.energy / Math.max(1, simulation.config.organism.startingEnergy))
+        - (a.age / Math.max(1, simulation.config.organism.maxAge) + a.energy / Math.max(1, simulation.config.organism.startingEnergy)));
+      const elite = parents.slice(0, Math.max(1, Math.ceil(parents.length / 3)));
+      for (let index = 0; index < Math.floor(simulation.organisms.length / 2); index += 1) {
+        const newcomer = simulation.organisms[index];
+        const parent = elite[Math.floor(this.random() * elite.length)];
+        const mutation = this.random() < 0.25
+          ? simulation.mutationEngine.mutate(parent.genome, () => this.random(), simulation.config.organism.mutationPrimes) : null;
+        const profile = simulation.genomeEngine.construct(mutation?.after ?? parent.genome);
+        simulation.organisms[index] = new Organism({ id: newcomer.id, x: newcomer.x, y: newcomer.y,
+          energy: newcomer.energy, genomeProfile: profile, brain: simulation.brainGenerator.generate(profile),
+          random: simulation.random, generation: parent.generation + 1, mutation,
+          nodeTrace: Math.min(0.2, (parent.nodeTrace ?? 0) * 0.1) });
+        this.inheritance.descendants += 1;
+        if (mutation) this.inheritance.mutations += 1;
+      }
+    }
     this.restoreComponent(simulation, carried);
+    this.startPopulation = simulation.organisms.length;
     simulation.resume();
   }
 
@@ -181,7 +223,12 @@ export class ReincarnationController {
     const interaction = (discovery.consensuses ?? 0) * 2 + (simulation.collectiveWorkCompletions ?? 0) * 3;
     const continuity = Math.max(0, stats.population - (simulation.deaths ?? 0) * 0.25);
     const score = Number((populationRetention * 10 + structure + interaction + continuity).toFixed(3));
+    const selectionScore = Number((Math.min(2, stats.population / Math.max(1, this.startPopulation ?? stats.population))
+      + Math.min(1, stats.bonds / Math.max(1, simulation.bondsFormed ?? 0))
+      + Math.min(1, (simulation.collectiveWorkCompletions ?? 0) / Math.max(1, stats.population))
+      + Math.min(1, simulation.getFacets().length / Math.max(1, stats.population))).toFixed(4));
     return {
+      selectionScore,
       tick: stats.tick,
       population: stats.population,
       births: stats.births,
@@ -209,6 +256,7 @@ export class ReincarnationController {
       cycle: this.cycle,
       recipeIndex: this.recipes().findIndex((recipe) => recipe.name === this.recipe?.name),
       recipe: this.recipe,
+      inheritance: { ...this.inheritance },
       ...result
     };
     this.history.push(completed);
@@ -217,7 +265,7 @@ export class ReincarnationController {
     this.generation += 1;
     this.cycle += 1;
     const next = this.chooseRecipe();
-    this.nextReason = result.score < 10 ? "low structural/interaction score; exploring new recipe" : "cycling for comparison and novelty";
+    this.nextReason = next.mutation ? `Testing ${next.mutation.parameter} mutation from ${next.parentRecipe}` : "sampling initial environmental recipes";
     this.applyRecipe(simulation, next, carried);
     return true;
   }
@@ -230,6 +278,8 @@ export class ReincarnationController {
       generation: this.generation,
       cycle: this.cycle,
       currentRecipe: this.recipe,
+      evolutionEnabled: this.evolutionEnabled,
+      inheritance: this.inheritance,
       ticksRemaining: Math.max(0, this.cycleTicks - tick),
       nextReason: this.nextReason,
       lastResult: this.lastResult,
