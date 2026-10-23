@@ -9,7 +9,7 @@ import { shrinkAtRiskComponents } from "./adaptive-shrinking.js";
 import { updateEnergyConservation } from "./energy-conservation.js";
 import { supportFromNeighbourSurplus } from "./neighbour-support.js";
 import { shareFreshHarvest } from "./harvest-member-support.js";
-import { prepareAdaptiveMorphology, applyMorphologyEnvironment } from "./adaptive-morphology.js";
+import { prepareAdaptiveMorphology, applyMorphologyEnvironment, fieldAt } from "./adaptive-morphology.js";
 import { World } from "./world.js";
 import { average, clamp, createSeededRandom, normalizeSeed } from "./utils.js";
 import { createDefaultSurvivalCueGrid, createGuidedInput, setGuidedGrid, setGuidedPattern, serializeGuidedInput } from "./guided-input.js";
@@ -269,12 +269,13 @@ export class Simulation {
     this.updateFacetNiches();
     this.updateFacetRefineries();
     this.world.decaySignals(this.config.signal.decay);
-    const occupiedBefore = new Set(this.organisms.filter((item) => item.alive).map((item) => `${item.x},${item.y}`));
+    let occupiedBefore;
 
     const coupledIds = this.getCoupledIds();
     this.updateComponentLifecycle();
     this.updateGateDiscovery();
     prepareAdaptiveMorphology(this);
+    occupiedBefore = new Set(this.organisms.filter((item) => item.alive).map((item) => `${item.x},${item.y}`));
     updateEnergyConservation(this);
     const collectiveStrideEligibleIds = this.getCollectiveStrideEligibleIds();
     const migrationTransportEligibleIds = this.getMigrationTransportEligibleIds();
@@ -422,7 +423,7 @@ export class Simulation {
     if (!this.headlessObservationMode) this.updateMarkers();
     const production = this.world.growFood(
       this.config.food.growthRate,
-      this.config.food.maxGrowthAttemptsPerTick * this.speed,
+      this.config.food.maxGrowthAttemptsPerTick,
       this.config.chemistry,
       this.config.ecology,
       this.config.environment
@@ -847,7 +848,12 @@ export class Simulation {
     for (const organism of this.organisms) {
       const supportMode = this.config.guidedStructuralIntelligence?.supportedDevelopment;
       if (supportMode?.enabled && this.organisms.length + newborns.length >= supportMode.populationCap) break;
-      if (!organism.canReproduce(this.config.organism)) {
+      const morphology=this.config.bond.adaptiveMorphology;
+      const renewalEligible=Boolean(morphology?.enabled && morphology.renewalEnabled
+        && organism.age>=this.config.organism.maxAge*0.55
+        && organism.energy>=this.getReproductionEnergyFloor(organism)*1.2
+        && this.isActivelyBonded(organism.id));
+      if (!organism.canReproduce(this.config.organism) && !renewalEligible) {
         continue;
       }
       const structuralParent = this.isActivelyBonded(organism.id) && organism.genomeProfile.traits.canCouple;
@@ -880,6 +886,20 @@ export class Simulation {
         brainGenerator: this.brainGenerator,
         mutationEngine: this.mutationEngine
       });
+      if(morphology?.enabled) {
+        child.morphologyPreferences=Object.fromEntries(Object.entries(organism.morphologyPreferences??{}).map(([key,value])=>[key,value*0.1]));
+        if(renewalEligible && localPosition && child.genomeProfile.traits.canCouple) {
+          const partners=[organism,...this.organisms.filter(other=>other.alive&&other.id!==organism.id
+            && this.areAdjacent(child,other)&&this.bonds.has(this.bondKey(organism.id,other.id)))].slice(0,2);
+          const investment=Math.min(4,Math.max(0,organism.energy-this.config.bond.supportThreshold));
+          if(investment>0) {
+            organism.energy-=investment;
+            this.recordEnergyAllocation(organism,'structuralSeed',investment);
+            for(const partner of partners)this.seedStructuralBond(partner.id,child.id,investment/partners.length);
+            this.morphologyStats.renewalBirths=(this.morphologyStats.renewalBirths??0)+1;
+          }
+        }
+      }
       if (this.config.bond.topologyMemory.enabled) {
         const memoryPolicy = this.config.bond.topologyMemory;
         child.nodeTrace = Math.max(0, Math.min(memoryPolicy.maximumTrace, organism.nodeTrace * memoryPolicy.inheritanceFraction
@@ -1671,6 +1691,7 @@ export class Simulation {
   }
 
   reset() {
+    this.morphologyDemoPhase=null;
     this.morphologyStock = this.morphologyField?.reward.map(row=>row.map(()=>0));
     this.morphologyStats = { moves:0,shared:0,transferLoss:0,fieldIncome:0,fieldGenerated:0,dangerCost:0 };
     this.harvestSupportStats = { transfers: 0, delivered: 0, lost: 0 };
@@ -4051,7 +4072,8 @@ export class Simulation {
   }
 
   moveCompounds() {
-    if (this.config.bond.adaptiveMorphology?.enabled && this.simulationTicks % 5 !== 0) return;
+    if (this.config.bond.adaptiveMorphology?.enabled
+      && this.simulationTicks % this.config.bond.adaptiveMorphology.collectiveMovementInterval !== 0) return;
     const byId = new Map(this.organisms.filter((organism) => organism.alive).map((organism) => [organism.id, organism]));
     const occupied = new Set(this.organisms.filter((organism) => organism.alive).map((organism) => `${organism.x},${organism.y}`));
 
@@ -4067,6 +4089,19 @@ export class Simulation {
       const collectiveScores = Object.fromEntries(DIRECTIONS.map((direction) => [direction.name,
         members.reduce((total, member) => total + (member.brainExecution?.effectors.direction?.[direction.name] ?? 0), 0) / members.length
       ]));
+      const morphology=this.config.bond.adaptiveMorphology;
+      if (morphology?.enabled && morphology.fieldSensingEnabled!==false && morphology.environmentNavigationBias>0) {
+        const value=(x,y)=>{ const field=fieldAt(this,x,y); return field.reward-field.danger*2; };
+        const exposed=members.some(member=>fieldAt(this,member.x,member.y).danger>0);
+        const bias=exposed?Math.max(morphology.environmentNavigationBias,morphology.dangerNavigationBias??0):morphology.environmentNavigationBias;
+        for(const direction of DIRECTIONS) {
+          const improvement=members.reduce((sum,member)=>{
+            const next=this.world.wrapPosition(member.x+direction.x,member.y+direction.y);
+            return sum+value(next.x,next.y)-value(member.x,member.y);
+          },0)/members.length;
+          collectiveScores[direction.name]+=improvement*bias;
+        }
+      }
       const legalDirections = DIRECTIONS.filter((direction) => {
         const targets = members.map((member) => this.world.wrapPosition(member.x + direction.x, member.y + direction.y));
         return targets.every((target) => this.world.isWalkable(target.x, target.y)
@@ -4313,6 +4348,21 @@ export class Simulation {
           return firstCount < support.connectionCapPerComponent && secondCount < support.connectionCapPerComponent;
         })()) {
         const seedEnergy = this.structuralBirthSeeds.get(key) ?? 0;
+        if(this.config.bond.adaptiveMorphology?.enabled && this.config.bond.adaptiveMorphology.paidFormationEnabled) {
+          const degree=id=>[...this.bonds.values()].filter(edge=>edge.firstId===id||edge.secondId===id).length;
+          if(degree(first.id)>=this.config.bond.adaptiveMorphology.maximumDegree
+            || degree(second.id)>=this.config.bond.adaptiveMorphology.maximumDegree) continue;
+          const floor=this.config.bond.supportThreshold;
+          const firstAvailable=Math.max(0,first.energy-floor),secondAvailable=Math.max(0,second.energy-floor);
+          const cost=this.config.bond.initialReserve;
+          if(firstAvailable+secondAvailable<cost) continue;
+          const fromFirst=Math.min(firstAvailable,cost/2);
+          const fromSecond=Math.min(secondAvailable,cost-fromFirst);
+          const firstRemainder=cost-fromFirst-fromSecond;
+          first.energy-=fromFirst+firstRemainder;second.energy-=fromSecond;
+          this.recordEnergyAllocation(first,'structuralSeed',fromFirst+firstRemainder);
+          this.recordEnergyAllocation(second,'structuralSeed',fromSecond);
+        }
         this.bonds.set(key, {
           firstId: first.id,
           secondId: second.id,
@@ -4774,7 +4824,11 @@ export class Simulation {
       signal: { ...this.config.signal },
       bonding: {
         ...this.config.bond,
-        adaptiveMorphology: { ...this.config.bond.adaptiveMorphology, ...this.morphologyStats },
+        adaptiveMorphology: { ...this.config.bond.adaptiveMorphology, ...this.morphologyStats,
+          dangerCostPerTick:this.config.bond.adaptiveMorphology.dangerCost,
+          demoPhase:this.morphologyDemoPhase??'custom',
+          colonies:this.getBondGroups().filter(group=>group.length>=3).length,
+          largestComponent:Math.max(0,...this.getBondGroups().map(group=>group.length)) },
         harvestMemberSupport: { ...this.config.bond.harvestMemberSupport, ...this.harvestSupportStats },
         neighbourSurplusSupport: { ...this.config.bond.neighbourSurplusSupport, ...this.neighbourSupportStats },
         energyConservation: { ...this.config.bond.energyConservation, memberTicks: this.conservationMemberTicks },

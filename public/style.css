@@ -993,6 +993,13 @@ input[type="range"] {
   text-overflow: ellipsis;
 }
 
+.colony-status {
+  margin: -5px 0 10px;
+  color: #9bd8c2;
+  font: 500 0.72rem/1.4 ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+.colony-status[hidden] { display: none; }
+
 .guided-input-block canvas {
   display: block;
   width: 160px;

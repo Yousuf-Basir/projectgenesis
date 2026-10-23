@@ -128,6 +128,19 @@ export class ReincarnationController {
     // Keep the freshly seeded population as the new world's newcomers. Add the
     // carried organisms alongside it, remapping only IDs that could collide;
     // their positions and topology remain unchanged on the canvas.
+    if (this.adaptiveMorphologyEnabled) {
+      const carriedPositions=new Set(carried.members.map(member=>`${member.x},${member.y}`));
+      const occupied=new Set([...carriedPositions,...simulation.organisms.map(member=>`${member.x},${member.y}`)]);
+      for(const member of carried.members) {
+        if(!simulation.world.isWalkable(member.x,member.y)) simulation.world.setTileType(member.x,member.y,'EMPTY');
+      }
+      for(const newcomer of simulation.organisms) {
+        if(!carriedPositions.has(`${newcomer.x},${newcomer.y}`)) continue;
+        const site=simulation.world.findRandomOpenPosition(occupied);
+        if(!site) throw new Error('No free position for a newcomer beside carried structures.');
+        newcomer.x=site.x;newcomer.y=site.y;occupied.add(`${site.x},${site.y}`);
+      }
+    }
     let nextId = Math.max(0, ...simulation.organisms.map((organism) => organism.id)) + 1;
     const idMap = new Map();
     for (const member of carried.members) {

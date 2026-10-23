@@ -7,12 +7,21 @@ import { Simulation } from "./simulation/simulation.js";
 import { ExperimentRunner } from "./experiments/experiment-runner.js";
 import { GuidedImageTaskRunner } from "./experiments/guided-image-task-runner.js";
 import { ReincarnationController } from "./simulation/reincarnation.js";
-import { setMorphologyField } from "./simulation/adaptive-morphology.js";
+import { setMorphologyField, MORPHOLOGY_PROFILES } from "./simulation/adaptive-morphology.js";
 
 const serverSessionId = randomUUID();
 const simulation = new Simulation(DEFAULT_CONFIG);
-const reincarnation = new ReincarnationController({ cycleTicks: 1000, seed: DEFAULT_CONFIG.universe.initialSeed, enabled: true,
-  adaptiveMorphologyEnabled: process.env.GENESIS_ADAPTIVE_MORPHOLOGY !== '0' });
+const adaptiveEnabled=process.env.GENESIS_ADAPTIVE_MORPHOLOGY !== '0';
+const profileName=process.env.GENESIS_MORPHOLOGY_PROFILE??'renewing-colonies';
+if(adaptiveEnabled) {
+  if(!MORPHOLOGY_PROFILES[profileName]) throw new Error(`Unknown morphology profile: ${profileName}`);
+  Object.assign(simulation.config.bond.adaptiveMorphology,MORPHOLOGY_PROFILES[profileName],{
+    fieldDemoEnabled:process.env.GENESIS_FIELD_DEMO===undefined?profileName==='renewing-colonies':process.env.GENESIS_FIELD_DEMO==='1'
+  });
+}
+const reincarnation = new ReincarnationController({ cycleTicks: 1000,
+  seed: Number(process.env.GENESIS_SEED??(adaptiveEnabled?160104:DEFAULT_CONFIG.universe.initialSeed)), enabled: true,
+  adaptiveMorphologyEnabled: adaptiveEnabled });
 const originalSimulationStep = simulation.step.bind(simulation);
 simulation.stop();
 simulation.step = () => {

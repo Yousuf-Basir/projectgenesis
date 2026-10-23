@@ -1,0 +1,194 @@
+[
+  {
+    "seed": 160103,
+    "before": {
+      "selectionScore": 3.3878,
+      "tick": 1000,
+      "population": 41,
+      "births": 112,
+      "deaths": 71,
+      "bonds": 49,
+      "facets": 21,
+      "food": 735,
+      "gateSightings": 23404,
+      "gateRelays": 1327,
+      "gateConsensuses": 156,
+      "gateCompletions": 70,
+      "bondsFormed": 293,
+      "bondsBroken": 244,
+      "populationRetention": 1.708,
+      "score": 653.333
+    },
+    "immediate": {
+      "population": 58,
+      "bonds": 49,
+      "carried": {
+        "members": 34,
+        "bonds": 49,
+        "facets": 21,
+        "reserveTransitionLoss": 0.1
+      }
+    },
+    "after80": {
+      "members": 34,
+      "originalEdges": 48,
+      "totalBonds": 82
+    },
+    "afterSecondWorld": {
+      "selectionScore": 2.6948,
+      "tick": 1000,
+      "population": 251,
+      "births": 529,
+      "deaths": 278,
+      "bonds": 313,
+      "facets": 91,
+      "food": 494,
+      "gateSightings": 138082,
+      "gateRelays": 24877,
+      "gateConsensuses": 1215,
+      "gateCompletions": 46,
+      "bondsFormed": 2101,
+      "bondsBroken": 1837,
+      "populationRetention": 10.458,
+      "score": 3349.083
+    },
+    "largestComponent": 60,
+    "morphology": {
+      "moves": 1332,
+      "shared": 1715.5563217515646,
+      "transferLoss": 35.01135350514068,
+      "fieldIncome": 3900.607568618038,
+      "fieldGenerated": 3998.238341659804,
+      "dangerCost": 0,
+      "renewalBirths": 43
+    }
+  },
+  {
+    "seed": 160104,
+    "before": {
+      "selectionScore": 2.7856,
+      "tick": 1000,
+      "population": 55,
+      "births": 105,
+      "deaths": 50,
+      "bonds": 70,
+      "facets": 20,
+      "food": 737,
+      "gateSightings": 25276,
+      "gateRelays": 4225,
+      "gateConsensuses": 130,
+      "gateCompletions": 9,
+      "bondsFormed": 271,
+      "bondsBroken": 201,
+      "populationRetention": 2.292,
+      "score": 462.417
+    },
+    "immediate": {
+      "population": 75,
+      "bonds": 70,
+      "carried": {
+        "members": 51,
+        "bonds": 70,
+        "facets": 20,
+        "reserveTransitionLoss": 0.1
+      }
+    },
+    "after80": {
+      "members": 47,
+      "originalEdges": 46,
+      "totalBonds": 71
+    },
+    "afterSecondWorld": {
+      "selectionScore": 3.043,
+      "tick": 1000,
+      "population": 181,
+      "births": 389,
+      "deaths": 208,
+      "bonds": 209,
+      "facets": 76,
+      "food": 462,
+      "gateSightings": 66779,
+      "gateRelays": 16331,
+      "gateConsensuses": 551,
+      "gateCompletions": 69,
+      "bondsFormed": 864,
+      "bondsBroken": 725,
+      "populationRetention": 7.542,
+      "score": 1874.417
+    },
+    "largestComponent": 24,
+    "morphology": {
+      "moves": 1171,
+      "shared": 4219.28320422382,
+      "transferLoss": 86.10782049437601,
+      "fieldIncome": 3892.248764762234,
+      "fieldGenerated": 3993.912946637462,
+      "dangerCost": 0,
+      "renewalBirths": 49
+    }
+  },
+  {
+    "seed": 160118,
+    "before": {
+      "selectionScore": 2.6991,
+      "tick": 1000,
+      "population": 33,
+      "births": 98,
+      "deaths": 65,
+      "bonds": 25,
+      "facets": 8,
+      "food": 696,
+      "gateSightings": 29466,
+      "gateRelays": 2736,
+      "gateConsensuses": 186,
+      "gateCompletions": 43,
+      "bondsFormed": 306,
+      "bondsBroken": 281,
+      "populationRetention": 1.375,
+      "score": 572.5
+    },
+    "immediate": {
+      "population": 45,
+      "bonds": 24,
+      "carried": {
+        "members": 21,
+        "bonds": 24,
+        "facets": 8,
+        "reserveTransitionLoss": 0.1
+      }
+    },
+    "after80": {
+      "members": 17,
+      "originalEdges": 7,
+      "totalBonds": 23
+    },
+    "afterSecondWorld": {
+      "selectionScore": 2.4919,
+      "tick": 1000,
+      "population": 210,
+      "births": 490,
+      "deaths": 280,
+      "bonds": 243,
+      "facets": 63,
+      "food": 530,
+      "gateSightings": 145762,
+      "gateRelays": 19869,
+      "gateConsensuses": 1277,
+      "gateCompletions": 15,
+      "bondsFormed": 2017,
+      "bondsBroken": 1798,
+      "populationRetention": 8.75,
+      "score": 3195.5
+    },
+    "largestComponent": 44,
+    "morphology": {
+      "moves": 1370,
+      "shared": 1479.1328533360775,
+      "transferLoss": 30.18638476196267,
+      "fieldIncome": 3866.6672087617258,
+      "fieldGenerated": 3997.5907654165057,
+      "dangerCost": 0,
+      "renewalBirths": 38
+    }
+  }
+]

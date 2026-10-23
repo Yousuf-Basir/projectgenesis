@@ -7,6 +7,7 @@ const tickCounter = document.getElementById("tick-counter");
 const canvasTickCounter = document.getElementById("canvas-tick-counter");
 const reincarnationCounter = document.getElementById("reincarnation-counter");
 const worldConfigHint = document.getElementById("world-config-hint");
+const colonyStatus = document.getElementById('colony-status');
 const speedSelect = document.getElementById("speed-select");
 const foodGrowthInput = document.getElementById("food-growth");
 const foodGrowthValue = document.getElementById("food-growth-value");
@@ -414,6 +415,11 @@ function syncControls(snapshot) {
     }
   }
   const guided = snapshot.guidedStructuralIntelligence ?? {};
+  const morphology=snapshot.bonding?.adaptiveMorphology;
+  if(colonyStatus) {
+    colonyStatus.hidden=!morphology?.enabled;
+    if(morphology?.enabled) colonyStatus.textContent=`${morphology.name??'Adaptive world'} · ${morphology.demoPhase??'custom field'} · ${morphology.colonies??0} colonies · largest ${morphology.largestComponent??0} members · ${morphology.moves??0} shape moves · ${morphology.renewalBirths??0} renewal births`;
+  }
   guidedInputEnabledInput.checked = Boolean(guided.enabled);
   guidedSupportEnabledInput.checked = Boolean(guided.supportedDevelopment?.enabled);
   guidedUnconditionalSupportEnabledInput.checked = Boolean(guided.supportedDevelopment?.unconditionalSupportEnabled);

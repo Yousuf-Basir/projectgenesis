@@ -1,0 +1,492 @@
+[
+  {
+    "variant": {
+      "name": "current",
+      "stationaryOperatingMultiplier": 0.25,
+      "edgeFlow": 0.75,
+      "collectiveMovementInterval": 5,
+      "environmentNavigationBias": 0,
+      "learningEnabled": true
+    },
+    "seed": 160103,
+    "selectionScore": 4.1136,
+    "tick": 600,
+    "population": 46,
+    "births": 53,
+    "deaths": 7,
+    "bonds": 114,
+    "facets": 130,
+    "food": 736,
+    "gateSightings": 12798,
+    "gateRelays": 240,
+    "gateConsensuses": 52,
+    "gateCompletions": 34,
+    "bondsFormed": 249,
+    "bondsBroken": 135,
+    "populationRetention": 1.917,
+    "score": 643.417,
+    "deathCauses": {
+      "energy exhaustion": 7
+    },
+    "largestComponent": 18,
+    "survivingBondMeanAge": 180.28947368421052,
+    "longestBondAge": 518,
+    "morphology": {
+      "moves": 132,
+      "shared": 2945.712392414639,
+      "transferLoss": 60.11657943703377,
+      "fieldIncome": 1340.4555396478756,
+      "fieldGenerated": 2237.5522862246776,
+      "dangerCost": 0
+    }
+  },
+  {
+    "variant": {
+      "name": "current",
+      "stationaryOperatingMultiplier": 0.25,
+      "edgeFlow": 0.75,
+      "collectiveMovementInterval": 5,
+      "environmentNavigationBias": 0,
+      "learningEnabled": true
+    },
+    "seed": 160104,
+    "selectionScore": 3.2353,
+    "tick": 600,
+    "population": 47,
+    "births": 60,
+    "deaths": 13,
+    "bonds": 44,
+    "facets": 25,
+    "food": 654,
+    "gateSightings": 14538,
+    "gateRelays": 2369,
+    "gateConsensuses": 61,
+    "gateCompletions": 27,
+    "bondsFormed": 258,
+    "bondsBroken": 214,
+    "populationRetention": 1.958,
+    "score": 360.333,
+    "deathCauses": {
+      "energy exhaustion": 13
+    },
+    "largestComponent": 8,
+    "survivingBondMeanAge": 150.3409090909091,
+    "longestBondAge": 476,
+    "morphology": {
+      "moves": 263,
+      "shared": 2421.720067620411,
+      "transferLoss": 49.42285852286755,
+      "fieldIncome": 1295.9889491575548,
+      "fieldGenerated": 2129.4430069376513,
+      "dangerCost": 0
+    }
+  },
+  {
+    "variant": {
+      "name": "balanced",
+      "stationaryOperatingMultiplier": 0.25,
+      "edgeFlow": 0.25,
+      "collectiveMovementInterval": 3,
+      "environmentNavigationBias": 3,
+      "learningEnabled": false
+    },
+    "seed": 160103,
+    "selectionScore": 3.9319,
+    "tick": 600,
+    "population": 55,
+    "births": 71,
+    "deaths": 16,
+    "bonds": 147,
+    "facets": 229,
+    "food": 737,
+    "gateSightings": 15815,
+    "gateRelays": 1901,
+    "gateConsensuses": 81,
+    "gateCompletions": 36,
+    "bondsFormed": 530,
+    "bondsBroken": 383,
+    "populationRetention": 2.292,
+    "score": 948.917,
+    "deathCauses": {
+      "energy exhaustion": 16
+    },
+    "largestComponent": 24,
+    "survivingBondMeanAge": 106.52380952380952,
+    "longestBondAge": 412,
+    "morphology": {
+      "moves": 173,
+      "shared": 1597.2893638382802,
+      "transferLoss": 32.59774211915113,
+      "fieldIncome": 1609.0916373768619,
+      "fieldGenerated": 2356.1117920619663,
+      "dangerCost": 0
+    }
+  },
+  {
+    "variant": {
+      "name": "balanced",
+      "stationaryOperatingMultiplier": 0.25,
+      "edgeFlow": 0.25,
+      "collectiveMovementInterval": 3,
+      "environmentNavigationBias": 3,
+      "learningEnabled": false
+    },
+    "seed": 160104,
+    "selectionScore": 3.5802,
+    "tick": 600,
+    "population": 44,
+    "births": 61,
+    "deaths": 17,
+    "bonds": 69,
+    "facets": 47,
+    "food": 737,
+    "gateSightings": 14655,
+    "gateRelays": 601,
+    "gateConsensuses": 77,
+    "gateCompletions": 19,
+    "bondsFormed": 219,
+    "bondsBroken": 150,
+    "populationRetention": 1.833,
+    "score": 432.083,
+    "deathCauses": {
+      "energy exhaustion": 17
+    },
+    "largestComponent": 11,
+    "survivingBondMeanAge": 116.2463768115942,
+    "longestBondAge": 452,
+    "morphology": {
+      "moves": 146,
+      "shared": 1487.231313834041,
+      "transferLoss": 30.35165946600265,
+      "fieldIncome": 1438.5221908333335,
+      "fieldGenerated": 2235.2483933227236,
+      "dangerCost": 0
+    }
+  },
+  {
+    "variant": {
+      "name": "frugal",
+      "stationaryOperatingMultiplier": 0.12,
+      "edgeFlow": 0.25,
+      "collectiveMovementInterval": 3,
+      "environmentNavigationBias": 3,
+      "learningEnabled": false
+    },
+    "seed": 160103,
+    "selectionScore": 4.0036,
+    "tick": 600,
+    "population": 57,
+    "births": 73,
+    "deaths": 16,
+    "bonds": 152,
+    "facets": 258,
+    "food": 693,
+    "gateSightings": 17320,
+    "gateRelays": 199,
+    "gateConsensuses": 67,
+    "gateCompletions": 44,
+    "bondsFormed": 656,
+    "bondsBroken": 504,
+    "populationRetention": 2.375,
+    "score": 1010.75,
+    "deathCauses": {
+      "energy exhaustion": 16
+    },
+    "largestComponent": 24,
+    "survivingBondMeanAge": 81.28947368421052,
+    "longestBondAge": 452,
+    "morphology": {
+      "moves": 154,
+      "shared": 1661.0989307814787,
+      "transferLoss": 33.89997817921772,
+      "fieldIncome": 1555.11352102321,
+      "fieldGenerated": 2239.4110170883478,
+      "dangerCost": 0
+    }
+  },
+  {
+    "variant": {
+      "name": "frugal",
+      "stationaryOperatingMultiplier": 0.12,
+      "edgeFlow": 0.25,
+      "collectiveMovementInterval": 3,
+      "environmentNavigationBias": 3,
+      "learningEnabled": false
+    },
+    "seed": 160104,
+    "selectionScore": 3.7756,
+    "tick": 600,
+    "population": 53,
+    "births": 54,
+    "deaths": 1,
+    "bonds": 140,
+    "facets": 230,
+    "food": 737,
+    "gateSightings": 17313,
+    "gateRelays": 1813,
+    "gateConsensuses": 50,
+    "gateCompletions": 13,
+    "bondsFormed": 264,
+    "bondsBroken": 124,
+    "populationRetention": 2.208,
+    "score": 813.833,
+    "deathCauses": {
+      "energy exhaustion": 1
+    },
+    "largestComponent": 22,
+    "survivingBondMeanAge": 149,
+    "longestBondAge": 517,
+    "morphology": {
+      "moves": 167,
+      "shared": 1977.2671716597633,
+      "transferLoss": 40.35239125837091,
+      "fieldIncome": 1326.552549996796,
+      "fieldGenerated": 2154.91538885007,
+      "dangerCost": 0
+    }
+  },
+  {
+    "variant": {
+      "name": "mobile",
+      "stationaryOperatingMultiplier": 0.25,
+      "edgeFlow": 0.25,
+      "collectiveMovementInterval": 1,
+      "environmentNavigationBias": 5,
+      "learningEnabled": false
+    },
+    "seed": 160103,
+    "selectionScore": 1.8585,
+    "tick": 600,
+    "population": 29,
+    "births": 29,
+    "deaths": 0,
+    "bonds": 26,
+    "facets": 11,
+    "food": 728,
+    "gateSightings": 9586,
+    "gateRelays": 6152,
+    "gateConsensuses": 33,
+    "gateCompletions": 0,
+    "bondsFormed": 96,
+    "bondsBroken": 70,
+    "populationRetention": 1.208,
+    "score": 155.083,
+    "deathCauses": {},
+    "largestComponent": 9,
+    "survivingBondMeanAge": 185.46153846153845,
+    "longestBondAge": 446,
+    "morphology": {
+      "moves": 73,
+      "shared": 1260.853971426325,
+      "transferLoss": 25.731713702578908,
+      "fieldIncome": 1292.7347935999685,
+      "fieldGenerated": 2150.681181563456,
+      "dangerCost": 0
+    }
+  },
+  {
+    "variant": {
+      "name": "mobile",
+      "stationaryOperatingMultiplier": 0.25,
+      "edgeFlow": 0.25,
+      "collectiveMovementInterval": 1,
+      "environmentNavigationBias": 5,
+      "learningEnabled": false
+    },
+    "seed": 160104,
+    "selectionScore": 2.7427,
+    "tick": 600,
+    "population": 52,
+    "births": 64,
+    "deaths": 12,
+    "bonds": 40,
+    "facets": 19,
+    "food": 605,
+    "gateSightings": 18340,
+    "gateRelays": 437,
+    "gateConsensuses": 72,
+    "gateCompletions": 14,
+    "bondsFormed": 370,
+    "bondsBroken": 330,
+    "populationRetention": 2.167,
+    "score": 334.667,
+    "deathCauses": {
+      "energy exhaustion": 12
+    },
+    "largestComponent": 15,
+    "survivingBondMeanAge": 124.15,
+    "longestBondAge": 352,
+    "morphology": {
+      "moves": 148,
+      "shared": 1374.2547921915234,
+      "transferLoss": 28.046016167175342,
+      "fieldIncome": 1810.9391106871299,
+      "fieldGenerated": 2330.830121162783,
+      "dangerCost": 0
+    }
+  },
+  {
+    "variant": {
+      "name": "gentle",
+      "stationaryOperatingMultiplier": 0.18,
+      "edgeFlow": 0.1,
+      "collectiveMovementInterval": 5,
+      "environmentNavigationBias": 3,
+      "learningEnabled": false
+    },
+    "seed": 160103,
+    "selectionScore": 3.9318,
+    "tick": 600,
+    "population": 63,
+    "births": 74,
+    "deaths": 11,
+    "bonds": 152,
+    "facets": 217,
+    "food": 737,
+    "gateSightings": 17176,
+    "gateRelays": 252,
+    "gateConsensuses": 96,
+    "gateCompletions": 35,
+    "bondsFormed": 404,
+    "bondsBroken": 252,
+    "populationRetention": 2.625,
+    "score": 969.5,
+    "deathCauses": {
+      "energy exhaustion": 11
+    },
+    "largestComponent": 21,
+    "survivingBondMeanAge": 82.49342105263158,
+    "longestBondAge": 494,
+    "morphology": {
+      "moves": 291,
+      "shared": 1000.7414937065339,
+      "transferLoss": 20.423295789932407,
+      "fieldIncome": 1541.4691636923335,
+      "fieldGenerated": 2231.2290474655933,
+      "dangerCost": 0
+    }
+  },
+  {
+    "variant": {
+      "name": "gentle",
+      "stationaryOperatingMultiplier": 0.18,
+      "edgeFlow": 0.1,
+      "collectiveMovementInterval": 5,
+      "environmentNavigationBias": 3,
+      "learningEnabled": false
+    },
+    "seed": 160104,
+    "selectionScore": 3.9174,
+    "tick": 600,
+    "population": 57,
+    "births": 74,
+    "deaths": 17,
+    "bonds": 91,
+    "facets": 69,
+    "food": 709,
+    "gateSightings": 19249,
+    "gateRelays": 1425,
+    "gateConsensuses": 105,
+    "gateCompletions": 38,
+    "bondsFormed": 363,
+    "bondsBroken": 272,
+    "populationRetention": 2.375,
+    "score": 629.5,
+    "deathCauses": {
+      "energy exhaustion": 17
+    },
+    "largestComponent": 17,
+    "survivingBondMeanAge": 131.64835164835165,
+    "longestBondAge": 476,
+    "morphology": {
+      "moves": 167,
+      "shared": 868.7470726993137,
+      "transferLoss": 17.72953209590742,
+      "fieldIncome": 1530.6856992889568,
+      "fieldGenerated": 2272.3542486158203,
+      "dangerCost": 0
+    }
+  },
+  {
+    "variant": {
+      "name": "learned",
+      "stationaryOperatingMultiplier": 0.18,
+      "edgeFlow": 0.25,
+      "collectiveMovementInterval": 3,
+      "environmentNavigationBias": 3,
+      "learningEnabled": true
+    },
+    "seed": 160103,
+    "selectionScore": 3.9264,
+    "tick": 600,
+    "population": 45,
+    "births": 57,
+    "deaths": 12,
+    "bonds": 71,
+    "facets": 73,
+    "food": 705,
+    "gateSightings": 17608,
+    "gateRelays": 740,
+    "gateConsensuses": 75,
+    "gateCompletions": 41,
+    "bondsFormed": 506,
+    "bondsBroken": 435,
+    "populationRetention": 1.875,
+    "score": 550.75,
+    "deathCauses": {
+      "energy exhaustion": 12
+    },
+    "largestComponent": 23,
+    "survivingBondMeanAge": 79.12676056338029,
+    "longestBondAge": 325,
+    "morphology": {
+      "moves": 113,
+      "shared": 1226.0010717996252,
+      "transferLoss": 25.020430036727813,
+      "fieldIncome": 1408.5955977216727,
+      "fieldGenerated": 2217.499857217019,
+      "dangerCost": 0
+    }
+  },
+  {
+    "variant": {
+      "name": "learned",
+      "stationaryOperatingMultiplier": 0.18,
+      "edgeFlow": 0.25,
+      "collectiveMovementInterval": 3,
+      "environmentNavigationBias": 3,
+      "learningEnabled": true
+    },
+    "seed": 160104,
+    "selectionScore": 3.0426,
+    "tick": 600,
+    "population": 57,
+    "births": 66,
+    "deaths": 9,
+    "bonds": 58,
+    "facets": 32,
+    "food": 609,
+    "gateSightings": 15683,
+    "gateRelays": 2286,
+    "gateConsensuses": 87,
+    "gateCompletions": 17,
+    "bondsFormed": 317,
+    "bondsBroken": 259,
+    "populationRetention": 2.375,
+    "score": 425.5,
+    "deathCauses": {
+      "energy exhaustion": 9
+    },
+    "largestComponent": 13,
+    "survivingBondMeanAge": 94.44827586206897,
+    "longestBondAge": 336,
+    "morphology": {
+      "moves": 173,
+      "shared": 1573.0960644314941,
+      "transferLoss": 32.10400131493066,
+      "fieldIncome": 1782.4181809836564,
+      "fieldGenerated": 2229.6583943590654,
+      "dangerCost": 0
+    }
+  }
+]
