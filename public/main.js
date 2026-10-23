@@ -424,6 +424,7 @@ function syncControls(snapshot) {
     const pantry=snapshot.bonding?.foodPantries;
     if(morphology?.enabled && pantry?.enabled) {
       colonyStatus.textContent+=` · pantry ${(pantry.stored??0).toFixed(1)} · used ${((pantry.memberDelivered??0)+(pantry.bondDelivered??0)).toFixed(1)}`;
+      if(pantry.adaptiveReuseEnabled)colonyStatus.textContent+=` · routed ${(pantry.routed??0).toFixed(1)}`;
       colonyStatus.title='Colored grains inside closed loops are saved harvest: green feeds members, blue is slower-spoiling food, red fuels bond upkeep. Dots below isolated members are retained personal stores. Pantry and used values are energy units.';
     }
   }

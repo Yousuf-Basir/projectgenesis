@@ -329,12 +329,20 @@ export class Renderer {
       if (!source || !target) continue;
       if (Math.abs(source.x - target.x) > 2 || Math.abs(source.y - target.y) > 2) continue;
       const alpha = Math.min(0.9, transfer.ttl / 6);
-      this.context.strokeStyle = `rgba(127, 255, 212, ${alpha})`;
+      this.context.save();
+      if(transfer.kind?.startsWith('pantry-'))this.context.globalAlpha=alpha;
+      this.context.strokeStyle = transfer.kind?.startsWith('pantry-') && RESOURCE_COLORS[transfer.resource]
+        ? RESOURCE_COLORS[transfer.resource] : `rgba(127, 255, 212, ${alpha})`;
       this.context.lineWidth = Math.max(1, cellSize * 0.12);
       this.context.beginPath();
-      this.context.moveTo(offsetX + source.x * cellSize + cellSize / 2, offsetY + source.y * cellSize + cellSize / 2);
-      this.context.lineTo(offsetX + target.x * cellSize + cellSize / 2, offsetY + target.y * cellSize + cellSize / 2);
+      if(source.id===target.id && transfer.kind==='pantry-release') {
+        this.context.arc(offsetX+(target.x+.5)*cellSize,offsetY+(target.y+.5)*cellSize,cellSize*.39,-Math.PI/2,Math.PI/2);
+      } else {
+        this.context.moveTo(offsetX + source.x * cellSize + cellSize / 2, offsetY + source.y * cellSize + cellSize / 2);
+        this.context.lineTo(offsetX + target.x * cellSize + cellSize / 2, offsetY + target.y * cellSize + cellSize / 2);
+      }
       this.context.stroke();
+      this.context.restore();
     }
 
     for (const fire of world.fires ?? []) {

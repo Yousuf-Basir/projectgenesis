@@ -419,6 +419,7 @@ export class Organism {
       sharedState: this.sharedState,
       lastConsumedResource: this.lastConsumedResource,
       foodPantry: this.foodPantry ? {...this.foodPantry} : null,
+      pantryEnergyTrend: Number((this.pantryEnergyTrend??0).toFixed(3)),
       signalOutput: Number((this.brainExecution?.effectors.signal ?? 0).toFixed(2)),
       movementDecision: this.movementDecision,
       guidedInputSignal: this.guidedInputSignal ?? 0,

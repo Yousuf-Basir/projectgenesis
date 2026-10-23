@@ -2,6 +2,53 @@
 
 Branch: `codex/adaptive-morphology-world`. Starting reference: `2371e5b` (aligned energy budgets). The two unrelated existing worktree items, `research-results/guided-image-memory-task.json` and `REINCARNATION_DEPLOYMENT_HANDOFF.md`, are not part of this change.
 
+## Latest update — visible routing and proactive reuse
+
+This supersedes the original `516bfed` behavior described below. A live cycle-12 check found five empty chambers while all saved food was held by three members outside closed loops; tiny 1.7-pixel markers compounded the problem. Food was later consumed, but the display did not meet the intended visual experience.
+
+Changes:
+
+- Food chips are now about **3.9 pixels** on the normal 13-pixel grid, with dark borders and brighter loose-owner markers. A denser placement grid fits a real marker inside even a minimal cell triangle. Chips stay inside their actual polygon; an empty pantry remains empty. Different colors are interleaved when space is limited rather than hiding all blue/red behind green.
+- Existing stores move through **intact adjacent bonds**, at most **one hop per tick**, toward reachable closed chambers. Sending budgets are snapshotted so new arrivals cannot be forwarded twice in the same tick. Per-sender transport is capped at 0.5 energy/tick, receiver capacity remains unchanged, and each crossing uses the existing 98% efficiency. Routes use graph-distance advertisements from actual chambers; this is an authored graph-routing rule, not learned navigation or image recognition. No world coordinates or remote energy wallet are used.
+- Connected scouts can capture otherwise-overflowing food when they have a real bond path to a chamber, rather than only while sitting on its boundary. Isolated organisms cannot use an imaginary distant pantry. A full destination can block delivery; disconnected or opened components keep their owner-held food but cannot teleport it inward.
+- Each member tracks its energy change against the preceding post-pantry balance, smoothed with a bounded exponential average (0.8 previous / 0.2 change). When it is losing energy, edible reserves can restore the existing **24-unit survival floor**, instead of waiting until only two operating payments remain. This never tops the body up to its reproduction trigger. Owners eat first; nearby donors retain food needed for their own current operating target.
+- Red still pays actual upkeep first. If body surplus cannot fund the minimal upkeep buffer, blue and then green can pay the remaining real bill, without spending food needed for immediate member support. Already-severed bonds are not recreated; normal death, adjacency and reserve depletion can still break them.
+- Colored traces show routing and maintenance funding; a brief half-ring shows a member using its own pouch. Marker counts are capped, and rendering/headless/display speed do not alter the physics. The status line adds `routed`. This sums **energy delivered over hops**, not newly created energy or unique food items.
+
+### Fresh matched 2,000-tick comparisons
+
+Both legacy controls were rerun under the current code with adaptive reuse disabled, and **exactly reproduced both recorded world endpoints**. The same pantry overflow-only policy, food production, field ceiling, seeds and first two recipes are retained.
+
+| Initial seed | Policy | World-2 members | World-2 bonds | World-2 starvation deaths |
+|---|---|---:|---:|---:|
+|160104|Previous pantry|234|274|94|
+|160104|Routing + proactive reuse|123|161|16|
+|160121|Previous pantry|33|49|14|
+|160121|Routing + proactive reuse|211|283|37|
+
+Aggregate final bonds are **444 versus 323**, but this hides a large regression on the first seed and a large gain on the second. Do not call this a universal survival improvement. Counts of starvation deaths are not normalized survival rates, particularly when populations differ so much.
+
+On seed 160104's second world, 136.85 energy-hop units were routed, 68.20 units fed members and 15.96 units funded bonds. There were **292 individual green/blue maintenance payments**. On seed 160121, the corresponding values were 29.75, 34.41 and 7.71, with 66 green/blue payments. The payments are not counterfactual proof that 292 or 66 distinct bonds were rescued. Both runs assert the full pantry mass/energy ledger, including shipping loss, spoilage, inherited opening inventory and deaths.
+
+Selected reports: [160104](research-results/aligned-budgets-160104-pantry-routed.json), [160121](research-results/aligned-budgets-160121-pantry-routed.json). Fresh controls: [160104](research-results/aligned-budgets-160104-pantry-legacy-control.json), [160121](research-results/aligned-budgets-160121-pantry-legacy-control.json).
+
+```powershell
+$env:GENESIS_FOOD_PANTRIES='1'
+$env:GENESIS_PANTRY_REUSE='1' # '0' keeps previous physics, but clearer graphics
+npm start
+node test/pantry-routing.mjs
+node test/food-pantries.mjs
+node test/morphology-speed-parity.mjs
+node scripts/compare-aligned-budgets.mjs 160104 on pantry-routed pantry
+node scripts/compare-aligned-budgets.mjs 160121 on pantry-routed pantry
+node scripts/compare-aligned-budgets.mjs 160104 on pantry-legacy-control pantry 0 legacy
+node scripts/compare-aligned-budgets.mjs 160121 on pantry-legacy-control pantry 0 legacy
+```
+
+Routing does not guarantee constantly full chambers, delivery through a broken path, or timely feeding across arbitrarily many hops. Immediate eating is limited to owner/adjacent stores, and shipping toward chambers takes real ticks. Local outward demand propagation to serve distant hungry tails is a possible later step, not something this version pretends to implement.
+
+## Original implementation record — `516bfed`
+
 ## What is visible
 
 Small green, blue and red grains appear **inside actual closed bond loops** after their boundary members collect surplus harvest. Counts and partial-grain brightness fall as inventory is consumed or spoils. A quiet legend below the canvas explains the colors; the existing small status line shows current pantry energy and cumulative energy used. These are coarse quantity indicators, not one sprite per original world-food tile.
@@ -22,7 +69,7 @@ These are deliberately authored ecological rules, not evolved food preferences o
 
 ## Conservative default
 
-Only harvest that would otherwise exceed the member's energy capacity is stored by default. Body survival, reproduction energy and actual food availability are not taxed just to make the pantry look full. A node can hold at most half a base meal of energy (`foodEnergy × 0.5`, normally 15 units). Storage requires a real closed loop at collection time.
+Only harvest that would otherwise exceed the member's energy capacity is stored by default. Body survival, reproduction energy and actual food availability are not taxed just to make the pantry look full. A node can hold at most half a base meal of energy (`foodEnergy × 0.5`; the value follows the generated world's food settings). Originally, storage required a real closed loop at collection time; the latest update also permits an intact path to one.
 
 `harvestFraction` also supports saving a fraction of paid surplus above the reproduction trigger; it was tested at 20% but defaults to **zero**. That variant delivered substantial stored energy but worsened both final bond-count comparisons. It is retained as an explicit parameter, not the live policy.
 
@@ -74,10 +121,10 @@ node test/aligned-budgets.mjs
 node test/morphology-speed-parity.mjs
 node test/renderer-heatmap.mjs
 npm test
-node scripts/compare-aligned-budgets.mjs 160104 on pantry-overflow pantry
-node scripts/compare-aligned-budgets.mjs 160121 on pantry-overflow pantry
+node scripts/compare-aligned-budgets.mjs 160104 on pantry-overflow pantry 0 legacy
+node scripts/compare-aligned-budgets.mjs 160121 on pantry-overflow pantry 0 legacy
 # Reproduce the more intrusive, rejected deposit policy:
-node scripts/compare-aligned-budgets.mjs 160104 on pantry pantry 0.2
+node scripts/compare-aligned-budgets.mjs 160104 on pantry pantry 0.2 legacy
 ```
 
 Tests cover generic square/triangle geometry, shared-corner non-duplication, paid deposits and withdrawals, differentiated spoilage, red maintenance, overflow correction, opened enclosures, inheritance without copying, dead-owner accounting, grain containment, three colors, empty/near-empty rendering, disabled mode, and display-speed parity. Browser screenshot verification was unavailable because the browser-control runtime failed to initialize; rendering was verified through deterministic canvas-command fixtures, not claimed as an observed screenshot.

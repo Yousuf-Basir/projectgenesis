@@ -43,10 +43,12 @@ const polygon=[{x:0,y:0},{x:20,y:0},{x:10,y:20}];
 const full=pantryGrains(polygon,{GREEN:4,BLUE:4,RED:4},1),empty=pantryGrains(polygon,{GREEN:0,BLUE:0,RED:0},1);
 assert.equal(full.length,12);assert.equal(empty.length,0);assert.equal(new Set(full.map(g=>`${g.x},${g.y}`)).size,full.length);
 assert.equal(pantryGrains(polygon,{GREEN:1e-8},1).length,0,'near-empty stores must not leave permanent ghost grains');
+assert.ok(pantryGrains([{x:0,y:0},{x:13,y:0},{x:0,y:13}],{GREEN:1},1,5.2).length>0,
+ 'even the smallest cell triangle must fit a clearly visible food marker');
 assert.ok(full.every(g=>g.x>0&&g.y>0&&g.y<2*Math.min(g.x,20-g.x)),'grains remain inside the actual enclosure');
 const fills=[];const context={save(){},restore(){},beginPath(){},moveTo(){},lineTo(){},closePath(){},fill(){},fillRect(){fills.push(this.fillStyle);}};
 drawPantries(context,{enabled:true,grainEnergy:1,chambers:[{points:polygon,contents:{GREEN:1,BLUE:1,RED:1}}]},1);
-assert.equal(fills.length,3);assert.equal(new Set(fills).size,3);
+assert.equal(fills.filter(color=>color!=='#03131b').length,3);assert.equal(new Set(fills).size,4);
 sim.config.bond.foodPantries.enabled=false;assert.equal(pantrySnapshot(sim).enabled,false);
 console.log('Generic closed pantries, paid color-specific storage/use, overflow, breakup, carry, losses and visible grains passed.');
 process.exit(0);

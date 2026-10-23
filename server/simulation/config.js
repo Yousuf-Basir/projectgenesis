@@ -419,6 +419,8 @@ export const BASE_CONFIG = {
     },
     foodPantries: {
       enabled: false,
+      adaptiveReuseEnabled: true,
+      transferPerTick: 0.5,
       maximumLoopSize: 8,
       capacityMealsPerMember: 0.5,
       harvestFraction: 0,

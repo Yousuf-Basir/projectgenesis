@@ -10,6 +10,7 @@ const sim=new Simulation();sim.stop();sim.headlessObservationMode=true;
 Object.assign(sim.config.bond.adaptiveMorphology,MORPHOLOGY_PROFILES['adaptive-foraging'],{alignedBudgetsEnabled:aligned});
 sim.config.bond.foodPantries.enabled=process.argv[5]==='pantry';
 if(process.argv[6]!==undefined)sim.config.bond.foodPantries.harvestFraction=Number(process.argv[6]);
+sim.config.bond.foodPantries.adaptiveReuseEnabled=process.argv[7]!=='legacy';
 const controller=new ReincarnationController({seed,adaptiveMorphologyEnabled:true});controller.applyRecipe(sim,controller.chooseRecipe());
 const rows=[];let inherited=[];
 for(let cycle=0;cycle<2;cycle++) {
@@ -26,6 +27,11 @@ for(let cycle=0;cycle<2;cycle++) {
     const reference={160104:[166,201],160121:[51,66]}[seed];
     if(reference)assert.deepEqual([sim.organisms.length,sim.bonds.size],reference,'disabled mode must reproduce the committed reference');
    }
+   if(sim.config.bond.foodPantries.enabled && !sim.config.bond.foodPantries.adaptiveReuseEnabled
+    && sim.config.bond.foodPantries.harvestFraction===0 && tick===1000) {
+    const reference={160104:[[33,42],[234,274]],160121:[[39,36],[33,49]]}[seed];
+    if(reference)assert.deepEqual([sim.organisms.length,sim.bonds.size],reference[cycle],'legacy pantry must reproduce its recorded reference');
+   }
    const row={cycle,tick,...controller.score(sim),breaks:{...sim.bondBreakReasons},deaths:{...sim.energyEconomics.deaths},
     bondFunding:sim.energyEconomics.allocations.bondFunding,emergencyShared:sim.morphologyStats.emergencyShared??0,renewalBirths:sim.morphologyStats.renewalBirths??0,
     inheritedEdgesRemaining:inherited.filter(key=>sim.bonds.has(key)).length};
@@ -33,6 +39,8 @@ for(let cycle=0;cycle<2;cycle++) {
     overflowSaved:pantry.overflowSaved,memberDelivered:pantry.memberDelivered,bondDelivered:pantry.bondDelivered,
     spoiled:pantry.spoiled,deathLost:pantry.deathLost,transferLoss:pantry.transferLoss,contents:pantry.contents,
     closedChambers:pantry.chambers.length,filledChambers:pantry.chambers.filter(c=>Object.values(c.contents).some(v=>v>.01)).length};
+   if(pantry.enabled)Object.assign(row.pantry,{routed:pantry.routed??0,routingTransfers:pantry.routingTransfers??0,
+    anticipatoryDelivered:pantry.anticipatoryDelivered??0,foodBondRescues:pantry.foodBondRescues??0});
    rows.push(row);console.log(JSON.stringify({seed,aligned,...row}));
    await writeFile(`research-results/aligned-budgets-${seed}-${label}.json`,JSON.stringify({seed,aligned,label,rows},null,2));
   }
