@@ -1,4 +1,5 @@
 import { createServer } from "node:http";
+import { randomUUID } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { extname, join, normalize } from "node:path";
 import { DEFAULT_CONFIG } from "./simulation/config.js";
@@ -7,6 +8,7 @@ import { ExperimentRunner } from "./experiments/experiment-runner.js";
 import { GuidedImageTaskRunner } from "./experiments/guided-image-task-runner.js";
 import { ReincarnationController } from "./simulation/reincarnation.js";
 
+const serverSessionId = randomUUID();
 const simulation = new Simulation(DEFAULT_CONFIG);
 const reincarnation = new ReincarnationController({ cycleTicks: 1000, seed: DEFAULT_CONFIG.universe.initialSeed, enabled: true });
 const originalSimulationStep = simulation.step.bind(simulation);
@@ -76,6 +78,9 @@ const MIME_TYPES = {
 };
 
 function sendJson(response, statusCode, payload) {
+  if (payload && typeof payload === "object" && payload.version !== undefined) {
+    payload = { ...payload, serverSessionId };
+  }
   response.writeHead(statusCode, {
     "Content-Type": "application/json; charset=utf-8",
     "Cache-Control": "no-store"

@@ -68,6 +68,7 @@ let currentSnapshot = null;
 let selectedOrganismId = null;
 let snapshotRequestInFlight = false;
 let lastRenderedSnapshotVersion = -1;
+let lastServerSessionId = null;
 
 function renderGuidedTaskStatus(status) {
   if (!guidedTaskStatus || !status) return;
@@ -463,6 +464,10 @@ async function loadSnapshot() {
   const timeout = window.setTimeout(() => controller.abort(), 4000);
   try {
     const snapshot = await fetchJson("/api/state", { signal: controller.signal });
+    if (snapshot.serverSessionId && snapshot.serverSessionId !== lastServerSessionId) {
+      lastServerSessionId = snapshot.serverSessionId;
+      lastRenderedSnapshotVersion = -1;
+    }
     const version = Number(snapshot.version ?? 0);
     if (version >= lastRenderedSnapshotVersion) {
       lastRenderedSnapshotVersion = version;
