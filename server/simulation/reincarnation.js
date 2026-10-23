@@ -3,7 +3,7 @@
 import { Organism } from "./organism.js";
 
 export class ReincarnationController {
-  constructor({ cycleTicks = 1000, seed = 160103, enabled = true, maximumHistory = 24, evolutionEnabled = true, workRewardsEnabled = true, adaptiveShrinkingEnabled = false, energyConservationEnabled = false, harvestMemberSupportEnabled = false } = {}) {
+  constructor({ cycleTicks = 1000, seed = 160103, enabled = true, maximumHistory = 24, evolutionEnabled = true, workRewardsEnabled = true, adaptiveShrinkingEnabled = false, energyConservationEnabled = false, harvestMemberSupportEnabled = false, adaptiveMorphologyEnabled = false } = {}) {
     this.cycleTicks = cycleTicks;
     this.seed = seed;
     this.enabled = enabled;
@@ -23,6 +23,7 @@ export class ReincarnationController {
     this.adaptiveShrinkingEnabled = adaptiveShrinkingEnabled;
     this.energyConservationEnabled = energyConservationEnabled;
     this.harvestMemberSupportEnabled = harvestMemberSupportEnabled;
+    this.adaptiveMorphologyEnabled = adaptiveMorphologyEnabled;
     this.searchState = seed >>> 0;
     this.inheritance = { descendants: 0, mutations: 0 };
   }
@@ -184,6 +185,7 @@ export class ReincarnationController {
     simulation.config.bond.adaptiveShrinking.enabled = this.adaptiveShrinkingEnabled;
     simulation.config.bond.energyConservation.enabled = this.energyConservationEnabled;
     simulation.config.bond.harvestMemberSupport.enabled = this.harvestMemberSupportEnabled;
+    simulation.config.bond.adaptiveMorphology.enabled = this.adaptiveMorphologyEnabled;
     simulation.config.bond.dormantBonds.enabled = Boolean(recipe.dormantBonds);
     simulation.config.collectiveWork.gateDiscovery.enabled = Boolean(recipe.gateDiscovery);
     simulation.config.collectiveWork.navigation.enabled = Boolean(recipe.navigation);
@@ -214,6 +216,7 @@ export class ReincarnationController {
           random: simulation.random, generation: parent.generation + 1, mutation,
           nodeTrace: Math.min(0.2, (parent.nodeTrace ?? 0) * 0.1) });
         this.inheritance.descendants += 1;
+        simulation.organisms[index].morphologyPreferences = Object.fromEntries(Object.entries(parent.morphologyPreferences??{}).map(([key,value])=>[key,value*0.1]));
         if (mutation) this.inheritance.mutations += 1;
       }
     }
@@ -291,6 +294,7 @@ export class ReincarnationController {
       adaptiveShrinkingEnabled: this.adaptiveShrinkingEnabled,
       energyConservationEnabled: this.energyConservationEnabled,
       harvestMemberSupportEnabled: this.harvestMemberSupportEnabled,
+      adaptiveMorphologyEnabled: this.adaptiveMorphologyEnabled,
       inheritance: this.inheritance,
       ticksRemaining: Math.max(0, this.cycleTicks - tick),
       nextReason: this.nextReason,

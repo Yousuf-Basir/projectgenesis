@@ -80,6 +80,16 @@ export class Renderer {
           cellSize
         );
 
+        const field=snapshot.morphologyEnvironment;
+        if(field) {
+          const row=Math.min(field.size-1,Math.floor(y/world.height*field.size));
+          const column=Math.min(field.size-1,Math.floor(x/world.width*field.size));
+          this.context.fillStyle=`rgba(70,190,140,${field.reward[row][column]*0.12})`;
+          this.context.fillRect(x*cellSize,y*cellSize,cellSize,cellSize);
+          this.context.fillStyle=`rgba(235,65,65,${field.danger[row][column]*0.3})`;
+          this.context.fillRect(x*cellSize,y*cellSize,cellSize,cellSize);
+        }
+
         if (world.tiles[y][x] === "WALL") {
           const inset = cellSize * 0.12;
           this.context.fillStyle = TILE_COLORS.WALL;

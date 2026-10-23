@@ -417,6 +417,18 @@ export const BASE_CONFIG = {
       maximumMealFraction: 0.25,
       efficiency: 0.98
     },
+    adaptiveMorphology: {
+      enabled: false,
+      learningEnabled: true,
+      reshapingEnabled: true,
+      stationaryOperatingMultiplier: 0.25,
+      edgeFlow: 0.75,
+      flowEfficiency: 0.98,
+      fieldBudgetPerTick: 4,
+      cellCapacity: 12,
+      maximumFieldHarvest: 0.8,
+      dangerCost: 2
+    },
     collectiveMemory: {
       enabled: false,
       maximumHops: 6,

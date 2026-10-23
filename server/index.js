@@ -7,10 +7,12 @@ import { Simulation } from "./simulation/simulation.js";
 import { ExperimentRunner } from "./experiments/experiment-runner.js";
 import { GuidedImageTaskRunner } from "./experiments/guided-image-task-runner.js";
 import { ReincarnationController } from "./simulation/reincarnation.js";
+import { setMorphologyField } from "./simulation/adaptive-morphology.js";
 
 const serverSessionId = randomUUID();
 const simulation = new Simulation(DEFAULT_CONFIG);
-const reincarnation = new ReincarnationController({ cycleTicks: 1000, seed: DEFAULT_CONFIG.universe.initialSeed, enabled: true });
+const reincarnation = new ReincarnationController({ cycleTicks: 1000, seed: DEFAULT_CONFIG.universe.initialSeed, enabled: true,
+  adaptiveMorphologyEnabled: process.env.GENESIS_ADAPTIVE_MORPHOLOGY !== '0' });
 const originalSimulationStep = simulation.step.bind(simulation);
 simulation.stop();
 simulation.step = () => {
@@ -289,6 +291,14 @@ async function handleApi(request, response, url) {
     return true;
   }
 
+  if (request.method === 'POST' && url.pathname === '/api/environment-field') {
+    try {
+      const body=await readRequestBody(request);
+      setMorphologyField(simulation,body.reward,body.danger,body.source??'uploaded');
+      sendJson(response,200,simulation.getSnapshot());
+    } catch(error) { sendJson(response,400,{error:error.message}); }
+    return true;
+  }
   sendJson(response, 404, { error: "API route not found." });
   return true;
 }

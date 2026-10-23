@@ -114,7 +114,7 @@ export class Organism {
     return Number.isFinite(value) ? clamp(value, 0, 1.8) : null;
   }
 
-  act({ world, occupiedKeys, config, ecologyConfig, signalConfig, environmentMemoryConfig, guidedInput = null, guidedInputConfig = {}, brainExecutor, coupled, collectiveStrideMultiplier = 1, deferOrdinaryHarvest = false, harvestRestraint = null, neighborStates = [], structuralFocus = null, collectiveWorkCue = 0, collectiveWorkFields = [], courierTarget = null, memoryDirectionScores = null, energyConservation = null }) {
+  act({ world, occupiedKeys, config, ecologyConfig, signalConfig, environmentMemoryConfig, guidedInput = null, guidedInputConfig = {}, brainExecutor, coupled, collectiveStrideMultiplier = 1, deferOrdinaryHarvest = false, harvestRestraint = null, neighborStates = [], structuralFocus = null, collectiveWorkCue = 0, collectiveWorkFields = [], courierTarget = null, memoryDirectionScores = null, energyConservation = null, stationaryOperatingMultiplier = 1 }) {
     let consumedEnergy = 0;
     let consumedResource = null;
     const energyFlow = { income: { food: 0, gateWork: 0 }, expenses: { movement: 0, maintenance: 0, perception: 0, bonds: 0, bondReserveMaintenance: 0, gateWork: 0, memory: 0, signals: 0, idle: 0 }, losses: { capacityOverflow: 0, deathStoredEnergy: 0 } };
@@ -248,7 +248,8 @@ export class Organism {
     const perceptionCost = (strengths[17] ?? 0) * config.perceptionMaintenance;
     const couplingCost = coupled ? config.couplingMaintenance : 0;
 
-    const movementCost = config.moveCost * collectiveStrideMultiplier * (energyConservation?.operatingCostMultiplier ?? 1);
+    const movementCost = config.moveCost * collectiveStrideMultiplier * (energyConservation?.operatingCostMultiplier ?? 1)
+      * (canMove ? 1 : stationaryOperatingMultiplier);
     this.energy -= movementCost + maintenanceCost + perceptionCost + couplingCost;
     energyFlow.expenses.movement += movementCost;
     energyFlow.expenses.maintenance += maintenanceCost;
@@ -412,6 +413,8 @@ export class Organism {
       },
       mutation: this.mutation,
       perception: this.perception,
+      morphologyPreferences: this.morphologyPreferences ?? {},
+      lastMorphologyDirection: this.lastMorphologyDirection ?? null,
       persistentState: this.getPersistentState(),
       sharedState: this.sharedState,
       lastConsumedResource: this.lastConsumedResource,

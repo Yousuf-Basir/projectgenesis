@@ -9,6 +9,7 @@ import { shrinkAtRiskComponents } from "./adaptive-shrinking.js";
 import { updateEnergyConservation } from "./energy-conservation.js";
 import { supportFromNeighbourSurplus } from "./neighbour-support.js";
 import { shareFreshHarvest } from "./harvest-member-support.js";
+import { prepareAdaptiveMorphology, applyMorphologyEnvironment } from "./adaptive-morphology.js";
 import { World } from "./world.js";
 import { average, clamp, createSeededRandom, normalizeSeed } from "./utils.js";
 import { createDefaultSurvivalCueGrid, createGuidedInput, setGuidedGrid, setGuidedPattern, serializeGuidedInput } from "./guided-input.js";
@@ -273,6 +274,7 @@ export class Simulation {
     const coupledIds = this.getCoupledIds();
     this.updateComponentLifecycle();
     this.updateGateDiscovery();
+    prepareAdaptiveMorphology(this);
     updateEnergyConservation(this);
     const collectiveStrideEligibleIds = this.getCollectiveStrideEligibleIds();
     const migrationTransportEligibleIds = this.getMigrationTransportEligibleIds();
@@ -289,6 +291,8 @@ export class Simulation {
 
       occupiedBefore.delete(`${organism.x},${organism.y}`);
       const result = organism.act({
+        stationaryOperatingMultiplier: this.config.bond.adaptiveMorphology?.enabled && coupledIds.has(organism.id)
+          ? this.config.bond.adaptiveMorphology.stationaryOperatingMultiplier : 1,
         energyConservation: organism.energyConserving ? this.config.bond.energyConservation : null,
         world: this.world,
         occupiedKeys: occupiedBefore,
@@ -315,6 +319,8 @@ export class Simulation {
         brainExecutor: this.brainExecutor
       });
 
+      organism.lastConsumedEnergy = result.consumedEnergy ?? 0;
+      applyMorphologyEnvironment(this, organism);
       let structuralAllocation = 0;
       let externalBondAllocation = 0;
       let facetSharing = 0;
@@ -1665,6 +1671,8 @@ export class Simulation {
   }
 
   reset() {
+    this.morphologyStock = this.morphologyField?.reward.map(row=>row.map(()=>0));
+    this.morphologyStats = { moves:0,shared:0,transferLoss:0,fieldIncome:0,fieldGenerated:0,dangerCost:0 };
     this.harvestSupportStats = { transfers: 0, delivered: 0, lost: 0 };
     this.neighbourSupportStats = { transfers: 0, delivered: 0, lost: 0 };
     this.conservationHistory = new Map();
@@ -4043,6 +4051,7 @@ export class Simulation {
   }
 
   moveCompounds() {
+    if (this.config.bond.adaptiveMorphology?.enabled && this.simulationTicks % 5 !== 0) return;
     const byId = new Map(this.organisms.filter((organism) => organism.alive).map((organism) => [organism.id, organism]));
     const occupied = new Set(this.organisms.filter((organism) => organism.alive).map((organism) => `${organism.x},${organism.y}`));
 
@@ -4405,6 +4414,10 @@ export class Simulation {
         const reason = deadMember ? `organism #${deadMember.id} died: ${deadMember.deathReason ?? "unknown cause"}`
           : !first || !second ? "member was removed" : "members separated";
         this.recordBondBreak(bond, reason, deadMember ? `member died: ${deadMember.deathReason ?? "unknown cause"}` : reason);
+      } else if (this.config.bond.adaptiveMorphology?.enabled && (bond.reserve ?? 0)>0) {
+        // Maintaining a physical connection pays upkeep each tick; a transient
+        // bind output dip need not erase an already funded connection.
+        bond.strength = Math.min(1,bond.strength+this.config.bond.repairPerTick*0.25);
       } else if (!this.bondCandidates.has(key)) {
         const dormantPolicy = this.config.bond.dormantBonds;
         const wakeCue = dormantPolicy?.enabled
@@ -4625,6 +4638,7 @@ export class Simulation {
     const totalFacetReserve = facets.reduce((total, facet) => total + facet.reserve, 0);
     return {
       version: this.snapshotVersion,
+      morphologyEnvironment: this.config.bond.adaptiveMorphology?.enabled ? this.morphologyField : null,
       world: {
         width: this.world.width,
         height: this.world.height,
@@ -4759,12 +4773,13 @@ export class Simulation {
       hazards: { ...this.config.hazards },
       signal: { ...this.config.signal },
       bonding: {
+        ...this.config.bond,
+        adaptiveMorphology: { ...this.config.bond.adaptiveMorphology, ...this.morphologyStats },
         harvestMemberSupport: { ...this.config.bond.harvestMemberSupport, ...this.harvestSupportStats },
         neighbourSurplusSupport: { ...this.config.bond.neighbourSurplusSupport, ...this.neighbourSupportStats },
         energyConservation: { ...this.config.bond.energyConservation, memberTicks: this.conservationMemberTicks },
         adaptiveShrinking: { ...this.config.bond.adaptiveShrinking, ...this.shrinkStats },
         usefulWorkReward: { ...this.config.bond.usefulWorkReward },
-        ...this.config.bond,
         resourceFundedSurvival: {
           ...this.config.bond.resourceFundedSurvival
         },

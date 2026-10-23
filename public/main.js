@@ -405,6 +405,7 @@ function syncControls(snapshot) {
       const discovery = currentRecipe.gateDiscovery ? "gate sensing on" : "gate sensing off";
       worldConfigHint.textContent = `World ${snapshot.settings.worldNumber} · seed ${snapshot.settings.universeSeed} · ${recipe} · ${discovery} · ${navigation} · ${carryText}`;
       const inherited = reincarnation.inheritance;
+      if (snapshot.bonding?.adaptiveMorphology?.enabled) worldConfigHint.textContent += ` · adaptive shape · field: ${snapshot.morphologyEnvironment?.source??'initializing'}`;
       if (inherited?.descendants) worldConfigHint.textContent += ` · descendants ${inherited.descendants} (${inherited.mutations} mutations)`;
       const mutation = currentRecipe.mutation;
       worldConfigHint.title = mutation
@@ -418,6 +419,11 @@ function syncControls(snapshot) {
   guidedUnconditionalSupportEnabledInput.checked = Boolean(guided.supportedDevelopment?.unconditionalSupportEnabled);
   guidedPatternInput.value = ["horizontal-boundary", "vertical-boundary", "closed-outline", "blank"].includes(guided.pattern) ? guided.pattern : "horizontal-boundary";
   renderGuidedInput(guided);
+  if (snapshot.morphologyEnvironment) {
+    const field=snapshot.morphologyEnvironment;
+    renderGuidedInput({grid:field.reward,size:field.size,enabled:true,source:field.source,pattern:'environment'});
+    guidedInputNote.textContent=`Environment: ${field.source}. Image brightness supplies reward; red excess marks danger. Rewards replenish from a finite external budget.`;
+  }
   const resources = snapshot.ecology.resources ?? {};
   const resourceSummary = `Resources G:${resources.GREEN ?? 0} B:${resources.BLUE ?? 0} R:${resources.RED ?? 0}`;
   const fertilitySummary = snapshot.ecology.localFertility
@@ -608,7 +614,13 @@ guidedImageUploadInput.addEventListener("change", () => {
       const offset = (y * 16 + x) * 4;
       return Number(((pixels[offset] * 0.299 + pixels[offset + 1] * 0.587 + pixels[offset + 2] * 0.114) / 255).toFixed(4));
     }));
-    postJson("/api/guided-input", { grid, source: file.name });
+    if (currentSnapshot?.bonding?.adaptiveMorphology?.enabled) {
+      const danger=Array.from({length:16},(_,y)=>Array.from({length:16},(_,x)=>{
+        const offset=(y*16+x)*4;
+        return Math.max(0,(pixels[offset]-Math.max(pixels[offset+1],pixels[offset+2]))/255);
+      }));
+      postJson('/api/environment-field',{reward:grid,danger,source:file.name});
+    } else postJson("/api/guided-input", { grid, source: file.name });
   };
   image.src = URL.createObjectURL(file);
 });
