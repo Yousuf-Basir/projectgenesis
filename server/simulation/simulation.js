@@ -9,6 +9,7 @@ import { shrinkAtRiskComponents } from "./adaptive-shrinking.js";
 import { updateEnergyConservation } from "./energy-conservation.js";
 import { supportFromNeighbourSurplus } from "./neighbour-support.js";
 import { shareFreshHarvest } from "./harvest-member-support.js";
+import { prepareFoodPantries, storeHarvest, loseDeadPantry, pantrySnapshot } from './food-pantries.js';
 import { prepareAdaptiveMorphology, applyMorphologyEnvironment, fieldAt, localResourceValue, foragingNeed } from "./adaptive-morphology.js";
 import { World } from "./world.js";
 import { average, clamp, createSeededRandom, normalizeSeed } from "./utils.js";
@@ -275,6 +276,7 @@ export class Simulation {
     this.updateComponentLifecycle();
     this.updateGateDiscovery();
     prepareAdaptiveMorphology(this);
+    prepareFoodPantries(this);
     occupiedBefore = new Set(this.organisms.filter((item) => item.alive).map((item) => `${item.x},${item.y}`));
     updateEnergyConservation(this);
     const collectiveStrideEligibleIds = this.getCollectiveStrideEligibleIds();
@@ -321,6 +323,7 @@ export class Simulation {
       });
 
       organism.lastConsumedEnergy = result.consumedEnergy ?? 0;
+      storeHarvest(this,organism,result);
       organism.lastOperatingExpense=Object.values(result.energyFlow.expenses).reduce((sum,value)=>sum+value,0);
       applyMorphologyEnvironment(this, organism);
       let structuralAllocation = 0;
@@ -1237,6 +1240,7 @@ export class Simulation {
   removeDeadOrganisms() {
     const deadOrganisms = this.organisms.filter((organism) => !organism.alive);
     for (const organism of deadOrganisms) {
+      loseDeadPantry(this,organism);
       const storedEnergy = Math.max(0, organism.energy);
       const residueEnergy = this.config.chemistry.deathResidueEnabled
         ? this.world.addDeathResidue(organism.x, organism.y, Math.min(storedEnergy * this.config.chemistry.deathResidueFraction, this.config.chemistry.deathResidueMaximum), this.config.chemistry.deathResidueMaximum)
@@ -1697,6 +1701,8 @@ export class Simulation {
   }
 
   reset() {
+    this.pantryTopologyCache=null;
+    this.pantryStats=null;
     this.resourcePatchState=null;
     this.morphologyDemoPhase=null;
     this.morphologyStock = this.morphologyField?.reward.map(row=>row.map(()=>0));
@@ -4890,6 +4896,7 @@ export class Simulation {
       signal: { ...this.config.signal },
       bonding: {
         ...this.config.bond,
+        foodPantries: {...this.config.bond.foodPantries,...pantrySnapshot(this)},
         adaptiveMorphology: { ...this.config.bond.adaptiveMorphology, ...this.morphologyStats,
           dangerCostPerTick:this.config.bond.adaptiveMorphology.dangerCost,
           demoPhase:this.morphologyDemoPhase??'custom',

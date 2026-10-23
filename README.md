@@ -2,7 +2,13 @@
 
 Primes, also called Project Genesis, is a long-term Artificial Life research project built around a server-driven simulation engine. Its central hypothesis is that prime factorization can serve as a canonical language for generation: a prime represents one irreducible generator, while a composite represents their composition.
 
-## Current live state — aligned energy budgets (24 October 2026)
+## Current live state — living food pantries (24 October 2026)
+
+Closed bond loops can now display saved harvest as green, blue and red grains: nourishment, longer-keeping food, and bond-maintenance fuel. The default captures only otherwise-overflowing food. Stores belong to actual members, survive intact-owner carry-over, and shrink with use or spoilage. Opened chambers leave visible personal pouches; no food is duplicated by overlapping shapes or reproduction.
+
+Two 2,000-tick comparisons ended with 323 versus 245 bonds in aggregate, but one seed regressed and early growth was smaller. This is a visible, accounted resource buffer—not proven intelligence or universal survival. Startup default is on; set `GENESIS_FOOD_PANTRIES=0` before restarting to compare. [Mechanism, limitations, tests and results](FOOD_PANTRIES_2026-10-24.md).
+
+## Previous live state — aligned energy budgets (24 October 2026)
 
 The adaptive-foraging profile now preserves carried member/bond/component balances, protects one offspring's energy endowment, and pays bounded emergency member support and connection upkeep before reproduction. Formation and maintenance use the same protected budget. A small rolling upkeep buffer avoids locking creation-sized reserves away from renewal. Discretionary sharing still protects the full reproduction trigger; no extra food or support subsidy is added. Compare with `GENESIS_ALIGNED_BUDGETS=0` before startup.
 

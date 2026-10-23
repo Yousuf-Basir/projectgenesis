@@ -1,0 +1,292 @@
+{
+  "seed": 160104,
+  "aligned": true,
+  "label": "pantry",
+  "rows": [
+    {
+      "cycle": 0,
+      "tick": 200,
+      "selectionScore": 3.5044,
+      "population": 38,
+      "births": 38,
+      "deaths": {},
+      "bonds": 52,
+      "facets": 32,
+      "food": 670,
+      "gateSightings": 3013,
+      "gateRelays": 87,
+      "gateConsensuses": 16,
+      "gateCompletions": 3,
+      "bondsFormed": 52,
+      "bondsBroken": 0,
+      "populationRetention": 1.583,
+      "score": 210.833,
+      "breaks": {},
+      "bondFunding": 0,
+      "emergencyShared": 0,
+      "renewalBirths": 0,
+      "inheritedEdgesRemaining": 0,
+      "pantry": {
+        "opening": 0,
+        "stored": 127.0378489049698,
+        "deposited": 135.1971915286116,
+        "overflowSaved": 50.148182717377736,
+        "memberDelivered": 0,
+        "bondDelivered": 0,
+        "spoiled": 8.159342623641871,
+        "deathLost": 0,
+        "transferLoss": 0,
+        "contents": {
+          "GREEN": 66.40932381225592,
+          "BLUE": 46.67094112164031,
+          "RED": 13.95758397107358
+        },
+        "closedChambers": 25,
+        "filledChambers": 9
+      }
+    },
+    {
+      "cycle": 0,
+      "tick": 500,
+      "selectionScore": 3.6164,
+      "population": 50,
+      "births": 54,
+      "deaths": {
+        "energy exhaustion": 4
+      },
+      "bonds": 63,
+      "facets": 36,
+      "food": 717,
+      "gateSightings": 10950,
+      "gateRelays": 2062,
+      "gateConsensuses": 55,
+      "gateCompletions": 13,
+      "bondsFormed": 99,
+      "bondsBroken": 36,
+      "populationRetention": 2.083,
+      "score": 353.833,
+      "breaks": {
+        "bond energy reserve depleted": 29,
+        "member died: energy exhaustion": 7
+      },
+      "bondFunding": 83.71004953060584,
+      "emergencyShared": 4.322238431513084,
+      "renewalBirths": 3,
+      "inheritedEdgesRemaining": 0,
+      "pantry": {
+        "opening": 0,
+        "stored": 149.96872722192433,
+        "deposited": 237.50020319014357,
+        "overflowSaved": 50.37465387041965,
+        "memberDelivered": 10.537773410951761,
+        "bondDelivered": 11.654252323722359,
+        "spoiled": 65.12439363332189,
+        "deathLost": 0,
+        "transferLoss": 0.21505660022350545,
+        "contents": {
+          "GREEN": 74.2123190964423,
+          "BLUE": 65.67415868893913,
+          "RED": 10.082249436542899
+        },
+        "closedChambers": 27,
+        "filledChambers": 14
+      }
+    },
+    {
+      "cycle": 0,
+      "tick": 1000,
+      "selectionScore": 3.146,
+      "population": 29,
+      "births": 73,
+      "deaths": {
+        "energy exhaustion": 18,
+        "maximum age": 26
+      },
+      "bonds": 41,
+      "facets": 24,
+      "food": 734,
+      "gateSightings": 23152,
+      "gateRelays": 3580,
+      "gateConsensuses": 126,
+      "gateCompletions": 26,
+      "bondsFormed": 192,
+      "bondsBroken": 151,
+      "populationRetention": 1.208,
+      "score": 449.083,
+      "breaks": {
+        "bond energy reserve depleted": 80,
+        "member died: energy exhaustion": 15,
+        "member died: maximum age": 56
+      },
+      "bondFunding": 246.89948659771184,
+      "emergencyShared": 130.5852267997238,
+      "renewalBirths": 16,
+      "inheritedEdgesRemaining": 0,
+      "pantry": {
+        "opening": 0,
+        "stored": 102.37337014075511,
+        "deposited": 413.09488629967797,
+        "overflowSaved": 61.64313433911414,
+        "memberDelivered": 56.46094899198584,
+        "bondDelivered": 24.818351641224595,
+        "spoiled": 130.57864087537058,
+        "deathLost": 98.1439367204613,
+        "transferLoss": 0.7196379298811794,
+        "contents": {
+          "GREEN": 52.823645614355584,
+          "BLUE": 42.78258145168501,
+          "RED": 6.767143074714529
+        },
+        "closedChambers": 16,
+        "filledChambers": 8
+      }
+    },
+    {
+      "cycle": 1,
+      "tick": 200,
+      "selectionScore": 2.5912,
+      "population": 60,
+      "births": 69,
+      "deaths": {
+        "maximum age": 6,
+        "energy exhaustion": 3
+      },
+      "bonds": 56,
+      "facets": 22,
+      "food": 505,
+      "gateSightings": 7004,
+      "gateRelays": 940,
+      "gateConsensuses": 43,
+      "gateCompletions": 0,
+      "bondsFormed": 50,
+      "bondsBroken": 35,
+      "populationRetention": 2.5,
+      "score": 268.75,
+      "breaks": {
+        "member died: maximum age": 13,
+        "bond energy reserve depleted": 21,
+        "member died: energy exhaustion": 1
+      },
+      "bondFunding": 79.40918963128775,
+      "emergencyShared": 114.3099709976872,
+      "renewalBirths": 0,
+      "inheritedEdgesRemaining": 7,
+      "pantry": {
+        "opening": 102.37337014075511,
+        "stored": 82.79222948428648,
+        "deposited": 59.5685455999802,
+        "overflowSaved": 10,
+        "memberDelivered": 26.412841557094307,
+        "bondDelivered": 6.5871473706407055,
+        "spoiled": 20.177890897722044,
+        "deathLost": 25.72280606147418,
+        "transferLoss": 0.24900036951760618,
+        "contents": {
+          "GREEN": 35.27968046300923,
+          "BLUE": 42.00190488829405,
+          "RED": 5.510644132983208
+        },
+        "closedChambers": 19,
+        "filledChambers": 9
+      }
+    },
+    {
+      "cycle": 1,
+      "tick": 500,
+      "selectionScore": 3.4143,
+      "population": 118,
+      "births": 149,
+      "deaths": {
+        "maximum age": 18,
+        "energy exhaustion": 13
+      },
+      "bonds": 150,
+      "facets": 59,
+      "food": 542,
+      "gateSightings": 23704,
+      "gateRelays": 2352,
+      "gateConsensuses": 126,
+      "gateCompletions": 24,
+      "bondsFormed": 211,
+      "bondsBroken": 102,
+      "populationRetention": 4.917,
+      "score": 751.417,
+      "breaks": {
+        "member died: maximum age": 37,
+        "bond energy reserve depleted": 55,
+        "member died: energy exhaustion": 10
+      },
+      "bondFunding": 175.15040838607376,
+      "emergencyShared": 230.57736995443474,
+      "renewalBirths": 8,
+      "inheritedEdgesRemaining": 0,
+      "pantry": {
+        "opening": 102.37337014075511,
+        "stored": 345.47669540126327,
+        "deposited": 523.9176734492964,
+        "overflowSaved": 46.35103878028963,
+        "memberDelivered": 76.54180193600361,
+        "bondDelivered": 21.638866247598113,
+        "spoiled": 113.45588833032146,
+        "deathLost": 67.94229259267387,
+        "transferLoss": 1.2354990821911527,
+        "contents": {
+          "GREEN": 151.0663462085998,
+          "BLUE": 173.41844006380023,
+          "RED": 20.99190912886327
+        },
+        "closedChambers": 53,
+        "filledChambers": 27
+      }
+    },
+    {
+      "cycle": 1,
+      "tick": 1000,
+      "selectionScore": 2.6554,
+      "population": 239,
+      "births": 406,
+      "deaths": {
+        "maximum age": 57,
+        "energy exhaustion": 110
+      },
+      "bonds": 129,
+      "facets": 43,
+      "food": 194,
+      "gateSightings": 68677,
+      "gateRelays": 14508,
+      "gateConsensuses": 438,
+      "gateCompletions": 62,
+      "bondsFormed": 597,
+      "bondsBroken": 509,
+      "populationRetention": 9.958,
+      "score": 1573.833,
+      "breaks": {
+        "member died: maximum age": 93,
+        "bond energy reserve depleted": 325,
+        "member died: energy exhaustion": 91
+      },
+      "bondFunding": 711.4100136214188,
+      "emergencyShared": 1253.1640782836328,
+      "renewalBirths": 28,
+      "inheritedEdgesRemaining": 0,
+      "pantry": {
+        "opening": 102.37337014075511,
+        "stored": 221.3463751039546,
+        "deposited": 1187.9888918171407,
+        "overflowSaved": 46.35103878028963,
+        "memberDelivered": 485.97857572455723,
+        "bondDelivered": 81.60089608863466,
+        "spoiled": 337.0555085616193,
+        "deathLost": 158.1234470551399,
+        "transferLoss": 6.257459423996704,
+        "contents": {
+          "GREEN": 99.74313939816729,
+          "BLUE": 114.33278926925196,
+          "RED": 7.2704464365353765
+        },
+        "closedChambers": 38,
+        "filledChambers": 22
+      }
+    }
+  ]
+}

@@ -417,6 +417,13 @@ export const BASE_CONFIG = {
       maximumMealFraction: 0.25,
       efficiency: 0.98
     },
+    foodPantries: {
+      enabled: false,
+      maximumLoopSize: 8,
+      capacityMealsPerMember: 0.5,
+      harvestFraction: 0,
+      spoilage: { GREEN: 0.002, BLUE: 0.0005, RED: 0.001 }
+    },
     adaptiveMorphology: {
       enabled: false,
       alignedBudgetsEnabled: false,

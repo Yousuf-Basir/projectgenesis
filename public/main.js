@@ -8,6 +8,7 @@ const canvasTickCounter = document.getElementById("canvas-tick-counter");
 const reincarnationCounter = document.getElementById("reincarnation-counter");
 const worldConfigHint = document.getElementById("world-config-hint");
 const colonyStatus = document.getElementById('colony-status');
+const pantryLegend=document.getElementById('pantry-legend');
 const speedSelect = document.getElementById("speed-select");
 const foodGrowthInput = document.getElementById("food-growth");
 const foodGrowthValue = document.getElementById("food-growth-value");
@@ -416,9 +417,15 @@ function syncControls(snapshot) {
   }
   const guided = snapshot.guidedStructuralIntelligence ?? {};
   const morphology=snapshot.bonding?.adaptiveMorphology;
+  if(pantryLegend)pantryLegend.hidden=!snapshot.bonding?.foodPantries?.enabled;
   if(colonyStatus) {
     colonyStatus.hidden=!morphology?.enabled;
     if(morphology?.enabled) colonyStatus.textContent=`${morphology.name??'Adaptive world'} · ${morphology.demoPhase??'custom field'} · ${morphology.colonies??0} colonies · largest ${morphology.largestComponent??0} members · ${morphology.moves??0} shape moves · ${morphology.renewalBirths??0} renewal births${morphology.resourcePatches?` · ${morphology.resourcePatches.relocations} patch shifts · ${morphology.genomeTypes??1} genome types`:''}`;
+    const pantry=snapshot.bonding?.foodPantries;
+    if(morphology?.enabled && pantry?.enabled) {
+      colonyStatus.textContent+=` · pantry ${(pantry.stored??0).toFixed(1)} · used ${((pantry.memberDelivered??0)+(pantry.bondDelivered??0)).toFixed(1)}`;
+      colonyStatus.title='Colored grains inside closed loops are saved harvest: green feeds members, blue is slower-spoiling food, red fuels bond upkeep. Dots below isolated members are retained personal stores. Pantry and used values are energy units.';
+    }
   }
   guidedInputEnabledInput.checked = Boolean(guided.enabled);
   guidedSupportEnabledInput.checked = Boolean(guided.supportedDevelopment?.enabled);

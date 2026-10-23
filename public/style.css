@@ -1001,6 +1001,11 @@ input[type="range"] {
   font: 500 0.72rem/1.4 ui-monospace, SFMono-Regular, Consolas, monospace;
 }
 .colony-status[hidden] { display: none; }
+.pantry-legend { margin: 5px 0 0; color: #8aa5ad; font: 0.68rem/1.5 ui-monospace, Consolas, monospace; }
+.pantry-legend[hidden] { display: none; }
+.pantry-green { color: #9dff84; }
+.pantry-blue { color: #70b6ff; }
+.pantry-red { color: #ff8b76; }
 
 .guided-input-block canvas {
   display: block;

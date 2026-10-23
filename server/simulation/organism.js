@@ -418,6 +418,7 @@ export class Organism {
       persistentState: this.getPersistentState(),
       sharedState: this.sharedState,
       lastConsumedResource: this.lastConsumedResource,
+      foodPantry: this.foodPantry ? {...this.foodPantry} : null,
       signalOutput: Number((this.brainExecution?.effectors.signal ?? 0).toFixed(2)),
       movementDecision: this.movementDecision,
       guidedInputSignal: this.guidedInputSignal ?? 0,

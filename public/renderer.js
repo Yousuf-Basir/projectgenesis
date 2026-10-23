@@ -1,3 +1,4 @@
+import {drawPantries} from './pantry-visuals.js';
 const TILE_COLORS = {
   EMPTY: "#081922",
   FOOD: "#7dff72",
@@ -304,6 +305,7 @@ export class Renderer {
       this.context.closePath();
       this.context.fill();
     }
+    drawPantries(this.context,bondSettings.foodPantries,cellSize,offsetX,offsetY);
     for (const bond of bonds) {
       const first = organismsById.get(bond.firstId);
       const second = organismsById.get(bond.secondId);
