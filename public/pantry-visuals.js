@@ -40,19 +40,31 @@ export function pantryGrains(points,contents,grainEnergy=1,grainSize=0) {
 export function drawPantries(context,pantries,cellSize,offsetX=0,offsetY=0) {
  if(!pantries?.enabled)return;
  context.save();
+ context.globalAlpha=1;
+ context.lineCap='round';
  for(const chamber of pantries.chambers??[]) {
-  if(!Object.values(chamber.contents).some(value=>value>.01))continue;
+  const colors=Object.keys(COLORS).filter(color=>(chamber.contents?.[color]??0)>.01)
+   .sort((a,b)=>chamber.contents[b]-chamber.contents[a]);
+  if(!colors.length || !chamber.points?.length)continue;
   const points=chamber.points.map(point=>({x:offsetX+(point.x+.5)*cellSize,y:offsetY+(point.y+.5)*cellSize}));
-  context.beginPath();context.moveTo(points[0].x,points[0].y);
-  for(const point of points.slice(1))context.lineTo(point.x,point.y);
-  context.closePath();context.fillStyle='rgba(4, 29, 37, 0.8)';context.fill();
-  const size=Math.max(3.5,cellSize*.3);
-  for(const grain of pantryGrains(points,chamber.contents,pantries.grainEnergy,size+1.3)) {
-   context.globalAlpha=.6+.4*grain.alpha;context.fillStyle='#03131b';
-   context.fillRect(grain.x-size/2-.6,grain.y-size/2-.6,size+1.2,size+1.2);
-   context.fillStyle=COLORS[grain.color];context.fillRect(grain.x-size/2,grain.y-size/2,size,size);
+  let center={x:points.reduce((sum,p)=>sum+p.x,0)/points.length,y:points.reduce((sum,p)=>sum+p.y,0)/points.length};
+  if(!inside(center.x,center.y,points)) {
+   center=pantryGrains(points,chamber.contents,pantries.grainEnergy)
+    .sort((a,b)=>Math.hypot(a.x-center.x,a.y-center.y)-Math.hypot(b.x-center.x,b.y-center.y))[0];
+   if(!center)continue;
   }
-  context.globalAlpha=1;
+  // This is a presence symbol, not a food sprite or a strength/energy halo.
+  // Draw it last, with a dark outline, so gold bonds cannot cover it again.
+  const radius=Math.max(3,cellSize*.23),{x,y}=center;
+  context.strokeStyle='#03131b';context.lineWidth=4;
+  context.beginPath();context.moveTo(x-radius,y);context.lineTo(x+radius,y);
+  context.moveTo(x,y-radius);context.lineTo(x,y+radius);context.stroke();
+  const arms=[[x-radius,y,x,y],[x,y,x+radius,y],[x,y-radius,x,y],[x,y,x,y+radius]];
+  context.lineWidth=2;
+  arms.forEach(([x1,y1,x2,y2],index)=>{
+   context.strokeStyle=COLORS[colors[index%colors.length]];
+   context.beginPath();context.moveTo(x1,y1);context.lineTo(x2,y2);context.stroke();
+  });
  }
  // If a chamber opens, show the actual owner's remaining pouch rather than
  // pretending the food vanished or is still enclosed by nonexistent bonds.

@@ -6,6 +6,8 @@ Primes, also called Project Genesis, is a long-term Artificial Life research pro
 
 Closed bond loops can now display saved harvest as green, blue and red grains: nourishment, longer-keeping food, and bond-maintenance fuel. The default captures only otherwise-overflowing food. Stores belong to actual members, survive intact-owner carry-over, and shrink with use or spoilage. Opened chambers leave visible personal pouches; no food is duplicated by overlapping shapes or reproduction.
 
+The current storage indicator is a small food-colored **`+`** inside each stocked shape, drawn on top of the world. Mixed colors mean multiple foods; empty shapes are unmarked. This supersedes the grain/pile appearance described in the earlier notes below.
+
 The visibility/reuse update enlarges food chips to about four pixels, routes existing food toward connected chambers at one bond-hop/tick with transfer loss, and uses local energy decline to eat before starvation. Blue/green stores can also fund threatened upkeep after member needs and ordinary surplus are considered. Colored flashes show actual withdrawals and transport; empty loops still display no invented food.
 
 The latest two 2,000-tick comparisons ended with 444 versus 323 bonds against the preceding pantry version, but the original seed regressed while the second improved. This is a visible, accounted resource buffer—not proven intelligence or universal survival. Startup default is on; set `GENESIS_FOOD_PANTRIES=0` to disable pantries or `GENESIS_PANTRY_REUSE=0` for the preceding pantry behavior, before restarting. [Mechanism, limitations, tests and results](FOOD_PANTRIES_2026-10-24.md).

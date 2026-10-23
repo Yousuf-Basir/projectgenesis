@@ -4,6 +4,8 @@ Branch: `codex/adaptive-morphology-world`. Starting reference: `2371e5b` (aligne
 
 ## Latest update — visible routing and proactive reuse
 
+**Latest visual correction:** stocked shapes now have a small, outlined **food-colored `+`** at an interior point, rendered after bonds, organisms and event rings. One color means that food type; mixed arms mean multiple foods. Empty shapes have no mark. This replaces the easily obscured grain/pile display described below; no badges, quantities, ecological rules or server reset are added. Owner-held pouches outside loops remain small colored squares. Regression: `node test/renderer-pantry-markers.mjs` checks the complete rendering order, colors and empty/disabled cases.
+
 This supersedes the original `516bfed` behavior described below. A live cycle-12 check found five empty chambers while all saved food was held by three members outside closed loops; tiny 1.7-pixel markers compounded the problem. Food was later consumed, but the display did not meet the intended visual experience.
 
 Changes:

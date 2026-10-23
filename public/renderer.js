@@ -305,7 +305,6 @@ export class Renderer {
       this.context.closePath();
       this.context.fill();
     }
-    drawPantries(this.context,bondSettings.foodPantries,cellSize,offsetX,offsetY);
     for (const bond of bonds) {
       const first = organismsById.get(bond.firstId);
       const second = organismsById.get(bond.secondId);
@@ -487,6 +486,8 @@ export class Renderer {
       this.context.lineTo(centerX - size, centerY + size);
       this.context.stroke();
     }
+    // Food-presence marks must remain above organisms, bonds and event rings.
+    drawPantries(this.context,bondSettings.foodPantries,cellSize,offsetX,offsetY);
   }
 
   findOrganismAt(clientX, clientY) {

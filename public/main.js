@@ -425,7 +425,7 @@ function syncControls(snapshot) {
     if(morphology?.enabled && pantry?.enabled) {
       colonyStatus.textContent+=` · pantry ${(pantry.stored??0).toFixed(1)} · used ${((pantry.memberDelivered??0)+(pantry.bondDelivered??0)).toFixed(1)}`;
       if(pantry.adaptiveReuseEnabled)colonyStatus.textContent+=` · routed ${(pantry.routed??0).toFixed(1)}`;
-      colonyStatus.title='Colored grains inside closed loops are saved harvest: green feeds members, blue is slower-spoiling food, red fuels bond upkeep. Dots below isolated members are retained personal stores. Pantry and used values are energy units.';
+      colonyStatus.title='A food-colored + inside a closed shape means it holds saved harvest. Mixed-color arms show multiple foods. No + means empty. Dots below isolated members are retained personal stores. Pantry and used values are energy units.';
     }
   }
   guidedInputEnabledInput.checked = Boolean(guided.enabled);
