@@ -12,12 +12,13 @@ import { setMorphologyField, MORPHOLOGY_PROFILES } from "./simulation/adaptive-m
 const serverSessionId = randomUUID();
 const simulation = new Simulation(DEFAULT_CONFIG);
 const adaptiveEnabled=process.env.GENESIS_ADAPTIVE_MORPHOLOGY !== '0';
-const profileName=process.env.GENESIS_MORPHOLOGY_PROFILE??'renewing-colonies';
+const profileName=process.env.GENESIS_MORPHOLOGY_PROFILE??'adaptive-foraging';
 if(adaptiveEnabled) {
   if(!MORPHOLOGY_PROFILES[profileName]) throw new Error(`Unknown morphology profile: ${profileName}`);
   Object.assign(simulation.config.bond.adaptiveMorphology,MORPHOLOGY_PROFILES[profileName],{
     fieldDemoEnabled:process.env.GENESIS_FIELD_DEMO===undefined?profileName==='renewing-colonies':process.env.GENESIS_FIELD_DEMO==='1'
   });
+  if(process.env.GENESIS_RESOURCE_PATCHES!==undefined)simulation.config.bond.adaptiveMorphology.resourcePatchesEnabled=process.env.GENESIS_RESOURCE_PATCHES==='1';
 }
 const reincarnation = new ReincarnationController({ cycleTicks: 1000,
   seed: Number(process.env.GENESIS_SEED??(adaptiveEnabled?160104:DEFAULT_CONFIG.universe.initialSeed)), enabled: true,

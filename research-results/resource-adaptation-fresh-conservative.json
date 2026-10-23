@@ -1,0 +1,1344 @@
+[
+  {
+    "seed": 160119,
+    "treatment": "sensing",
+    "checkpoints": [
+      {
+        "tick": 300,
+        "selectionScore": 3.5301,
+        "population": 43,
+        "births": 43,
+        "deaths": 0,
+        "bonds": 49,
+        "facets": 24,
+        "food": 660,
+        "gateSightings": 5113,
+        "gateRelays": 49,
+        "gateConsensuses": 29,
+        "gateCompletions": 11,
+        "bondsFormed": 53,
+        "bondsBroken": 4,
+        "populationRetention": 1.792,
+        "score": 248.917,
+        "fieldIncome": 802.2904943406467
+      },
+      {
+        "tick": 600,
+        "selectionScore": 2.8456,
+        "population": 39,
+        "births": 62,
+        "deaths": 23,
+        "bonds": 33,
+        "facets": 11,
+        "food": 687,
+        "gateSightings": 14059,
+        "gateRelays": 1498,
+        "gateConsensuses": 97,
+        "gateCompletions": 27,
+        "bondsFormed": 134,
+        "bondsBroken": 101,
+        "populationRetention": 1.625,
+        "score": 379.5,
+        "fieldIncome": 1457.9967190046941
+      },
+      {
+        "tick": 1000,
+        "selectionScore": 2.5499,
+        "population": 27,
+        "births": 79,
+        "deaths": 52,
+        "bonds": 27,
+        "facets": 8,
+        "food": 694,
+        "gateSightings": 22316,
+        "gateRelays": 1976,
+        "gateConsensuses": 148,
+        "gateCompletions": 42,
+        "bondsFormed": 210,
+        "bondsBroken": 183,
+        "populationRetention": 1.125,
+        "score": 490.25,
+        "fieldIncome": 3121.9530537680857
+      }
+    ],
+    "before": {
+      "selectionScore": 2.5499,
+      "tick": 1000,
+      "population": 27,
+      "births": 79,
+      "deaths": 52,
+      "bonds": 27,
+      "facets": 8,
+      "food": 694,
+      "gateSightings": 22316,
+      "gateRelays": 1976,
+      "gateConsensuses": 148,
+      "gateCompletions": 42,
+      "bondsFormed": 210,
+      "bondsBroken": 183,
+      "populationRetention": 1.125,
+      "score": 490.25,
+      "morphology": {
+        "moves": 265,
+        "shared": 571.3111026796224,
+        "transferLoss": 11.65941025876788,
+        "fieldIncome": 3121.9530537680857,
+        "fieldGenerated": 3987.2733210422557,
+        "dangerCost": 0,
+        "renewalBirths": 9
+      },
+      "largestComponent": 16,
+      "relocations": 14,
+      "events": [
+        {
+          "tick": 172,
+          "previous": {
+            "x": 11.046479892218485,
+            "y": 8.239862684160471
+          },
+          "next": {
+            "x": 13.016628119163215,
+            "y": 1.3155828504823148
+          },
+          "harvested": 217.93061743819615
+        },
+        {
+          "tick": 185,
+          "previous": {
+            "x": 3.120819733478129,
+            "y": 4.183554098941386
+          },
+          "next": {
+            "x": 13.210314971860498,
+            "y": 10.279818179551512
+          },
+          "harvested": 216.20538777523635
+        },
+        {
+          "tick": 315,
+          "previous": {
+            "x": 13.210314971860498,
+            "y": 10.279818179551512
+          },
+          "next": {
+            "x": 8.094211978372186,
+            "y": 1.7449606438167393
+          },
+          "harvested": 217.11746279838977
+        },
+        {
+          "tick": 344,
+          "previous": {
+            "x": 13.016628119163215,
+            "y": 1.3155828504823148
+          },
+          "next": {
+            "x": 3.0830856012180448,
+            "y": 8.466702504549176
+          },
+          "harvested": 216.05837816083005
+        },
+        {
+          "tick": 529,
+          "previous": {
+            "x": 3.0830856012180448,
+            "y": 8.466702504549176
+          },
+          "next": {
+            "x": 1.2053249049931765,
+            "y": 2.1368684736080468
+          },
+          "harvested": 216.5074133651698
+        },
+        {
+          "tick": 563,
+          "previous": {
+            "x": 8.094211978372186,
+            "y": 1.7449606438167393
+          },
+          "next": {
+            "x": 8.060481604654342,
+            "y": 12.564031170215458
+          },
+          "harvested": 216.6558500432937
+        },
+        {
+          "tick": 652,
+          "previous": {
+            "x": 1.2053249049931765,
+            "y": 2.1368684736080468
+          },
+          "next": {
+            "x": 5.869950736407191,
+            "y": 10.600060373079032
+          },
+          "harvested": 217.2257217149272
+        },
+        {
+          "tick": 657,
+          "previous": {
+            "x": 8.060481604654342,
+            "y": 12.564031170215458
+          },
+          "next": {
+            "x": 10.827924980316311,
+            "y": 4.508241577539593
+          },
+          "harvested": 216.05802590757506
+        },
+        {
+          "tick": 736,
+          "previous": {
+            "x": 10.827924980316311,
+            "y": 4.508241577539593
+          },
+          "next": {
+            "x": 7.582738045603037,
+            "y": 14.022115543950349
+          },
+          "harvested": 216.5827780120431
+        },
+        {
+          "tick": 738,
+          "previous": {
+            "x": 5.869950736407191,
+            "y": 10.600060373079032
+          },
+          "next": {
+            "x": 13.239055208861828,
+            "y": 9.855325794313103
+          },
+          "harvested": 216.19681569412234
+        },
+        {
+          "tick": 814,
+          "previous": {
+            "x": 13.239055208861828,
+            "y": 9.855325794313103
+          },
+          "next": {
+            "x": 8.780688048806041,
+            "y": 2.4327608733437955
+          },
+          "harvested": 217.19891189557015
+        },
+        {
+          "tick": 901,
+          "previous": {
+            "x": 8.780688048806041,
+            "y": 2.4327608733437955
+          },
+          "next": {
+            "x": 4.782991912681609,
+            "y": 10.813356237951666
+          },
+          "harvested": 217.23022138079548
+        },
+        {
+          "tick": 973,
+          "previous": {
+            "x": 7.582738045603037,
+            "y": 14.022115543950349
+          },
+          "next": {
+            "x": 4.309370982460678,
+            "y": 2.480944543145597
+          },
+          "harvested": 216.10005538912378
+        },
+        {
+          "tick": 991,
+          "previous": {
+            "x": 4.782991912681609,
+            "y": 10.813356237951666
+          },
+          "next": {
+            "x": 9.87925359327346,
+            "y": 4.787810697220266
+          },
+          "harvested": 216.2559083536766
+        }
+      ],
+      "genomeTypes": 2,
+      "topology": "f0d0e023f9b1a4da"
+    },
+    "afterTransition": {
+      "seed": 170193,
+      "inheritance": {
+        "descendants": 12,
+        "mutations": 1
+      },
+      "carriedMembers": 16,
+      "carriedBonds": 27,
+      "originalMembersAfter80": 14,
+      "originalEdgesAfter80": 15,
+      "patches": [
+        {
+          "x": 4.6848743967711926,
+          "y": 4.347485026344657,
+          "radius": 3.5444615948945284,
+          "remaining": 155.4968986612762,
+          "harvested": 84.50310133872445
+        },
+        {
+          "x": 12.047578420024365,
+          "y": 8.364294989965856,
+          "radius": 4.13194688106887,
+          "remaining": 149.09092992675815,
+          "harvested": 90.90907007324188
+        }
+      ]
+    },
+    "parameters": {
+      "reshapeMinimumGain": 0.02,
+      "stockSensingWeight": 0
+    },
+    "frameFingerprint": "22b5a6c2d2113196",
+    "continuationFrameFingerprint": "c94f4b9d4e5ae5ab"
+  },
+  {
+    "seed": 160119,
+    "treatment": "blind",
+    "checkpoints": [
+      {
+        "tick": 300,
+        "selectionScore": 3.7071,
+        "population": 56,
+        "births": 56,
+        "deaths": 0,
+        "bonds": 78,
+        "facets": 30,
+        "food": 737,
+        "gateSightings": 6716,
+        "gateRelays": 231,
+        "gateConsensuses": 37,
+        "gateCompletions": 11,
+        "bondsFormed": 80,
+        "bondsBroken": 2,
+        "populationRetention": 2.333,
+        "score": 324.333,
+        "fieldIncome": 597.3775327717185
+      },
+      {
+        "tick": 600,
+        "selectionScore": 3.2963,
+        "population": 57,
+        "births": 76,
+        "deaths": 19,
+        "bonds": 70,
+        "facets": 19,
+        "food": 726,
+        "gateSightings": 17117,
+        "gateRelays": 1595,
+        "gateConsensuses": 114,
+        "gateCompletions": 34,
+        "bondsFormed": 191,
+        "bondsBroken": 121,
+        "populationRetention": 2.375,
+        "score": 514,
+        "fieldIncome": 1415.1595140801846
+      },
+      {
+        "tick": 1000,
+        "selectionScore": 3.5269,
+        "population": 44,
+        "births": 104,
+        "deaths": 60,
+        "bonds": 61,
+        "facets": 23,
+        "food": 736,
+        "gateSightings": 31503,
+        "gateRelays": 1959,
+        "gateConsensuses": 202,
+        "gateCompletions": 66,
+        "bondsFormed": 357,
+        "bondsBroken": 296,
+        "populationRetention": 1.833,
+        "score": 756.333,
+        "fieldIncome": 2697.8406154901663
+      }
+    ],
+    "before": {
+      "selectionScore": 3.5269,
+      "tick": 1000,
+      "population": 44,
+      "births": 104,
+      "deaths": 60,
+      "bonds": 61,
+      "facets": 23,
+      "food": 736,
+      "gateSightings": 31503,
+      "gateRelays": 1959,
+      "gateConsensuses": 202,
+      "gateCompletions": 66,
+      "bondsFormed": 357,
+      "bondsBroken": 296,
+      "populationRetention": 1.833,
+      "score": 756.333,
+      "morphology": {
+        "moves": 218,
+        "shared": 947.8745784137703,
+        "transferLoss": 19.344379151304587,
+        "fieldIncome": 2697.8406154901663,
+        "fieldGenerated": 3886.148451823489,
+        "dangerCost": 0,
+        "renewalBirths": 22
+      },
+      "largestComponent": 31,
+      "relocations": 11,
+      "events": [
+        {
+          "tick": 197,
+          "previous": {
+            "x": 3.120819733478129,
+            "y": 4.183554098941386
+          },
+          "next": {
+            "x": 12.650937739759684,
+            "y": 12.291995675768703
+          },
+          "harvested": 217.05782872473156
+        },
+        {
+          "tick": 201,
+          "previous": {
+            "x": 11.046479892218485,
+            "y": 8.239862684160471
+          },
+          "next": {
+            "x": 1.3155828504823148,
+            "y": 12.221855800133198
+          },
+          "harvested": 216.10575566570367
+        },
+        {
+          "tick": 411,
+          "previous": {
+            "x": 12.650937739759684,
+            "y": 12.291995675768703
+          },
+          "next": {
+            "x": 3.969430423807353,
+            "y": 2.840412466786802
+          },
+          "harvested": 216.75783431767115
+        },
+        {
+          "tick": 435,
+          "previous": {
+            "x": 1.3155828504823148,
+            "y": 12.221855800133198
+          },
+          "next": {
+            "x": 13.210314971860498,
+            "y": 10.279818179551512
+          },
+          "harvested": 216.68751503674952
+        },
+        {
+          "tick": 518,
+          "previous": {
+            "x": 3.969430423807353,
+            "y": 2.840412466786802
+          },
+          "next": {
+            "x": 10.774748670402914,
+            "y": 6.561435908079147
+          },
+          "harvested": 216.0662348352871
+        },
+        {
+          "tick": 633,
+          "previous": {
+            "x": 10.774748670402914,
+            "y": 6.561435908079147
+          },
+          "next": {
+            "x": 1.7449606438167393,
+            "y": 7.82639729604125
+          },
+          "harvested": 216.949941880397
+        },
+        {
+          "tick": 683,
+          "previous": {
+            "x": 13.210314971860498,
+            "y": 10.279818179551512
+          },
+          "next": {
+            "x": 1.8742256653495133,
+            "y": 2.476408436894417
+          },
+          "harvested": 216.44199534040087
+        },
+        {
+          "tick": 731,
+          "previous": {
+            "x": 1.7449606438167393,
+            "y": 7.82639729604125
+          },
+          "next": {
+            "x": 9.244558665901423,
+            "y": 8.871665764600039
+          },
+          "harvested": 216.57852425679434
+        },
+        {
+          "tick": 812,
+          "previous": {
+            "x": 9.244558665901423,
+            "y": 8.871665764600039
+          },
+          "next": {
+            "x": 1.2053249049931765,
+            "y": 2.1368684736080468
+          },
+          "harvested": 217.63375884610966
+        },
+        {
+          "tick": 829,
+          "previous": {
+            "x": 1.8742256653495133,
+            "y": 2.476408436894417
+          },
+          "next": {
+            "x": 8.060481604654342,
+            "y": 12.564031170215458
+          },
+          "harvested": 216.1255965300199
+        },
+        {
+          "tick": 941,
+          "previous": {
+            "x": 8.060481604654342,
+            "y": 12.564031170215458
+          },
+          "next": {
+            "x": 2.937213578261435,
+            "y": 4.597648520488292
+          },
+          "harvested": 217.03847071106026
+        }
+      ],
+      "genomeTypes": 1,
+      "topology": "263259160bbac6fe"
+    },
+    "afterTransition": {
+      "seed": 170193,
+      "inheritance": {
+        "descendants": 12,
+        "mutations": 1
+      },
+      "carriedMembers": 39,
+      "carriedBonds": 61,
+      "originalMembersAfter80": 30,
+      "originalEdgesAfter80": 16,
+      "patches": [
+        {
+          "x": 4.6848743967711926,
+          "y": 4.347485026344657,
+          "radius": 3.5444615948945284,
+          "remaining": 155.75371144079065,
+          "harvested": 84.24628855920895
+        },
+        {
+          "x": 12.047578420024365,
+          "y": 8.364294989965856,
+          "radius": 4.13194688106887,
+          "remaining": 158.26923484302628,
+          "harvested": 81.73076515697328
+        }
+      ]
+    },
+    "parameters": {
+      "reshapeMinimumGain": 0.02,
+      "stockSensingWeight": 0
+    },
+    "frameFingerprint": "22b5a6c2d2113196",
+    "continuationFrameFingerprint": "c94f4b9d4e5ae5ab"
+  },
+  {
+    "seed": 160119,
+    "treatment": "blind-yoked",
+    "checkpoints": [
+      {
+        "tick": 300,
+        "selectionScore": 3.7256,
+        "population": 56,
+        "births": 56,
+        "deaths": 0,
+        "bonds": 80,
+        "facets": 31,
+        "food": 737,
+        "gateSightings": 6662,
+        "gateRelays": 231,
+        "gateConsensuses": 34,
+        "gateCompletions": 11,
+        "bondsFormed": 82,
+        "bondsBroken": 2,
+        "populationRetention": 2.333,
+        "score": 322.333,
+        "fieldIncome": 622.440999014318
+      },
+      {
+        "tick": 600,
+        "selectionScore": 3.0982,
+        "population": 46,
+        "births": 70,
+        "deaths": 24,
+        "bonds": 36,
+        "facets": 12,
+        "food": 638,
+        "gateSightings": 15070,
+        "gateRelays": 537,
+        "gateConsensuses": 107,
+        "gateCompletions": 32,
+        "bondsFormed": 160,
+        "bondsBroken": 124,
+        "populationRetention": 1.917,
+        "score": 429.167,
+        "fieldIncome": 1551.1613598610777
+      },
+      {
+        "tick": 1000,
+        "selectionScore": 3.268,
+        "population": 41,
+        "births": 99,
+        "deaths": 58,
+        "bonds": 50,
+        "facets": 15,
+        "food": 737,
+        "gateSightings": 27927,
+        "gateRelays": 1735,
+        "gateConsensuses": 182,
+        "gateCompletions": 49,
+        "bondsFormed": 258,
+        "bondsBroken": 208,
+        "populationRetention": 1.708,
+        "score": 634.583,
+        "fieldIncome": 2848.5008686343754
+      }
+    ],
+    "before": {
+      "selectionScore": 3.268,
+      "tick": 1000,
+      "population": 41,
+      "births": 99,
+      "deaths": 58,
+      "bonds": 50,
+      "facets": 15,
+      "food": 737,
+      "gateSightings": 27927,
+      "gateRelays": 1735,
+      "gateConsensuses": 182,
+      "gateCompletions": 49,
+      "bondsFormed": 258,
+      "bondsBroken": 208,
+      "populationRetention": 1.708,
+      "score": 634.583,
+      "morphology": {
+        "moves": 259,
+        "shared": 797.9644484439656,
+        "transferLoss": 16.284988743757914,
+        "fieldIncome": 2848.5008686343754,
+        "fieldGenerated": 3972.5309212816646,
+        "dangerCost": 0,
+        "renewalBirths": 19
+      },
+      "largestComponent": 22,
+      "relocations": null,
+      "events": [],
+      "genomeTypes": 1,
+      "topology": "fc559b34e3e866e5"
+    },
+    "afterTransition": {
+      "seed": 170193,
+      "inheritance": {
+        "descendants": 12,
+        "mutations": 1
+      },
+      "carriedMembers": 36,
+      "carriedBonds": 50,
+      "originalMembersAfter80": 33,
+      "originalEdgesAfter80": 41,
+      "patches": null
+    },
+    "parameters": {
+      "reshapeMinimumGain": 0.02,
+      "stockSensingWeight": 0
+    },
+    "frameFingerprint": "22b5a6c2d2113196",
+    "continuationFrameFingerprint": "c94f4b9d4e5ae5ab"
+  },
+  {
+    "seed": 160121,
+    "treatment": "sensing",
+    "checkpoints": [
+      {
+        "tick": 300,
+        "selectionScore": 3.7684,
+        "population": 43,
+        "births": 44,
+        "deaths": 1,
+        "bonds": 58,
+        "facets": 27,
+        "food": 712,
+        "gateSightings": 5559,
+        "gateRelays": 84,
+        "gateConsensuses": 27,
+        "gateCompletions": 15,
+        "bondsFormed": 58,
+        "bondsBroken": 0,
+        "populationRetention": 1.792,
+        "score": 271.667,
+        "fieldIncome": 704.9315948934346
+      },
+      {
+        "tick": 600,
+        "selectionScore": 2.9781,
+        "population": 41,
+        "births": 62,
+        "deaths": 21,
+        "bonds": 36,
+        "facets": 14,
+        "food": 702,
+        "gateSightings": 10596,
+        "gateRelays": 538,
+        "gateConsensuses": 54,
+        "gateCompletions": 25,
+        "bondsFormed": 113,
+        "bondsBroken": 77,
+        "populationRetention": 1.708,
+        "score": 299.833,
+        "fieldIncome": 1294.5626437543851
+      },
+      {
+        "tick": 1000,
+        "selectionScore": 3.5645,
+        "population": 41,
+        "births": 90,
+        "deaths": 49,
+        "bonds": 52,
+        "facets": 25,
+        "food": 729,
+        "gateSightings": 20033,
+        "gateRelays": 1504,
+        "gateConsensuses": 118,
+        "gateCompletions": 47,
+        "bondsFormed": 211,
+        "bondsBroken": 159,
+        "populationRetention": 1.708,
+        "score": 524.833,
+        "fieldIncome": 2798.810058576547
+      }
+    ],
+    "before": {
+      "selectionScore": 3.5645,
+      "tick": 1000,
+      "population": 41,
+      "births": 90,
+      "deaths": 49,
+      "bonds": 52,
+      "facets": 25,
+      "food": 729,
+      "gateSightings": 20033,
+      "gateRelays": 1504,
+      "gateConsensuses": 118,
+      "gateCompletions": 47,
+      "bondsFormed": 211,
+      "bondsBroken": 159,
+      "populationRetention": 1.708,
+      "score": 524.833,
+      "morphology": {
+        "moves": 397,
+        "shared": 929.3562864589186,
+        "transferLoss": 18.96645482569536,
+        "fieldIncome": 2798.810058576547,
+        "fieldGenerated": 3894.9775776229717,
+        "dangerCost": 0,
+        "renewalBirths": 18
+      },
+      "largestComponent": 11,
+      "relocations": 12,
+      "events": [
+        {
+          "tick": 170,
+          "previous": {
+            "x": 3.46765065821819,
+            "y": 4.124629592522979
+          },
+          "next": {
+            "x": 13.490600760094821,
+            "y": 2.990844658575952
+          },
+          "harvested": 217.2233839843542
+        },
+        {
+          "tick": 213,
+          "previous": {
+            "x": 12.843289277050644,
+            "y": 11.860997933894396
+          },
+          "next": {
+            "x": 3.873631804715842,
+            "y": 8.051712296437472
+          },
+          "harvested": 216.95097032251758
+        },
+        {
+          "tick": 394,
+          "previous": {
+            "x": 13.490600760094821,
+            "y": 2.990844658575952
+          },
+          "next": {
+            "x": 12.58327668812126,
+            "y": 13.195669869426638
+          },
+          "harvested": 216.62516555403647
+        },
+        {
+          "tick": 472,
+          "previous": {
+            "x": 3.873631804715842,
+            "y": 8.051712296437472
+          },
+          "next": {
+            "x": 13.096757815685123,
+            "y": 5.848243487998843
+          },
+          "harvested": 216.02662658950823
+        },
+        {
+          "tick": 595,
+          "previous": {
+            "x": 12.58327668812126,
+            "y": 13.195669869426638
+          },
+          "next": {
+            "x": 3.3050947380252182,
+            "y": 9.761729031801224
+          },
+          "harvested": 216.6678504796465
+        },
+        {
+          "tick": 614,
+          "previous": {
+            "x": 13.096757815685123,
+            "y": 5.848243487998843
+          },
+          "next": {
+            "x": 2.9673327915370464,
+            "y": 3.1584752332419157
+          },
+          "harvested": 216.37585607850392
+        },
+        {
+          "tick": 695,
+          "previous": {
+            "x": 2.9673327915370464,
+            "y": 3.1584752332419157
+          },
+          "next": {
+            "x": 13.678499528672546,
+            "y": 3.1707379315048456
+          },
+          "harvested": 217.95831859370696
+        },
+        {
+          "tick": 700,
+          "previous": {
+            "x": 3.3050947380252182,
+            "y": 9.761729031801224
+          },
+          "next": {
+            "x": 14.79696188122034,
+            "y": 10.470979096833616
+          },
+          "harvested": 217.3034280228559
+        },
+        {
+          "tick": 780,
+          "previous": {
+            "x": 14.79696188122034,
+            "y": 10.470979096833616
+          },
+          "next": {
+            "x": 8.517946333624423,
+            "y": 13.358755468390882
+          },
+          "harvested": 219.2618414062942
+        },
+        {
+          "tick": 780,
+          "previous": {
+            "x": 13.678499528672546,
+            "y": 3.1707379315048456
+          },
+          "next": {
+            "x": 14.30978675186634,
+            "y": 12.585686401464045
+          },
+          "harvested": 219.18421556800672
+        },
+        {
+          "tick": 915,
+          "previous": {
+            "x": 8.517946333624423,
+            "y": 13.358755468390882
+          },
+          "next": {
+            "x": 14.156648037955165,
+            "y": 4.6541119934991
+          },
+          "harvested": 216.232580333965
+        },
+        {
+          "tick": 998,
+          "previous": {
+            "x": 14.156648037955165,
+            "y": 4.6541119934991
+          },
+          "next": {
+            "x": 3.7458181167021394,
+            "y": 7.092965725343674
+          },
+          "harvested": 216.090823760665
+        }
+      ],
+      "genomeTypes": 2,
+      "topology": "4acc709d3c5b5568"
+    },
+    "afterTransition": {
+      "seed": 170195,
+      "inheritance": {
+        "descendants": 12,
+        "mutations": 2
+      },
+      "carriedMembers": 36,
+      "carriedBonds": 52,
+      "originalMembersAfter80": 32,
+      "originalEdgesAfter80": 32,
+      "patches": [
+        {
+          "x": 4.8500355100259185,
+          "y": 5.323300485499203,
+          "radius": 3.876567016588524,
+          "remaining": 131.81845846837143,
+          "harvested": 108.18154153162718
+        },
+        {
+          "x": 10.272782772546634,
+          "y": 9.460255361162126,
+          "radius": 3.6073222102131695,
+          "remaining": 154.0215065104672,
+          "harvested": 85.97849348953291
+        }
+      ]
+    },
+    "parameters": {
+      "reshapeMinimumGain": 0.02,
+      "stockSensingWeight": 0
+    },
+    "frameFingerprint": "33ab151b8f9b3b82",
+    "continuationFrameFingerprint": "66a52dcf68dba8ea"
+  },
+  {
+    "seed": 160121,
+    "treatment": "blind",
+    "checkpoints": [
+      {
+        "tick": 300,
+        "selectionScore": 3.7881,
+        "population": 47,
+        "births": 47,
+        "deaths": 0,
+        "bonds": 55,
+        "facets": 22,
+        "food": 634,
+        "gateSightings": 4997,
+        "gateRelays": 25,
+        "gateConsensuses": 22,
+        "gateCompletions": 17,
+        "bondsFormed": 55,
+        "bondsBroken": 0,
+        "populationRetention": 1.958,
+        "score": 260.583,
+        "fieldIncome": 861.1079634399179
+      },
+      {
+        "tick": 600,
+        "selectionScore": 3.7346,
+        "population": 65,
+        "births": 74,
+        "deaths": 9,
+        "bonds": 88,
+        "facets": 36,
+        "food": 719,
+        "gateSightings": 14317,
+        "gateRelays": 994,
+        "gateConsensuses": 64,
+        "gateCompletions": 41,
+        "bondsFormed": 160,
+        "bondsBroken": 72,
+        "populationRetention": 2.708,
+        "score": 500.833,
+        "fieldIncome": 1592.4675482093216
+      },
+      {
+        "tick": 1000,
+        "selectionScore": 3.1174,
+        "population": 41,
+        "births": 101,
+        "deaths": 60,
+        "bonds": 38,
+        "facets": 11,
+        "food": 730,
+        "gateSightings": 26404,
+        "gateRelays": 3023,
+        "gateConsensuses": 150,
+        "gateCompletions": 57,
+        "bondsFormed": 270,
+        "bondsBroken": 232,
+        "populationRetention": 1.708,
+        "score": 574.083,
+        "fieldIncome": 2963.7494586607777
+      }
+    ],
+    "before": {
+      "selectionScore": 3.1174,
+      "tick": 1000,
+      "population": 41,
+      "births": 101,
+      "deaths": 60,
+      "bonds": 38,
+      "facets": 11,
+      "food": 730,
+      "gateSightings": 26404,
+      "gateRelays": 3023,
+      "gateConsensuses": 150,
+      "gateCompletions": 57,
+      "bondsFormed": 270,
+      "bondsBroken": 232,
+      "populationRetention": 1.708,
+      "score": 574.083,
+      "morphology": {
+        "moves": 227,
+        "shared": 1094.4589803985398,
+        "transferLoss": 22.33589755915659,
+        "fieldIncome": 2963.7494586607777,
+        "fieldGenerated": 3921.313691238883,
+        "dangerCost": 0,
+        "renewalBirths": 22
+      },
+      "largestComponent": 12,
+      "relocations": 13,
+      "events": [
+        {
+          "tick": 157,
+          "previous": {
+            "x": 3.46765065821819,
+            "y": 4.124629592522979
+          },
+          "next": {
+            "x": 13.490600760094821,
+            "y": 2.990844658575952
+          },
+          "harvested": 216.72669466525858
+        },
+        {
+          "tick": 210,
+          "previous": {
+            "x": 12.843289277050644,
+            "y": 11.860997933894396
+          },
+          "next": {
+            "x": 3.873631804715842,
+            "y": 8.051712296437472
+          },
+          "harvested": 216.6747003313904
+        },
+        {
+          "tick": 284,
+          "previous": {
+            "x": 13.490600760094821,
+            "y": 2.990844658575952
+          },
+          "next": {
+            "x": 12.58327668812126,
+            "y": 13.195669869426638
+          },
+          "harvested": 216.03361915272657
+        },
+        {
+          "tick": 315,
+          "previous": {
+            "x": 3.873631804715842,
+            "y": 8.051712296437472
+          },
+          "next": {
+            "x": 13.096757815685123,
+            "y": 5.848243487998843
+          },
+          "harvested": 216.60834793085456
+        },
+        {
+          "tick": 455,
+          "previous": {
+            "x": 13.096757815685123,
+            "y": 5.848243487998843
+          },
+          "next": {
+            "x": 3.3050947380252182,
+            "y": 9.761729031801224
+          },
+          "harvested": 216.6873597922625
+        },
+        {
+          "tick": 560,
+          "previous": {
+            "x": 12.58327668812126,
+            "y": 13.195669869426638
+          },
+          "next": {
+            "x": 14.15373888425529,
+            "y": 5.1169472937472165
+          },
+          "harvested": 216.25338533305086
+        },
+        {
+          "tick": 592,
+          "previous": {
+            "x": 3.3050947380252182,
+            "y": 9.761729031801224
+          },
+          "next": {
+            "x": 13.678499528672546,
+            "y": 3.1707379315048456
+          },
+          "harvested": 217.42311316634965
+        },
+        {
+          "tick": 696,
+          "previous": {
+            "x": 14.15373888425529,
+            "y": 5.1169472937472165
+          },
+          "next": {
+            "x": 3.416304064914584,
+            "y": 4.515815579798073
+          },
+          "harvested": 216.11216373133487
+        },
+        {
+          "tick": 706,
+          "previous": {
+            "x": 13.678499528672546,
+            "y": 3.1707379315048456
+          },
+          "next": {
+            "x": 4.003137562889606,
+            "y": 6.486535024829209
+          },
+          "harvested": 218.64676061891444
+        },
+        {
+          "tick": 760,
+          "previous": {
+            "x": 4.003137562889606,
+            "y": 6.486535024829209
+          },
+          "next": {
+            "x": 14.79696188122034,
+            "y": 10.470979096833616
+          },
+          "harvested": 217.88540307888638
+        },
+        {
+          "tick": 797,
+          "previous": {
+            "x": 3.416304064914584,
+            "y": 4.515815579798073
+          },
+          "next": {
+            "x": 8.517946333624423,
+            "y": 13.358755468390882
+          },
+          "harvested": 216.48375924595084
+        },
+        {
+          "tick": 928,
+          "previous": {
+            "x": 14.79696188122034,
+            "y": 10.470979096833616
+          },
+          "next": {
+            "x": 5.560271295718849,
+            "y": 14.156648037955165
+          },
+          "harvested": 216.5853767378423
+        },
+        {
+          "tick": 957,
+          "previous": {
+            "x": 8.517946333624423,
+            "y": 13.358755468390882
+          },
+          "next": {
+            "x": 13.802667807321995,
+            "y": 3.7458181167021394
+          },
+          "harvested": 217.20038940901617
+        }
+      ],
+      "genomeTypes": 1,
+      "topology": "40c1ac288ef9ada3"
+    },
+    "afterTransition": {
+      "seed": 170195,
+      "inheritance": {
+        "descendants": 12,
+        "mutations": 2
+      },
+      "carriedMembers": 30,
+      "carriedBonds": 37,
+      "originalMembersAfter80": 24,
+      "originalEdgesAfter80": 20,
+      "patches": [
+        {
+          "x": 4.8500355100259185,
+          "y": 5.323300485499203,
+          "radius": 3.876567016588524,
+          "remaining": 150.40874599290194,
+          "harvested": 89.59125400709816
+        },
+        {
+          "x": 10.272782772546634,
+          "y": 9.460255361162126,
+          "radius": 3.6073222102131695,
+          "remaining": 159.79053494214364,
+          "harvested": 80.20946505785611
+        }
+      ]
+    },
+    "parameters": {
+      "reshapeMinimumGain": 0.02,
+      "stockSensingWeight": 0
+    },
+    "frameFingerprint": "33ab151b8f9b3b82",
+    "continuationFrameFingerprint": "66a52dcf68dba8ea"
+  },
+  {
+    "seed": 160121,
+    "treatment": "blind-yoked",
+    "checkpoints": [
+      {
+        "tick": 300,
+        "selectionScore": 3.7881,
+        "population": 47,
+        "births": 47,
+        "deaths": 0,
+        "bonds": 55,
+        "facets": 22,
+        "food": 634,
+        "gateSightings": 4997,
+        "gateRelays": 25,
+        "gateConsensuses": 22,
+        "gateCompletions": 17,
+        "bondsFormed": 55,
+        "bondsBroken": 0,
+        "populationRetention": 1.958,
+        "score": 260.583,
+        "fieldIncome": 863.4300885290002
+      },
+      {
+        "tick": 600,
+        "selectionScore": 3.5558,
+        "population": 65,
+        "births": 72,
+        "deaths": 7,
+        "bonds": 84,
+        "facets": 27,
+        "food": 717,
+        "gateSightings": 13374,
+        "gateRelays": 175,
+        "gateConsensuses": 60,
+        "gateCompletions": 40,
+        "bondsFormed": 160,
+        "bondsBroken": 76,
+        "populationRetention": 2.708,
+        "score": 468.333,
+        "fieldIncome": 1523.8368539140054
+      },
+      {
+        "tick": 1000,
+        "selectionScore": 3.3306,
+        "population": 42,
+        "births": 104,
+        "deaths": 62,
+        "bonds": 45,
+        "facets": 18,
+        "food": 725,
+        "gateSightings": 23545,
+        "gateRelays": 4826,
+        "gateConsensuses": 170,
+        "gateCompletions": 52,
+        "bondsFormed": 296,
+        "bondsBroken": 251,
+        "populationRetention": 1.75,
+        "score": 621,
+        "fieldIncome": 3007.9427701726877
+      }
+    ],
+    "before": {
+      "selectionScore": 3.3306,
+      "tick": 1000,
+      "population": 42,
+      "births": 104,
+      "deaths": 62,
+      "bonds": 45,
+      "facets": 18,
+      "food": 725,
+      "gateSightings": 23545,
+      "gateRelays": 4826,
+      "gateConsensuses": 170,
+      "gateCompletions": 52,
+      "bondsFormed": 296,
+      "bondsBroken": 251,
+      "populationRetention": 1.75,
+      "score": 621,
+      "morphology": {
+        "moves": 238,
+        "shared": 1073.9004151813867,
+        "transferLoss": 21.916335003704567,
+        "fieldIncome": 3007.9427701726877,
+        "fieldGenerated": 3810.02879619392,
+        "dangerCost": 0,
+        "renewalBirths": 29
+      },
+      "largestComponent": 11,
+      "relocations": null,
+      "events": [],
+      "genomeTypes": 1,
+      "topology": "824ec4f59a0c48d3"
+    },
+    "afterTransition": {
+      "seed": 170195,
+      "inheritance": {
+        "descendants": 12,
+        "mutations": 2
+      },
+      "carriedMembers": 32,
+      "carriedBonds": 44,
+      "originalMembersAfter80": 27,
+      "originalEdgesAfter80": 20,
+      "patches": null
+    },
+    "parameters": {
+      "reshapeMinimumGain": 0.02,
+      "stockSensingWeight": 0
+    },
+    "frameFingerprint": "33ab151b8f9b3b82",
+    "continuationFrameFingerprint": "66a52dcf68dba8ea"
+  }
+]

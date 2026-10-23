@@ -9,7 +9,7 @@ import { shrinkAtRiskComponents } from "./adaptive-shrinking.js";
 import { updateEnergyConservation } from "./energy-conservation.js";
 import { supportFromNeighbourSurplus } from "./neighbour-support.js";
 import { shareFreshHarvest } from "./harvest-member-support.js";
-import { prepareAdaptiveMorphology, applyMorphologyEnvironment, fieldAt } from "./adaptive-morphology.js";
+import { prepareAdaptiveMorphology, applyMorphologyEnvironment, fieldAt, localResourceValue, foragingNeed } from "./adaptive-morphology.js";
 import { World } from "./world.js";
 import { average, clamp, createSeededRandom, normalizeSeed } from "./utils.js";
 import { createDefaultSurvivalCueGrid, createGuidedInput, setGuidedGrid, setGuidedPattern, serializeGuidedInput } from "./guided-input.js";
@@ -321,6 +321,7 @@ export class Simulation {
       });
 
       organism.lastConsumedEnergy = result.consumedEnergy ?? 0;
+      organism.lastOperatingExpense=Object.values(result.energyFlow.expenses).reduce((sum,value)=>sum+value,0);
       applyMorphologyEnvironment(this, organism);
       let structuralAllocation = 0;
       let externalBondAllocation = 0;
@@ -1691,6 +1692,7 @@ export class Simulation {
   }
 
   reset() {
+    this.resourcePatchState=null;
     this.morphologyDemoPhase=null;
     this.morphologyStock = this.morphologyField?.reward.map(row=>row.map(()=>0));
     this.morphologyStats = { moves:0,shared:0,transferLoss:0,fieldIncome:0,fieldGenerated:0,dangerCost:0 };
@@ -4091,9 +4093,10 @@ export class Simulation {
       ]));
       const morphology=this.config.bond.adaptiveMorphology;
       if (morphology?.enabled && morphology.fieldSensingEnabled!==false && morphology.environmentNavigationBias>0) {
-        const value=(x,y)=>{ const field=fieldAt(this,x,y); return field.reward-field.danger*2; };
+        const value=(x,y)=>localResourceValue(this,x,y);
         const exposed=members.some(member=>fieldAt(this,member.x,member.y).danger>0);
-        const bias=exposed?Math.max(morphology.environmentNavigationBias,morphology.dangerNavigationBias??0):morphology.environmentNavigationBias;
+        const metabolicBias=morphology.environmentNavigationBias*average(members.map(member=>foragingNeed(member,morphology)));
+        const bias=exposed?Math.max(metabolicBias,morphology.dangerNavigationBias??0):metabolicBias;
         for(const direction of DIRECTIONS) {
           const improvement=members.reduce((sum,member)=>{
             const next=this.world.wrapPosition(member.x+direction.x,member.y+direction.y);
@@ -4827,6 +4830,8 @@ export class Simulation {
         adaptiveMorphology: { ...this.config.bond.adaptiveMorphology, ...this.morphologyStats,
           dangerCostPerTick:this.config.bond.adaptiveMorphology.dangerCost,
           demoPhase:this.morphologyDemoPhase??'custom',
+          resourcePatches:this.resourcePatchState?{relocations:this.resourcePatchState.relocations,patches:this.resourcePatchState.patches,events:this.resourcePatchState.events}:null,
+          genomeTypes:new Set(this.organisms.filter(member=>member.alive).map(member=>JSON.stringify(member.genome))).size,
           colonies:this.getBondGroups().filter(group=>group.length>=3).length,
           largestComponent:Math.max(0,...this.getBondGroups().map(group=>group.length)) },
         harvestMemberSupport: { ...this.config.bond.harvestMemberSupport, ...this.harvestSupportStats },

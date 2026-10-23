@@ -1,0 +1,177 @@
+{
+  "kind": "controlled-transition-audit-not-survival-evidence",
+  "rows": [
+    {
+      "cycle": 0,
+      "seed": 160104,
+      "birthMutationRate": 0.02,
+      "recipe": {
+        "name": "resource-foraging",
+        "resourceFunded": true,
+        "foodGrowthRate": 0.45,
+        "foodAttempts": 8,
+        "gateDiscovery": true,
+        "navigation": true,
+        "dormantBonds": true,
+        "movementCostMultiplier": 0.9
+      },
+      "inheritance": {
+        "descendants": 0,
+        "mutations": 0
+      },
+      "landscape": "d31ca04954823e54",
+      "patches": "535faa75e91b2d97",
+      "genomes": 1
+    },
+    {
+      "cycle": 1,
+      "seed": 170178,
+      "birthMutationRate": 0.02,
+      "recipe": {
+        "name": "gate-consensus",
+        "resourceFunded": true,
+        "foodGrowthRate": 0.32,
+        "foodAttempts": 6,
+        "gateDiscovery": true,
+        "navigation": true,
+        "dormantBonds": true,
+        "movementCostMultiplier": 0.8
+      },
+      "inheritance": {
+        "descendants": 12,
+        "mutations": 3
+      },
+      "landscape": "70d2b61fdf63b28b",
+      "patches": "b8ae29493be53b05",
+      "genomes": 3
+    },
+    {
+      "cycle": 2,
+      "seed": 180252,
+      "birthMutationRate": 0.02,
+      "recipe": {
+        "name": "distributed-memory",
+        "resourceFunded": true,
+        "foodGrowthRate": 0.42,
+        "foodAttempts": 8,
+        "gateDiscovery": true,
+        "navigation": false,
+        "dormantBonds": true,
+        "movementCostMultiplier": 1
+      },
+      "inheritance": {
+        "descendants": 12,
+        "mutations": 4
+      },
+      "landscape": "2fc6b9c08d2bb08b",
+      "patches": "eca949aa8d75da15",
+      "genomes": 5
+    },
+    {
+      "cycle": 3,
+      "seed": 190326,
+      "birthMutationRate": 0.02,
+      "recipe": {
+        "name": "scarcity-recovery",
+        "resourceFunded": true,
+        "foodGrowthRate": 0.24,
+        "foodAttempts": 5,
+        "gateDiscovery": true,
+        "navigation": true,
+        "dormantBonds": true,
+        "movementCostMultiplier": 0.7
+      },
+      "inheritance": {
+        "descendants": 12,
+        "mutations": 3
+      },
+      "landscape": "b64fc1500f5f2ee1",
+      "patches": "a30e4ce595183119",
+      "genomes": 4
+    },
+    {
+      "cycle": 4,
+      "seed": 200400,
+      "birthMutationRate": 0.02,
+      "recipe": {
+        "name": "evolved-4",
+        "resourceFunded": true,
+        "foodGrowthRate": 0.28,
+        "foodAttempts": 5,
+        "gateDiscovery": true,
+        "navigation": true,
+        "dormantBonds": true,
+        "movementCostMultiplier": 0.7,
+        "parentRecipe": "scarcity-recovery",
+        "mutation": {
+          "parameter": "foodGrowthRate",
+          "before": 0.24,
+          "after": 0.28
+        }
+      },
+      "inheritance": {
+        "descendants": 12,
+        "mutations": 1
+      },
+      "landscape": "f3cdd11422d36be7",
+      "patches": "b2451240034b34ec",
+      "genomes": 2
+    },
+    {
+      "cycle": 5,
+      "seed": 210474,
+      "birthMutationRate": 0.02,
+      "recipe": {
+        "name": "evolved-5",
+        "resourceFunded": true,
+        "foodGrowthRate": 0.32,
+        "foodAttempts": 5,
+        "gateDiscovery": true,
+        "navigation": true,
+        "dormantBonds": true,
+        "movementCostMultiplier": 0.8,
+        "parentRecipe": "gate-consensus",
+        "mutation": {
+          "parameter": "foodAttempts",
+          "before": 6,
+          "after": 5
+        }
+      },
+      "inheritance": {
+        "descendants": 12,
+        "mutations": 2
+      },
+      "landscape": "c744f567c0f61d9f",
+      "patches": "3e5b14cf0001b196",
+      "genomes": 3
+    },
+    {
+      "cycle": 6,
+      "seed": 220548,
+      "birthMutationRate": 0.02,
+      "recipe": {
+        "name": "evolved-6",
+        "resourceFunded": true,
+        "foodGrowthRate": 0.32,
+        "foodAttempts": 6,
+        "gateDiscovery": true,
+        "navigation": true,
+        "dormantBonds": true,
+        "movementCostMultiplier": 0.88,
+        "parentRecipe": "gate-consensus",
+        "mutation": {
+          "parameter": "movementCostMultiplier",
+          "before": 0.8,
+          "after": 0.88
+        }
+      },
+      "inheritance": {
+        "descendants": 12,
+        "mutations": 3
+      },
+      "landscape": "ff8ab8f4f751f942",
+      "patches": "cd27ed19d3538e7c",
+      "genomes": 3
+    }
+  ]
+}

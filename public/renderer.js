@@ -84,7 +84,7 @@ export class Renderer {
         if(field) {
           const row=Math.min(field.size-1,Math.floor(y/world.height*field.size));
           const column=Math.min(field.size-1,Math.floor(x/world.width*field.size));
-          this.context.fillStyle=`rgba(70,190,140,${field.reward[row][column]*0.12})`;
+          this.context.fillStyle=`rgba(95,185,210,${field.reward[row][column]*0.08})`;
           this.context.fillRect(x*cellSize,y*cellSize,cellSize,cellSize);
           this.context.fillStyle=`rgba(235,65,65,${field.danger[row][column]*0.3})`;
           this.context.fillRect(x*cellSize,y*cellSize,cellSize,cellSize);
@@ -113,7 +113,7 @@ export class Renderer {
           this.context.fillRect(offsetX + x * cellSize, offsetY + y * cellSize, cellSize, cellSize);
         }
         if (nutrients > 0) {
-          this.context.fillStyle = `rgba(190, 150, 65, ${Math.min(0.28, nutrients * 0.28)})`;
+          this.context.fillStyle = `rgba(100, 172, 200, ${Math.min(0.10, nutrients * 0.10)})`;
           this.context.fillRect(offsetX + x * cellSize, offsetY + y * cellSize, cellSize, cellSize);
         }
         if (detritus > 0) {
@@ -166,18 +166,9 @@ export class Renderer {
           const visits = facetWorkTrail[y]?.[x] ?? 0;
           if (visits <= 0) continue;
           const intensity = Math.min(1, Math.log1p(visits) / Math.log(48));
-          this.context.fillStyle = `rgba(255, 176, 52, ${0.09 + intensity * 0.42})`;
+          // A quiet, broad wash keeps accumulated history behind the golden living topology.
+          this.context.fillStyle = `rgba(100, 190, 215, ${0.025 + intensity * 0.13})`;
           this.context.fillRect(offsetX + x * cellSize, offsetY + y * cellSize, cellSize, cellSize);
-          if (intensity >= 0.58) {
-            const inset = cellSize * 0.24;
-            this.context.fillStyle = `rgba(255, 239, 154, ${0.2 + intensity * 0.5})`;
-            this.context.fillRect(
-              offsetX + x * cellSize + inset,
-              offsetY + y * cellSize + inset,
-              cellSize - inset * 2,
-              cellSize - inset * 2
-            );
-          }
         }
       }
     }
@@ -189,10 +180,29 @@ export class Renderer {
           const value = memory[y]?.[x] ?? 0;
           if (value <= 0) continue;
           const intensity = Math.min(1, Math.sqrt(value));
-          this.context.fillStyle = `rgba(125, 91, 255, ${0.05 + intensity * 0.42})`;
+          this.context.fillStyle = `rgba(105, 155, 215, ${0.025 + intensity * 0.16})`;
           this.context.fillRect(offsetX + x * cellSize, offsetY + y * cellSize, cellSize, cellSize);
         }
       }
+    }
+
+    // Diagnostic resource centers are not targets communicated to organisms.
+    const patches=snapshot.bonding?.adaptiveMorphology?.resourcePatches;
+    if(patches) {
+      const capacity=snapshot.bonding.adaptiveMorphology.patchCapacity;
+      const fieldSize=snapshot.morphologyEnvironment?.size??16;
+      this.context.save();
+      this.context.lineWidth=1;
+      for(const patch of patches.patches) {
+        const x=(patch.x+.5)/fieldSize*width,y=(patch.y+.5)/fieldSize*height;
+        this.context.strokeStyle='rgba(125, 200, 220, 0.3)';
+        this.context.setLineDash([3,5]);
+        this.context.beginPath();this.context.arc(x,y,cellSize*1.2,0,Math.PI*2);this.context.stroke();
+        this.context.setLineDash([]);
+        this.context.strokeStyle='rgba(125, 215, 235, 0.6)';
+        this.context.beginPath();this.context.arc(x,y,cellSize*.9,-Math.PI/2,-Math.PI/2+Math.PI*2*Math.max(0,Math.min(1,patch.remaining/capacity)));this.context.stroke();
+      }
+      this.context.restore();
     }
 
     for (const gate of collectiveWork.gates ?? markers.collectiveWork ?? []) {

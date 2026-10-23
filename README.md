@@ -2,7 +2,43 @@
 
 Primes, also called Project Genesis, is a long-term Artificial Life research project built around a server-driven simulation engine. Its central hypothesis is that prime factorization can serve as a canonical language for generation: a prime represents one irreducible generator, while a composite represents their composition.
 
-## Current research state — Phase 16 Energy Logistics
+## Current live state — adaptive resource foraging (23 October 2026)
+
+The default on `codex/adaptive-morphology-world` is now **adaptive-foraging**, seed **160104**, speed 1. Start with `npm start` and refresh http://localhost:3000/.
+
+This builds on renewing colonies below, but replaces fixed timed environmental phases with **consumption-driven depletion and relocation**. Patches lose productivity when harvested; exhausted patches open at new seeded locations. Gentle, smoothly sampled local cues bias movement and shaping without supplying destination coordinates or extra energy. The global field budget remains four units/tick. Small cyan resource rings and the status line show remaining patch productivity, shifts and genome diversity. Uploaded images remain authoritative and turn off automatic succession.
+
+Across four matched seeds at 1,000 ticks, the selected sensing treatment harvested about **15% more field energy** and retained 350 versus 250 bonds in aggregate. The effect is uneven: two seeds lost the bond-count comparison, and the two fresh validation seeds showed better harvesting but **no bond-retention advantage**. This is a promising adaptive-foraging substrate, not a universal survival or learned-intelligence result. Stronger attraction, stock sensing, metabolic feedback and direct field-to-bond routing were tested; none established a consistently better default, so those options remain off.
+
+Cycle variation was audited: distinct terrain/patch seeds, ordinary 2%-per-birth mutation, inherited descendant mutations and bounded recipe mutation after the initial four recipes. Surviving structures are intentionally inherited; recurring simple motifs do not imply identical world resets.
+
+See [resource adaptation results and handoff](RESOURCE_ADAPTATION_RESULTS_2026-10-23.md) for raw comparisons, rejected variants, exact carry-over, startup switches and regression commands. Use `GENESIS_MORPHOLOGY_PROFILE=renewing-colonies` before startup to compare with the prior timed demonstration.
+
+## Previous live state — renewing colonies (23 October 2026)
+
+Active branch: `codex/adaptive-morphology-world`. The selected survival/response implementation is recorded in commit `8fc912d`; the original reincarnation branch is retained as a reference. Start with `npm start` and open http://localhost:3000/. The current default is seed **160104**, profile **renewing-colonies**, at speed 1.
+
+### What changed to reach this state
+
+- Stationary bonded operating cost was reduced from 25% to 18% of the base charge; awake-edge energy flow was reduced from 0.75 to 0.10 per tick, retaining 98% efficiency and protecting donors' reproduction/support floors.
+- Funded adjacent bonds tolerate temporary binding-signal dips. Depletion, separation, death and ageing still apply.
+- Older, sufficiently energetic bonded members can reproduce locally and invest existing energy into newborn connection seeds. New bond reserves are paid by endpoints, with a maximum degree of four for new connections in this profile.
+- A rotating member can reshape locally without breaking its existing adjacencies. Periodic component motion uses local reward/danger sensing; no particular shape or gate is prescribed.
+- Eligible surviving structures remain at their positions across 1,000-tick reincarnations, alongside newcomers. New walls under survivors are cleared, and colliding newcomers are relocated.
+- Fixed stale movement occupancy after reshaping, and removed playback speed from per-tick food production. Playback speed no longer changes ecology within an individual tick.
+- Optional directional learning was tested and left **off** because it did not improve the measured retention comparison. Existing evolutionary selection/inheritance and topology-trace mechanisms remain separate; improved survival is not proof of learned intelligence.
+
+### Observable environment and measured result
+
+The default demonstration cycles through forage (ticks 0–399), a reward-left/danger-right challenge (400–599), then recovery (600–999). The next world carries eligible survivors forward. The field supplies at most four external energy units globally per tick; harvesting, transport loss, paid motion and danger are accounted for. Uploaded images override the schedule: brightness maps to reward and excess red to danger, not semantic image recognition.
+
+Three matched 1,000-tick seeds retained **185 bonds / 150 members** in aggregate versus **61 bonds / 52 members** with the starting adaptive profile. Final changing-environment demonstrations survived two worlds on both tested seeds, with measured original-member/edge carry-over. Individual starvation and topology retention remain mixed; this is not a 24-hour stability or intelligence claim.
+
+The small status line above the canvas shows phase, colony count, largest component, shape moves and renewal births. Background facet-work history now uses a **low-opacity cyan wash**, with no bright golden inner squares; environmental memory uses soft blue, and reward/nutrient overlays are muted cool tones. Organisms and bonds retain orange/gold so they stand apart. Red danger remains distinguishable. These palette changes affect rendering only, not simulation rules or heatmap values.
+
+Full parameters, raw-result links, regression commands, limitations and PowerShell startup switches: [latest experiment report](MORPHOLOGY_EXPERIMENT_REPORT_2026-10-23.md). Architecture and earlier results: [adaptive morphology world](ADAPTIVE_MORPHOLOGY_WORLD.md). The report supersedes older live-default descriptions below.
+
+## Historical research state — Phase 16 Energy Logistics
 
 Project Genesis now has a functioning structural ecology: organisms can form bonds, closed triangular facets, larger bonded components, complete consensus gates, harvest physical gate-field food, and migrate between finite gate opportunities. The current research question is no longer whether visible structure can form. It is whether a **collective** can persist as an identifiable entity across energy cycles, migration, and member turnover.
 
@@ -76,7 +112,7 @@ The Evolution Lab’s gate screen compares matched **gate-enabled** and **gate-d
 
 Mobile couriers are disabled by default and can be enabled from Settings for a controlled experiment. A loose high-energy organism with Prime 19 and Prime 13 can carry one finite report only about a nearby actionable gate: its location and ready/observe phase. Food remains locally sensed by Prime 17 and is deliberately not courier-reported. When a scout comes near a bonded facet compound, the compound briefly retains that gate report and its Prime-17 directional scores gain an added gradient toward the reported location. Cyan rings identify active gate reports. The Evolution Lab includes matched gates-with-couriers and gates-without-couriers controls.
 
-The canvas retains an observational **facet-work trail**. Each tick that a strong closed facet occupies a cell adds a faint persistent gold heat value to that cell. It resets with the world and is never read by organisms or used by any ecological rule. Long runs therefore reveal where structural work concentrated, migrated, or disappeared without altering the simulation being measured.
+The canvas retains an observational **facet-work trail**. Each tick that a strong closed facet occupies a cell adds to its history, now rendered as a faint cyan wash rather than gold squares. It resets with the world and is never read by organisms or used by any ecological rule. Long runs therefore reveal where structural work concentrated, migrated, or disappeared without altering the simulation being measured.
 
 ## Phase 16: Environmental Memory
 

@@ -418,7 +418,7 @@ function syncControls(snapshot) {
   const morphology=snapshot.bonding?.adaptiveMorphology;
   if(colonyStatus) {
     colonyStatus.hidden=!morphology?.enabled;
-    if(morphology?.enabled) colonyStatus.textContent=`${morphology.name??'Adaptive world'} · ${morphology.demoPhase??'custom field'} · ${morphology.colonies??0} colonies · largest ${morphology.largestComponent??0} members · ${morphology.moves??0} shape moves · ${morphology.renewalBirths??0} renewal births`;
+    if(morphology?.enabled) colonyStatus.textContent=`${morphology.name??'Adaptive world'} · ${morphology.demoPhase??'custom field'} · ${morphology.colonies??0} colonies · largest ${morphology.largestComponent??0} members · ${morphology.moves??0} shape moves · ${morphology.renewalBirths??0} renewal births${morphology.resourcePatches?` · ${morphology.resourcePatches.relocations} patch shifts · ${morphology.genomeTypes??1} genome types`:''}`;
   }
   guidedInputEnabledInput.checked = Boolean(guided.enabled);
   guidedSupportEnabledInput.checked = Boolean(guided.supportedDevelopment?.enabled);

@@ -1,0 +1,461 @@
+[
+  {
+    "variant": {
+      "name": "gain-008",
+      "reshapeMinimumGain": 0.008
+    },
+    "seed": 160103,
+    "selectionScore": 2.7784,
+    "tick": 1000,
+    "population": 23,
+    "births": 88,
+    "deaths": 65,
+    "bonds": 23,
+    "facets": 17,
+    "food": 706,
+    "gateSightings": 20540,
+    "gateRelays": 697,
+    "gateConsensuses": 125,
+    "gateCompletions": 57,
+    "bondsFormed": 284,
+    "bondsBroken": 261,
+    "populationRetention": 0.958,
+    "score": 494.333,
+    "morphology": {
+      "moves": 900,
+      "shared": 760.4322729234062,
+      "transferLoss": 15.519025978031692,
+      "fieldIncome": 2718.704355119804,
+      "fieldGenerated": 3940.7326482057097,
+      "dangerCost": 0,
+      "renewalBirths": 7
+    },
+    "relocations": 11,
+    "deathCauses": {
+      "energy exhaustion": 41,
+      "maximum age": 24
+    },
+    "largestComponent": 8
+  },
+  {
+    "variant": {
+      "name": "gain-008",
+      "reshapeMinimumGain": 0.008
+    },
+    "seed": 160104,
+    "selectionScore": 3.064,
+    "tick": 1000,
+    "population": 43,
+    "births": 103,
+    "deaths": 60,
+    "bonds": 36,
+    "facets": 13,
+    "food": 646,
+    "gateSightings": 25953,
+    "gateRelays": 2572,
+    "gateConsensuses": 174,
+    "gateCompletions": 36,
+    "bondsFormed": 271,
+    "bondsBroken": 235,
+    "populationRetention": 1.792,
+    "score": 563.917,
+    "morphology": {
+      "moves": 1649,
+      "shared": 943.9010051137857,
+      "transferLoss": 19.26328581865178,
+      "fieldIncome": 3531.0232168362536,
+      "fieldGenerated": 3990.1996681973583,
+      "dangerCost": 0,
+      "renewalBirths": 19
+    },
+    "relocations": 15,
+    "deathCauses": {
+      "energy exhaustion": 29,
+      "maximum age": 31
+    },
+    "largestComponent": 14
+  },
+  {
+    "variant": {
+      "name": "gain-008",
+      "reshapeMinimumGain": 0.008
+    },
+    "seed": 160118,
+    "selectionScore": 3.4892,
+    "tick": 1000,
+    "population": 54,
+    "births": 113,
+    "deaths": 59,
+    "bonds": 60,
+    "facets": 28,
+    "food": 684,
+    "gateSightings": 30744,
+    "gateRelays": 4663,
+    "gateConsensuses": 217,
+    "gateCompletions": 43,
+    "bondsFormed": 344,
+    "bondsBroken": 284,
+    "populationRetention": 2.25,
+    "score": 740.75,
+    "morphology": {
+      "moves": 1242,
+      "shared": 901.149018113387,
+      "transferLoss": 18.39079628803149,
+      "fieldIncome": 3374.6310086013805,
+      "fieldGenerated": 3977.968730076404,
+      "dangerCost": 0,
+      "renewalBirths": 25
+    },
+    "relocations": 15,
+    "deathCauses": {
+      "energy exhaustion": 30,
+      "maximum age": 29
+    },
+    "largestComponent": 10
+  },
+  {
+    "variant": {
+      "name": "gain-015",
+      "reshapeMinimumGain": 0.015
+    },
+    "seed": 160103,
+    "selectionScore": 3.6057,
+    "tick": 1000,
+    "population": 47,
+    "births": 108,
+    "deaths": 61,
+    "bonds": 57,
+    "facets": 22,
+    "food": 726,
+    "gateSightings": 28528,
+    "gateRelays": 609,
+    "gateConsensuses": 167,
+    "gateCompletions": 53,
+    "bondsFormed": 318,
+    "bondsBroken": 261,
+    "populationRetention": 1.958,
+    "score": 645.333,
+    "morphology": {
+      "moves": 768,
+      "shared": 1145.1935331229652,
+      "transferLoss": 23.37129659434893,
+      "fieldIncome": 3284.991866638966,
+      "fieldGenerated": 3988.742779446719,
+      "dangerCost": 0,
+      "renewalBirths": 22
+    },
+    "relocations": 14,
+    "deathCauses": {
+      "energy exhaustion": 35,
+      "maximum age": 26
+    },
+    "largestComponent": 18
+  },
+  {
+    "variant": {
+      "name": "gain-015",
+      "reshapeMinimumGain": 0.015
+    },
+    "seed": 160104,
+    "selectionScore": 3.2522,
+    "tick": 1000,
+    "population": 42,
+    "births": 86,
+    "deaths": 44,
+    "bonds": 57,
+    "facets": 27,
+    "food": 692,
+    "gateSightings": 19064,
+    "gateRelays": 7291,
+    "gateConsensuses": 103,
+    "gateCompletions": 24,
+    "bondsFormed": 198,
+    "bondsBroken": 141,
+    "populationRetention": 1.75,
+    "score": 437.5,
+    "morphology": {
+      "moves": 908,
+      "shared": 1119.1774583903318,
+      "transferLoss": 22.840356293682838,
+      "fieldIncome": 3388.7654223962536,
+      "fieldGenerated": 3937.1273165960674,
+      "dangerCost": 0,
+      "renewalBirths": 20
+    },
+    "relocations": 14,
+    "deathCauses": {
+      "energy exhaustion": 19,
+      "maximum age": 25
+    },
+    "largestComponent": 16
+  },
+  {
+    "variant": {
+      "name": "gain-015",
+      "reshapeMinimumGain": 0.015
+    },
+    "seed": 160118,
+    "selectionScore": 3.794,
+    "tick": 1000,
+    "population": 48,
+    "births": 101,
+    "deaths": 53,
+    "bonds": 67,
+    "facets": 38,
+    "food": 679,
+    "gateSightings": 27729,
+    "gateRelays": 4072,
+    "gateConsensuses": 171,
+    "gateCompletions": 38,
+    "bondsFormed": 318,
+    "bondsBroken": 251,
+    "populationRetention": 2,
+    "score": 653.75,
+    "morphology": {
+      "moves": 848,
+      "shared": 883.2666586707131,
+      "transferLoss": 18.025850176956666,
+      "fieldIncome": 3220.903745459227,
+      "fieldGenerated": 3988.7116813533594,
+      "dangerCost": 0,
+      "renewalBirths": 24
+    },
+    "relocations": 13,
+    "deathCauses": {
+      "energy exhaustion": 25,
+      "maximum age": 28
+    },
+    "largestComponent": 15
+  },
+  {
+    "variant": {
+      "name": "gain-020",
+      "reshapeMinimumGain": 0.02
+    },
+    "seed": 160103,
+    "selectionScore": 3.4864,
+    "tick": 1000,
+    "population": 45,
+    "births": 108,
+    "deaths": 63,
+    "bonds": 56,
+    "facets": 19,
+    "food": 686,
+    "gateSightings": 23760,
+    "gateRelays": 935,
+    "gateConsensuses": 157,
+    "gateCompletions": 58,
+    "bondsFormed": 296,
+    "bondsBroken": 240,
+    "populationRetention": 1.875,
+    "score": 630,
+    "morphology": {
+      "moves": 714,
+      "shared": 824.9866960618625,
+      "transferLoss": 16.83646318493944,
+      "fieldIncome": 3228.001283990532,
+      "fieldGenerated": 3977.856904558171,
+      "dangerCost": 0,
+      "renewalBirths": 23
+    },
+    "relocations": 14,
+    "deathCauses": {
+      "energy exhaustion": 39,
+      "maximum age": 24
+    },
+    "largestComponent": 22
+  },
+  {
+    "variant": {
+      "name": "gain-020",
+      "reshapeMinimumGain": 0.02
+    },
+    "seed": 160104,
+    "selectionScore": 3.5285,
+    "tick": 1000,
+    "population": 48,
+    "births": 101,
+    "deaths": 53,
+    "bonds": 62,
+    "facets": 22,
+    "food": 712,
+    "gateSightings": 27156,
+    "gateRelays": 1474,
+    "gateConsensuses": 156,
+    "gateCompletions": 41,
+    "bondsFormed": 287,
+    "bondsBroken": 225,
+    "populationRetention": 2,
+    "score": 595.75,
+    "morphology": {
+      "moves": 665,
+      "shared": 1025.6300551071447,
+      "transferLoss": 20.93122561443442,
+      "fieldIncome": 3228.1730068634542,
+      "fieldGenerated": 3959.284447342093,
+      "dangerCost": 0,
+      "renewalBirths": 23
+    },
+    "relocations": 14,
+    "deathCauses": {
+      "energy exhaustion": 26,
+      "maximum age": 27
+    },
+    "largestComponent": 10
+  },
+  {
+    "variant": {
+      "name": "gain-020",
+      "reshapeMinimumGain": 0.02
+    },
+    "seed": 160118,
+    "selectionScore": 3.385,
+    "tick": 1000,
+    "population": 63,
+    "births": 114,
+    "deaths": 51,
+    "bonds": 82,
+    "facets": 32,
+    "food": 737,
+    "gateSightings": 25462,
+    "gateRelays": 2904,
+    "gateConsensuses": 147,
+    "gateCompletions": 37,
+    "bondsFormed": 283,
+    "bondsBroken": 201,
+    "populationRetention": 2.625,
+    "score": 627.5,
+    "morphology": {
+      "moves": 813,
+      "shared": 1277.0089673605485,
+      "transferLoss": 26.061407497156644,
+      "fieldIncome": 3182.4330289234927,
+      "fieldGenerated": 3994.9224846632246,
+      "dangerCost": 0,
+      "renewalBirths": 30
+    },
+    "relocations": 14,
+    "deathCauses": {
+      "energy exhaustion": 27,
+      "maximum age": 24
+    },
+    "largestComponent": 18
+  },
+  {
+    "variant": {
+      "name": "slower-succession",
+      "reshapeMinimumGain": 0.008,
+      "patchCapacity": 480
+    },
+    "seed": 160103,
+    "selectionScore": 2.8923,
+    "tick": 1000,
+    "population": 30,
+    "births": 83,
+    "deaths": 53,
+    "bonds": 35,
+    "facets": 15,
+    "food": 711,
+    "gateSightings": 22757,
+    "gateRelays": 356,
+    "gateConsensuses": 134,
+    "gateCompletions": 42,
+    "bondsFormed": 246,
+    "bondsBroken": 211,
+    "populationRetention": 1.25,
+    "score": 488.25,
+    "morphology": {
+      "moves": 840,
+      "shared": 799.2816198438617,
+      "transferLoss": 16.31186979273529,
+      "fieldIncome": 3328.661836610853,
+      "fieldGenerated": 3986.5646395955573,
+      "dangerCost": 0,
+      "renewalBirths": 18
+    },
+    "relocations": 6,
+    "deathCauses": {
+      "energy exhaustion": 24,
+      "maximum age": 29
+    },
+    "largestComponent": 19
+  },
+  {
+    "variant": {
+      "name": "slower-succession",
+      "reshapeMinimumGain": 0.008,
+      "patchCapacity": 480
+    },
+    "seed": 160104,
+    "selectionScore": 2.8897,
+    "tick": 1000,
+    "population": 40,
+    "births": 100,
+    "deaths": 60,
+    "bonds": 41,
+    "facets": 16,
+    "food": 661,
+    "gateSightings": 24881,
+    "gateRelays": 2286,
+    "gateConsensuses": 169,
+    "gateCompletions": 27,
+    "bondsFormed": 277,
+    "bondsBroken": 236,
+    "populationRetention": 1.667,
+    "score": 533.667,
+    "morphology": {
+      "moves": 1115,
+      "shared": 947.5903579511421,
+      "transferLoss": 19.338578733699954,
+      "fieldIncome": 3340.735584248954,
+      "fieldGenerated": 3942.421320488172,
+      "dangerCost": 0,
+      "renewalBirths": 20
+    },
+    "relocations": 7,
+    "deathCauses": {
+      "energy exhaustion": 36,
+      "maximum age": 24
+    },
+    "largestComponent": 10
+  },
+  {
+    "variant": {
+      "name": "slower-succession",
+      "reshapeMinimumGain": 0.008,
+      "patchCapacity": 480
+    },
+    "seed": 160118,
+    "selectionScore": 2.3737,
+    "tick": 1000,
+    "population": 39,
+    "births": 87,
+    "deaths": 48,
+    "bonds": 28,
+    "facets": 6,
+    "food": 684,
+    "gateSightings": 24674,
+    "gateRelays": 2265,
+    "gateConsensuses": 125,
+    "gateCompletions": 18,
+    "bondsFormed": 210,
+    "bondsBroken": 182,
+    "populationRetention": 1.625,
+    "score": 387.25,
+    "morphology": {
+      "moves": 1256,
+      "shared": 929.1058874537696,
+      "transferLoss": 18.96134464191688,
+      "fieldIncome": 3220.3509814848085,
+      "fieldGenerated": 3988.344574897198,
+      "dangerCost": 0,
+      "renewalBirths": 16
+    },
+    "relocations": 6,
+    "deathCauses": {
+      "energy exhaustion": 22,
+      "maximum age": 26
+    },
+    "largestComponent": 9
+  }
+]

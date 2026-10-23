@@ -1,0 +1,114 @@
+[
+  {
+    "seed": 160104,
+    "endpoint": {
+      "selectionScore": 3.1265,
+      "tick": 1000,
+      "population": 166,
+      "births": 222,
+      "deaths": 56,
+      "bonds": 201,
+      "facets": 81,
+      "food": 477,
+      "gateSightings": 29031,
+      "gateRelays": 3278,
+      "gateConsensuses": 204,
+      "gateCompletions": 30,
+      "bondsFormed": 439,
+      "bondsBroken": 238,
+      "populationRetention": 6.917,
+      "score": 1082.167,
+      "morphology": {
+        "moves": 2543,
+        "shared": 1489.1641897066786,
+        "transferLoss": 30.391105912383168,
+        "fieldIncome": 3878.3292353677107,
+        "fieldGenerated": 3985.1600048652,
+        "dangerCost": 0,
+        "renewalBirths": 26
+      },
+      "carried": 134
+    },
+    "after200InNextWorld": {
+      "selectionScore": 1.9134,
+      "tick": 200,
+      "population": 126,
+      "births": 202,
+      "deaths": 76,
+      "bonds": 122,
+      "facets": 31,
+      "food": 441,
+      "gateSightings": 15802,
+      "gateRelays": 5864,
+      "gateConsensuses": 114,
+      "gateCompletions": 17,
+      "bondsFormed": 166,
+      "bondsBroken": 244,
+      "populationRetention": 5.25,
+      "score": 622.5,
+      "seed": 170178,
+      "inheritance": {
+        "descendants": 12,
+        "mutations": 3
+      },
+      "profile": "adaptive-foraging"
+    },
+    "fieldEnergyWithinBudget": true
+  },
+  {
+    "seed": 160121,
+    "endpoint": {
+      "selectionScore": 3.459,
+      "tick": 1000,
+      "population": 51,
+      "births": 98,
+      "deaths": 47,
+      "bonds": 66,
+      "facets": 24,
+      "food": 734,
+      "gateSightings": 23284,
+      "gateRelays": 2868,
+      "gateConsensuses": 157,
+      "gateCompletions": 37,
+      "bondsFormed": 251,
+      "bondsBroken": 185,
+      "populationRetention": 2.125,
+      "score": 599.5,
+      "morphology": {
+        "moves": 1512,
+        "shared": 1211.9702477052397,
+        "transferLoss": 24.73408668786456,
+        "fieldIncome": 3148.3998455930528,
+        "fieldGenerated": 3978.074093501456,
+        "dangerCost": 0,
+        "renewalBirths": 24
+      },
+      "carried": 46
+    },
+    "after200InNextWorld": {
+      "selectionScore": 2.7089,
+      "tick": 200,
+      "population": 75,
+      "births": 93,
+      "deaths": 18,
+      "bonds": 100,
+      "facets": 39,
+      "food": 570,
+      "gateSightings": 11285,
+      "gateRelays": 1356,
+      "gateConsensuses": 77,
+      "gateCompletions": 15,
+      "bondsFormed": 109,
+      "bondsBroken": 75,
+      "populationRetention": 3.125,
+      "score": 478.75,
+      "seed": 170195,
+      "inheritance": {
+        "descendants": 12,
+        "mutations": 2
+      },
+      "profile": "adaptive-foraging"
+    },
+    "fieldEnergyWithinBudget": true
+  }
+]

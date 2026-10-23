@@ -375,7 +375,9 @@ h1 {
 }
 
 .guide-swatch.signal { background: #a967e6; box-shadow: 0 0 10px rgba(185, 107, 255, 0.55); }
-.guide-swatch.nutrient { background: #be9641; }
+.guide-swatch.nutrient { background: #64acc8; }
+.guide-swatch.memory-heat { background: rgba(105, 155, 215, 0.4); }
+.legend-swatch.work-trail { background: rgba(100, 190, 215, 0.3); }
 .guide-swatch.detritus { background: #7a5332; }
 .guide-swatch.ash { background: #b4babe; }
 
@@ -800,8 +802,8 @@ input[type="range"] {
 }
 
 .legend-swatch.nutrients {
-  background: #be9641;
-  box-shadow: 0 0 12px rgba(190, 150, 65, 0.4);
+  background: #64acc8;
+  box-shadow: none;
 }
 
 .legend-swatch.production {

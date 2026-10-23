@@ -2,7 +2,9 @@
 
 ## Latest result — 23 October 2026
 
-The live default is now the **renewing-colonies** profile, seed **160104**, with a repeating forage → danger-shift → recovery demonstration. See [the experiment report](MORPHOLOGY_EXPERIMENT_REPORT_2026-10-23.md) for matched results, exact carry-over measurements, limitations and startup switches. The historical description and results below describe the earlier adaptive profile, not the current default. Its optional directional-learning bias did not improve the measured retention comparison and is off in the chosen profile; local sensing, topology traces and existing evolutionary inheritance remain.
+The later resource-adaptation pass now defaults to **adaptive-foraging**, replacing the timed demonstration with consumption-driven patch succession and gentle smooth sensing. See [the resource-adaptation handoff](RESOURCE_ADAPTATION_RESULTS_2026-10-23.md), which supersedes the live defaults described below. Renewing-colonies remains a selectable reference profile.
+
+Earlier in the day, the live default became the **renewing-colonies** profile, seed **160104**, with a repeating forage → danger-shift → recovery demonstration. It remains a selectable reference. See [that experiment report](MORPHOLOGY_EXPERIMENT_REPORT_2026-10-23.md) for matched results, exact carry-over measurements, limitations and startup switches. The historical description and results below describe the earlier adaptive profile, not the current default. Its optional directional-learning bias did not improve the measured retention comparison and is off in the chosen profile; local sensing, topology traces and existing evolutionary inheritance remain.
 
 Experimental branch: `codex/adaptive-morphology-world`. The previous reincarnation branch remains available as the reference. Run `npm start` from this branch. Set `GENESIS_ADAPTIVE_MORPHOLOGY=0` before startup to run the old mode. The individual shrinking, conservation, emergency relay and harvest-support experiments remain disabled.
 
