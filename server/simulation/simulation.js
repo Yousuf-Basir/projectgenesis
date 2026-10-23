@@ -7,6 +7,7 @@ import { DEFAULT_MUTATION_ENGINE } from "./mutation-engine.js";
 import { Organism } from "./organism.js";
 import { shrinkAtRiskComponents } from "./adaptive-shrinking.js";
 import { updateEnergyConservation } from "./energy-conservation.js";
+import { supportFromNeighbourSurplus } from "./neighbour-support.js";
 import { World } from "./world.js";
 import { average, clamp, createSeededRandom, normalizeSeed } from "./utils.js";
 import { createDefaultSurvivalCueGrid, createGuidedInput, setGuidedGrid, setGuidedPattern, serializeGuidedInput } from "./guided-input.js";
@@ -371,7 +372,8 @@ export class Simulation {
         const relayContext = this.getSupportContext(organism);
         const relay = this.relayReserveToMember(organism, relayContext);
         const relayedSupport = relay.delivered > 0 ? this.supportLowEnergyMember(organism) : 0;
-        const supportReceived = directSupport + relayedSupport;
+        const neighbourSupport = supportFromNeighbourSurplus(this, organism);
+        const supportReceived = directSupport + relayedSupport + neighbourSupport;
         this.recordComponentEpisodeMigrationSupport(organism, directSupport, relay.delivered, relayedSupport);
         if (organism.energy <= 0) {
           organism.alive = false;
@@ -1660,6 +1662,7 @@ export class Simulation {
   }
 
   reset() {
+    this.neighbourSupportStats = { transfers: 0, delivered: 0, lost: 0 };
     this.conservationHistory = new Map();
     this.conservationMemberTicks = 0;
     this.shrinkHistory = new Map();
@@ -3693,6 +3696,11 @@ export class Simulation {
     return {
       bonded: attachedBonds.length > 0,
       componentSize: group.length,
+      memberEnergy: Number(member.energy.toFixed(3)),
+      componentMemberEnergy: Number(this.organisms.filter(other => other.alive && groupIds.has(other.id)).reduce((sum, other) => sum + other.energy, 0).toFixed(3)),
+      neighbourSurplus: Number(this.organisms.filter(other => other.alive && other.id !== member.id
+        && attachedBonds.some(edge => edge.firstId === other.id || edge.secondId === other.id))
+        .reduce((sum, other) => sum + Math.max(0, other.energy - this.getReproductionEnergyFloor(other)), 0).toFixed(3)),
       attachedBondCount: attachedBonds.length,
       directReserve: Number(reserve(attachedBonds).toFixed(3)),
       directAccessibleReserve: Number(directAccessibleReserve.toFixed(3)),
@@ -4747,6 +4755,7 @@ export class Simulation {
       hazards: { ...this.config.hazards },
       signal: { ...this.config.signal },
       bonding: {
+        neighbourSurplusSupport: { ...this.config.bond.neighbourSurplusSupport, ...this.neighbourSupportStats },
         energyConservation: { ...this.config.bond.energyConservation, memberTicks: this.conservationMemberTicks },
         adaptiveShrinking: { ...this.config.bond.adaptiveShrinking, ...this.shrinkStats },
         usefulWorkReward: { ...this.config.bond.usefulWorkReward },

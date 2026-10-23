@@ -403,6 +403,15 @@ export const BASE_CONFIG = {
       probeTicks: 2,
       operatingCostMultiplier: 0.35
     },
+    neighbourSurplusSupport: {
+      enabled: false,
+      donorSharingEnabled: false,
+      reserveRelayEnabled: true,
+      maximumHops: 4,
+      targetEnergy: 6,
+      maximumWithdrawalPerMemberPerTick: 1.5,
+      efficiency: 0.85
+    },
     collectiveMemory: {
       enabled: false,
       maximumHops: 6,

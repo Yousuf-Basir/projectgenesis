@@ -1,0 +1,70 @@
+[
+  {
+    "enabled": false,
+    "selectionScore": 3.315,
+    "tick": 1000,
+    "population": 27,
+    "births": 87,
+    "deaths": 60,
+    "bonds": 61,
+    "facets": 98,
+    "food": 692,
+    "gateSightings": 18167,
+    "gateRelays": 760,
+    "gateConsensuses": 140,
+    "gateCompletions": 35,
+    "bondsFormed": 321,
+    "bondsBroken": 260,
+    "populationRetention": 1.125,
+    "score": 665.25,
+    "deathsByCause": {
+      "energy exhaustion": 46,
+      "maximum age": 14
+    },
+    "support": {
+      "transfers": 0,
+      "delivered": 0,
+      "lost": 0
+    },
+    "starvation": {
+      "isolated": 9,
+      "bonded": 37,
+      "neighbourSurplus": 0,
+      "componentAccessibleReserve": 27
+    }
+  },
+  {
+    "enabled": true,
+    "selectionScore": 1.6319,
+    "tick": 1000,
+    "population": 13,
+    "births": 99,
+    "deaths": 86,
+    "bonds": 6,
+    "facets": 1,
+    "food": 733,
+    "gateSightings": 18284,
+    "gateRelays": 1283,
+    "gateConsensuses": 232,
+    "gateCompletions": 52,
+    "bondsFormed": 451,
+    "bondsBroken": 445,
+    "populationRetention": 0.542,
+    "score": 633.417,
+    "deathsByCause": {
+      "energy exhaustion": 71,
+      "maximum age": 15
+    },
+    "support": {
+      "transfers": 499,
+      "delivered": 248.12207839792,
+      "lost": 149.69735406151977
+    },
+    "starvation": {
+      "isolated": 15,
+      "bonded": 56,
+      "neighbourSurplus": 2,
+      "componentAccessibleReserve": 7
+    }
+  }
+]

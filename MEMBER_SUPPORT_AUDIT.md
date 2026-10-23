@@ -1,0 +1,13 @@
+# Individual member starvation audit — 2026-10-23
+
+Seed 160103, 1,000 ticks, current reincarnation reference (evolution and work rewards on, shrinking and conservation off): 46 starvation deaths. Of these, 37 were bonded, 9 isolated, and 27 had accessible reserve elsewhere in the component. No dying member had immediate-neighbour surplus above the reproduction floor at diagnosis time. The primary measured bottleneck is stranded bond reserve, rather than surplus held by well-fed neighbours at death.
+
+Added individual diagnostics (`neighbourSurplus`, `componentMemberEnergy`, `memberEnergy`) and a switchable fallback after existing direct/one-hop reserve support. `bond.neighbourSurplusSupport` contains both alternatives. `donorSharingEnabled` is off; `reserveRelayEnabled` is on but its master `enabled` remains OFF by default. The fallback caps recipient/donor/source-edge withdrawals per tick, protects donor reproduction floors and bond support floors, traverses at most four awake adjacent connections, and loses energy per hop. Recipient target is six energy. It does not create energy or rescue age/fire deaths. The transfer records explicit losses and rewards direct donor bonds only for delivered energy.
+
+Trial 1 (donor-only): 17 transfers, 17.43 energy delivered, 3.08 lost. Population 14, bonds 7, starvation deaths 50 versus baseline 27/61/46. Not promoted.
+
+Trial 2 (reserve relay, donor sharing off): 499 transfers, 248.12 energy delivered, 149.70 lost. Population 13, bonds 6, starvation deaths 71. Stranded-reserve starvation diagnoses fell from 27 to 7, but overall survival worsened. This is a single seed and not a general causal estimate. Access improved, yet reserve consumption and losses can compromise bond persistence. High composite score or additional gate work alone would misrepresent that outcome.
+
+Final raw paired results: `research-results/neighbour-support-screen.json`. Repeat with `node scripts/run-neighbour-support-screen.mjs`; checks with `node test/neighbour-support.mjs`. These validate energy conservation/loss, donor floor, per-tick limits, dormant-edge exclusion, remote reserve delivery and disabling. Live defaults remain unchanged. Enable comparison explicitly through `simulation.config.bond.neighbourSurplusSupport.enabled = true` after controller initialization.
+
+Next justified experiment: prioritize member emergency support before allocating new harvest to bond reserves, retaining bond maintenance floors and avoiding repeated multi-hop withdrawals. Measure net component energy income and death timing; routing cannot fix a component-wide energy deficit. Preserve these failed trials as evidence rather than stacking every fallback into the live system.
