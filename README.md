@@ -1,6 +1,52 @@
-# Primes
+# Project Genesis (Primes)
 
 Primes, also called Project Genesis, is a long-term Artificial Life research project built around a server-driven simulation engine. Its central hypothesis is that prime factorization can serve as a canonical language for generation: a prime represents one irreducible generator, while a composite represents their composition.
+
+## Start here — what we are trying to achieve
+
+We are exploring whether simple digital organisms can become useful **collectives**: finding resources, sharing energy, changing their formations, replacing ageing members, and surviving a changing environment together. The longer-term ambition is intelligence expressed through adaptation and interaction—not merely attractive shapes or an organism that never dies.
+
+There is no pretrained language model running the world. Organism capabilities and small processing graphs are generated from their genomes. The current behavior comes from authored ecological rules, local interactions, inherited variation and bounded evolutionary search. **We have not demonstrated general intelligence, image understanding or indefinite species survival.**
+
+### What you can see now
+
+- Orange organisms form gold bonds, triangles and larger structures. They can move, reshape locally, eat, reproduce and die.
+- Food and energy gates provide opportunities to survive. Resource patches lose productivity when harvested and relocate when depleted, so a useful place need not remain useful forever.
+- A small **food-colored `+` inside a shape means it holds stored food**. Green is nourishment, blue keeps longer, and red can fuel bond upkeep. Mixed-color arms mean mixed foods; empty shapes have no mark. Colored flashes show real pantry use or transport. Small colored squares beneath members indicate stores no longer inside a closed shape.
+- The seed, tick, cycle recipe, carry-over and configuration hints explain which world you are watching. A seed makes random choices reproducible; it is not a score or an intelligence level.
+
+### How food storage and bond preservation work
+
+The normal storage policy saves **actual harvest that would otherwise exceed a member's energy capacity**. A member needs a closed loop, or an intact bond path to one, to collect for a pantry. Stores remain owned by real organisms; food travels one bond-hop per tick toward reachable chambers, with finite capacity, limited transport and an explicit transfer loss. Green is eaten before blue, blue spoils more slowly, and red pays real maintenance costs. Food is not duplicated when shapes overlap, children are born, or a cycle changes.
+
+Members observe their own falling energy and can use saved food before reaching starvation. Existing connections also have an upkeep bill. Actual body surplus and stored food can pay it, while protecting survival and reproduction budgets. Eligible older members can reproduce locally and spend real energy on new connections. Funded, adjacent bonds can tolerate temporary binding-signal dips, but **death, ageing, separation and insufficient energy can still break them**. There is no immortal-bond switch or unconditional development subsidy in this preset.
+
+This is a resource-constrained ecosystem with ongoing environmental inputs—not a universe with one fixed, exhaustible total energy supply. Food growth, gate opportunities, bounded field production and each world's newcomer population are declared inputs. The pantry mechanism reallocates collected food; it does not generate bonus energy.
+
+### What happens every cycle
+
+Every **1,000 simulation ticks**, the world enters a new cycle, whether the previous result was good or bad. The local tick returns to zero and the cycle number increases. This is not a fixed number of real-world seconds.
+
+1. The engine records the outgoing world's population, structures, gate work and selection score.
+2. Eligible living bonded groups are carried into a freshly generated world. Their topology, positions, ages, earned member energy, bond/component reserves and owner-held food continue; they are not cloned or rejuvenated. Not every organism qualifies for carry-over.
+3. New organisms also enter. When eligible parents exist, some newcomers are descendants of successful survivors, using the same declared newcomer-energy budget rather than additional free births.
+4. A different seeded terrain/resource layout and a new recipe change the conditions in which old and new organisms must survive together. New walls under retained organisms are cleared and colliding newcomers are relocated, preserving actual carry-over.
+
+The first four cycles sample **resource foraging, gate consensus, distributed-memory, and scarcity/recovery** recipes. These differ in food-growth opportunities, permitted growth attempts, movement cost and whether gate navigation is enabled. The recipe names are experiment labels, not proof that a particular cognitive ability has emerged. Gate sensing stays enabled in all four.
+
+After those initial recipes, the engine explores base recipes or selects among recently high-scoring ones, then mutates one bounded numeric parameter: food growth, growth attempts, or movement cost. Genome variation occurs through ordinary reproduction and mutation attempts in inherited newcomers. Cycles therefore are not simply the same reset repeated, but neither are they autonomous invention of new algorithms: **the search space and selection criteria are authored and bounded**.
+
+Automatic resource patches can also deplete and relocate *within* a cycle. An operator-provided image can instead define local reward/danger intensity; that is an environmental field, not semantic image recognition. Manually supplied fields persist through in-process cycle changes, but not a server restart.
+
+### Current state, evidence and deployment
+
+The active release branch is **[`codex/adaptive-morphology-world`](https://github.com/lucpattyn/projectgenesis/tree/codex/adaptive-morphology-world)**. It combines adaptive foraging, aligned energy budgets, visible food storage, one-hop food routing, proactive reuse and living-structure carry-over. The latest functional code reference is [`f78e68b`](https://github.com/lucpattyn/projectgenesis/commit/f78e68bf837d980866e83b04c59fb0fd180be29f); subsequent handoff changes document that same behavior.
+
+Two matched 2,000-tick routing/reuse runs ended with **444 versus 323 bonds in aggregate** against the preceding pantry implementation. However, one seed worsened and the other improved substantially. This is evidence of working mechanisms and seed-dependent outcomes, not a universal survival result or proof of intelligence. The next research challenge is reliable collective continuity and useful environmental responses across more varied conditions—not simply maximizing a final bond count.
+
+**For your developer:** [deployment and operations handoff](DEPLOYMENT_HANDOFF_ADAPTIVE_WORLD.md). It includes the exact branch, runtime, environment settings, startup, checks, public-access precautions and rollback. Start one Node process with `npm start`; there is no frontend build step or current runtime package dependency installation. Do not deploy `main` or the older reincarnation branch for this version.
+
+**Important:** cycle carry-over happens inside a running process. Server restarts do not resume the previous living world, cycle history or uploaded image from disk. Public write/control APIs must be protected before exposing the demo. Earlier research notes below are historical and may describe different defaults.
 
 ## Current live state — living food pantries (24 October 2026)
 
