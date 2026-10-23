@@ -412,6 +412,11 @@ export const BASE_CONFIG = {
       maximumWithdrawalPerMemberPerTick: 1.5,
       efficiency: 0.85
     },
+    harvestMemberSupport: {
+      enabled: false,
+      maximumMealFraction: 0.25,
+      efficiency: 0.98
+    },
     collectiveMemory: {
       enabled: false,
       maximumHops: 6,

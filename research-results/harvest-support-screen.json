@@ -1,0 +1,118 @@
+[
+  {
+    "seed": 160103,
+    "enabled": false,
+    "selectionScore": 3.315,
+    "tick": 1000,
+    "population": 27,
+    "births": 87,
+    "deaths": 60,
+    "bonds": 61,
+    "facets": 98,
+    "food": 692,
+    "gateSightings": 18167,
+    "gateRelays": 760,
+    "gateConsensuses": 140,
+    "gateCompletions": 35,
+    "bondsFormed": 321,
+    "bondsBroken": 260,
+    "populationRetention": 1.125,
+    "score": 665.25,
+    "deathCauses": {
+      "energy exhaustion": 46,
+      "maximum age": 14
+    },
+    "support": {
+      "transfers": 0,
+      "delivered": 0,
+      "lost": 0
+    }
+  },
+  {
+    "seed": 160103,
+    "enabled": true,
+    "selectionScore": 3.0049,
+    "tick": 1000,
+    "population": 25,
+    "births": 85,
+    "deaths": 60,
+    "bonds": 35,
+    "facets": 21,
+    "food": 719,
+    "gateSightings": 15641,
+    "gateRelays": 1132,
+    "gateConsensuses": 138,
+    "gateCompletions": 33,
+    "bondsFormed": 284,
+    "bondsBroken": 249,
+    "populationRetention": 1.042,
+    "score": 472.417,
+    "deathCauses": {
+      "energy exhaustion": 43,
+      "maximum age": 17
+    },
+    "support": {
+      "transfers": 24,
+      "delivered": 41.72592584110117,
+      "lost": 0.851549506961248
+    }
+  },
+  {
+    "seed": 160104,
+    "enabled": false,
+    "selectionScore": 3.1396,
+    "tick": 1000,
+    "population": 45,
+    "births": 129,
+    "deaths": 84,
+    "bonds": 32,
+    "facets": 9,
+    "food": 632,
+    "gateSightings": 23293,
+    "gateRelays": 1638,
+    "gateConsensuses": 203,
+    "gateCompletions": 51,
+    "bondsFormed": 495,
+    "bondsBroken": 463,
+    "populationRetention": 1.875,
+    "score": 651.75,
+    "deathCauses": {
+      "energy exhaustion": 67,
+      "maximum age": 17
+    },
+    "support": {
+      "transfers": 0,
+      "delivered": 0,
+      "lost": 0
+    }
+  },
+  {
+    "seed": 160104,
+    "enabled": true,
+    "selectionScore": 2.5618,
+    "tick": 1000,
+    "population": 28,
+    "births": 113,
+    "deaths": 85,
+    "bonds": 20,
+    "facets": 10,
+    "food": 651,
+    "gateSightings": 24931,
+    "gateRelays": 1625,
+    "gateConsensuses": 249,
+    "gateCompletions": 60,
+    "bondsFormed": 526,
+    "bondsBroken": 506,
+    "populationRetention": 1.167,
+    "score": 736.417,
+    "deathCauses": {
+      "energy exhaustion": 69,
+      "maximum age": 16
+    },
+    "support": {
+      "transfers": 65,
+      "delivered": 179.7656764514148,
+      "lost": 3.6686872745186587
+    }
+  }
+]

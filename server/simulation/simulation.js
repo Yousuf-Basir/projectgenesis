@@ -8,6 +8,7 @@ import { Organism } from "./organism.js";
 import { shrinkAtRiskComponents } from "./adaptive-shrinking.js";
 import { updateEnergyConservation } from "./energy-conservation.js";
 import { supportFromNeighbourSurplus } from "./neighbour-support.js";
+import { shareFreshHarvest } from "./harvest-member-support.js";
 import { World } from "./world.js";
 import { average, clamp, createSeededRandom, normalizeSeed } from "./utils.js";
 import { createDefaultSurvivalCueGrid, createGuidedInput, setGuidedGrid, setGuidedPattern, serializeGuidedInput } from "./guided-input.js";
@@ -330,18 +331,20 @@ export class Simulation {
           this.rewardUsefulBondWork(organism, priorityMemberIds, result.consumedEnergy, "gate-harvest");
         }
         const surplusFirst = this.config.bond.surplusFirstEnergy?.enabled !== false;
+        const freshSupport = shareFreshHarvest(this, organism, result.consumedEnergy);
+        const remainingMeal = Math.max(0, result.consumedEnergy-freshSupport.withdrawn);
         const bondAllocation = surplusFirst
           ? { total: 0, external: 0 }
-          : this.feedAttachedBonds(organism, result.consumedEnergy, priorityMemberIds);
-        const sharing = this.shareFacetEnergy(organism, surplusFirst ? result.consumedEnergy : Math.max(0, result.consumedEnergy - bondAllocation.total), priorityMemberIds);
-        facetSharing = sharing.total;
-        externalFacetSharing = sharing.external;
+          : this.feedAttachedBonds(organism, remainingMeal, priorityMemberIds);
+        const sharing = this.shareFacetEnergy(organism, surplusFirst ? remainingMeal : Math.max(0, remainingMeal - bondAllocation.total), priorityMemberIds);
+        facetSharing = sharing.total + freshSupport.delivered;
+        externalFacetSharing = sharing.external + freshSupport.external;
         const orderedBondAllocation = surplusFirst
-          ? this.feedAttachedBonds(organism, Math.max(0, result.consumedEnergy - sharing.total), priorityMemberIds)
+          ? this.feedAttachedBonds(organism, Math.max(0, remainingMeal - sharing.total), priorityMemberIds)
           : bondAllocation;
         structuralAllocation = orderedBondAllocation.total;
         externalBondAllocation = orderedBondAllocation.external;
-        this.depositComponentReserveFromHarvest(organism, result.consumedEnergy);
+        this.depositComponentReserveFromHarvest(organism, remainingMeal);
         facetCapital = this.applyFacetHarvestAdvantage(organism, result.consumedEnergy);
       }
       if (result.consumedResource === RESOURCE_TYPES.RED && organism.alive) {
@@ -1662,6 +1665,7 @@ export class Simulation {
   }
 
   reset() {
+    this.harvestSupportStats = { transfers: 0, delivered: 0, lost: 0 };
     this.neighbourSupportStats = { transfers: 0, delivered: 0, lost: 0 };
     this.conservationHistory = new Map();
     this.conservationMemberTicks = 0;
@@ -4755,6 +4759,7 @@ export class Simulation {
       hazards: { ...this.config.hazards },
       signal: { ...this.config.signal },
       bonding: {
+        harvestMemberSupport: { ...this.config.bond.harvestMemberSupport, ...this.harvestSupportStats },
         neighbourSurplusSupport: { ...this.config.bond.neighbourSurplusSupport, ...this.neighbourSupportStats },
         energyConservation: { ...this.config.bond.energyConservation, memberTicks: this.conservationMemberTicks },
         adaptiveShrinking: { ...this.config.bond.adaptiveShrinking, ...this.shrinkStats },
