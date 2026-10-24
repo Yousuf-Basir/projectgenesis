@@ -1,5 +1,6 @@
 import { DIRECTIONS } from './config.js';
 import {prepareResourcePatches, debitPatchHarvest} from './resource-patches.js';
+import {closurePreferenceAt,noteClosureMove} from './loop-circulation.js';
 
 export const MORPHOLOGY_PROFILES = {
   'original-adaptive': {name:'original-adaptive',stationaryOperatingMultiplier:.25,edgeFlow:.75,collectiveMovementInterval:5,environmentNavigationBias:0,dangerNavigationBias:0,learningEnabled:true,renewalEnabled:false,paidFormationEnabled:false,fieldDemoEnabled:false},
@@ -113,7 +114,8 @@ export function prepareAdaptiveMorphology(simulation) {
     const neighbours=[...simulation.bonds.values()].flatMap(edge=>edge.firstId===member.id?[byId.get(edge.secondId)]:edge.secondId===member.id?[byId.get(edge.firstId)]:[]).filter(Boolean);
     const score=(x,y)=>{
       const food=simulation.world.getTile(x,y).type==='FOOD'?1:0;
-      return food+(policy.fieldSensingEnabled===false?0:localResourceValue(simulation,x,y));
+      return food+(policy.fieldSensingEnabled===false?0:localResourceValue(simulation,x,y))
+        +closurePreferenceAt(simulation,member,x,y);
     };
     const current=score(member.x,member.y);
     const choices=DIRECTIONS.map(direction=>({direction,...simulation.world.wrapPosition(member.x+direction.x,member.y+direction.y)}))
@@ -122,6 +124,7 @@ export function prepareAdaptiveMorphology(simulation) {
       .sort((a,b)=>b.score-a.score);
     const choice=choices[0];
     if(!choice||choice.score<=current+policy.reshapeMinimumGain/foragingNeed(member,policy)) continue;
+    if(closurePreferenceAt(simulation,member,choice.x,choice.y)>closurePreferenceAt(simulation,member,member.x,member.y)+1e-9)noteClosureMove(simulation);
     occupied.delete(`${member.x},${member.y}`);
     member.x=choice.x;member.y=choice.y;occupied.add(`${member.x},${member.y}`);
     member.energy-=simulation.config.organism.moveCost;

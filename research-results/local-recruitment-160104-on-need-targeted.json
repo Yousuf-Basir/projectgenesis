@@ -1,0 +1,85 @@
+{
+  "seed": 160104,
+  "enabled": true,
+  "variant": "need-targeted",
+  "rows": [
+    {
+      "cycle": 0,
+      "tick": 500,
+      "population": 40,
+      "bonds": 51,
+      "bondTicks": 20062,
+      "inheritedRemaining": 0,
+      "inheritedOpening": 0,
+      "recruited": 0,
+      "support": 0,
+      "deaths": {
+        "energy exhaustion": 9
+      },
+      "breaks": {
+        "bond energy reserve depleted": 23,
+        "member died: energy exhaustion": 3
+      }
+    },
+    {
+      "cycle": 0,
+      "tick": 1000,
+      "population": 42,
+      "bonds": 54,
+      "bondTicks": 44611,
+      "inheritedRemaining": 0,
+      "inheritedOpening": 0,
+      "recruited": 7,
+      "support": 67.46902341397653,
+      "deaths": {
+        "energy exhaustion": 14,
+        "maximum age": 28
+      },
+      "breaks": {
+        "bond energy reserve depleted": 57,
+        "member died: energy exhaustion": 4,
+        "member died: maximum age": 57
+      }
+    },
+    {
+      "cycle": 1,
+      "tick": 500,
+      "population": 157,
+      "bonds": 217,
+      "bondTicks": 53433,
+      "inheritedRemaining": 0,
+      "inheritedOpening": 54,
+      "recruited": 24,
+      "support": 273.44200982043327,
+      "deaths": {
+        "maximum age": 15,
+        "energy exhaustion": 23
+      },
+      "breaks": {
+        "bond energy reserve depleted": 77,
+        "member died: maximum age": 36,
+        "member died: energy exhaustion": 18
+      }
+    },
+    {
+      "cycle": 1,
+      "tick": 1000,
+      "population": 175,
+      "bonds": 214,
+      "bondTicks": 150335,
+      "inheritedRemaining": 0,
+      "inheritedOpening": 54,
+      "recruited": 62,
+      "support": 927.3664683562542,
+      "deaths": {
+        "maximum age": 57,
+        "energy exhaustion": 152
+      },
+      "breaks": {
+        "bond energy reserve depleted": 362,
+        "member died: maximum age": 93,
+        "member died: energy exhaustion": 171
+      }
+    }
+  ]
+}

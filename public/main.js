@@ -421,12 +421,17 @@ function syncControls(snapshot) {
   if(colonyStatus) {
     colonyStatus.hidden=!morphology?.enabled;
     if(morphology?.enabled) colonyStatus.textContent=`${morphology.name??'Adaptive world'} · ${morphology.demoPhase??'custom field'} · ${morphology.colonies??0} colonies · largest ${morphology.largestComponent??0} members · ${morphology.moves??0} shape moves · ${morphology.renewalBirths??0} renewal births${morphology.resourcePatches?` · ${morphology.resourcePatches.relocations} patch shifts · ${morphology.genomeTypes??1} genome types`:''}`;
+    const organismHarvest=snapshot.bonding?.organismHarvest;
+    const circulation=snapshot.bonding?.loopCirculation;
+    if(circulation?.enabled)colonyStatus.textContent+=` · fast loops ${circulation.compartments?.length??0} · circulated ${(circulation.delivered??0).toFixed(1)}`;
+    if(organismHarvest?.enabled)colonyStatus.textContent+=` · harvested ${(organismHarvest.delivered??0).toFixed(1)} energy / ${organismHarvest.contacts??0} contacts`;
     const pantry=snapshot.bonding?.foodPantries;
     if(morphology?.enabled && pantry?.enabled) {
-      colonyStatus.textContent+=` · pantry ${(pantry.stored??0).toFixed(1)} · used ${((pantry.memberDelivered??0)+(pantry.bondDelivered??0)).toFixed(1)}`;
+      colonyStatus.textContent+=` · stocked ${pantry.stockedChambers??0}/${pantry.chambers?.length??0} · pantry ${(pantry.stored??0).toFixed(1)} · fed ${(pantry.memberDelivered??0).toFixed(1)} · bond fuel ${(pantry.bondDelivered??0).toFixed(1)}`;
       if(pantry.adaptiveReuseEnabled)colonyStatus.textContent+=` · routed ${(pantry.routed??0).toFixed(1)}`;
-      colonyStatus.title='A food-colored + inside a closed shape means it holds saved harvest. Mixed-color arms show multiple foods. No + means empty. Dots below isolated members are retained personal stores. Pantry and used values are energy units.';
+      colonyStatus.title='A food-colored + inside a closed shape means it holds saved harvest. Mixed-color arms show multiple foods. No + means empty. Squares below isolated members are retained personal stores. Pantry is current stock; fed and bond fuel are cumulative energy spent this cycle, not counts of members or rescued bonds.';
     }
+    if(circulation?.enabled)colonyStatus.title+=' Fast loops are the last sharing compartments; circulated is cumulative transferred energy, not new energy production.';
   }
   guidedInputEnabledInput.checked = Boolean(guided.enabled);
   guidedSupportEnabledInput.checked = Boolean(guided.supportedDevelopment?.enabled);

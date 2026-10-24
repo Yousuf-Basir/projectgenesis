@@ -5,8 +5,11 @@
   "type": "module",
   "scripts": {
     "start": "node server/index.js",
+    "start:demo": "node --env-file=config/demo-stable.env server/index.js",
+    "start:demo:experimental": "node --env-file=config/demo-experimental.env server/index.js",
+    "test:release": "npm run check && npm test && node test/aligned-budgets.mjs && node test/food-pantries.mjs && node test/pantry-routing.mjs && node test/renderer-pantry-markers.mjs && node test/renderer-organism-harvest.mjs && node test/renderer-heatmap.mjs && node test/morphology-speed-parity.mjs && node test/morphology-occupancy.mjs && node test/resource-patches.mjs && node test/demo-release-smoke.mjs",
     "dev": "node server/index.js",
     "check": "node --check server/index.js",
-    "test": "node test/spatial-bonds.mjs && node test/guided-input.mjs && node test/guided-support.mjs"
+    "test": "node test/spatial-bonds.mjs && node test/guided-input.mjs && node test/guided-support.mjs && node test/organism-harvest.mjs && node test/pantry-reserves.mjs && node test/loop-circulation.mjs && node test/reproduction-runway.mjs"
   }
 }

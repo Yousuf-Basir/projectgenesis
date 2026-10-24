@@ -9,7 +9,10 @@ import { shrinkAtRiskComponents } from "./adaptive-shrinking.js";
 import { updateEnergyConservation } from "./energy-conservation.js";
 import { supportFromNeighbourSurplus } from "./neighbour-support.js";
 import { shareFreshHarvest } from "./harvest-member-support.js";
-import { prepareFoodPantries, storeHarvest, loseDeadPantry, pantrySnapshot } from './food-pantries.js';
+import { prepareFoodPantries, storeHarvest, loseDeadPantry, pantrySnapshot, settlePantryMaintenance } from './food-pantries.js';
+import {harvestPassingOrganisms} from './organism-harvest.js';
+import {reproductionRunway,recordRunwayBirth} from './reproduction-runway.js';
+import {prepareLoopCirculation,applyLoopCirculation,noteUsefulClosure} from './loop-circulation.js';
 import { prepareAdaptiveMorphology, applyMorphologyEnvironment, fieldAt, localResourceValue, foragingNeed } from "./adaptive-morphology.js";
 import { World } from "./world.js";
 import { average, clamp, createSeededRandom, normalizeSeed } from "./utils.js";
@@ -277,6 +280,8 @@ export class Simulation {
     this.updateGateDiscovery();
     prepareAdaptiveMorphology(this);
     prepareFoodPantries(this);
+    prepareLoopCirculation(this);
+    const pendingLoopStarvation=[];
     occupiedBefore = new Set(this.organisms.filter((item) => item.alive).map((item) => `${item.x},${item.y}`));
     updateEnergyConservation(this);
     const collectiveStrideEligibleIds = this.getCollectiveStrideEligibleIds();
@@ -390,9 +395,13 @@ export class Simulation {
         const supportReceived = directSupport + relayedSupport + neighbourSupport;
         this.recordComponentEpisodeMigrationSupport(organism, directSupport, relay.delivered, relayedSupport);
         if (organism.energy <= 0) {
-          organism.alive = false;
-          organism.deathReason = "energy exhaustion";
-          this.recordStarvationDiagnostic(organism, supportContext, supportReceived, relay);
+          if(this.loopCirculationMembers.has(organism.id)) {
+            pendingLoopStarvation.push({organism,supportContext,supportReceived,relay});
+          } else {
+            organism.alive = false;
+            organism.deathReason = "energy exhaustion";
+            this.recordStarvationDiagnostic(organism, supportContext, supportReceived, relay);
+          }
         } else if (relay.delivered > 0 && supportContext.energyBeforeSupport <= 0) {
           this.bondRelayRescues += 1;
         }
@@ -404,6 +413,15 @@ export class Simulation {
     }
     this.recordEnvironmentMemoryReads();
 
+    harvestPassingOrganisms(this);
+    applyLoopCirculation(this);
+    for(const {organism,supportContext,supportReceived,relay} of pendingLoopStarvation) {
+      if(!organism.alive)continue;
+      if(organism.energy<=1e-12) {
+        organism.alive=false;organism.deathReason='energy exhaustion';
+        this.recordStarvationDiagnostic(organism,supportContext,supportReceived,relay);
+      } else this.loopCirculationStats.starvationAvoided++;
+    }
     this.moveCompounds();
     this.moveElasticTetherScouts();
     this.updateCourierExchange();
@@ -846,6 +864,7 @@ export class Simulation {
   }
 
   handleReproduction() {
+    this.reproductionRunwayBirths=[];
     const newborns = [];
     this.lastOrdinaryReproductionParents = new Set();
     const occupied = new Set(this.organisms.filter((item) => item.alive).map((item) => `${item.x},${item.y}`));
@@ -917,6 +936,7 @@ export class Simulation {
       if (!this.lineageBirthTicks.has(child.lineageId)) this.lineageBirthTicks.set(child.lineageId, this.simulationTicks);
       this.nextOrganismId += 1;
       newborns.push(child);
+      recordRunwayBirth(this,organism,child);
       this.lastOrdinaryReproductionParents.add(organism.id);
       occupied.add(`${childPosition.x},${childPosition.y}`);
       this.births += 1;
@@ -1029,6 +1049,7 @@ export class Simulation {
       this.energyEconomics.allocations.reproduction += child.energy;
       this.nextOrganismId += 1;
       newborns.push(child);
+      recordRunwayBirth(this,parent,child);
       occupied.add(`${child.x},${child.y}`);
       this.births += 1;
       this.structuralBirths += 1;
@@ -1157,6 +1178,7 @@ export class Simulation {
       this.energyEconomics.allocations.reproduction += child.energy;
       this.nextOrganismId += 1;
       newborns.push(child);
+      recordRunwayBirth(this,parent,child);
       occupied.add(`${child.x},${child.y}`);
       usedParents.add(parent.id);
       this.births += 1;
@@ -1701,6 +1723,11 @@ export class Simulation {
   }
 
   reset() {
+    this.reproductionRunwayBirths=[];this.reproductionRunwayDenied=0;
+    this.loopCirculationStats=null;this.loopCirculationPlan=[];this.loopCirculationMembers=new Set();
+    this.loopCirculationLast=[];this.loopCirculationAppliedTick=null;this.loopClosureContext=null;
+    this.organismHarvestStats = null;
+    this.organismHarvestTick = null;
     this.pantryTopologyCache=null;
     this.pantryStats=null;
     this.resourcePatchState=null;
@@ -3486,14 +3513,18 @@ export class Simulation {
   }
 
   canAffordReproduction(parent) {
-    if (!this.usesAlignedBudgets()) return true;
-    const edges=[...this.bonds.values()].filter(edge=>edge.firstId===parent.id||edge.secondId===parent.id);
-    const halfUpkeep=edges.reduce((sum,edge)=>sum+Math.max(0,this.bondMaintenanceBuffer(edge)-(edge.reserve??0))/2,0);
-    const seedBudget=edges.length ? 4+this.config.bond.buddingReserveInvestment : 0;
-    const retained=parent.energy*this.config.organism.reproductionCostFactor;
-    const childEnergy=retained; // Organism.reproduce currently gives both the same split.
-    const floor=this.getBondFundingFloor(parent);
-    return retained>=floor+halfUpkeep+seedBudget && childEnergy>=floor;
+    if (this.usesAlignedBudgets()) {
+      const edges=[...this.bonds.values()].filter(edge=>edge.firstId===parent.id||edge.secondId===parent.id);
+      const halfUpkeep=edges.reduce((sum,edge)=>sum+Math.max(0,this.bondMaintenanceBuffer(edge)-(edge.reserve??0))/2,0);
+      const seedBudget=edges.length ? 4+this.config.bond.buddingReserveInvestment : 0;
+      const retained=parent.energy*this.config.organism.reproductionCostFactor;
+      const childEnergy=retained; // Organism.reproduce currently gives both the same split.
+      const floor=this.getBondFundingFloor(parent);
+      if(!(retained>=floor+halfUpkeep+seedBudget && childEnergy>=floor))return false;
+    }
+    const runway=reproductionRunway(this,parent);
+    if(!runway.allowed)this.reproductionRunwayDenied=(this.reproductionRunwayDenied??0)+1;
+    return runway.allowed;
   }
 
   bondMaintenanceBuffer(edge) {
@@ -3504,12 +3535,13 @@ export class Simulation {
     return Math.min(this.config.bond.reserveCapacity,2*this.config.bond.maintenancePerTick*multiplier);
   }
 
-  fundExistingBondReserves() {
+  fundExistingBondReserves(edgeKeys=null) {
     if (!this.usesAlignedBudgets()) return;
     const members=new Map(this.organisms.filter(member=>member.alive).map(member=>[member.id,member]));
     // Pay a minimal rolling upkeep buffer, not a new three-unit creation cost.
     // This is an internal transfer, not income, and never crosses the survival floor.
     for (const edge of this.bonds.values()) {
+      if(edgeKeys&&!edgeKeys.has(this.bondKey(edge.firstId,edge.secondId)))continue;
       const a=members.get(edge.firstId),b=members.get(edge.secondId);
       if (!a||!b||edge.dormant||!this.areAdjacent(a,b)) continue;
       const reserve=edge.reserve??this.config.bond.initialReserve;
@@ -4318,6 +4350,11 @@ export class Simulation {
     // tick can safely reuse one component decomposition after it completes.
     this.bondGroupsCache = null;
     this.routeComponentReservesToBonds();
+    if(this.config.bond.adaptiveMorphology?.enabled && this.config.bond.foodPantries.enabled
+      && this.config.bond.foodPantries.reliableReservesEnabled && this.config.bond.foodPantries.adaptiveReuseEnabled) {
+      this.fundExistingBondReserves();
+      settlePantryMaintenance(this);
+    }
     const componentReservePolicy = this.config.bond.componentReserveEconomy;
     for (const bond of this.bonds.values()) {
       if (componentReservePolicy?.commitmentEnabled) {
@@ -4435,6 +4472,7 @@ export class Simulation {
           this.recordEnergyAllocation(first,'structuralSeed',fromFirst+firstRemainder);
           this.recordEnergyAllocation(second,'structuralSeed',fromSecond);
         }
+        noteUsefulClosure(this,first,second);
         this.bonds.set(key, {
           firstId: first.id,
           secondId: second.id,
@@ -4896,6 +4934,11 @@ export class Simulation {
       signal: { ...this.config.signal },
       bonding: {
         ...this.config.bond,
+        reproductionRunway:{...this.config.bond.reproductionRunway,denied:this.reproductionRunwayDenied??0},
+        loopCirculation:{...this.config.bond.loopCirculation,...this.loopCirculationStats,compartments:this.loopCirculationLast??[]},
+        organismHarvest: {...this.config.bond.organismHarvest, ...this.organismHarvestStats,
+          captureCostPerContact:this.config.bond.organismHarvest.captureCost,
+          captureCost:this.organismHarvestStats?.captureCost??0},
         foodPantries: {...this.config.bond.foodPantries,...pantrySnapshot(this)},
         adaptiveMorphology: { ...this.config.bond.adaptiveMorphology, ...this.morphologyStats,
           dangerCostPerTick:this.config.bond.adaptiveMorphology.dangerCost,

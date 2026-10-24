@@ -2,6 +2,8 @@
 
 Branch: `codex/adaptive-morphology-world`. Starting reference: `2371e5b` (aligned energy budgets). The two unrelated existing worktree items, `research-results/guided-image-memory-task.json` and `REINCARNATION_DEPLOYMENT_HANDOFF.md`, are not part of this change.
 
+**Newest local revision:** overflow-only storage proved too restrictive. The working tree now also saves 15% of genuine surplus meals, routes food toward need as well as chambers, and settles unpaid maintenance from real local stores immediately before bond decay. See [the current fix and matched results](PANTRY_RESERVES_FIX_2026-10-24.md). `GENESIS_PANTRY_RESERVES=0` retains the preceding policy described below. The remainder is a historical implementation/results record; its statement that outward demand routing is future work is superseded by this revision.
+
 ## Latest update — visible routing and proactive reuse
 
 **Latest visual correction:** stocked shapes now have a small, outlined **food-colored `+`** at an interior point, rendered after bonds, organisms and event rings. One color means that food type; mixed arms mean multiple foods. Empty shapes have no mark. This replaces the easily obscured grain/pile display described below; no badges, quantities, ecological rules or server reset are added. Owner-held pouches outside loops remain small colored squares. Regression: `node test/renderer-pantry-markers.mjs` checks the complete rendering order, colors and empty/disabled cases.

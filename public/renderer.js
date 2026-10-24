@@ -331,7 +331,8 @@ export class Renderer {
       this.context.save();
       if(transfer.kind?.startsWith('pantry-'))this.context.globalAlpha=alpha;
       this.context.strokeStyle = transfer.kind?.startsWith('pantry-') && RESOURCE_COLORS[transfer.resource]
-        ? RESOURCE_COLORS[transfer.resource] : `rgba(127, 255, 212, ${alpha})`;
+        ? RESOURCE_COLORS[transfer.resource] : transfer.kind==='organism-harvest'
+          ? `rgba(255, 132, 160, ${alpha})` : `rgba(127, 255, 212, ${alpha})`;
       this.context.lineWidth = Math.max(1, cellSize * 0.12);
       this.context.beginPath();
       if(source.id===target.id && transfer.kind==='pantry-release') {

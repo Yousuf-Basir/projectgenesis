@@ -1,0 +1,190 @@
+{
+  "seed": 160138,
+  "mode": "off",
+  "ticks": 2000,
+  "bondTicks": 65109,
+  "loopTicks": 0,
+  "starved": 17,
+  "ageDeaths": 56,
+  "births": 54,
+  "pantryFed": 372.4305899114449,
+  "pantryFuel": 103.51879178312745,
+  "meanEndedEdgeLifetime": 333.52777777777777,
+  "longestEndedEdgeLifetime": 745,
+  "rows": [
+    {
+      "elapsed": 250,
+      "cycle": 0,
+      "tick": 250,
+      "population": 29,
+      "bonds": 34,
+      "bondTicks": 3944,
+      "loopTicks": 0,
+      "births": 5,
+      "deaths": {},
+      "breaks": {},
+      "circulation": null,
+      "pantryStored": 140.69228015423343,
+      "stocked": 8,
+      "pantryFed": 0,
+      "pantryBondFuel": 0
+    },
+    {
+      "elapsed": 500,
+      "cycle": 0,
+      "tick": 500,
+      "population": 37,
+      "bonds": 57,
+      "bondTicks": 14871,
+      "loopTicks": 0,
+      "births": 13,
+      "deaths": {},
+      "breaks": {},
+      "circulation": null,
+      "pantryStored": 142.35118584075832,
+      "stocked": 14,
+      "pantryFed": 17.959678855080888,
+      "pantryBondFuel": 3.207681502500013
+    },
+    {
+      "elapsed": 750,
+      "cycle": 0,
+      "tick": 750,
+      "population": 17,
+      "bonds": 8,
+      "bondTicks": 24545,
+      "loopTicks": 0,
+      "births": 21,
+      "deaths": {
+        "energy exhaustion": 14,
+        "maximum age": 14
+      },
+      "breaks": {
+        "bond energy reserve depleted": 47,
+        "member died: energy exhaustion": 4,
+        "member died: maximum age": 15
+      },
+      "circulation": null,
+      "pantryStored": 48.92401607587828,
+      "stocked": 0,
+      "pantryFed": 130.28627693132347,
+      "pantryBondFuel": 43.03439155600993
+    },
+    {
+      "elapsed": 1000,
+      "cycle": 0,
+      "tick": 1000,
+      "population": 15,
+      "bonds": 14,
+      "bondTicks": 28220,
+      "loopTicks": 0,
+      "births": 24,
+      "deaths": {
+        "energy exhaustion": 14,
+        "maximum age": 19
+      },
+      "breaks": {
+        "bond energy reserve depleted": 47,
+        "member died: energy exhaustion": 4,
+        "member died: maximum age": 19
+      },
+      "circulation": null,
+      "pantryStored": 56.041487945116586,
+      "stocked": 2,
+      "pantryFed": 130.28627693132347,
+      "pantryBondFuel": 43.374391556009925
+    },
+    {
+      "elapsed": 1250,
+      "cycle": 1,
+      "tick": 250,
+      "population": 35,
+      "bonds": 48,
+      "bondTicks": 37145,
+      "loopTicks": 0,
+      "births": 4,
+      "deaths": {
+        "maximum age": 4
+      },
+      "breaks": {
+        "member died: maximum age": 10
+      },
+      "circulation": null,
+      "pantryStored": 74.19026255047973,
+      "stocked": 11,
+      "pantryFed": 24.53060316767353,
+      "pantryBondFuel": 4.164673991436348
+    },
+    {
+      "elapsed": 1500,
+      "cycle": 1,
+      "tick": 500,
+      "population": 33,
+      "bonds": 33,
+      "bondTicks": 46880,
+      "loopTicks": 0,
+      "births": 9,
+      "deaths": {
+        "maximum age": 10,
+        "energy exhaustion": 1
+      },
+      "breaks": {
+        "member died: maximum age": 25,
+        "bond energy reserve depleted": 20
+      },
+      "circulation": null,
+      "pantryStored": 23.717231283887706,
+      "stocked": 4,
+      "pantryFed": 87.29255090332909,
+      "pantryBondFuel": 39.327580421728356
+    },
+    {
+      "elapsed": 1750,
+      "cycle": 1,
+      "tick": 750,
+      "population": 22,
+      "bonds": 13,
+      "bondTicks": 59435,
+      "loopTicks": 0,
+      "births": 22,
+      "deaths": {
+        "maximum age": 33,
+        "energy exhaustion": 2
+      },
+      "breaks": {
+        "member died: maximum age": 68,
+        "bond energy reserve depleted": 27
+      },
+      "circulation": null,
+      "pantryStored": 33.56293313294522,
+      "stocked": 2,
+      "pantryFed": 209.452932541315,
+      "pantryBondFuel": 57.454140071137225
+    },
+    {
+      "elapsed": 2000,
+      "cycle": 1,
+      "tick": 1000,
+      "population": 25,
+      "bonds": 32,
+      "bondTicks": 65109,
+      "loopTicks": 0,
+      "births": 30,
+      "deaths": {
+        "maximum age": 37,
+        "energy exhaustion": 3
+      },
+      "breaks": {
+        "member died: maximum age": 83,
+        "bond energy reserve depleted": 27
+      },
+      "circulation": null,
+      "pantryStored": 67.57474325111745,
+      "stocked": 6,
+      "pantryFed": 242.1443129801214,
+      "pantryBondFuel": 60.144400227117536
+    }
+  ],
+  "longestObservedEdgeLifetime": 745,
+  "longestObservedMotifLifetime": 544
+}

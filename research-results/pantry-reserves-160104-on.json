@@ -1,0 +1,129 @@
+{
+  "seed": 160104,
+  "enabled": true,
+  "organismHarvest": true,
+  "ticks": 1200,
+  "peakStored": 183.58600848257424,
+  "ticksWithStores": 1119,
+  "maxSampledStocked": 12,
+  "rows": [
+    {
+      "elapsed": 200,
+      "cycle": 0,
+      "tick": 200,
+      "population": 39,
+      "bonds": 58,
+      "chambers": 21,
+      "stocked": 9,
+      "stored": 124.33316878405601,
+      "deposited": 133.51941443291636,
+      "overflowSaved": 58.93721661909264,
+      "surplusSaved": 74.58219781382377,
+      "memberDelivered": 0,
+      "bondDelivered": 0,
+      "lateBondDelivered": 0,
+      "demandRouted": 0,
+      "breaks": {},
+      "deaths": {}
+    },
+    {
+      "elapsed": 500,
+      "cycle": 0,
+      "tick": 500,
+      "population": 41,
+      "bonds": 54,
+      "chambers": 18,
+      "stocked": 12,
+      "stored": 158.2650964565375,
+      "deposited": 287.3214215225981,
+      "overflowSaved": 94.02512660099164,
+      "surplusSaved": 193.2962949216063,
+      "memberDelivered": 50.61928221056178,
+      "bondDelivered": 5.796051845998083,
+      "lateBondDelivered": 0.24000000000000002,
+      "demandRouted": 120.89811545144828,
+      "breaks": {
+        "bond energy reserve depleted": 22,
+        "member died: energy exhaustion": 9
+      },
+      "deaths": {
+        "energy exhaustion": 8
+      }
+    },
+    {
+      "elapsed": 800,
+      "cycle": 0,
+      "tick": 800,
+      "population": 25,
+      "bonds": 32,
+      "chambers": 12,
+      "stocked": 4,
+      "stored": 22.480557587141167,
+      "deposited": 390.1049816493214,
+      "overflowSaved": 94.02512660099164,
+      "surplusSaved": 296.0798550483295,
+      "memberDelivered": 217.68203473345358,
+      "bondDelivered": 47.814778463268546,
+      "lateBondDelivered": 8.483563065102766,
+      "demandRouted": 462.0977962452088,
+      "breaks": {
+        "bond energy reserve depleted": 44,
+        "member died: energy exhaustion": 9,
+        "member died: maximum age": 41
+      },
+      "deaths": {
+        "energy exhaustion": 12,
+        "maximum age": 20
+      }
+    },
+    {
+      "elapsed": 1000,
+      "cycle": 0,
+      "tick": 1000,
+      "population": 15,
+      "bonds": 20,
+      "chambers": 7,
+      "stocked": 4,
+      "stored": 39.760711596154664,
+      "deposited": 478.92663760873893,
+      "overflowSaved": 94.02512660099164,
+      "surplusSaved": 384.901511007747,
+      "memberDelivered": 228.29686125207496,
+      "bondDelivered": 47.814778463268546,
+      "lateBondDelivered": 8.483563065102766,
+      "demandRouted": 468.3979146652794,
+      "breaks": {
+        "bond energy reserve depleted": 44,
+        "member died: energy exhaustion": 9,
+        "member died: maximum age": 68
+      },
+      "deaths": {
+        "energy exhaustion": 13,
+        "maximum age": 31
+      }
+    },
+    {
+      "elapsed": 1200,
+      "cycle": 1,
+      "tick": 200,
+      "population": 44,
+      "bonds": 54,
+      "chambers": 25,
+      "stocked": 8,
+      "stored": 95.06436793400727,
+      "deposited": 97.3952420079911,
+      "overflowSaved": 12.360970369626074,
+      "surplusSaved": 85.03427163836503,
+      "memberDelivered": 5.815183121182056,
+      "bondDelivered": 0,
+      "lateBondDelivered": 0,
+      "demandRouted": 0,
+      "breaks": {
+        "member died: maximum age": 15
+      },
+      "deaths": {
+        "maximum age": 4
+      }
+    }
+  ]
+}

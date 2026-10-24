@@ -4,7 +4,7 @@ const COLORS=['GREEN','BLUE','RED'];
 const stock=member=>(member.foodPantry??={GREEN:0,BLUE:0,RED:0});
 const total=values=>COLORS.reduce((sum,color)=>sum+(values?.[color]??0),0);
 export const pantriesEnabled=sim=>Boolean(sim.config.bond.adaptiveMorphology?.enabled && sim.config.bond.foodPantries?.enabled);
-const stats=sim=>(sim.pantryStats??={deposited:0,overflowSaved:0,memberDelivered:0,bondDelivered:0,spoiled:0,transferLoss:0,deathLost:0,routed:0,routingTransfers:0,anticipatoryDelivered:0,foodBondRescues:0});
+const stats=sim=>(sim.pantryStats??={deposited:0,overflowSaved:0,surplusSaved:0,memberDelivered:0,bondDelivered:0,lateBondDelivered:0,spoiled:0,transferLoss:0,deathLost:0,routed:0,demandRouted:0,routingTransfers:0,anticipatoryDelivered:0,foodBondRescues:0});
 
 function canonical(ids) {
  const minimum=Math.min(...ids),index=ids.indexOf(minimum);
@@ -98,14 +98,36 @@ function foodMarker(sim,from,to,amount,color,kind) {
  sim.energyTransfers.push({fromId:from.id,toId:to.id,amount,resource:color,kind,ttl:6});
 }
 
+function pantryDemandDistances(sim,network) {
+ const {members,neighbors,edges}=network,requested=new Set();
+ const pledged=new Map([...members].map(([id,member])=>[id,Math.max(0,
+  member.energy-sim.getBondFundingFloor(member)-Math.max(0,member.lastOperatingExpense??0))]));
+ for(const member of members.values())if(member.energy<operatingTarget(sim,member))requested.add(member.id);
+ for(const edge of edges) {
+  let deficit=Math.max(0,sim.bondMaintenanceBuffer(edge)-(edge.reserve??0));
+  for(const id of [edge.firstId,edge.secondId]) {
+   const amount=Math.min(deficit,pledged.get(id));pledged.set(id,pledged.get(id)-amount);deficit-=amount;
+  }
+  if(deficit>1e-9){requested.add(edge.firstId);requested.add(edge.secondId);}
+ }
+ // A request follows the real bond graph; food must traverse it physically.
+ const distance=new Map([...requested].map(id=>[id,0])),queue=[...requested];
+ for(let i=0;i<queue.length;i++)for(const next of neighbors.get(queue[i])??[])if(!distance.has(next.id)) {
+  distance.set(next.id,distance.get(queue[i])+1);queue.push(next.id);
+ }
+ return distance;
+}
+
 function routePantryFood(sim,network) {
  const {members,neighbors,distance}=network,policy=sim.config.bond.foodPantries,s=stats(sim);
  // Snapshot sending budgets: new arrivals cannot travel a second hop now.
  const budgets=new Map([...members].map(([id,member])=>[id,{...stock(member)}]));
+ const demand=policy.reliableReservesEnabled?pantryDemandDistances(sim,network):new Map();
  const capacity=sim.config.organism.foodEnergy*policy.capacityMealsPerMember;
  for(const donor of members.values()) {
-  const hops=distance.get(donor.id);if(hops===undefined || hops===0)continue;
-  const destinations=neighbors.get(donor.id).filter(member=>distance.get(member.id)<hops)
+  const towardNeed=demand.has(donor.id),gradient=towardNeed?demand:distance;
+  const hops=gradient.get(donor.id);if(hops===undefined || hops===0)continue;
+  const destinations=neighbors.get(donor.id).filter(member=>gradient.get(member.id)<hops)
    .sort((a,b)=>total(stock(a))-total(stock(b)) || a.id-b.id);
   let bandwidth=policy.transferPerTick;
   for(const receiver of destinations)for(const color of COLORS) {
@@ -119,8 +141,31 @@ function routePantryFood(sim,network) {
    if(!amount)continue;
    pouch[color]-=amount;budgets.get(donor.id)[color]-=amount;bandwidth-=amount;
    destination[color]+=amount*efficiency;s.routed+=amount*efficiency;s.routingTransfers++;
+   if(towardNeed)s.demandRouted+=amount*efficiency;
    s.transferLoss+=amount*(1-efficiency);loss(sim,'pantryTransfer',amount*(1-efficiency));
    foodMarker(sim,donor,receiver,amount*efficiency,color,'pantry-routing');
+  }
+ }
+}
+
+// Called immediately before maintenance, AFTER real body/component funding.
+// There are no promises of future body surplus here: pay actual remaining bills.
+export function settlePantryMaintenance(sim,edgeKeys=null) {
+ if(!pantriesEnabled(sim)||!sim.config.bond.foodPantries.reliableReservesEnabled
+  ||!sim.config.bond.foodPantries.adaptiveReuseEnabled)return;
+ const members=new Map(sim.organisms.filter(member=>member.alive).map(member=>[member.id,member])),s=stats(sim);
+ for(const edge of sim.bonds.values()) {
+  if(edgeKeys&&!edgeKeys.has(sim.bondKey(edge.firstId,edge.secondId)))continue;
+  const a=members.get(edge.firstId),b=members.get(edge.secondId);
+  if(!a||!b||edge.dormant||!sim.areAdjacent(a,b))continue;
+  let need=Math.max(0,sim.bondMaintenanceBuffer(edge)-(edge.reserve??0));
+  for(const color of ['RED','BLUE','GREEN'])for(const member of [a,b]) {
+   const pouch=stock(member),ownNeed=color==='RED'?0:Math.max(0,operatingTarget(sim,member)-member.energy);
+   const available=color==='RED'?pouch.RED:Math.min(pouch[color],Math.max(0,pouch.GREEN+pouch.BLUE-ownNeed));
+   const amount=Math.min(available,need);if(amount<=0)continue;
+   pouch[color]-=amount;edge.reserve=(edge.reserve??0)+amount;need-=amount;
+   s.bondDelivered+=amount;s.lateBondDelivered+=amount;s.foodBondRescues++;
+   foodMarker(sim,member,member===a?b:a,amount,color,'pantry-maintenance');
   }
  }
 }
@@ -205,10 +250,13 @@ export function storeHarvest(sim,member,result) {
   result.overflowEnergy-=overflow;result.energyFlow.losses.capacityOverflow-=overflow;
   member.energyLedger.losses.capacityOverflow-=overflow;room-=overflow;s.overflowSaved+=overflow;
  }
+ const fraction=policy.reliableReservesEnabled && policy.adaptiveReuseEnabled
+  ? Math.max(policy.harvestFraction,policy.savingsFraction):policy.harvestFraction;
  const surplus=Math.min(room,Math.max(0,member.energy-sim.getReproductionEnergyFloor(member)),
-  Math.max(0,result.consumedEnergy-overflow)*policy.harvestFraction);
+  Math.max(0,result.consumedEnergy-overflow)*fraction);
  member.energy-=surplus;
  const amount=overflow+surplus;pouch[result.consumedResource]+=amount;s.deposited+=amount;
+ s.surplusSaved+=surplus;
  member.energyLedger.allocations.foodStorage=(member.energyLedger.allocations.foodStorage??0)+amount;
  sim.energyEconomics.allocations.foodStorage=(sim.energyEconomics.allocations.foodStorage??0)+amount;
 }
@@ -236,5 +284,6 @@ export function pantrySnapshot(sim) {
  const contents={GREEN:0,BLUE:0,RED:0};
  for(const member of members.values())for(const color of COLORS)contents[color]+=member.foodPantry?.[color]??0;
  return {enabled:true,...stats(sim),contents,stored:total(contents),chambers,loose,
+  stockedChambers:chambers.filter(chamber=>COLORS.some(color=>chamber.contents[color]>.01)).length,
   grainEnergy:sim.config.organism.foodEnergy/8};
 }

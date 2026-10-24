@@ -419,6 +419,8 @@ export const BASE_CONFIG = {
     },
     foodPantries: {
       enabled: false,
+      reliableReservesEnabled: false,
+      savingsFraction: 0.15,
       adaptiveReuseEnabled: true,
       transferPerTick: 0.5,
       maximumLoopSize: 8,
@@ -453,6 +455,23 @@ export const BASE_CONFIG = {
       cellCapacity: 12,
       maximumFieldHarvest: 0.8,
       dangerCost: 2
+    },
+    organismHarvest: {
+      enabled: false,
+      maximumWithdrawalPerComponentPerTick: 4,
+      captureCost: 0.1,
+      efficiency: 0.8
+    },
+    reproductionRunway: {
+      enabled: false,
+      horizonTicks: 60
+    },
+    loopCirculation: {
+      enabled: false,
+      closureEnabled: false,
+      maximumMembers: 8,
+      efficiency: 0.98,
+      closureBias: 0.15
     },
     collectiveMemory: {
       enabled: false,

@@ -7,11 +7,11 @@ Date: **24 October 2026**. Target: the current adaptive morphology / reincarnati
 - Repository: [lucpattyn/projectgenesis](https://github.com/lucpattyn/projectgenesis).
 - **Deploy branch:** `codex/adaptive-morphology-world`
 - Branch URL: [codex/adaptive-morphology-world](https://github.com/lucpattyn/projectgenesis/tree/codex/adaptive-morphology-world).
-- Functional code baseline: full commit **`f78e68bf837d980866e83b04c59fb0fd180be29f`**.
-- This handoff and the reader-facing README summary are a documentation-only follow-up to that code. For an immutable deployment including these documents, pin the **final release SHA supplied with this handoff**, rather than assuming future branch HEAD will stay unchanged. Record `git rev-parse HEAD` in the deployment log.
+- Release tag: **`genesis-demo-2026-10-24`**. Pin this tag or the final full release SHA supplied with the handover; record `git rev-parse HEAD` in the deployment log.
+- Previous published pantry release, for rollback only: **`b1bab422e0c2fc988c65b0def23307e0a4b19fe2`**. Use its own matching handoff and environment, not this release's presets.
 - Do **not** deploy `main`, `codex/reincarnation-intelligence-loop`, or `codex/delayed-cue-computation` for this release.
 
-This release includes top-layer food-colored `+` indicators, adaptive pantry routing/reuse, aligned energy budgets, adaptive resource patches, mutation/selection and living-structure carry-over. It reproduces the local **configuration from its beginning**, not a copy of the currently running local world.
+This release includes top-layer food-colored `+` indicators, reliable pantry saving/routing/reuse, passing-organism energy harvesting, paid loop circulation/closure, aligned budgets, adaptive resource patches, mutation/selection and living-structure carry-over. It also packages optional resource-aware reproduction, off in the control preset. It reproduces a **configuration from its beginning**, not a copy of the currently running local world. “Stable” below labels a demo control, not proven survival or production reliability.
 
 ## 2. Runtime and checkout
 
@@ -22,6 +22,7 @@ Example fresh checkout (Linux shell):
 ```bash
 git clone --branch codex/adaptive-morphology-world --single-branch https://github.com/lucpattyn/projectgenesis.git
 cd projectgenesis
+git checkout --detach genesis-demo-2026-10-24
 git rev-parse HEAD
 # To pin the immutable release instead of a moving branch, replace RELEASE_SHA
 # with the full SHA provided by the release owner:
@@ -43,8 +44,13 @@ GENESIS_SEED=160104
 GENESIS_RESOURCE_PATCHES=1
 GENESIS_FIELD_DEMO=0
 GENESIS_ALIGNED_BUDGETS=1
+GENESIS_ORGANISM_HARVEST=1
 GENESIS_FOOD_PANTRIES=1
 GENESIS_PANTRY_REUSE=1
+GENESIS_PANTRY_RESERVES=1
+GENESIS_LOOP_CIRCULATION=1
+GENESIS_LOOP_CLOSURE=1
+GENESIS_REPRODUCTION_RUNWAY=0
 GENESIS_VISUAL_RELAY=0
 ```
 
@@ -54,7 +60,7 @@ An `.env` file is **not automatically loaded** by the application. Supply proces
 node --env-file=/absolute/path/to/genesis.env server/index.js
 ```
 
-Alternatively, export the variables in the shell and use `npm start`. PowerShell uses `$env:GENESIS_FOOD_PANTRIES='1'`, etc., before `npm start`.
+Alternatively use the checked-in presets: `npm run start:demo` loads `config/demo-stable.env`; `npm run start:demo:experimental` loads `config/demo-experimental.env`. They differ only in `GENESIS_REPRODUCTION_RUNWAY` (0 versus 1). Stop the service before switching, then confirm the snapshot flag. A restart loses the current in-memory world. Existing process/service environment variables override Node env-file values; remove conflicting inherited `GENESIS_*` values. Bare `npm start` does not select a complete preset.
 
 The server listens on **`0.0.0.0:3000`**, as configured in `server/simulation/config.js`. This release does **not** honor generic `PORT` or `HOST` environment variables. Expose internal port 3000 through your chosen reverse proxy/container mapping. A platform requiring a dynamic listening port needs a separately reviewed code change, not an undocumented environment override.
 
@@ -147,23 +153,14 @@ Legacy Package A guided substrate and conditional/unconditional development-supp
 - Green feeds members first; blue keeps longer and can feed them later; red funds actual bond maintenance. If ordinary body surplus and red stores cannot pay a maintenance buffer, blue/green can cover the remaining bill after member needs are protected.
 - Formation/maintenance protect a reproduction endowment; local renewal and paid connection seeds replace some ageing members. Funded adjacent bonds can tolerate binding dips. None of this makes a bond immortal or recreates already-broken edges for free.
 
-Latest two-seed, 2,000-tick routing/reuse results are 161 versus 274 final bonds on seed 160104 and 283 versus 49 on seed 160121: **444 versus 323 in aggregate, but not a consistent win**. Do not market this as proven intelligence, robust survival on every seed, or a completed nutrient cycle. See [full pantry results](FOOD_PANTRIES_2026-10-24.md) and [budget alignment](ALIGNED_ENERGY_BUDGETS_2026-10-24.md).
+Earlier routing/reuse-only results were 161 versus 274 final bonds on seed 160104 and 283 versus 49 on seed 160121: **444 versus 323 in aggregate, but not a consistent win**. The newer full-circulation control ended at 230/32/8 bonds on seeds 160104/160121/160138; optional reproduction forecasting ended at 243/32/21, but did not solve overshoot and shortened one motif lifetime. See `LOOP_CIRCULATION_2026-10-24.md` and `REPRODUCTION_RUNWAY_2026-10-24.md` for those exact ablations. Do not market this as proven intelligence, universal survival or a completed nutrient cycle.
 
 ## 8. Verification and acceptance
 
 Before starting the supervised service, run from its checkout:
 
 ```bash
-npm run check
-npm test
-node test/aligned-budgets.mjs
-node test/food-pantries.mjs
-node test/pantry-routing.mjs
-node test/renderer-pantry-markers.mjs
-node test/renderer-heatmap.mjs
-node test/morphology-speed-parity.mjs
-node test/morphology-occupancy.mjs
-node test/resource-patches.mjs
+npm run test:release
 ```
 
 These tests use their own simulations and do not reset the running live server. Headless comparison jobs are optional and can be CPU-heavy; run them separately from a public viewing process.
@@ -178,6 +175,7 @@ Confirm:
 
 - HTTP 200 for `/`, `/renderer.js`, `/pantry-visuals.js`, and `/api/state`.
 - Profile `adaptive-foraging`, aligned budgets/pantries/reuse true; paused false and speed 1.
+- Reliable reserves, organism harvesting, loop circulation and closure true. `bonding.reproductionRunway.enabled` false for stable/control and true for experimental; horizon 60.
 - Tick advances between checks. At a cycle boundary tick legitimately returns to zero while cycle increases. It should not bounce between independent worlds under one stable process.
 - The initial seed is 160104; later cycle seeds change as above. Do not reject a healthy running service because it is already on a later cycle.
 - Food `+` marks appear only when real stock exists. The legend by itself is not evidence of stock. Verify `bonding.foodPantries.stored`, `chambers[].contents`, `loose`, and usage/routing counters. Stores can be eaten, spoil, move or be lost; an empty cycle is possible.
@@ -193,7 +191,12 @@ Use a supervisor and log process restarts; a stable service alone does not prove
 
 Rollback options, always after an intentional service stop/restart:
 
-- `GENESIS_PANTRY_REUSE=0`: preceding pantry physics, keeping clearer `+` graphics.
+- `GENESIS_REPRODUCTION_RUNWAY=0`: return from experimental to stable/control reproduction, keeping the rest of the demo identical.
+- `GENESIS_LOOP_CIRCULATION=0` / `GENESIS_LOOP_CLOSURE=0`: disable circulation/hints for an older-physics comparison. Both demo presets normally enable them; generic startup defaults are off. These flags are unavailable in the older rollback SHA. See `LOOP_CIRCULATION_2026-10-24.md` for tradeoffs.
+
+- `GENESIS_ORGANISM_HARVEST=0`: disable contact feeding for comparison. Both demo presets enable it. Recruitment was withdrawn and its flag removed. See `ORGANISM_HARVEST_2026-10-24.md`.
+- `GENESIS_PANTRY_RESERVES=0`: restore overflow-only/chamber-directed saving. Both demo presets use `1` for surplus saving, demand routing and final maintenance settlement. See `PANTRY_RESERVES_FIX_2026-10-24.md`. This flag is ignored by the older rollback SHA.
+- `GENESIS_PANTRY_REUSE=0`: preceding pantry physics, keeping clearer `+` graphics; also disables the newer reserve mechanism if present.
 - `GENESIS_FOOD_PANTRIES=0`: disable the pantry layer entirely.
 - `GENESIS_ALIGNED_BUDGETS=0`: legacy budget/carry behavior; this reintroduces the old carry cap and reserve tax and is for controlled comparisons, not an implied recommended fix.
 - Pin a previously recorded commit and its matching environment file for full code rollback. Do not merely switch to `main` and assume matching behavior.
@@ -201,6 +204,8 @@ Rollback options, always after an intentional service stop/restart:
 Deployment changes reset the in-memory run. If restart continuity is required, durable world checkpointing is a separate task and must be implemented/tested before promising it to users.
 
 ## 10. Source map and operator sign-off
+
+`GENESIS_REPRODUCTION_RUNWAY=1` opts into the packaged 60-tick local birth forecast; leave it `0` to retain the preceding circulation behavior. It does not exist in the older rollback release. See `REPRODUCTION_RUNWAY_2026-10-24.md` before selecting it; results are mixed, not a guaranteed survival improvement. Run `npm run test:release` before deploying; this includes isolated HTTP startup checks of both presets without touching a running port-3000 world.
 
 | Responsibility | Source |
 |---|---|

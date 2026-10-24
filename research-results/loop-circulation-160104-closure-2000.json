@@ -1,0 +1,285 @@
+{
+  "seed": 160104,
+  "mode": "closure",
+  "ticks": 2000,
+  "bondTicks": 220982,
+  "loopTicks": 24334,
+  "starved": 124,
+  "ageDeaths": 94,
+  "births": 369,
+  "pantryFed": 737.1283464440838,
+  "pantryFuel": 684.1125422126416,
+  "meanEndedEdgeLifetime": 274.47005988023955,
+  "longestEndedEdgeLifetime": 740,
+  "rows": [
+    {
+      "elapsed": 250,
+      "cycle": 0,
+      "tick": 250,
+      "population": 42,
+      "bonds": 58,
+      "bondTicks": 6208,
+      "loopTicks": 840,
+      "births": 18,
+      "deaths": {},
+      "breaks": {},
+      "circulation": {
+        "passes": 250,
+        "compartmentTicks": 840,
+        "memberTicks": 2530,
+        "overlapSkips": 1591,
+        "delivered": 1818.5121367315237,
+        "loss": 37.112492586358066,
+        "edgeEnergyHops": 1847.575180820464,
+        "starvationAvoided": 0,
+        "closureGuidedMoves": 0,
+        "usefulClosures": 0
+      },
+      "pantryStored": 166.53857702073608,
+      "stocked": 16,
+      "pantryFed": 0,
+      "pantryBondFuel": 0
+    },
+    {
+      "elapsed": 500,
+      "cycle": 0,
+      "tick": 500,
+      "population": 57,
+      "bonds": 64,
+      "bondTicks": 22353,
+      "loopTicks": 2632,
+      "births": 34,
+      "deaths": {
+        "energy exhaustion": 1
+      },
+      "breaks": {
+        "bond energy reserve depleted": 22
+      },
+      "circulation": {
+        "passes": 500,
+        "compartmentTicks": 2632,
+        "memberTicks": 8068,
+        "overlapSkips": 5998,
+        "delivered": 4756.1761141242205,
+        "loss": 97.06481865559468,
+        "edgeEnergyHops": 4930.321327866026,
+        "starvationAvoided": 0,
+        "closureGuidedMoves": 1,
+        "usefulClosures": 1
+      },
+      "pantryStored": 206.52665489184955,
+      "stocked": 15,
+      "pantryFed": 19.545748718055652,
+      "pantryBondFuel": 39.78453524693715
+    },
+    {
+      "elapsed": 750,
+      "cycle": 0,
+      "tick": 750,
+      "population": 45,
+      "bonds": 44,
+      "bondTicks": 45067,
+      "loopTicks": 5078,
+      "births": 49,
+      "deaths": {
+        "energy exhaustion": 5,
+        "maximum age": 23
+      },
+      "breaks": {
+        "bond energy reserve depleted": 53,
+        "member died: maximum age": 53
+      },
+      "circulation": {
+        "passes": 750,
+        "compartmentTicks": 5078,
+        "memberTicks": 15677,
+        "overlapSkips": 11133,
+        "delivered": 8297.488458095306,
+        "loss": 169.3364991447982,
+        "edgeEnergyHops": 8795.3734218356,
+        "starvationAvoided": 0,
+        "closureGuidedMoves": 2,
+        "usefulClosures": 4
+      },
+      "pantryStored": 30.66709614329135,
+      "stocked": 5,
+      "pantryFed": 87.17185780651666,
+      "pantryBondFuel": 184.04167604274735
+    },
+    {
+      "elapsed": 1000,
+      "cycle": 0,
+      "tick": 1000,
+      "population": 40,
+      "bonds": 33,
+      "bondTicks": 53424,
+      "loopTicks": 6016,
+      "births": 62,
+      "deaths": {
+        "energy exhaustion": 8,
+        "maximum age": 38
+      },
+      "breaks": {
+        "bond energy reserve depleted": 75,
+        "member died: maximum age": 73,
+        "member died: energy exhaustion": 1
+      },
+      "circulation": {
+        "passes": 1000,
+        "compartmentTicks": 6016,
+        "memberTicks": 18603,
+        "overlapSkips": 12512,
+        "delivered": 10047.166587671436,
+        "loss": 205.0442160749224,
+        "edgeEnergyHops": 10648.065612611865,
+        "starvationAvoided": 0,
+        "closureGuidedMoves": 3,
+        "usefulClosures": 5
+      },
+      "pantryStored": 70.182112907889,
+      "stocked": 7,
+      "pantryFed": 89.39329185479342,
+      "pantryBondFuel": 214.92157610551106
+    },
+    {
+      "elapsed": 1250,
+      "cycle": 1,
+      "tick": 250,
+      "population": 78,
+      "bonds": 89,
+      "bondTicks": 68451,
+      "loopTicks": 7767,
+      "births": 39,
+      "deaths": {
+        "maximum age": 8,
+        "energy exhaustion": 2
+      },
+      "breaks": {
+        "member died: maximum age": 28
+      },
+      "circulation": {
+        "passes": 250,
+        "compartmentTicks": 1751,
+        "memberTicks": 5484,
+        "overlapSkips": 3889,
+        "delivered": 3512.9131153005173,
+        "loss": 71.69210439388772,
+        "edgeEnergyHops": 3803.724360919066,
+        "starvationAvoided": 0,
+        "closureGuidedMoves": 0,
+        "usefulClosures": 1
+      },
+      "pantryStored": 182.54804092530532,
+      "stocked": 22,
+      "pantryFed": 0.07449998652180767,
+      "pantryBondFuel": 6.908648945819859
+    },
+    {
+      "elapsed": 1500,
+      "cycle": 1,
+      "tick": 500,
+      "population": 161,
+      "bonds": 242,
+      "bondTicks": 115649,
+      "loopTicks": 13150,
+      "births": 138,
+      "deaths": {
+        "maximum age": 17,
+        "energy exhaustion": 9
+      },
+      "breaks": {
+        "member died: maximum age": 57,
+        "bond energy reserve depleted": 35,
+        "member died: energy exhaustion": 1
+      },
+      "circulation": {
+        "passes": 500,
+        "compartmentTicks": 7134,
+        "memberTicks": 22328,
+        "overlapSkips": 15821,
+        "delivered": 12106.528017179866,
+        "loss": 247.0720003506079,
+        "edgeEnergyHops": 13211.314083677275,
+        "starvationAvoided": 0,
+        "closureGuidedMoves": 0,
+        "usefulClosures": 4
+      },
+      "pantryStored": 350.58354813672895,
+      "stocked": 37,
+      "pantryFed": 118.63129455385285,
+      "pantryBondFuel": 175.2692392121238
+    },
+    {
+      "elapsed": 1750,
+      "cycle": 1,
+      "tick": 750,
+      "population": 139,
+      "bonds": 135,
+      "bondTicks": 165430,
+      "loopTicks": 17843,
+      "births": 209,
+      "deaths": {
+        "maximum age": 38,
+        "energy exhaustion": 81
+      },
+      "breaks": {
+        "member died: maximum age": 98,
+        "bond energy reserve depleted": 229,
+        "member died: energy exhaustion": 26
+      },
+      "circulation": {
+        "passes": 750,
+        "compartmentTicks": 11827,
+        "memberTicks": 37103,
+        "overlapSkips": 27833,
+        "delivered": 21776.579563641666,
+        "loss": 444.4199910947256,
+        "edgeEnergyHops": 24102.179602792166,
+        "starvationAvoided": 0,
+        "closureGuidedMoves": 7,
+        "usefulClosures": 16
+      },
+      "pantryStored": 146.43419075107622,
+      "stocked": 18,
+      "pantryFed": 420.82170625595836,
+      "pantryBondFuel": 312.8796168186462
+    },
+    {
+      "elapsed": 2000,
+      "cycle": 1,
+      "tick": 1000,
+      "population": 184,
+      "bonds": 230,
+      "bondTicks": 220982,
+      "loopTicks": 24334,
+      "births": 307,
+      "deaths": {
+        "maximum age": 56,
+        "energy exhaustion": 116
+      },
+      "breaks": {
+        "member died: maximum age": 139,
+        "bond energy reserve depleted": 341,
+        "member died: energy exhaustion": 39
+      },
+      "circulation": {
+        "passes": 1000,
+        "compartmentTicks": 18318,
+        "memberTicks": 56803,
+        "overlapSkips": 40200,
+        "delivered": 31546.267254237802,
+        "loss": 643.8013725354508,
+        "edgeEnergyHops": 34253.19756917014,
+        "starvationAvoided": 0,
+        "closureGuidedMoves": 8,
+        "usefulClosures": 24
+      },
+      "pantryStored": 152.84349400756648,
+      "stocked": 29,
+      "pantryFed": 647.7350545892904,
+      "pantryBondFuel": 469.1909661071306
+    }
+  ],
+  "longestObservedEdgeLifetime": 740,
+  "longestObservedMotifLifetime": 571
+}

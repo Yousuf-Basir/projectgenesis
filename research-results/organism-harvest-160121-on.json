@@ -1,0 +1,112 @@
+{
+  "seed": 160121,
+  "enabled": true,
+  "rows": [
+    {
+      "cycle": 0,
+      "tick": 500,
+      "population": 54,
+      "bonds": 74,
+      "bondTicks": 22750,
+      "inheritedOpening": 0,
+      "continuousInherited": 0,
+      "harvest": {
+        "contacts": 99,
+        "withdrawn": 229.27817694525646,
+        "delivered": 183.4225415562051,
+        "conversionLoss": 45.85563538905127,
+        "captureCost": 9.89999999999998,
+        "bondFunding": 0.24,
+        "bodyDelivered": 183.18254155620514
+      },
+      "deaths": {
+        "energy exhaustion": 7
+      },
+      "breaks": {
+        "bond energy reserve depleted": 23,
+        "member died: energy exhaustion": 3
+      }
+    },
+    {
+      "cycle": 0,
+      "tick": 1000,
+      "population": 23,
+      "bonds": 23,
+      "bondTicks": 47533,
+      "inheritedOpening": 0,
+      "continuousInherited": 0,
+      "harvest": {
+        "contacts": 169,
+        "withdrawn": 415.2696399453607,
+        "delivered": 332.2157119562879,
+        "conversionLoss": 83.05392798907198,
+        "captureCost": 16.89999999999997,
+        "bondFunding": 2.4179157002929452,
+        "bodyDelivered": 329.7977962559954
+      },
+      "deaths": {
+        "energy exhaustion": 23,
+        "maximum age": 33
+      },
+      "breaks": {
+        "bond energy reserve depleted": 75,
+        "member died: energy exhaustion": 21,
+        "member died: maximum age": 58
+      }
+    },
+    {
+      "cycle": 1,
+      "tick": 500,
+      "population": 50,
+      "bonds": 40,
+      "bondTicks": 30636,
+      "inheritedOpening": 23,
+      "continuousInherited": 0,
+      "harvest": {
+        "contacts": 95,
+        "withdrawn": 241.0213544533932,
+        "delivered": 192.81708356271454,
+        "conversionLoss": 48.20427089067863,
+        "captureCost": 9.499999999999982,
+        "bondFunding": 4.807219604097938,
+        "bodyDelivered": 188.00986395861665
+      },
+      "deaths": {
+        "energy exhaustion": 15,
+        "maximum age": 11
+      },
+      "breaks": {
+        "member died: maximum age": 37,
+        "bond energy reserve depleted": 51,
+        "member died: energy exhaustion": 10
+      }
+    },
+    {
+      "cycle": 1,
+      "tick": 1000,
+      "population": 32,
+      "bonds": 45,
+      "bondTicks": 50911,
+      "inheritedOpening": 23,
+      "continuousInherited": 0,
+      "harvest": {
+        "contacts": 143,
+        "withdrawn": 424.8634915560464,
+        "delivered": 339.89079324483674,
+        "conversionLoss": 84.97269831120917,
+        "captureCost": 14.299999999999965,
+        "bondFunding": 7.32721960409794,
+        "bodyDelivered": 332.5635736407393
+      },
+      "deaths": {
+        "energy exhaustion": 26,
+        "maximum age": 42
+      },
+      "breaks": {
+        "member died: maximum age": 71,
+        "bond energy reserve depleted": 108,
+        "member died: energy exhaustion": 12
+      }
+    }
+  ]
+}

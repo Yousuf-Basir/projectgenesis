@@ -20,7 +20,12 @@ if(adaptiveEnabled) {
   });
   if(process.env.GENESIS_RESOURCE_PATCHES!==undefined)simulation.config.bond.adaptiveMorphology.resourcePatchesEnabled=process.env.GENESIS_RESOURCE_PATCHES==='1';
   if(process.env.GENESIS_ALIGNED_BUDGETS!==undefined)simulation.config.bond.adaptiveMorphology.alignedBudgetsEnabled=process.env.GENESIS_ALIGNED_BUDGETS==='1';
+  simulation.config.bond.organismHarvest.enabled=process.env.GENESIS_ORGANISM_HARVEST==='1';
+  simulation.config.bond.loopCirculation.enabled=process.env.GENESIS_LOOP_CIRCULATION==='1';
+  simulation.config.bond.loopCirculation.closureEnabled=process.env.GENESIS_LOOP_CLOSURE==='1';
+  simulation.config.bond.reproductionRunway.enabled=process.env.GENESIS_REPRODUCTION_RUNWAY==='1';
   simulation.config.bond.foodPantries.enabled=process.env.GENESIS_FOOD_PANTRIES!=='0';
+  simulation.config.bond.foodPantries.reliableReservesEnabled=process.env.GENESIS_PANTRY_RESERVES!=='0';
   if(process.env.GENESIS_PANTRY_REUSE!==undefined)simulation.config.bond.foodPantries.adaptiveReuseEnabled=process.env.GENESIS_PANTRY_REUSE==='1';
 }
 const reincarnation = new ReincarnationController({ cycleTicks: 1000,
