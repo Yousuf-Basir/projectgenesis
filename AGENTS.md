@@ -23,7 +23,10 @@
 - Scope: snapshot timeout, regression test and npm test registration only. No changes to simulation physics, API permissions or proxy configuration.
 
 ## Verification and current status
-- Implemented and locally verified; deployment verification pending.
+- Deployed on the Oracle VM without a PM2 restart; the server session ID was unchanged, preserving the running world.
+- Live browser verification at 200,000 bytes/second and 150 ms latency: a 2.42 MB snapshot completed in 13.6 seconds and the status was Running. Forced offline changed the status to Connection Error; restoring the connection returned it to Running with advancing ticks.
+- The public `/main.js` SHA-256 matched the VM file after deployment.
+- Upstream push is denied for the available GitHub account. The fix and context are saved in `Yousuf-Basir/projectgenesis`, branch `fix/snapshot-connection-timeout`; the VM stays on `codex/adaptive-morphology-world` with these commits fast-forwarded from the fork. Upstream branch tracking remains unchanged. Do not discard these fork-only fixes during future updates.
 - `node test/snapshot-connection.mjs` failed on the old four-second timeout; a stronger twenty-second case also rejected the intermediate fifteen-second timeout. Both pass with the thirty-second deadline. Covers single-flight polling, genuine timeout, retry recovery and lower-version server restart.
 - `npm run test:release` passed, including stable and experimental demo startup on isolated loopback ports.
 - Production Node version at investigation: 24.21.0.
