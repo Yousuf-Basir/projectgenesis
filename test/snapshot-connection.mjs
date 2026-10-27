@@ -45,15 +45,15 @@ const snapshot = (version, paused = false, serverSessionId = 'first') => ({versi
 const slow = load();
 await load();
 assert.equal(requests.length, 1, 'polls remain single-flight');
-advance(5000);
+advance(20000);
 requests.shift()(snapshot(10));
 await slow;
-assert.equal(statusPill.textContent, 'Running', 'a successful five-second download must not be aborted');
+assert.equal(statusPill.textContent, 'Running', 'a successful twenty-second download must not be aborted');
 assert.deepEqual(rendered, [10]);
 assert.equal(timers.size, 0, 'successful requests clear the deadline');
 
 const stalled = load();
-advance(15000);
+advance(30000);
 await stalled;
 requests.shift();
 assert.equal(statusPill.textContent, 'Connection Error', 'a stalled connection still times out');
