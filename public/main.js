@@ -486,7 +486,8 @@ async function loadSnapshot() {
   if (snapshotRequestInFlight) return;
   snapshotRequestInFlight = true;
   const controller = new AbortController();
-  const timeout = window.setTimeout(() => controller.abort(), 4000);
+  // Full-world snapshots can exceed 1 MB; allow slower mobile links to finish.
+  const timeout = window.setTimeout(() => controller.abort(), 15000);
   try {
     const snapshot = await fetchJson("/api/state", { signal: controller.signal });
     if (snapshot.serverSessionId && snapshot.serverSessionId !== lastServerSessionId) {
